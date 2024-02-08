@@ -1,0 +1,39 @@
+name: turkey_rnaseq
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - nodefaults
+dependencies:
+  - python
+  - samtools
+  - hisat2
+  - gffcompare
+  - stringtie
+  - trim-galore
+  - agat
+  - regtools
+  - r-base
+  - r-tidyverse
+  - r-devtools
+  - r-glue
+  - r-patchwork
+  - r-ggsci
+  - r-english
+  - r-tinytex
+  - r-pheatmap
+  - r-officedown
+  - r-bookdown
+  - r-rticles
+  - r-ggtext
+  - r-flextable
+  - bioconductor-deseq2
+  - bioconductor-edger
+  - bioconductor-ballgown
+  - bioconductor-biocinstaller
+  - bioconductor-GenomicRanges
+  - bioconductor-genefilter
+  - bioconductor-GenomicAlignments
+  - snakemake
+  - graphviz
+
