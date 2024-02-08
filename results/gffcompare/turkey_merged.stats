@@ -1,0 +1,30 @@
+# gffcompare v0.12.6 | Command line was:
+#gffcompare -G -r raw_files/annotations/turkey_genome.gtf -o turkey_merged results/stringtie/turkey_merged_all_tps.gtf
+#
+
+#= Summary for dataset: results/stringtie/turkey_merged_all_tps.gtf 
+#     Query mRNAs :   90364 in   48544 loci  (66328 multi-exon transcripts)
+#            (12356 multi-transcript loci, ~1.9 transcripts per locus)
+# Reference mRNAs :   39050 in   24156 loci  (37143 multi-exon)
+# Super-loci w/ reference transcripts:    23651
+#-----------------| Sensitivity | Precision  |
+        Base level:   100.0     |    71.6    |
+        Exon level:    98.3     |    73.9    |
+      Intron level:   100.0     |    86.3    |
+Intron chain level:   100.0     |    56.0    |
+  Transcript level:    99.6     |    43.1    |
+       Locus level:    99.5     |    48.5    |
+
+     Matching intron chains:   37143
+       Matching transcripts:   38907
+              Matching loci:   24034
+
+          Missed exons:       0/202798	(  0.0%)
+           Novel exons:   45366/273422	( 16.6%)
+        Missed introns:      36/175869	(  0.0%)
+         Novel introns:   13901/203806	(  6.8%)
+           Missed loci:       0/24156	(  0.0%)
+            Novel loci:   24893/48544	( 51.3%)
+
+ Total union super-loci across all input datasets: 48544 
+90364 out of 90364 consensus transcripts written in turkey_merged.annotated.gtf (0 discarded as redundant)

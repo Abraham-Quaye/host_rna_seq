@@ -103,7 +103,70 @@ rule map_reads_convert_to_bam:
     shell:
         "{input.script}"
 
+#################### INDEX SORTED BAM FILES WITH SAMTOOLS #############
+rule index_sorted_bamFiles:
+    input:
+        script = "scripts/shell_code/index_sorted_bams.zsh",
+        bams = rules.map_reads_convert_to_bam.output
+    output:
+        expand("results/hisat2/sorted_{trtment_tp}hrs{trt_rep}.bam.bai", \
+        trtment_tp = ["I_4", "I_24", "I_72"], trt_rep = ["S1", "S2", "S3"]),
+        expand("results/hisat2/sorted_I_12hrs{trt_rep}.bam.bai", trt_rep = ["S1", "S3"]),
+        expand("results/hisat2/sorted_{trtment_tp}hrs{trt_rep}.bam.bai", \
+        trtment_tp = ["U_4", "U_12", "U_24", "U_72"], trt_rep = ["N1", "N2"])
+    shell:
+        "{input.script}"
+
+#################### ASSEMBLE TRANSCRIPTS WITH STRINGTIE #############
+rule assemble_transcripts:
+    input:
+        bams = rules.map_reads_convert_to_bam.output,
+        gtf = "raw_files/annotations/turkey_genome.gtf",
+        script = "scripts/shell_code/assemble_transcripts.zsh"
+    output:
+        expand("results/stringtie/I_{tp}hrsS{rep}.gtf", tp = [4, 24, 72], rep = range(1, 4)),
+        expand("results/stringtie/I_12hrsS{rep}.gtf", rep = [1, 3]),
+        expand("results/stringtie/U_{tp}hrsN{rep}.gtf", tp = [4, 12, 24, 72], rep = [1, 2])
+    shell:
+        "{input.script}"
+
+#################### MERGE ALL TRANSCRIPTS WITH STRINGTIE #############
+rule merge_assembled_transcripts:
+    input:
+        gtfs_sngles = rules.assemble_transcripts.output,
+        gtf_list = "results/stringtie/trxpt_merge_list.txt",
+        gtf_main = "raw_files/annotations/turkey_genome.gtf"
+    output:
+        "results/stringtie/turkey_merged_all_tps.gtf"
+    shell:
+        """
+        echo "Merging all transcripts from all timepoints now...";
+        stringtie --merge -p 8 -G {input.gtf_main} -l rp19 -o {output} {input.gtf_list};
+        echo "Merging Completed in $SECONDS secs"
+        """
+
+#################### COMPARE MERGED TRANSCRIPTS WITH REFERENCE TRANSCRIPTS #############
+rule compare_merged_trxpts_toReference:
+    input:
+        gtf_merged = rules.merge_assembled_transcripts.output,
+        gtf_ref = "raw_files/annotations/turkey_genome.gtf"
+    output:
+        expand("results/gffcompare/turkey_merged.{type}", \
+        type = ["stats", "loci", "tracking", "annotated.gtf", \
+        "turkey_merged_all_tps.gtf.refmap", "turkey_merged_all_tps.gtf.tmap"])
+    shell:
+        """
+        echo "Comparing merged transcripts with reference...";
+        # -G flag = tells gffcompare to compare all transcripts in the input transcripts.gtf file
+
+        gffcompare -G -r {input.gtf_ref} -o turkey_merged {input.gtf_merged}
+        mv turkey_merged* results/gffcompare;
+        mv results/stringtie/turkey_merged.turkey_merged_all_tps* results/gffcompare;
+        echo "gffcompare completed in $SECONDS secs"
+        """
+
 rule run_pipeline:
     input:
-        rules.map_reads_convert_to_bam.output
+        rules.index_sorted_bamFiles.output,
+        rules.compare_merged_trxpts_toReference.output
 

@@ -35,9 +35,8 @@ do
     d2=${revData[$s]}
     echo "Mapping Reads to ${name}hrs${lb_rep} Now..."
     
-    echo "$d1 goes with $d2 -- named ${name}${lb_rep}"
-    # hisat2 -p 10 --dta -x $seqidx -1 trimmedReads/$d1 -2 trimmedReads/$d2 \
-    # | samtools sort -@ 10 -o $mapdir/sorted_${name}hrs${lb_rep}.bam
+    hisat2 -p 10 --dta -x $seqidx -1 trimmedReads/$d1 -2 trimmedReads/$d2 \
+    | samtools sort -@ 10 -o $mapdir/sorted_${name}hrs${lb_rep}.bam
 
         secs=$SECONDS
         hrs=$(( secs/3600 )); mins=$(( (secs-hrs*3600)/60 )); secs=$(( secs-hrs*3600-mins*60 ))
