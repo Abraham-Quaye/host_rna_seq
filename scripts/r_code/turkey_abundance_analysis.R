@@ -1,21 +1,62 @@
 #!/usr/bin/env Rscript
 
-library(ballgown)
-library(devtools)
-library(genefilter)
+library(DESeq2)
 library(tidyverse)
+library(magrittr)
 
 # ====================================================================
 # TRANSCRIPT ABUNDANCE ANALYSIS WITH DEseq2
 # ====================================================================
-# Hisat2 -> FeatureCounts -> DESeq2 
+# Hisat2 -> FeatureCounts/StringTie -> DESeq2 
 
-# make experimental data dataframe
-smpl_names <- (list.dirs("results/ballgown", full.names = F) %>% .[-1])
+# 1. Make experimental data dataframe ==========================================
+smpl_names <- list.dirs("results/abundances", full.names = T) %>% .[-c(1, 21)]
   
-exp_info <- data.frame(sample_name = smpl_names,
+exp_metadata <- data.frame(sample_path = smpl_names,
                        timepoint = str_extract(smpl_names, "\\d{1,2}hrs"),
                        replicate = paste0("rep", str_extract(smpl_names, "\\d$")),
-                       infection = c(rep("infected", 11), rep("uninfected", 8)))
+                       infection = c(rep("infected", 11), rep("uninfected", 8))) %>%
+  mutate(sample_name = str_extract(sample_path, "abund_[IU]_\\d{1,2}hrs[SN]\\d")) %>%
+  set_rownames(.$sample_name) %>%
+  select(-sample_name) %>%
+  mutate(timepoint = factor(timepoint, levels = c("4hrs", "12hrs", "24hrs", "72hrs")),
+         infection = factor(infection, levels = c("infected", "uninfected")))
 
+# 2. Import gene count matrix ===============================================
+gene_matrix <- read.csv("results/abundances/count_matrix/genes_count_matrix.csv",
+                        header = T, row.names = "gene_id") %>%
+  as.matrix(.)
 
+# 3. Check matching samples in experimental metadata and count matrix ==========
+stopifnot(
+  all(rownames(exp_metadata) %in% colnames(gene_matrix)), # checks identity/presence
+  all(rownames(exp_metadata) == colnames(gene_matrix)) # checks order
+  )
+
+# 4. Create DESeq2 object from the matrix and metadata =========================
+deseq_obj <- DESeqDataSetFromMatrix(countData = gene_matrix, colData = exp_metadata,
+                       design = ~ timepoint + infection + timepoint:infection)
+
+# 5. Filter low abundance genes ================================================
+# While it is not necessary to pre-filter low count genes before running the DESeq2 functions, there are two reasons which make pre-filtering useful: by removing rows in which there are very few reads, we reduce the memory size of the dds data object, and we increase the speed of count modeling within DESeq2. It can also improve visualizations, as features with no information for differential expression are not plotted in dispersion plots or MA-plots.
+
+# Here we perform pre-filtering to keep only rows that have a count of at least 10 for a minimal number of samples. A recommendation for the minimal number of samples is to specify the smallest group size, e.g. here there are 4 infected samples.
+smallest_grp_size <- 4
+rows_keep <- rowSums(counts(deseq_obj) >= 10) >= smallest_grp_size
+
+deseq_obj <- deseq_obj[rows_keep, ]
+
+# 6. Run differential analysis =================================================
+deseq_obj <- DESeq(deseq_obj)
+
+# 7. Explore results
+quicklook <- vst(deseq_obj, blind = F)
+
+plotPCA(quicklook, intgroup = "timepoint") +
+  theme_minimal()
+plotDispEsts(deseq_obj)
+
+inf_res <- results(deseq_obj) %>%
+  as.data.frame() %>%
+  arrange(padj) %>%
+  drop_na(padj)

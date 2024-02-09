@@ -180,9 +180,20 @@ rule estimate_trancript_abundances:
     shell:
         "{input.script}"
 
+#################### MAKE COUNT MATRICES WITH STRINGTIE PYTHON SCRIPT #############
+rule generate_count_matrices:
+    input:
+        counts = rules.estimate_trancript_abundances.output,
+        script = "scripts/shell_code/make_count_matrix.zsh"
+    output:
+        expand("results/abundances/count_matrix/{feat}_count_matrix.csv", \
+        feat = ["genes", "trxpts"])
+    shell:
+        "{input.script}"
+
 
 rule run_pipeline:
     input:
         rules.index_sorted_bamFiles.output,
-        rules.estimate_trancript_abundances.output
+        rules.generate_count_matrices.output
 

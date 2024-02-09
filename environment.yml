@@ -36,4 +36,7 @@ dependencies:
   - bioconductor-GenomicAlignments
   - snakemake
   - graphviz
+  - seqkit
+  - igv
+  - igvtools
 
