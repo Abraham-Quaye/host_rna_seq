@@ -165,8 +165,24 @@ rule compare_merged_trxpts_toReference:
         echo "gffcompare completed in $SECONDS secs"
         """
 
+#################### ESTIMATE TRANSCRIPT ABUNDANCES WITH STRINGTIE #############
+rule estimate_trancript_abundances:
+    input:
+        bams = rules.map_reads_convert_to_bam.output,
+        merged_gtf = rules.merge_assembled_transcripts.output,
+        script = "scripts/shell_code/est_trxpt_abund.zsh"
+    output:
+        expand("results/ballgown/abund_{sample}/abund_{sample}.gtf", \
+        sample = ["I_4hrsS1", "I_4hrsS2", "I_4hrsS3", "I_12hrsS1", "I_12hrsS3", \
+        "I_24hrsS1", "I_24hrsS2", "I_24hrsS3", "I_72hrsS1", "I_72hrsS2", \
+        "I_72hrsS3", "U_4hrsN1", "U_4hrsN2", "U_12hrsN1", "U_12hrsN2", \
+        "U_24hrsN1", "U_24hrsN2", "U_72hrsN1", "U_72hrsN2"])
+    shell:
+        "{input.script}"
+
+
 rule run_pipeline:
     input:
         rules.index_sorted_bamFiles.output,
-        rules.compare_merged_trxpts_toReference.output
+        rules.estimate_trancript_abundances.output
 
