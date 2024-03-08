@@ -202,10 +202,23 @@ rule generate_count_matrices:
     shell:
         "{input.script}"
 
-
+####### PLOTS FOR DIFFERENTIAL GENE EXPRESSION ################################
+rule make_DEG_and_Heatmaps:
+    input:
+        counts = rules.generate_count_matrices.output, # tentative connection
+        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
+        tp = [4, 12, 24, 72]),
+        r_script = "scripts/r_code/plot_degs_heatmaps.R"
+    output:
+        "results/r/deg_bar_plt.png",
+        expand("results/r/deg_heatmap_{tpp}hpi.png", tpp = [4, 12, 24])
+    shell:
+        "{input.r_script}"
+    
 rule run_pipeline:
     input:
         rules.compare_merged_trxpts_toReference.output,
         rules.index_sorted_bamFiles.output,
-        rules.generate_count_matrices.output
+        rules.generate_count_matrices.output,
+        rules.make_DEG_and_Heatmaps.output
 
