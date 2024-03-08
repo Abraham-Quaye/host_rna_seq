@@ -1,13 +1,16 @@
-################# CONVERT .GFF TO GTF AND MOVE AGAT LOGFILE ###########
-rule convert_turkey_gff_to_gtf:
+##########  REMOVE GENE ATTRIBUTES (EMPTY TRANSCRIPT_ID TAGS) ###########
+rule trim_turkey_gtf_file:
     input:
-        script = "scripts/shell_code/make_host_gtf.zsh",
-        gff = "raw_files/annotations/turkey_genome.gff"
+        "raw_files/annotations/turkey_genome.gtf"
     output:
-        "raw_files/annotations/turkey_genome.gtf",
-        "raw_files/annotations/turkey_genome.agat.log"
+        "raw_files/annotations/turkey_genome_trxpts.gtf"
     shell:
-        "{input.script}"
+        """
+        echo "Creating Trimmed GTF file"
+        awk '$3 != "gene" ' {input} > {output} &&
+        echo "GTF with no empty tags created successfully!!!" \
+        || echo "Error in creating trimmed GTF file"
+        """
 
 ################### EXTRACT SPLICE-SITES ####################
 rule extract_host_splice_site:
@@ -76,9 +79,6 @@ rule trim_and_QC_rnaseq_reads:
     shell:
         "{input.script}"
 
-
-
-
 #################### MAP READS TO TURKEY GENOME WITH HISAT2 #############
 rule map_reads_convert_to_bam:
     input:
@@ -121,7 +121,7 @@ rule index_sorted_bamFiles:
 rule assemble_transcripts:
     input:
         bams = rules.map_reads_convert_to_bam.output,
-        gtf = "raw_files/annotations/turkey_genome.gtf",
+        gtf = rules.trim_turkey_gtf_file.output,
         script = "scripts/shell_code/assemble_transcripts.zsh"
     output:
         expand("results/stringtie/I_{tp}hrsS{rep}.gtf", tp = [4, 24, 72], rep = range(1, 4)),
@@ -130,12 +130,23 @@ rule assemble_transcripts:
     shell:
         "{input.script}"
 
+#################### LIST ALL STRINGTIE GTF FILES TO BE MERGED MERGE #############
+rule transcript_merge_list:
+    input:
+        gtfs_sngles = rules.assemble_transcripts.output
+    output:
+        "results/stringtie/trxpt_merge_list.txt"
+    shell:
+        """
+        ls results/stringtie/*.gtf > {output}
+        """
+
 #################### MERGE ALL TRANSCRIPTS WITH STRINGTIE #############
 rule merge_assembled_transcripts:
     input:
         gtfs_sngles = rules.assemble_transcripts.output,
-        gtf_list = "results/stringtie/trxpt_merge_list.txt",
-        gtf_main = "raw_files/annotations/turkey_genome.gtf"
+        gtf_list = rules.transcript_merge_list.output,
+        gtf_main = rules.trim_turkey_gtf_file.output
     output:
         "results/stringtie/turkey_merged_all_tps.gtf"
     shell:
@@ -149,7 +160,7 @@ rule merge_assembled_transcripts:
 rule compare_merged_trxpts_toReference:
     input:
         gtf_merged = rules.merge_assembled_transcripts.output,
-        gtf_ref = "raw_files/annotations/turkey_genome.gtf"
+        gtf_ref = rules.trim_turkey_gtf_file.output
     output:
         expand("results/gffcompare/turkey_merged.{type}", \
         type = ["stats", "loci", "tracking", "annotated.gtf", \
@@ -194,6 +205,7 @@ rule generate_count_matrices:
 
 rule run_pipeline:
     input:
+        rules.compare_merged_trxpts_toReference.output,
         rules.index_sorted_bamFiles.output,
         rules.generate_count_matrices.output
 

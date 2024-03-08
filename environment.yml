@@ -34,9 +34,15 @@ dependencies:
   - bioconductor-GenomicRanges
   - bioconductor-genefilter
   - bioconductor-GenomicAlignments
+  - bioconductor-apeglm
+  - bioconductor-rtracklayer
+  - bioconductor-clusterProfiler
+  - bioconductor-enrichplot
+  - r-enrichR
+  - r-plyr
+  - r-msigdbr
   - snakemake
   - graphviz
   - seqkit
   - igv
   - igvtools
-
