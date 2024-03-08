@@ -208,13 +208,15 @@ rule plot_DEG_and_Heatmaps:
         counts = rules.generate_count_matrices.output, # tentative connection
         deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
         tp = [4, 12, 24, 72]),
-        r_script = "scripts/r_code/plot_degs_heatmaps.R"
+        r_script1 = "scripts/r_code/plot_degs.R",
+        r_script2 = "scripts/r_code/plot_heatmaps.R"
     output:
         "results/r/deg_bar_plt.png",
         expand("results/r/deg_heatmap_{tpp}hpi.png", tpp = [4, 12, 24])
     shell:
         """
-        {input.r_script}
+        {input.r_script1}
+        {input.r_script2}
         rm Rplots.pdf
         """
     
