@@ -46,6 +46,11 @@ check_grp_consistency <- function(grp_fpkms){
 
 # # load all differentially expressed genes from all time points
 crude_diff_exp_genes <- map_dfr(diff_files, pull_exp_data, .id = "timepoint") %>%
+  mutate(gene_id = ifelse(str_detect(gene_id, "gene-"),
+                          str_replace(gene_id, "gene-(LOC\\d+)", "\\1"),
+                          gene_id))
+
+diff_exp_genes <- crude_diff_exp_genes %>%
   mutate(inf_mean_fpkm = apply(.[, c("inf_fpkm_r1", "inf_fpkm_r2", "inf_fpkm_r3")], 1, check_grp_consistency),
          mock_mean_fpkm = apply(.[, c("mock_fpkm_r1", "mock_fpkm_r2")], 1, check_grp_consistency)) %>%
   drop_na(inf_mean_fpkm, mock_mean_fpkm) %>% 
@@ -54,7 +59,7 @@ crude_diff_exp_genes <- map_dfr(diff_files, pull_exp_data, .id = "timepoint") %>
   mutate(gene_known = ifelse(str_detect(gene_name, "LOC"), "unknown", "known"))
 
 # prepare data for visualization
-p_data <- crude_diff_exp_genes %>%
+p_data <- diff_exp_genes %>%
   group_by(timepoint, regulation) %>%
   reframe(num_genes = n()) %>%
   mutate(pos_shift = ifelse(regulation == "up", 0.2, -0.2),
@@ -120,7 +125,7 @@ ggsave(plot = deg_bar_plt, filename = "results/r/deg_bar_plt.png",
 ## select columns to use for making heatmap
 
 prep_heatmap_data <- function(tp){
-  r_names <- crude_diff_exp_genes %>%
+  r_names <- diff_exp_genes %>%
     filter(timepoint == tp) %>%
     pull(gene_name)
   
@@ -134,7 +139,7 @@ prep_heatmap_data <- function(tp){
     c_names <- c("72hrsS1", "72hrsS2", "72hrsS3", "72hrsN1", "72hrsN2")
   }
   
-  data <- crude_diff_exp_genes %>%
+  data <- diff_exp_genes %>%
     split(.$timepoint) %>%
     set_names(c("t12", "t24", "t4"))
   
@@ -194,6 +199,7 @@ save_heatmaps <- function(tp){
   graphics.off()
 }
 
-map(pull(plotted_heatmaps, timepoints), save_heatmaps)
-
-
+for(p in pull(plotted_heatmaps, timepoints)){
+  print(paste0("Saving heatmap for timepoint ", parse_number(p), "hrs"))
+  save_heatmaps(p)
+}
