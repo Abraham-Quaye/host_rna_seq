@@ -50,7 +50,7 @@ crude_diff_exp_genes <- map_dfr(diff_files, pull_exp_data, .id = "timepoint") %>
          mock_mean_fpkm = apply(.[, c("mock_fpkm_r1", "mock_fpkm_r2")], 1, check_grp_consistency)) %>%
   drop_na(inf_mean_fpkm, mock_mean_fpkm) %>% 
 # filter for DEGs
-  filter(qval <= 0.05 & (log2fc >=1 | log2fc <= -1)) %>%
+  filter(qval <= 0.05) %>%
   mutate(gene_known = ifelse(str_detect(gene_name, "LOC"), "unknown", "known"))
 
 # prepare data for visualization
@@ -69,7 +69,7 @@ deg_bar_plt <- p_data %>%
   scale_fill_manual(values = c("#0000ff", "#ff0000"),
                     breaks = c("down", "up"),
                     labels = c("Down Regulated", "Up Regulated")) +
-  scale_y_continuous(limits = c(0, 155),
+  scale_y_continuous(limits = c(0, 2550),
                      expand = c(0, 0)) +
   scale_x_discrete(expand = c(0.16, 0.16),
                    breaks = c("t4", "t12", "t24"),
@@ -160,18 +160,18 @@ heatmap_data_list <- map(timpnts, prep_heatmap_data) %>%
   set_names(c("t12", "t24", "t4"))
 
 plot_heatmap <- function(tp){
-  tpp <- paste0(str_extract(tp, "\\d+"), "h.p.i")
+  tpp <- paste0(parse_number(tp), "h.p.i")
     
   ht <- pheatmap(heatmap_data_list[[tp]],
            main = paste0("DEGs of THEV-infected Turkey B-cells (" , tpp, ")"),
            cellwidth = 60,
            color = colorRampPalette(colors = c('blue','white','red'))(250),
            angle_col = 45,
-           fontsize = 14,
            fontsize_row = 5,
            fontsize_col = 14,
-           # treeheight_row = 0,
+           treeheight_row = 0,
            # treeheight_col = 0
+           show_rownames = F
   )
   if(!is.null(dev.list())){
     graphics.off()
@@ -181,16 +181,9 @@ plot_heatmap <- function(tp){
 
 plotted_heatmaps <- tibble(timepoints = c("t12", "t24", "t4")) %>%
   mutate(plts = map(timepoints, plot_heatmap))
-
-# for(p in 1:nrow(plotted_heatmaps)){
-#   tpp <- paste0(str_extract(plotted_heatmaps[p, 1], "\\d+"), "hpi")
-#   ggsave(plot = plotted_heatmaps[[2]][[p]],
-#          filename = paste0("results/r/deg_heatmap_", tpp, ".png"),
-#          width = 10, height = 15, dpi = 400)
-#   graphics.off()
-# }
-                           
-make_heatmaps <- function(tp){
+      
+## Save plots
+save_heatmaps <- function(tp){
   tpp <- paste0(str_extract(plotted_heatmaps %>%
                               filter(timepoints == tp) %>%
                               pull(timepoints),
@@ -201,6 +194,6 @@ make_heatmaps <- function(tp){
   graphics.off()
 }
 
-map(pull(plotted_heatmaps, timepoints), make_heatmaps)
+map(pull(plotted_heatmaps, timepoints), save_heatmaps)
 
 

@@ -27,7 +27,8 @@ exp_metadata <- data.frame(sample_path = smpl_names,
 
 # 2. Import gene count matrix ===============================================
 gene_matrix <- read.csv("results/abundances/count_matrix/genes_count_matrix.csv",
-                        header = T, row.names = "gene_id") %>% as.matrix(.)
+                        header = T, row.names = "gene_id") %>%
+  as.matrix(.)
 
 # stringtie_merged_gtf <- import("results/stringtie/turkey_merged_all_tps.gtf") %>%
 #   as_tibble() %>%
