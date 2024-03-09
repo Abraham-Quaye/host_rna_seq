@@ -211,18 +211,35 @@ rule plot_DEG_and_Heatmaps:
         r_script1 = "scripts/r_code/plot_degs.R",
         r_script2 = "scripts/r_code/plot_heatmaps.R"
     output:
-        "results/r/deg_bar_plt.png",
-        expand("results/r/deg_heatmap_{tpp}hpi.png", tpp = [4, 12, 24])
+        "results/r/figures/deg_bar_plt.png",
+        expand("results/r/figures/deg_heatmap_{tpp}hpi.png", tpp = [4, 12, 24])
     shell:
         """
         {input.r_script1}
         {input.r_script2}
         rm Rplots.pdf
         """
-    
+
+####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
+rule extract_geneIDs_GO_KEGG:
+    input:
+        counts = rules.generate_count_matrices.output,
+        r_script1 = "scripts/r_code/deg_analysis.R",
+        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
+        tp = [4, 12, 24, 72]),
+        r_script2 = "scripts/r_code/extract_deg_geneIDs.R"
+    output:
+        expand("results/r/tables/{names}.txt", \
+        names = ["all_bg_geneIDs", "down_degIDs_4hrs", "down_degIDs_12hrs", \
+        "up_degIDs_12hrs", "down_degIDs_24hrs", "up_degIDs_24hrs", "all_down_degs", \
+        "all_up_degs"])
+    shell:
+        "{input.r_script2}"
+
 rule run_pipeline:
     input:
         rules.compare_merged_trxpts_toReference.output,
         rules.index_sorted_bamFiles.output,
-        rules.plot_DEG_and_Heatmaps.output
+        rules.plot_DEG_and_Heatmaps.output,
+        rules.extract_geneIDs_GO_KEGG.output
 
