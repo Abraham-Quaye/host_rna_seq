@@ -228,14 +228,15 @@ rule extract_geneIDs_GO_KEGG:
         r_script1 = "scripts/r_code/deg_analysis.R",
         deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
         tp = [4, 12, 24, 72]),
-        r_script2 = "scripts/r_code/extract_deg_geneIDs.R"
+        r_script2 = "scripts/r_code/extract_deg_geneIDs.R",
+        r_script3 = "scripts/r_code/save_deg_tabs.R"
     output:
         expand("results/r/tables/{names}.txt", \
         names = ["all_bg_geneIDs", "down_degIDs_4hrs", "down_degIDs_12hrs", \
         "up_degIDs_12hrs", "down_degIDs_24hrs", "up_degIDs_24hrs", "all_down_degs", \
         "all_up_degs"])
     shell:
-        "{input.r_script2}"
+        "{input.r_script3}"
 
 rule run_pipeline:
     input:

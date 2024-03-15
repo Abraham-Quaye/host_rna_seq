@@ -45,11 +45,3 @@ all_deg_tables <- list(
   all_down_degs = xtract_all_deg_regTypes(reg_type = "down"),
   all_up_degs = xtract_all_deg_regTypes(reg_type = "up")
 )
-
-# Save geneID tables
-for(t in names(all_deg_tables)){
-  print(paste("Saving:", t))
-  write.table(all_deg_tables[[t]]["gene_id"],
-              file = paste0("results/r/tables/", t, ".txt"),
-              quote = F, row.names = F, col.names = F)
-}
