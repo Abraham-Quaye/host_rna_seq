@@ -38,6 +38,7 @@ dependencies:
   - bioconductor-rtracklayer
   - bioconductor-clusterProfiler
   - bioconductor-enrichplot
+  - bioconductor-pathview
   - r-enrichR
   - r-plyr
   - r-msigdbr

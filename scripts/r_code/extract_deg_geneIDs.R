@@ -1,17 +1,15 @@
 #!/usr/bin/env Rscript
 
-library(tidyverse)
-
 source("scripts/r_code/deg_analysis.R")
-
-# write.table(bg_gene_ids, file = "results/r/tables/all_bg_geneIDs.txt",
-#             quote = F, row.names = F, col.names = F)
 
 # function to filter out DEG regulation types at different timepoints
 xtract_geneID_tp <- function(data = diff_exp_genes, reg, tp){
   ids <- data %>%
     filter(timepoint == tp, regulation == reg) %>%
-    distinct(gene_id)
+    select(gene_id, gene_name, log2fc) %>%
+    as.data.frame() %>% 
+    distinct(gene_id, gene_name, .keep_all = T) %>%
+    set_rownames(.$gene_id)
   
   return(ids)
 }
@@ -20,14 +18,21 @@ xtract_geneID_tp <- function(data = diff_exp_genes, reg, tp){
 xtract_all_deg_regTypes <- function(data = diff_exp_genes, reg_type){
   ids <- data %>%
   filter(regulation == reg_type) %>%
-  distinct(gene_id)
+  select(gene_id, gene_name, log2fc) %>%
+  as.data.frame() %>%
+  distinct(gene_id, gene_name, .keep_all = T) %>%
+  set_rownames(.$gene_id)
+  
   return(ids)
 }
 
 all_deg_tables <- list(
   # Extract total background genes
   all_bg_geneIDs = crude_diff_exp_genes %>%
-    distinct(gene_id),
+    as.data.frame() %>% 
+    select(gene_id, gene_name, log2fc) %>%
+    distinct(gene_id, gene_name, .keep_all = T) %>%
+    set_rownames(.$gene_id),
   # Extract 4hr down-regulated genes
   down_degIDs_4hrs = xtract_geneID_tp(reg = "down", tp = "t4"),
   # Extract 12hr up/down-regulated genes
@@ -44,7 +49,7 @@ all_deg_tables <- list(
 # Save geneID tables
 for(t in names(all_deg_tables)){
   print(paste("Saving:", t))
-  write.table(all_deg_tables[[t]],
+  write.table(all_deg_tables[[t]]["gene_id"],
               file = paste0("results/r/tables/", t, ".txt"),
               quote = F, row.names = F, col.names = F)
 }

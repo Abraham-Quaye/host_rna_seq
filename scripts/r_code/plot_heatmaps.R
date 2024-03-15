@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 
+library(pheatmap)
 source("scripts/r_code/deg_analysis.R")
 
 ## select columns to use for making heatmap
@@ -75,7 +76,7 @@ save_heatmaps <- function(tp){
                               pull(timepoints),
                             "\\d+"), "hpi")
   ggsave(plot = plotted_heatmaps[plotted_heatmaps$timepoints == tp,][[2]][[1]],
-         filename = paste0("results/r/deg_heatmap_", tpp, ".png"),
+         filename = paste0("results/r/figures/deg_heatmap_", tpp, ".png"),
          width = 10, height = 15, dpi = 400)
   graphics.off()
 }

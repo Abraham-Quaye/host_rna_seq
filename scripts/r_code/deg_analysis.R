@@ -3,8 +3,6 @@
 library(tidyverse)
 library(readxl)
 library(magrittr)
-library(ggtext)
-library(pheatmap)
 
 # load in files for differentially expressed genes
 diff_files <- list.files("raw_analysis/diff_exp",
@@ -47,7 +45,7 @@ check_grp_consistency <- function(grp_fpkms){
 # # load all differentially expressed genes from all time points
 crude_diff_exp_genes <- map_dfr(diff_files, pull_exp_data, .id = "timepoint") %>%
   mutate(gene_id = ifelse(str_detect(gene_id, "gene-"),
-                          str_replace(gene_id, "gene-(LOC\\d+)", "\\1"),
+                          str_replace(gene_id, "gene-LOC(\\d+)", "\\1"),
                           gene_id))
 
 diff_exp_genes <- crude_diff_exp_genes %>%
@@ -56,4 +54,4 @@ diff_exp_genes <- crude_diff_exp_genes %>%
   drop_na(inf_mean_fpkm, mock_mean_fpkm) %>% 
 # filter for DEGs
   filter(qval <= 0.05) %>%
-  mutate(gene_known = ifelse(str_detect(gene_name, "LOC"), "unknown", "known"))
+  mutate(gene_known = ifelse(str_detect(gene_name, "LOC"), F, T))

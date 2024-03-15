@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 
+library(ggtext)
 source("scripts/r_code/deg_analysis.R")
 
 # prepare data for visualization
@@ -51,13 +52,15 @@ deg_bar_plt <- p_data %>%
                                     color = 'black'),
         axis.ticks = element_blank(),
         legend.justification = c(0,1),
-        legend.position = c(0.1, 0.8),
+        legend.position = "inside",
+        legend.position.inside = c(0.1, 0.8),
         legend.text = element_text(face = 'bold', 
                                    size = 18,
                                    family = 'Arial'),
+        legend.background = element_blank(),
         legend.margin = margin(rep(10, 4)),
         legend.key.size = unit(1.2, "cm")
   )
 
-ggsave(plot = deg_bar_plt, filename = "results/r/deg_bar_plt.png",
+ggsave(plot = deg_bar_plt, filename = "results/r/figures/deg_bar_plt.png",
        width = 15, height = 12, dpi = 400)
