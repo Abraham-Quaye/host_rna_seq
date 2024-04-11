@@ -29,49 +29,48 @@ rule modify_turkey_GTF:
         "{input.r_script}"
 
 # ##########  REMOVE GENE ATTRIBUTES (EMPTY TRANSCRIPT_ID TAGS) ###########
-# rule trim_turkey_gtf_file:
-#     input:
-#         "raw_files/annotations/turkey_genome.gtf"
-#     output:
-#         "raw_files/annotations/turkey_genome_trxpts.gtf"
-#     shell:
-#         """
-#         echo "Creating Trimmed GTF file"
-#         awk '$3 != "gene" ' {input} > {output} &&
-#         echo "GTF with no empty tags created successfully!!!" \
-#         || echo "Error in creating trimmed GTF file"
-#         """
-
-# ##########  REMOVE GENE ATTRIBUTES (EMPTY TRANSCRIPT_ID TAGS) ###########
-# rule extract_gtf_feature_annotations:
-#     input:
-#         gtf = "raw_files/annotations/turkey_genome.gtf",
-#         script = "scripts/shell_code/extract_gtf_labels.zsh"
-#     output:
-#         "raw_files/annotations/turkey_gene_labels.txt",
-#         "raw_files/annotations/turkey_trxpt_labels.txt",
-#     shell:
-#         "{input.script}"
+rule trim_turkey_gtf_file:
+    input:
+        "raw_files/annotations/Mgallopavo_ncbi.gtf.gz"
+    output:
+        "raw_files/annotations/turkey_genome_trxpts.gtf"
+    shell:
+        """
+        echo "Creating Trimmed GTF file"
+        awk '$3 != "gene" ' {input} > {output} &&
+        echo "GTF with no empty tags created successfully!!!" \
+        || echo "Error in creating trimmed GTF file"
+        """
 
 # ################### EXTRACT SPLICE-SITES ####################
-# rule extract_host_splice_site:
-#     input:
-#         script = "scripts/shell_code/extract_ss.zsh",
-#         gtf = "raw_files/annotations/turkey_genome.gtf"
-#     output:
-#         "raw_files/annotations/turkey_genome.ss"
-#     shell:
-#         "{input.script}"
+rule extract_host_splice_site:
+    input:
+        script = "scripts/shell_code/extract_ss.zsh",
+        gtf = rules.modify_turkey_GTF.output
+    output:
+        "raw_files/annotations/turkey_genome.ss"
+    shell:
+        """
+        filedir=raw_files/annotations
+        echo "extracting M gallopavo splice-sites ..."
+        hisat2_extract_splice_sites.py $filedir/turkey_genome.gtf > $filedir/turkey_genome.ss &&
+        echo "TURKEY splice-site extraction completed successfully"
+        """
 
 # ################### EXTRACT EXONS  ####################
-# rule extract_host_exons:
-#     input:
-#         script = "scripts/shell_code/extract_exons.zsh",
-#         gtf = "raw_files/annotations/turkey_genome.gtf"
-#     output:
-#         "raw_files/annotations/turkey_genome.exons"
-#     shell:
-#         "{input.script}"
+rule extract_host_exons:
+    input:
+        script = "scripts/shell_code/extract_exons.zsh",
+        gtf = rules.modify_turkey_GTF.output
+    output:
+        "raw_files/annotations/turkey_genome.exons"
+    shell:
+        """
+        filedir=raw_files/annotations
+        echo "M gallopavo extracting exons ..."
+        hisat2_extract_exons.py $filedir/turkey_genome.gtf > $filedir/turkey_genome.exons &&
+        echo "TURKEY exon extration complete"
+        """
 
 # #################### BUILD THEV GENOMIC INDEX FOR MAPPING WITH HISAT2 ######
 # rule build_host_genome_index:
@@ -282,7 +281,10 @@ rule modify_turkey_GTF:
 rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
-        rules.modify_turkey_GTF.output
+        rules.modify_turkey_GTF.output,
+        rules.trim_turkey_gtf_file.output,
+        rules.extract_host_splice_site.output,
+        rules.extract_host_exons.output
 #         rules.compare_merged_trxpts_toReference.output,
 #         rules.index_sorted_bamFiles.output,
 #         rules.plot_DEG_and_Heatmaps.output,
