@@ -4,7 +4,8 @@ rule fetch_Mgal_files:
         "scripts/shell_code/fetch_Mgal_genomeData.zsh"
     output:
         expand("raw_files/annotations/Mgallopavo_{ext}.gz", \
-        ext = ["ncbi.gtf", "GOncbi.gaf"])
+        ext = ["ncbi.gtf", "GOncbi.gaf"]),
+        "raw_files/genome_file/Mgallopavo_genome.fna"
     shell:
         "{input}"
 
@@ -31,7 +32,7 @@ rule modify_turkey_GTF:
 # ##########  REMOVE GENE ATTRIBUTES (EMPTY TRANSCRIPT_ID TAGS) ###########
 rule trim_turkey_gtf_file:
     input:
-        "raw_files/annotations/Mgallopavo_ncbi.gtf.gz"
+        rules.modify_turkey_GTF.output
     output:
         "raw_files/annotations/turkey_genome_trxpts.gtf"
     shell:
@@ -45,79 +46,81 @@ rule trim_turkey_gtf_file:
 # ################### EXTRACT SPLICE-SITES ####################
 rule extract_host_splice_site:
     input:
-        script = "scripts/shell_code/extract_ss.zsh",
-        gtf = rules.modify_turkey_GTF.output
+        rules.modify_turkey_GTF.output
     output:
         "raw_files/annotations/turkey_genome.ss"
     shell:
         """
-        filedir=raw_files/annotations
         echo "extracting M gallopavo splice-sites ..."
-        hisat2_extract_splice_sites.py $filedir/turkey_genome.gtf > $filedir/turkey_genome.ss &&
+        hisat2_extract_splice_sites.py {input} > {output} &&
         echo "TURKEY splice-site extraction completed successfully"
         """
 
 # ################### EXTRACT EXONS  ####################
 rule extract_host_exons:
     input:
-        script = "scripts/shell_code/extract_exons.zsh",
-        gtf = rules.modify_turkey_GTF.output
+        rules.modify_turkey_GTF.output
     output:
         "raw_files/annotations/turkey_genome.exons"
     shell:
         """
-        filedir=raw_files/annotations
         echo "M gallopavo extracting exons ..."
-        hisat2_extract_exons.py $filedir/turkey_genome.gtf > $filedir/turkey_genome.exons &&
+        hisat2_extract_exons.py {input} > {output} &&
         echo "TURKEY exon extration complete"
         """
 
 # #################### BUILD THEV GENOMIC INDEX FOR MAPPING WITH HISAT2 ######
-# rule build_host_genome_index:
-#     input:
-#         script = "scripts/shell_code/build_genome_index.zsh",
-#         genome = "raw_files/genome_file/turkey_genome.fa",
-#         exons = "raw_files/annotations/turkey_genome.exons",
-#         ss = "raw_files/annotations/turkey_genome.ss"
-#     output:
-#         expand("raw_files/index/turkey_tran.{num}.ht2", \
-#         num = range(1, 9))
-#     shell:
-#         "{input.script}"
+rule build_host_genome_index:
+    input:
+        genome = "raw_files/genome_file/Mgallopavo_genome.fna",
+        exons = rules.extract_host_exons.output,
+        ss = rules.extract_host_splice_site.output
+    output:
+        expand("raw_files/index/turkey_tran.{num}.ht2", \
+        num = range(1, 9))
+    shell:
+        """
+        echo "Building TURKEY genomic index ..."
+        hisat2-build -p 8 --ss {input.ss} --exon {input.exons} {input.genome} raw_files/index/turkey_tran &&
+        echo "Index built successfully" || echo "Program Aborted!!!"
+        """
 
 # #################### TRIM READS WITH TRIMGALORE #############
-# rule trim_and_QC_rnaseq_reads:
-#     input:
-#         script = "scripts/shell_code/trim_reads.zsh",
-#         f1 = expand("raw_files/initial_reads/forwardData/I_{tp}hrsS{rep}_Data1.fq.gz", \
-#         tp = [4, 24, 72], rep = range(1, 4)),
-#         f2 = expand("raw_files/initial_reads/forwardData/I_12hrsS{rep}_Data1.fq.gz", \
-#         rep = [1, 3]),
-#         f3 = expand("raw_files/initial_reads/forwardData/U_{tp}hrsN{rep}_Data1.fq.gz", \
-#         tp = [4, 12, 24, 72], rep = [1, 2]),
-#         # data2
-#         r1 = expand("raw_files/initial_reads/reverseData/I_{tp}hrsS{rep}_Data2.fq.gz", \
-#         tp = [4, 24, 72], rep = range(1, 4)),
-#         r2 = expand("raw_files/initial_reads/reverseData/I_12hrsS{rep}_Data2.fq.gz", \
-#         rep = [1, 3]),
-#         r3 = expand("raw_files/initial_reads/reverseData/U_{tp}hrsN{rep}_Data2.fq.gz", \
-#         tp = [4, 12, 24, 72], rep = [1, 2])
-#     output:
-#         expand("trimmedReads/I_{tp}hrsS{rep}_Data1_val_1.fq.gz", \
-#         tp = [4, 24, 72], rep = range(1, 4)),
-#         expand("trimmedReads/I_12hrsS{rep}_Data1_val_1.fq.gz", \
-#         rep = [1, 3]),
-#         expand("trimmedReads/U_{tp}hrsN{rep}_Data1_val_1.fq.gz", \
-#         tp = [4, 12, 24, 72], rep = [1, 2]),
-#         # data2
-#         expand("trimmedReads/I_{tp}hrsS{rep}_Data2_val_2.fq.gz", \
-#         tp = [4, 24, 72], rep = range(1, 4)),
-#         expand("trimmedReads/I_12hrsS{rep}_Data2_val_2.fq.gz", \
-#         rep = [1, 3]),
-#         expand("trimmedReads/U_{tp}hrsN{rep}_Data2_val_2.fq.gz", \
-#         tp = [4, 12, 24, 72], rep = [1, 2])
-#     shell:
-#         "{input.script}"
+rule FastQC_reads:
+    input:
+        f1 = expand("raw_files/initial_reads/forwardData/I_{tp}hrsS{rep}_Data1.fq.gz", \
+        tp = [4, 24, 72], rep = range(1, 4)),
+        f2 = expand("raw_files/initial_reads/forwardData/I_12hrsS{rep}_Data1.fq.gz", \
+        rep = [1, 3]),
+        f3 = expand("raw_files/initial_reads/forwardData/U_{tp}hrsN{rep}_Data1.fq.gz", \
+        tp = [4, 12, 24, 72], rep = [1, 2]),
+        # data2
+        r1 = expand("raw_files/initial_reads/reverseData/I_{tp}hrsS{rep}_Data2.fq.gz", \
+        tp = [4, 24, 72], rep = range(1, 4)),
+        r2 = expand("raw_files/initial_reads/reverseData/I_12hrsS{rep}_Data2.fq.gz", \
+        rep = [1, 3]),
+        r3 = expand("raw_files/initial_reads/reverseData/U_{tp}hrsN{rep}_Data2.fq.gz", \
+        tp = [4, 12, 24, 72], rep = [1, 2])
+    output:
+        expand("fastqc_files/I_{tp}hrsS{rep}_Data1_fastqc.{ext}", \
+        tp = [4, 24, 72], rep = range(1, 4), ext = ["html", "zip"]),
+        expand("fastqc_files/I_12hrsS{rep}_Data1_fastqc.{ext}", \
+        rep = [1, 3], ext = ["html", "zip"]),
+        expand("fastqc_files/U_{tp}hrsN{rep}_Data1_fastqc.{ext}", \
+        tp = [4, 12, 24, 72], rep = [1, 2], ext = ["html", "zip"]),
+        # data2
+        expand("fastqc_files/I_{tp}hrsS{rep}_Data2_fastqc.{ext}", \
+        tp = [4, 24, 72], rep = range(1, 4), ext = ["html", "zip"]),
+        expand("fastqc_files/I_12hrsS{rep}_Data2_fastqc.{ext}", \
+        rep = [1, 3], ext = ["html", "zip"]),
+        expand("fastqc_files/U_{tp}hrsN{rep}_Data2_fastqc.{ext}", \
+        tp = [4, 12, 24, 72], rep = [1, 2], ext = ["html", "zip"])
+    shell:
+        """
+        echo "Running FastQC ..."
+        fastqc --memory 5120 -t 19 -o fastqc_files {input.f1} {input.f2} {input.f3}
+        fastqc --memory 5120 -t 19 -o fastqc_files {input.r1} {input.r2} {input.r3}
+        """
 
 # #################### MAP READS TO TURKEY GENOME WITH HISAT2 #############
 # rule map_reads_convert_to_bam:
@@ -281,10 +284,9 @@ rule extract_host_exons:
 rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
-        rules.modify_turkey_GTF.output,
         rules.trim_turkey_gtf_file.output,
-        rules.extract_host_splice_site.output,
-        rules.extract_host_exons.output
+        rules.build_host_genome_index.output,
+        rules.FastQC_reads.output
 #         rules.compare_merged_trxpts_toReference.output,
 #         rules.index_sorted_bamFiles.output,
 #         rules.plot_DEG_and_Heatmaps.output,
