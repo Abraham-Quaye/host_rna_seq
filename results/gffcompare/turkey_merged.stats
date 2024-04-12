@@ -3,28 +3,28 @@
 #
 
 #= Summary for dataset: results/stringtie/turkey_merged_all_tps.gtf 
-#     Query mRNAs :   90173 in   48383 loci  (66242 multi-exon transcripts)
-#            (12351 multi-transcript loci, ~1.9 transcripts per locus)
+#     Query mRNAs :   89969 in   48274 loci  (66113 multi-exon transcripts)
+#            (12340 multi-transcript loci, ~1.9 transcripts per locus)
 # Reference mRNAs :   38804 in   23916 loci  (37055 multi-exon)
-# Super-loci w/ reference transcripts:    23416
+# Super-loci w/ reference transcripts:    23421
 #-----------------| Sensitivity | Precision  |
         Base level:   100.0     |    71.5    |
-        Exon level:    98.3     |    73.8    |
-      Intron level:   100.0     |    86.2    |
-Intron chain level:   100.0     |    55.9    |
-  Transcript level:    99.6     |    42.9    |
-       Locus level:    99.5     |    48.2    |
+        Exon level:    98.3     |    73.9    |
+      Intron level:   100.0     |    86.3    |
+Intron chain level:   100.0     |    56.0    |
+  Transcript level:    99.6     |    43.0    |
+       Locus level:    99.5     |    48.3    |
 
      Matching intron chains:   37055
-       Matching transcripts:   38662
-              Matching loci:   23795
+       Matching transcripts:   38663
+              Matching loci:   23796
 
           Missed exons:       0/202215	(  0.0%)
-           Novel exons:   45570/272934	( 16.7%)
-        Missed introns:      36/175534	(  0.0%)
-         Novel introns:   13992/203529	(  6.9%)
+           Novel exons:   45145/272711	( 16.6%)
+        Missed introns:      42/175534	(  0.0%)
+         Novel introns:   13802/203359	(  6.8%)
            Missed loci:       0/23916	(  0.0%)
-            Novel loci:   24967/48383	( 51.6%)
+            Novel loci:   24853/48274	( 51.5%)
 
- Total union super-loci across all input datasets: 48383 
-90173 out of 90173 consensus transcripts written in turkey_merged.annotated.gtf (0 discarded as redundant)
+ Total union super-loci across all input datasets: 48274 
+89969 out of 89969 consensus transcripts written in turkey_merged.annotated.gtf (0 discarded as redundant)
