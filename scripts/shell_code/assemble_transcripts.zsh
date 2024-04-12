@@ -8,9 +8,9 @@ assembled=results/stringtie
 
 for bam in $(ls $mapdir/*.bam)
 do
-    temp=$(awk -F'.' '{print $1}' <<< "$bam")
-    name=$(awk -F'/' '{print $3}' <<< "$temp")
-    lab=$(awk -F'hrs' '{print $1}' <<< "${name:7}")
+    temp=$(awk -F '.' '{print $1}' <<< "$bam")
+    name=$(awk -F '/' '{print $3}' <<< "$temp")
+    lab=$(awk -F 'hrs' '{print $1}' <<< "${name:7}")
     
     echo "Assembling transcripts for ${name}.bam ..."
     stringtie -p 8 $bam -G $GTF -l $lab -o $assembled/${name:7}.gtf
