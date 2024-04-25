@@ -3,13 +3,11 @@
 i=results/abundances
 l=149
 p="abund_[IU]_\d{1,2}hrs[SN]\d"
-s="rp19"
-g_outdir=$i/count_matrix/genes_count_matrix.csv
-t_outdir=$i/count_matrix/trxpts_count_matrix.csv
+outdir=$i/count_matrix
 
 echo "Generating Count Matrix..."
 
-scripts/python/prepDE.py3 -i $i -l $l -p $p -s $s -g $g_outdir -t $t_outdir
+scripts/python/prepDE.py3 -i $i -l $l -p $p -t ${outdir}/trxpts_count_matrix.csv -g ${outdir}/genes_count_matrix.csv
 
 secs=$SECONDS
 hrs=$(( secs/3600 )); mins=$(( (secs-hrs*3600)/60 )); secs=$(( secs-hrs*3600-mins*60 ))
