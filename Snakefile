@@ -1,3 +1,13 @@
+##########  MAKE LOCAL ORGANISM DATABASE FOR M gallopavo ###############
+rule make_Mgallopavo_OrgDB:
+    input:
+        data = "raw_analysis/count_matrix/all_genes_fpkm_exp.xlsx",
+        r_script = "scripts/r_code/install_Mga_annotationDB.R"
+    output:
+       directory("org.Mgallopavo.eg.db")
+    shell:
+        "{input.r_script}"
+        
 ##########  DOWNLOAD M gallopavo GENOMIC FILES ####################
 rule fetch_Mgallopavo_files:
     input:
@@ -8,16 +18,6 @@ rule fetch_Mgallopavo_files:
         "raw_files/genome_file/Mgallopavo_genome.fna"
     shell:
         "{input}"
-
-##########  MAKE LOCAL ORGANISM DATABASE FOR M gallopavo ###############
-rule make_Mgallopavo_OrgDB:
-    input:
-        data = "raw_analysis/count_matrix/all_genes_fpkm_exp.xlsx",
-        r_script = "scripts/r_code/install_Mga_annotationDB.R"
-    output:
-       directory("org.Mgallopavo.eg.db")
-    shell:
-        "{input.r_script}"
 
 ########## MODIFY GTF FILE FOR M gallopavo ###############
 rule modify_Mgallopavo_GTF:
@@ -173,64 +173,6 @@ rule index_sorted_bamFiles:
     shell:
         "{input.script}"
 
-#################### ASSEMBLE TRANSCRIPTS WITH STRINGTIE #############
-rule assemble_transcripts:
-    input:
-        bams = rules.map_reads_convert_to_bam.output,
-        gtf = rules.trim_Mgallopavo_gtf_file.output,
-        script = "scripts/shell_code/assemble_transcripts.zsh"
-    output:
-        expand("results/stringtie/I_{tp}hrsS{rep}.gtf", tp = [4, 24, 72], rep = range(1, 4)),
-        expand("results/stringtie/I_12hrsS{rep}.gtf", rep = [1, 3]),
-        expand("results/stringtie/U_{tp}hrsN{rep}.gtf", tp = [4, 12, 24, 72], rep = [1, 2])
-    shell:
-        "{input.script}"
-
-#################### LIST ALL STRINGTIE GTF FILES TO BE MERGED MERGE #############
-rule transcript_merge_list:
-    input:
-        gtfs_sngles = rules.assemble_transcripts.output
-    output:
-        "results/stringtie/trxpt_merge_list.txt"
-    shell:
-        """
-        ls results/stringtie/*.gtf > {output}
-        """
-
-#################### MERGE ALL TRANSCRIPTS WITH STRINGTIE #############
-rule merge_assembled_transcripts:
-    input:
-        gtfs_sngles = rules.assemble_transcripts.output,
-        gtf_list = rules.transcript_merge_list.output,
-        gtf_main = rules.trim_Mgallopavo_gtf_file.output
-    output:
-        "results/stringtie/turkey_merged_all_tps.gtf"
-    shell:
-        """
-        echo "Merging all transcripts from all timepoints now...";
-        stringtie --merge -p 8 -G {input.gtf_main} -l rp19 -o {output} {input.gtf_list};
-        echo "Merging Completed in $SECONDS secs"
-        """
-
-#################### COMPARE MERGED TRANSCRIPTS WITH REFERENCE TRANSCRIPTS #############
-rule compare_merged_trxpts_toReference:
-    input:
-        gtf_merged = rules.merge_assembled_transcripts.output,
-        gtf_ref = rules.trim_Mgallopavo_gtf_file.output
-    output:
-        expand("results/gffcompare/turkey_merged.{type}", \
-        type = ["stats", "loci", "tracking", "annotated.gtf", \
-        "turkey_merged_all_tps.gtf.refmap", "turkey_merged_all_tps.gtf.tmap"])
-    shell:
-        """
-        echo "Comparing merged transcripts with reference...";
-        # -G flag = tells gffcompare to compare all transcripts in the input transcripts.gtf file
-
-        gffcompare -G -r {input.gtf_ref} -o turkey_merged {input.gtf_merged}
-        mv turkey_merged* results/gffcompare;
-        mv results/stringtie/turkey_merged.turkey_merged_all_tps* results/gffcompare;
-        echo "gffcompare completed in $SECONDS secs"
-        """
 
 #################### ESTIMATE TRANSCRIPT ABUNDANCES WITH STRINGTIE #############
 rule estimate_trancript_abundances:
@@ -247,17 +189,17 @@ rule estimate_trancript_abundances:
     shell:
         "{input.script}"
 
-# #################### MAKE COUNT MATRICES WITH STRINGTIE PYTHON SCRIPT #############
-# rule generate_count_matrices:
-#     input:
-#         counts = rules.estimate_trancript_abundances.output,
-#         prog = "scripts/python/prepDE.py3",
-#         script = "scripts/shell_code/make_count_matrix.zsh"
-#     output:
-#         expand("results/abundances/count_matrix/{feat}_count_matrix.csv", \
-#         feat = ["genes", "trxpts"])
-#     shell:
-#         "{input.script}"
+#################### MAKE COUNT MATRICES WITH STRINGTIE PYTHON SCRIPT #############
+rule generate_count_matrices:
+    input:
+        counts = rules.estimate_trancript_abundances.output,
+        # prog = "scripts/python/prepDE.py3",
+        script = "scripts/shell_code/make_count_matrix.zsh"
+    output:
+        expand("results/abundances/count_matrix/{feat}_count_matrix.csv", \
+        feat = ["genes", "trxpts"])
+    shell:
+        "{input.script}"
 
 ####### PLOTS FOR DIFFERENTIAL GENE EXPRESSION ################################
 rule plot_DEG_and_Heatmaps:
@@ -309,12 +251,10 @@ rule plot_vennDiagram:
 rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
-        rules.trim_Mgallopavo_gtf_file.output,
         rules.index_sorted_bamFiles.output,
         rules.MultiQC_reads.output,
-        rules.compare_merged_trxpts_toReference.output,
-        rules.estimate_trancript_abundances.output,
+        # rules.compare_merged_trxpts_toReference.output,
+        rules.generate_count_matrices.output,
         rules.plot_DEG_and_Heatmaps.output,
         rules.extract_geneIDs_GO_KEGG.output,
         rules.plot_vennDiagram.output
-

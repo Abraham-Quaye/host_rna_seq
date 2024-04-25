@@ -34,6 +34,9 @@ for(row in 1:nrow(sparse_geneIDs)){
                                         sparse_geneIDs$db_xref[row],
                                       TRUE ~ gene_id))
 }
+mga_ncbi_gtf <- mga_ncbi_gtf %>%
+  mutate(transcript_id = ifelse((type == "gene" & transcript_id == ""),
+                                lead(transcript_id), transcript_id))
 
 export(mga_ncbi_gtf, "raw_files/annotations/mod_turkey_genome.gtf")
 
