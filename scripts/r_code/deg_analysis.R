@@ -53,5 +53,13 @@ diff_exp_genes <- crude_diff_exp_genes %>%
          mock_mean_fpkm = apply(.[, c("mock_fpkm_r1", "mock_fpkm_r2")], 1, check_grp_consistency)) %>%
   drop_na(inf_mean_fpkm, mock_mean_fpkm) %>% 
 # filter for DEGs
-  filter(qval <= 0.05) %>%
-  mutate(gene_known = ifelse(str_detect(gene_name, "LOC"), F, T))
+  filter(qval <= 0.05,
+         # abs(log2fc) >= 0.5
+         ) %>%
+  dplyr::select(-signif)
+
+# ens_ids <- gconvert(diff_exp_genes$gene_id,
+#                     organism = "mgallopavo",
+#                     target = "ENSG",
+#                     numeric_ns = "ENTREZGENE_ACC",
+#                     filter_na = FALSE)

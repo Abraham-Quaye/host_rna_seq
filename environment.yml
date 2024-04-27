@@ -11,6 +11,7 @@ dependencies:
   - gffcompare
   - stringtie
   - trim-galore
+  - multiqc
   - agat
   - regtools
   - r-base
@@ -27,6 +28,8 @@ dependencies:
   - r-rticles
   - r-ggtext
   - r-flextable
+  - r-ggVennDiagram
+  - r-ggvenn
   - bioconductor-deseq2
   - bioconductor-edger
   - bioconductor-ballgown
@@ -39,11 +42,20 @@ dependencies:
   - bioconductor-clusterProfiler
   - bioconductor-enrichplot
   - bioconductor-pathview
+  - bioconductor-AnnotationForge
+  - bioconductor-AnnotationHub
+  - bioconductor-biomaRt
+  - bioconductor-MeSHDbi
+  - bioconductor-meshes
   - r-enrichR
+  - r-gprofiler2
   - r-plyr
+  - r-dbplyr=2.3.4 # circumvent errors in AnnotationHub
   - r-msigdbr
   - snakemake
   - graphviz
   - seqkit
   - igv
   - igvtools
+
+# - bioconductor-meshr

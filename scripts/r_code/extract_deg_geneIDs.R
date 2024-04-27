@@ -1,12 +1,13 @@
 #!/usr/bin/env Rscript
 
+
 source("scripts/r_code/deg_analysis.R")
 
 # function to filter out DEG regulation types at different timepoints
 xtract_geneID_tp <- function(data = diff_exp_genes, reg, tp){
   ids <- data %>%
     filter(timepoint == tp, regulation == reg) %>%
-    select(gene_id, gene_name, log2fc) %>%
+    dplyr::select(gene_id, gene_name, log2fc) %>%
     as.data.frame() %>% 
     distinct(gene_id, gene_name, .keep_all = T) %>%
     set_rownames(.$gene_id)
@@ -18,7 +19,7 @@ xtract_geneID_tp <- function(data = diff_exp_genes, reg, tp){
 xtract_all_deg_regTypes <- function(data = diff_exp_genes, reg_type){
   ids <- data %>%
   filter(regulation == reg_type) %>%
-  select(gene_id, gene_name, log2fc) %>%
+  dplyr::select(gene_id, gene_name, log2fc) %>%
   as.data.frame() %>%
   distinct(gene_id, gene_name, .keep_all = T) %>%
   set_rownames(.$gene_id)
@@ -30,7 +31,7 @@ all_deg_tables <- list(
   # Extract total background genes
   all_bg_geneIDs = crude_diff_exp_genes %>%
     as.data.frame() %>% 
-    select(gene_id, gene_name, log2fc) %>%
+    dplyr::select(gene_id, gene_name, log2fc) %>%
     distinct(gene_id, gene_name, .keep_all = T) %>%
     set_rownames(.$gene_id),
   # Extract 4hr down-regulated genes

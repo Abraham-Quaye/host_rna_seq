@@ -1,18 +1,26 @@
 #!/usr/bin/env Rscript
 
-library(enrichR)
-library(pathview)
+
+library(gprofiler2)
+
 source("scripts/r_code/extract_deg_geneIDs.R")
 
-dbs <- listEnrichrDbs()
+gene_lists <- tibble(genesets = names(all_deg_tables),
+                     gene_ids = map(all_deg_tables[genesets], \(df){pull(df, gene_id)}))
 
-active_dbs <- pull(dbs %>% filter(str_detect(libraryName, "^(Panther|GO_|KEGG)")), libraryName)
+g_resulsts <- gost(gene_lists$gene_ids[-1],
+                   organism = "mgallopavo",
+                   multi_query = F,
+                   significant = T)
 
-rich_down12hrs <- enrichr(pull(all_deg_tables[["up_degIDs_24hrs"]], gene_name),
-                         active_dbs)
+g_resulsts_web <- gost(gene_lists$gene_ids[-1],
+                   organism = "mgallopavo",
+                   multi_query = F,
+                   significant = T,
+                   as_short_link = T)
 
-see_pathway4hrs_down <- pathview(select(all_deg_tables[["down_degIDs_12hrs"]], log2fc),
-                                 pathway.id = "D08798",
-                                 species = "turkey", out.suffix = "down_12hrs",
-                                 )
+g_resulsts$result %>% View()
+g_resulsts$result %>% filter(str_detect(query, "12hrs")) %>% View()
+
+gostplot(g_resulsts, capped = F, interactive = F)
 
