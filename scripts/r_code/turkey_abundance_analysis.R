@@ -7,6 +7,8 @@ library(magrittr)
 library(pheatmap)
 library(rtracklayer)
 library(readxl)
+
+# sessionInfo()
 # ====================================================================
 # TRANSCRIPT ABUNDANCE ANALYSIS WITH DEseq2
 # ====================================================================
@@ -18,44 +20,27 @@ smpl_names <- list.dirs("results/abundances", full.names = T) %>% .[-c(1, 21)]
 exp_metadata <- data.frame(sample_path = smpl_names,
                        timepoint = str_extract(smpl_names, "\\d{1,2}hrs"),
                        replicate = paste0("rep", str_extract(smpl_names, "\\d$")),
-                       infection = c(rep("infected", 11), rep("uninfected", 8))) %>%
-  mutate(sample_name = str_extract(sample_path, "abund_[IU]_\\d{1,2}hrs[SN]\\d")) %>%
+                       infection = c(rep("infected", 11), rep("mock", 8))) %>%
+  mutate(treatment = paste0(infection, "_", timepoint),
+         sample_name = str_extract(sample_path, "abund_[IU]_\\d{1,2}hrs[SN]\\d")) %>%
   set_rownames(.$sample_name) %>%
   select(-sample_name) %>%
   mutate(timepoint = factor(timepoint, levels = c("4hrs", "12hrs", "24hrs", "72hrs")),
-         infection = factor(infection, levels = c("uninfected", "infected")))
+         infection = factor(infection, levels = c("infected", "mock")),
+         treatment = factor(treatment, levels = c(paste0("mock_", c(4, 12, 24, 72), "hrs"),
+                                                  paste0("infected_", c(4, 12, 24, 72), "hrs"))
+                            )
+         )
 
-# 2. Import gene count matrix ===============================================
-ncbi_gtf <- import("raw_files/annotations/turkey_genome.gtf") %>%
-  as_tibble() %>%
-  select(-c(seqnames:phase, gbkey, gene_biotype:transl_table)) %>%
-  mutate(entrez_id = ifelse(!str_detect(gene_id, "^LOC") & !is.na(db_xref),
-                          db_xref, gene_id)) %>%
-  mutate(entrez_id = ifelse(str_detect(entrez_id, ":"),
-                          str_replace(entrez_id, ".+:(.+)", "\\1"),
-                          entrez_id)) %>%
-  mutate(entrez_id = ifelse(str_detect(entrez_id, "LOC"),
-                          str_replace(entrez_id, "LOC(\\d+)", "\\1"),
-                          entrez_id)) %>%
-  mutate(entrez_id = ifelse(str_detect(entrez_id, "^\\d+_"),
-                          str_replace(entrez_id, "(\\d+)_\\d+", "\\1"),
-                          entrez_id)) %>%
-  select(-c(transcript_id, db_xref, gene)) %>%
-  distinct(gene_id, .keep_all = T)
-  
+
+## 2. Load gene matrix ====================================
 gene_matrix <- read.csv("results/abundances/count_matrix/genes_count_matrix.csv",
                         header = T) %>%
-  mutate(gene_id = ifelse(str_detect(gene_id, "\\|"),
-                          str_replace(gene_id, "([a-zA-Z\\d]+)\\|[a-zA-Z\\d]+", "\\1"),
-                          gene_id))
-
-gene_matrix <- left_join(gene_matrix, ncbi_gtf, by = "gene_id")
-
-gene_matrix <- gene_matrix %>% 
-  mutate(gene_id = ifelse(!is.na(entrez_id), entrez_id, gene_id)) %>%
+  # mutate(gene_id = ifelse(str_detect(gene_id, "\\|"),
+  #                         str_replace(gene_id, "([a-zA-Z\\d]+)\\|.+", "\\1"),
+  #                         gene_id)) %>%
   set_rownames(.$gene_id) %>%
-  select(-c(entrez_id, gene_id)) %>%
-  as.matrix()
+  select(-gene_id)
 
 # 3. Check matching samples in experimental metadata and count matrix ==========
 stopifnot(
@@ -65,97 +50,48 @@ stopifnot(
 
 # 4. Create DESeq2 object from the matrix and metadata =========================
 deseq_obj <- DESeqDataSetFromMatrix(countData = gene_matrix, colData = exp_metadata,
-                       design = ~ timepoint + timepoint:infection + infection)
+                       design = ~ infection + timepoint + timepoint:infection)
 
 # 5. Filter low abundance genes ================================================
 # While it is not necessary to pre-filter low count genes before running the DESeq2 functions, there are two reasons which make pre-filtering useful: by removing rows in which there are very few reads, we reduce the memory size of the dds data object, and we increase the speed of count modeling within DESeq2. It can also improve visualizations, as features with no information for differential expression are not plotted in dispersion plots or MA-plots.
 
 # Here we perform pre-filtering to keep only rows that have a count of at least 10 for a minimal number of samples. A recommendation for the minimal number of samples is to specify the smallest group size, e.g. here there are 3 replicates per sample.
-smallest_grp_size <- 3
-rows_keep <- rowSums(counts(deseq_obj) >= 10) >= smallest_grp_size
-
-deseq_obj <- deseq_obj[rows_keep, ]
+# smallest_grp_size <- 3
+# rows_keep <- rowSums(counts(deseq_obj) >= 10) >= smallest_grp_size
+# 
+# deseq_obj <- deseq_obj[rows_keep, ]
 
 # 6. Run differential analysis =================================================
-dds <- DESeq(deseq_obj)
+dds <- DESeq(deseq_obj, test = "LRT", reduced = ~ infection)
 
 # 7. Explore results
-
-inf_res <- results(dds, alpha = 0.05)
+resultsNames(dds)
+inf_res <- results(dds, alpha = 0.05, name = "infection_mock_vs_infected")
 # ordered_res <- inf_res[order(inf_res$padj), ]
 
-inf_res_tab <- inf_res %>%
+lfc_res <- lfcShrink(dds, coef = "infection_mock_vs_infected", type = "apeglm")
+
+lfc_res_tab <- lfc_res %>%
   as.data.frame() %>%
   arrange(padj) %>%
-  drop_na(padj)
+  drop_na(padj) %>%
+  mutate(gene_id = row.names(.)) %>%
+  select(gene_id, everything()) %>%
+  as_tibble()
 
 summary(inf_res)
+summary(lfc_res)
 
 norm_counts <- counts(dds, normalized = T) %>%
-  as.data.frame()
-
-diffgenes <- rownames(inf_res)[ which(inf_res$padj < 0.05) ]
-
-diffcounts <- norm_counts[diffgenes, ]
-
-# try the analysis with bowtie2 and see if geneNames are still unusable
-
-# ==================================================================
-#          Count matrix by LCSciences
-# ==================================================================
-lc_count_matrix <- read_excel("raw_analysis/count_matrix/gene_count_matrix.xlsx") %>%
   as.data.frame() %>%
-  mutate(gene_id = ifelse(str_detect(gene_id, "^gene-LOC"),
-                          str_replace(gene_id, "^gene-LOC(\\d+)$", "\\1"),
-                          gene_id)) %>%
-  mutate(gene_id = base::paste0("X", gene_id, "M")) %>%
-  set_rownames(.$gene_id) %>%
-  select(-gene_id) %>%
-  mutate()
-  as.matrix()
+  mutate(gene_id = row.names(.)) %>%
+  select(gene_id, everything()) %>%
+  as_tibble()
 
-metadata_lc <- exp_metadata %>%
-  mutate(sample_name = row.names(.)) %>%
-  mutate(sample_name = str_replace(sample_name, "abund_([IU]_\\d{1,2}hrs[SN]\\d)", "\\1")) %>%
-  set_rownames(.$sample_name) %>%
-  select(-sample_name)
+final_sig_results <-inner_join(norm_counts, lfc_res_tab, by = "gene_id") %>%
+  filter(padj <= 0.05) %>% 
+  arrange(padj)
 
-# 3. Check matching samples in experimental metadata and count matrix ==========
-stopifnot(
-  all(rownames(metadata_lc) %in% colnames(lc_count_matrix)), # checks identity/presence
-  all(rownames(metadata_lc) == colnames(lc_count_matrix)) # checks order
-)
-
-# 4. Create DESeq2 object from the matrix and metadata =========================
-dseq_obj <- DESeqDataSetFromMatrix(countData = lc_count_matrix, colData = metadata_lc,
-                                    design = ~ timepoint + timepoint:infection + infection)
-
-
-rows_keep <- rowSums(counts(dseq_obj) >= 5)
-
-dseq_obj <- dseq_obj[rows_keep, ]
-
-# 6. Run differential analysis =================================================
-lc_dds <- DESeq(dseq_obj)
-
-# 7. Explore results
-
-lc_inf_res <- results(lc_dds, alpha = 0.05)
-# ordered_res <- inf_res[order(inf_res$padj), ]
-
-lc_inf_res_tab <- lc_inf_res %>%
-  as.data.frame() %>%
-  arrange(padj) %>%
-  drop_na(padj)
-
-summary(lc_inf_res)
-
-norm_counts <- counts(lc_dds, normalized = T) %>%
-  as.data.frame() %>%
-  mutate(entrez_id = row.names(.)) %>%
-  mutate(entrez_id = str_replace(entrez_id, "^X(\\d+)M\\.?\\d*$", "\\1"))
-
-
-
-
-
+# plotDispEsts(dds)
+# plotMA(inf_res)
+# plotMA(lfc_res)
