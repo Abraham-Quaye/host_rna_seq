@@ -244,7 +244,8 @@ rule plot_enrichment:
         degfiles = rules.plot_DEGs_patch_fig.input.deg_files,
         main_script = "scripts/r_code/enrichment_analyses.R"
     output:
-        expand("results/r/figures/go_enrich_{tp}{reg}.png", tp = [12, 24], reg = ["up", "down"])
+        expand("results/r/figures/go_enrich_{tp}{reg}.png", tp = [12, 24], reg = ["up", "down"]),
+        "results/r/figures/patch_GO_enrich.png"
     shell:
         "{input.main_script}"
     

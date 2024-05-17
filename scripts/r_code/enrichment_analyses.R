@@ -3,6 +3,7 @@
 
 library(gprofiler2)
 library(ggsci)
+library(patchwork)
 
 source("scripts/r_code/extract_deg_geneIDs.R")
 
@@ -58,8 +59,7 @@ plot_goterms <- function(df){
 annotate_plt <- function(plt, annot){
   
   return(plt +
-    labs(title = annot[["t"]],
-         x = annot[["x"]],
+    labs(x = annot[["x"]],
          y = annot[["y"]]))
 }
 
@@ -82,29 +82,34 @@ tab_res <- tibble(timepoint = c("t4", "t12", "t24", "t72"),
                   up_hp = map(up, ~separate_feature(.x, feature = "HP")),
                   p_up_bp = map(up_bp, plot_goterms),
                   p_down_bp = map(down_bp, plot_goterms),
-                  plt_anot = list(list(x = "GO Term:BP",
-                                       y = "Rich Factor",
-                                       t = paste0("GO Enrichment: 4hpi")),
-                                  list(x = "GO Term:BP",
-                                       y = "Rich Factor",
-                                       t = paste0("GO Enrichment: 12hpi")),
-                                  list(x = "GO Term:BP",
-                                       y = "Rich Factor",
-                                       t = paste0("GO Enrichment: 24hpi")),
-                                  list(x = "GO Term:BP",
-                                       y = "Rich Factor",
-                                       t = paste0("GO Enrichment: 72hpi"))),
+                  plt_anot = list(list(x = "GO Term:BP", y = "Rich Factor")),
                   p_up_bp_f = map2(p_up_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
                   p_down_bp_f = map2(p_down_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
                   plot_name = paste0("results/r/figures/go_enrich_", parse_number(timepoint))
                   )
 
-plts <- tab_res %>% select(p_up_bp_f, p_down_bp_f, plot_name)
+plts <- tab_res %>% select(p_up_bp_f, p_down_bp_f, plot_name) %>%
+  slice(c(2, 3))
 
-map2(plts$p_up_bp_f[c(2,3)], plts$plot_name[c(2,3)],
+up12 <- plts$p_up_bp_f[[1]] + labs(title = "Upregulated GO:BP Enrichment at 12h.p.i")
+up24 <- plts$p_up_bp_f[[2]] + labs(title = "Upregulated GO:BP Enrichment at 24h.p.i")
+
+down12 <- plts$p_down_bp_f[[1]] + labs(title = "Downregulated GO:BP Enrichment: 12h.p.i")
+down24 <- plts$p_down_bp_f[[2]] + labs(title = "Downregulated GO:BP Enrichment: 24h.p.i")
+
+# save individua plots
+map2(list(up12, up24), plts$plot_name,
      ~ggsave(plot = .x, filename = paste0(.y, "up.png"),
              width = 14, height = 12, dpi = 400))
 
-map2(plts$p_down_bp_f[c(2,3)], plts$plot_name[c(2,3)],
+map2(list(down12, down24), plts$plot_name,
      ~ggsave(plot = .x, filename = paste0(.y, "down.png"),
              width = 14, height = 12, dpi = 400))
+
+# save composite plots as one fig
+total_plts <- ((up12 | up24) / (down12 | down24)) +
+  plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(size = 22, face = "bold"))
+
+ggsave(plot = total_plts, filename = "results/r/figures/patch_GO_enrich.png",
+       width = 30, height = 25, dpi = 350)
