@@ -36,12 +36,16 @@ all_deg_tables <- list(
     set_rownames(.$gene_id),
   # Extract 4hr down-regulated genes
   down_degIDs_4hrs = xtract_geneID_tp(reg = "down", tp = "t4"),
+  up_degIDs_4hrs = xtract_geneID_tp(reg = "up", tp = "t4"),
   # Extract 12hr up/down-regulated genes
   down_degIDs_12hrs = xtract_geneID_tp(reg = "down", tp = "t12"),
   up_degIDs_12hrs = xtract_geneID_tp(reg = "up", tp = "t12"),
   # Extract 24hr up/down-regulated genes
   down_degIDs_24hrs = xtract_geneID_tp(reg = "down", tp = "t24"),
   up_degIDs_24hrs = xtract_geneID_tp(reg = "up", tp = "t24"),
+  # Extract 72hr up/down-regulated genes
+  down_degIDs_72hrs = xtract_geneID_tp(reg = "down", tp = "t72"),
+  up_degIDs_72hrs = xtract_geneID_tp(reg = "up", tp = "t72"),
   # Extract all up/down-regulated genes
   all_down_degs = xtract_all_deg_regTypes(reg_type = "down"),
   all_up_degs = xtract_all_deg_regTypes(reg_type = "up")

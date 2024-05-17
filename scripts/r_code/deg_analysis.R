@@ -32,34 +32,12 @@ pull_exp_data <- function(workbook){
   return(df)
 }
 
-# # function to ensure consistency with groups/condition/treatment
-check_grp_consistency <- function(grp_fpkms){
-  # condition to reduce stringency (max(grp_fpkms, na.rm = T) > 1) & -- add to if-statement
-  if(max(grp_fpkms, na.rm = T) >= (2*min(grp_fpkms, na.rm = T))){
-    return(NA)
-  }else{
-    return(mean(grp_fpkms, na.rm = T))
-  }
-}
-
-# # load all differentially expressed genes from all time points
+# load all differentially expressed genes from all time points
 crude_diff_exp_genes <- map_dfr(diff_files, pull_exp_data, .id = "timepoint") %>%
   mutate(gene_id = ifelse(str_detect(gene_id, "gene-"),
                           str_replace(gene_id, "gene-LOC(\\d+)", "\\1"),
                           gene_id))
 
 diff_exp_genes <- crude_diff_exp_genes %>%
-  mutate(inf_mean_fpkm = apply(.[, c("inf_fpkm_r1", "inf_fpkm_r2", "inf_fpkm_r3")], 1, check_grp_consistency),
-         mock_mean_fpkm = apply(.[, c("mock_fpkm_r1", "mock_fpkm_r2")], 1, check_grp_consistency)) %>%
-  drop_na(inf_mean_fpkm, mock_mean_fpkm) %>% 
-# filter for DEGs
-  filter(qval <= 0.05,
-         # abs(log2fc) >= 0.5
-         ) %>%
+  filter(qval <= 0.05) %>%
   dplyr::select(-signif)
-
-# ens_ids <- gconvert(diff_exp_genes$gene_id,
-#                     organism = "mgallopavo",
-#                     target = "ENSG",
-#                     numeric_ns = "ENTREZGENE_ACC",
-#                     filter_na = FALSE)
