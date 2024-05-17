@@ -52,6 +52,7 @@ dependencies:
   - r-plyr
   - r-dbplyr=2.3.4 # circumvent errors in AnnotationHub
   - r-msigdbr
+  - r-ggplotify
   - snakemake
   - graphviz
   - seqkit

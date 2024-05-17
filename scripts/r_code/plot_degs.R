@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 library(ggtext)
-source("scripts/r_code/deg_analysis.R")
 
 # prepare data for visualization
 p_data <- diff_exp_genes %>%
@@ -19,21 +18,21 @@ deg_bar_plt <- p_data %>%
   scale_fill_manual(values = c("#0000ff", "#ff0000"),
                     breaks = c("down", "up"),
                     labels = c("Down Regulated", "Up Regulated")) +
-  scale_y_continuous(limits = c(0, 2550),
+  scale_y_continuous(limits = c(0, 2700),
                      expand = c(0, 0)) +
   scale_x_discrete(expand = c(0.16, 0.16),
-                   breaks = c("t4", "t12", "t24"),
-                   labels = c("4h.p.i", "12h.p.i", "24h.p.i")) +
-  labs(title = "Differentially Expressed Genes of Turkey MDTC-RP19 Cells <br>after Infection with Turkey Hemorrhagic Enteritis Virus",
+                   breaks = c("t4", "t12", "t24", "t72"),
+                   labels = c("4h.p.i", "12h.p.i", "24h.p.i", "72h.p.i")) +
+  labs(title = "Differentially Expressed Genes of<br> THEV-infected B-cells",
        y = "Number of Genes",
        x = element_blank(),
        fill = element_blank()) +
   theme_classic() +
   theme(plot.margin = margin(rep(20, 4)),
         plot.title = element_markdown(face = 'bold',
-                                      size = 25,
+                                      size = 23,
                                       colour = 'black',
-                                      hjust = 0.5,
+                                      hjust = 0,
                                       lineheight = -10,
                                       vjust = 0.5),
         panel.background = element_rect(fill = 'white'),
@@ -52,8 +51,8 @@ deg_bar_plt <- p_data %>%
                                     color = 'black'),
         axis.ticks = element_blank(),
         legend.justification = c(0,1),
-        legend.position = c(0.1, 0.8),
-        # legend.position.inside = c(0.1, 0.8),
+        legend.position = "inside",
+        legend.position.inside = c(0.1, 0.8),
         legend.text = element_text(face = 'bold', 
                                    size = 18,
                                    family = 'Arial'),
@@ -61,6 +60,3 @@ deg_bar_plt <- p_data %>%
         legend.margin = margin(rep(10, 4)),
         legend.key.size = unit(1.2, "cm")
   )
-
-ggsave(plot = deg_bar_plt, filename = "results/r/figures/deg_bar_plt.png",
-       width = 15, height = 12, dpi = 400)

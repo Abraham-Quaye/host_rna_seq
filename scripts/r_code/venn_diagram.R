@@ -4,47 +4,54 @@ library(ggVennDiagram)
 library(ggvenn)
 library(patchwork)
 
-
 source("scripts/r_code/extract_deg_geneIDs.R")
 
-up <- all_deg_tables[c("up_degIDs_12hrs", "up_degIDs_24hrs")]
+up <- all_deg_tables[c("up_degIDs_4hrs", "up_degIDs_12hrs",
+                       "up_degIDs_24hrs", "up_degIDs_72hrs")]
 
-v_up <- list(`12hpi` = up$up_degIDs_12hrs %>% pull(gene_id),
-             `24hpi` = up$up_degIDs_24hrs %>% pull(gene_id))
+v_up <- list(`4hpi` = up$up_degIDs_4hrs %>% pull(gene_id),
+             `12hpi` = up$up_degIDs_12hrs %>% pull(gene_id),
+             `24hpi` = up$up_degIDs_24hrs %>% pull(gene_id),
+             `72hpi` = up$up_degIDs_72hrs %>% pull(gene_id))
 
 down <- all_deg_tables[c("down_degIDs_4hrs",
                          "down_degIDs_12hrs",
-                         "down_degIDs_24hrs")]
+                         "down_degIDs_24hrs",
+                         "down_degIDs_72hrs")]
 
 v_down <- list(`4hpi` = down$down_degIDs_4hrs %>% pull(gene_id),
                `12hpi` = down$down_degIDs_12hrs %>% pull(gene_id),
-               `24hpi` = down$down_degIDs_24hrs %>% pull(gene_id))
+               `24hpi` = down$down_degIDs_24hrs %>% pull(gene_id),
+               `72hpi` = down$down_degIDs_72hrs %>% pull(gene_id))
 
 
-venn_plot <- function(input_sets){
+draw_venn_plott <- function(input_sets, tittl){
   
   pl <- ggvenn(input_sets, stroke_size = 0.1,
                set_name_size = 8, text_size = 5,
                fill_color = c("red", "blue", "grey30", "green")) +
-    coord_cartesian(clip = "off")
-  
+    coord_cartesian(clip = "off") +
+    labs(caption = paste0(tittl, "regulated DEGs")) +
+    theme(plot.caption = element_text(size = 22, face = "bold",
+                                      colour = "black", hjust = 0.5,
+                                      margin = margin(t = -15)))
+
   return(pl)
 }
 
-plts <- map(list(v_up, v_down), venn_plot) %>%
+plts <- map2(list(v_up, v_down), list("Up", "Down"), ~draw_venn_plott(input_sets = .x,
+                                                                      tittl = .y)) %>%
   set_names(c("up", "down"))
 
-fplot <- (plts[["up"]] |plot_spacer() | plts[["down"]]) +
-  plot_layout(widths = c(1, 0.05, 1), heights = c(0.5, 0.5, 1)) +
-  plot_annotation(title = "Overlap of Differentially Expressed Genes at Different Time Points",
-                  tag_levels = "A",
-                  theme = theme(plot.title = element_text(size = 30,
+fplot <- (plts[["up"]] | plot_spacer() | plts[["down"]]) +
+  plot_layout(widths = c(1, 0.05, 1), tag_level = "new") +
+  plot_annotation(title = "Overlaps of Differentially Expressed Genes Over Time",
+                  tag_levels = 1, tag_prefix = "C",
+                  theme = theme(plot.title = element_text(size = 25,
                                                           hjust = 0.5,
                                                           face = "bold",
-                                                          margin = margin(b = 10)))
+                                                          margin = margin(t = 10,
+                                                                          b = 10)))
                   ) &
-  theme(plot.tag = element_text(size = 32, face = "bold",
+  theme(plot.tag = element_text(size = 22, face = "bold",
                                 margin = margin(b = -20)))
-
-ggsave(plot = fplot, filename = "results/r/figures/deg_vennDiagram.png",
-       width = 14, height = 8, dpi = 350)

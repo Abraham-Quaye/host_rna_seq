@@ -1,7 +1,11 @@
 #!/usr/bin/env Rscript
 
 library(pheatmap)
-source("scripts/r_code/deg_analysis.R")
+library(patchwork)
+library(ggplotify)
+
+source("scripts/r_code/venn_diagram.R")
+source("scripts/r_code/plot_degs.R")
 
 ## select columns to use for making heatmap
 prep_heatmap_data <- function(tp){
@@ -10,7 +14,7 @@ prep_heatmap_data <- function(tp){
     pull(gene_name)
   
   if(tp == "t12"){
-    c_names <-  c("12hrsS1", "12hrsS2", "12hrsN1", "12hrsN2")
+    c_names <- c("12hrsS1", "12hrsS2", "12hrsN1", "12hrsN2")
   }else if(tp == "t24"){
     c_names <- c("24hrsS1", "24hrsS2", "24hrsS3", "24hrsN1", "24hrsN2")
   }else if(tp == "t4"){
@@ -21,7 +25,7 @@ prep_heatmap_data <- function(tp){
   
   data <- diff_exp_genes %>%
     split(.$timepoint) %>%
-    set_names(c("t12", "t24", "t4"))
+    set_names(c("t12", "t24", "t4", "t72"))
   
   if(tp == "t12"){
     data[[tp]] <- data[[tp]] %>% select(-inf_fpkm_r3)
@@ -39,24 +43,24 @@ prep_heatmap_data <- function(tp){
   return(heat)
 }
 
-timpnts <- c("t12", "t24", "t4")
+timpnts <- c("t12", "t24", "t4", "t72")
 
 heatmap_data_list <- map(timpnts, prep_heatmap_data) %>%
-  set_names(c("t12", "t24", "t4"))
+  set_names(c("t12", "t24", "t4", "t72"))
 
 # function to plot heatmaps
 plot_heatmap <- function(tp){
   tpp <- paste0(parse_number(tp), "h.p.i")
   
   ht <- pheatmap(heatmap_data_list[[tp]],
-                 main = paste0("DEGs of THEV-infected Turkey B-cells (" , tpp, ")"),
+                 main = paste0("DEGs at " , tpp),
                  cellwidth = 60,
                  color = colorRampPalette(colors = c('blue','white','red'))(250),
                  angle_col = 45,
+                 fontsize = 15,
                  fontsize_row = 5,
-                 fontsize_col = 14,
+                 fontsize_col = 15,
                  treeheight_row = 0,
-                 # treeheight_col = 0
                  show_rownames = F
   )
   if(!is.null(dev.list())){
@@ -66,23 +70,30 @@ plot_heatmap <- function(tp){
 }
 
 # save heatmaps in a tibble with appropriate identifier (timepoint)
-plotted_heatmaps <- tibble(timepoints = c("t12", "t24", "t4")) %>%
+plotted_heatmaps <- tibble(timepoints = c("t12", "t24", "t4", "t72")) %>%
   mutate(plts = map(timepoints, plot_heatmap))
 
-# Function to save heatmaps
-save_heatmaps <- function(tp){
-  tpp <- paste0(str_extract(plotted_heatmaps %>%
-                              filter(timepoints == tp) %>%
-                              pull(timepoints),
-                            "\\d+"), "hpi")
-  ggsave(plot = plotted_heatmaps[plotted_heatmaps$timepoints == tp,][[2]][[1]],
-         filename = paste0("results/r/figures/deg_heatmap_", tpp, ".png"),
-         width = 10, height = 15, dpi = 400)
-  graphics.off()
-}
+p12 <- as.ggplot(plotted_heatmaps[, "plts"][[1]][[1]])
+p24 <- as.ggplot(plotted_heatmaps[, "plts"][[1]][[2]])
 
-## Save heatmaps
-for(p in pull(plotted_heatmaps, timepoints)){
-  print(paste0("Saving heatmap for timepoint ", parse_number(p), "hrs"))
-  save_heatmaps(p)
-}
+patch_heat <- (p12 | p24) +
+  plot_layout(tag_level = "new", widths = c(1, 1.5)) +
+  plot_annotation(tag_levels = "1", tag_prefix = "B") &
+  theme(plot.tag = element_text(size = 22, face = "bold"))
+
+tops <- (deg_bar_plt | patch_heat)  +
+  plot_layout(widths = c(1, 1.2))
+
+tops[[2]] <- tops[[2]] + plot_layout(tag_level = "new")
+tops <- tops + plot_annotation(tag_levels = list(c("A", "B"), 1))
+
+total_plts <- (tops / fplot) +
+  plot_layout(heights = c(1.2, 1))
+
+total_plts[[2]] <- total_plts[[2]] + plot_layout(tag_level = "new")
+total_plts <- total_plts +
+  plot_annotation(tag_levels = list(c("A", "B", "C"), 1)) &
+  theme(plot.tag = element_text(size = 22, face = "bold"))
+
+ggsave(plot = total_plts, filename = "results/r/figures/deg_patch_fig.png",
+       width = 20, height = 20, dpi = 350)

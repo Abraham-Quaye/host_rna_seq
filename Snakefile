@@ -201,24 +201,6 @@ rule generate_count_matrices:
     shell:
         "{input.script}"
 
-####### PLOTS FOR DIFFERENTIAL GENE EXPRESSION ################################
-rule plot_DEG_and_Heatmaps:
-    input:
-        # counts = rules.generate_count_matrices.output, # tentative connection
-        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
-        tp = [4, 12, 24, 72]),
-        r_script1 = "scripts/r_code/plot_degs.R",
-        r_script2 = "scripts/r_code/plot_heatmaps.R"
-    output:
-        "results/r/figures/deg_bar_plt.png",
-        expand("results/r/figures/deg_heatmap_{tpp}hpi.png", tpp = [4, 12, 24])
-    shell:
-        """
-        {input.r_script1}
-        {input.r_script2}
-        rm Rplots.pdf
-        """
-
 ####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
 rule extract_geneIDs_GO_KEGG:
     input:
@@ -236,16 +218,23 @@ rule extract_geneIDs_GO_KEGG:
     shell:
         "{input.r_script3}"
 
-# ####### PLOT VENN DIAGRAM FOR UP AND DOWN REGULATED DEGs ###########################
-rule plot_vennDiagram:
+# ####### PLOT COMPOSITE FIGURE FOR UP AND DOWN REGULATED DEGs ###########################
+rule plot_DEGs_patch_fig:
     input:
-        r_script1 = "scripts/r_code/deg_analysis.R",
-        r_script2 = "scripts/r_code/extract_deg_geneIDs.R",
-        r_script3 = "scripts/r_code/venn_diagram.R"
+        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
+        tp = [4, 12, 24, 72]),
+        r_script1 = "scripts/r_code/plot_degs.R",
+        r_script2 = "scripts/r_code/plot_heatmaps.R",
+        r_script3 = "scripts/r_code/deg_analysis.R",
+        r_script4 = "scripts/r_code/extract_deg_geneIDs.R",
+        r_script5 = "scripts/r_code/venn_diagram.R"
     output:
-        "results/r/figures/deg_vennDiagram.png"
+        "results/r/figures/deg_patch_fig.png"
     shell:
-        "{input.r_script3}"
+        """
+        {input.r_script2}
+        rm Rplots.pdf
+        """
 
 
 rule run_pipeline:
@@ -255,6 +244,5 @@ rule run_pipeline:
         rules.MultiQC_reads.output,
         # rules.compare_merged_trxpts_toReference.output,
         rules.generate_count_matrices.output,
-        rules.plot_DEG_and_Heatmaps.output,
         rules.extract_geneIDs_GO_KEGG.output,
-        rules.plot_vennDiagram.output
+        rules.plot_DEGs_patch_fig.output
