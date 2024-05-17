@@ -51,8 +51,10 @@ plot_goterms <- function(df){
           legend.background = element_blank(),
           legend.title = element_text(size = 12, face = "bold"),
           legend.justification = c(0, 0),
-          legend.position = c(0.8, 0.2))
+          legend.position = "inside",
+          legend.position.inside = c(0.8, 0.2))
 }
+
 annotate_plt <- function(plt, annot){
   
   return(plt +
@@ -61,10 +63,11 @@ annotate_plt <- function(plt, annot){
          y = annot[["y"]]))
 }
 
-tab_res <- tibble(timepoint = c("t4", "t12", "t24"),
+tab_res <- tibble(timepoint = c("t4", "t12", "t24", "t72"),
                   res = list(filter(g_results, str_detect(query, "_4hrs"))
                              ,filter(g_results, str_detect(query, "_12hrs")),
-                          filter(g_results, str_detect(query, "_24hrs"))),
+                          filter(g_results, str_detect(query, "_24hrs")),
+                          filter(g_results, str_detect(query, "_72hrs"))),
                   down = map(res, ~ filter(.x, str_detect(query, "^down"))),
                   up = map(res, ~ filter(.x, str_detect(query, "^up"))),
                   down_mf = map(down, ~separate_feature(.x, feature = "GO:MF")),
@@ -80,14 +83,17 @@ tab_res <- tibble(timepoint = c("t4", "t12", "t24"),
                   p_up_bp = map(up_bp, plot_goterms),
                   p_down_bp = map(down_bp, plot_goterms),
                   plt_anot = list(list(x = "GO Term:BP",
-                                       y = "Enriched Genes/Total Genes for GO Term",
+                                       y = "Rich Factor",
                                        t = paste0("GO Enrichment: 4hpi")),
                                   list(x = "GO Term:BP",
-                                       y = "Enriched Genes/Total Genes for GO Term",
+                                       y = "Rich Factor",
                                        t = paste0("GO Enrichment: 12hpi")),
                                   list(x = "GO Term:BP",
-                                       y = "Enriched Genes/Total Genes for GO Term",
-                                       t = paste0("GO Enrichment: 24hpi"))),
+                                       y = "Rich Factor",
+                                       t = paste0("GO Enrichment: 24hpi")),
+                                  list(x = "GO Term:BP",
+                                       y = "Rich Factor",
+                                       t = paste0("GO Enrichment: 72hpi"))),
                   p_up_bp_f = map2(p_up_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
                   p_down_bp_f = map2(p_down_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
                   plot_name = paste0("results/r/figures/go_enrich_", parse_number(timepoint))
@@ -95,10 +101,10 @@ tab_res <- tibble(timepoint = c("t4", "t12", "t24"),
 
 plts <- tab_res %>% select(p_up_bp_f, p_down_bp_f, plot_name)
 
-map2(plts$p_up_bp_f, plts$plot_name, ~ggsave(plot = .x, filename = paste0(.y, "up.png"),
-                                             width = 14, height = 12, dpi = 400))
+map2(plts$p_up_bp_f[c(2,3)], plts$plot_name[c(2,3)],
+     ~ggsave(plot = .x, filename = paste0(.y, "up.png"),
+             width = 14, height = 12, dpi = 400))
 
-map2(plts$p_down_bp_f, plts$plot_name, ~ggsave(plot = .x, filename = paste0(.y, "down.png"),
-                                             width = 14, height = 12, dpi = 400))
-
-# gostplot(g_resulsts, capped = F, interactive = F)
+map2(plts$p_down_bp_f[c(2,3)], plts$plot_name[c(2,3)],
+     ~ggsave(plot = .x, filename = paste0(.y, "down.png"),
+             width = 14, height = 12, dpi = 400))

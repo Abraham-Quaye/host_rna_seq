@@ -236,7 +236,18 @@ rule plot_DEGs_patch_fig:
         rm Rplots.pdf
         """
 
-
+####### GO TERM AND PATHWAY ENRICHMENT ANALYSIS ###########################
+rule plot_enrichment:
+    input:
+        r_script1 = "scripts/r_code/extract_deg_geneIDs.R",
+        r_script2 = "scripts/r_code/deg_analysis.R",
+        degfiles = rules.plot_DEGs_patch_fig.input.deg_files,
+        main_script = "scripts/r_code/enrichment_analyses.R"
+    output:
+        expand("results/r/figures/go_enrich_{tp}{reg}.png", tp = [12, 24], reg = ["up", "down"])
+    shell:
+        "{input.main_script}"
+    
 rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
@@ -245,4 +256,5 @@ rule run_pipeline:
         # rules.compare_merged_trxpts_toReference.output,
         rules.generate_count_matrices.output,
         rules.extract_geneIDs_GO_KEGG.output,
-        rules.plot_DEGs_patch_fig.output
+        rules.plot_DEGs_patch_fig.output,
+        rules.plot_enrichment.output
