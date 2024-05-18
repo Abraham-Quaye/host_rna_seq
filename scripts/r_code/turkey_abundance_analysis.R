@@ -35,12 +35,8 @@ exp_metadata <- data.frame(sample_path = smpl_names,
 
 ## 2. Load gene matrix ====================================
 gene_matrix <- read.csv("results/abundances/count_matrix/genes_count_matrix.csv",
-                        header = T) %>%
-  # mutate(gene_id = ifelse(str_detect(gene_id, "\\|"),
-  #                         str_replace(gene_id, "([a-zA-Z\\d]+)\\|.+", "\\1"),
-  #                         gene_id)) %>%
-  set_rownames(.$gene_id) %>%
-  select(-gene_id)
+                        header = T, row.names = "gene_id") %>%
+  as.matrix(.)
 
 # 3. Check matching samples in experimental metadata and count matrix ==========
 stopifnot(
@@ -50,7 +46,7 @@ stopifnot(
 
 # 4. Create DESeq2 object from the matrix and metadata =========================
 deseq_obj <- DESeqDataSetFromMatrix(countData = gene_matrix, colData = exp_metadata,
-                       design = ~ infection + timepoint + timepoint:infection)
+                       design = ~ infection)
 
 # 5. Filter low abundance genes ================================================
 # While it is not necessary to pre-filter low count genes before running the DESeq2 functions, there are two reasons which make pre-filtering useful: by removing rows in which there are very few reads, we reduce the memory size of the dds data object, and we increase the speed of count modeling within DESeq2. It can also improve visualizations, as features with no information for differential expression are not plotted in dispersion plots or MA-plots.
@@ -62,11 +58,11 @@ deseq_obj <- DESeqDataSetFromMatrix(countData = gene_matrix, colData = exp_metad
 # deseq_obj <- deseq_obj[rows_keep, ]
 
 # 6. Run differential analysis =================================================
-dds <- DESeq(deseq_obj, test = "LRT", reduced = ~ infection)
+dds <- DESeq(deseq_obj)
 
 # 7. Explore results
 resultsNames(dds)
-inf_res <- results(dds, alpha = 0.05, name = "infection_mock_vs_infected")
+inf_res <- results(dds, name = "infection_mock_vs_infected")
 # ordered_res <- inf_res[order(inf_res$padj), ]
 
 lfc_res <- lfcShrink(dds, coef = "infection_mock_vs_infected", type = "apeglm")
@@ -88,7 +84,7 @@ norm_counts <- counts(dds, normalized = T) %>%
   select(gene_id, everything()) %>%
   as_tibble()
 
-final_sig_results <-inner_join(norm_counts, lfc_res_tab, by = "gene_id") %>%
+final_sig_results <- inner_join(norm_counts, lfc_res_tab, by = "gene_id") %>%
   filter(padj <= 0.05) %>% 
   arrange(padj)
 
