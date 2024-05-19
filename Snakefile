@@ -202,6 +202,20 @@ rule generate_count_matrices:
         "{input.script}"
 
 ####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
+rule DESeq2_DEG_analysis:
+    input:
+        cnt_matrix = "results/abundances/count_matrix/genes_count_matrix.csv",
+        r_script = "scripts/r_code/deseq_analysis.R"
+    output:
+        expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
+    shell:
+        """
+        {input.r_script}
+        rm Rplots.pdf
+        """
+
+
+####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
 rule extract_geneIDs_GO_KEGG:
     input:
         # counts = rules.generate_count_matrices.output,
@@ -252,10 +266,8 @@ rule plot_enrichment:
 rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
-        rules.index_sorted_bamFiles.output,
         rules.MultiQC_reads.output,
-        # rules.compare_merged_trxpts_toReference.output,
-        rules.generate_count_matrices.output,
+        rules.DESeq2_DEG_analysis.output,
         rules.extract_geneIDs_GO_KEGG.output,
         rules.plot_DEGs_patch_fig.output,
         rules.plot_enrichment.output
