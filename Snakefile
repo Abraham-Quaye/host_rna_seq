@@ -207,11 +207,11 @@ rule DESeq2_DEG_analysis:
         cnt_matrix = "results/abundances/count_matrix/genes_count_matrix.csv",
         r_script = "scripts/r_code/deseq_analysis.R"
     output:
-        expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
+        expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72]),
+        expand("results/r/tables/total_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
     shell:
         """
         {input.r_script}
-        rm Rplots.pdf
         """
 
 

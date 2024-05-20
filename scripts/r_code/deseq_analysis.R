@@ -86,14 +86,20 @@ tmp <- tibble(timepoint = c("4hrs", "12hrs", "24hrs", "72hrs"),
               norm_counts = map(dds_obj, ~DESeq2::counts(.x, normalized = T))) %>%
   mutate(norm_counts_df = map(norm_counts, make_norm_counts_df),
          total_res = map2(norm_counts_df, lfc_results_tbl,
-                          ~inner_join(.x, .y, by = "gene_id")),
-         sig_res = map(total_res, \(.x) filter(.x, padj <= 0.05) %>%
-                         select(-c(baseMean, lfcSE))),
-         maPlot_lfc = map(lfc_results, ~plotMA(.x)),
-         maPlot_res = map(dds_results, ~plotMA(.x)),
-         dispPlot = map(dds_obj, ~plotDispEsts(.x)))
+                          \(.x, .y) inner_join(.x, .y, by = "gene_id") %>%
+                            select(-c(baseMean, lfcSE))),
+         sig_res = map(total_res, ~filter(.x, padj <= 0.05)))
 
+# map(tmp$lfc_results, ~plotMA(.x))
+# map(tmp$dds_results, ~plotMA(.x))
+# map(tmp$dds_obj, ~plotDispEsts(.x))
 # resultsNames(tmp$dds_obj[[1]])
+
+# save DEG tables
 map2(tmp$sig_res, tmp$timepoint,
      ~write.csv(.x, file = paste0("results/r/tables/signif_", .y, "DEGs.csv"),
+                row.names = F))
+
+map2(tmp$total_res, tmp$timepoint,
+     ~write.csv(.x, file = paste0("results/r/tables/total_", .y, "DEGs.csv"),
                 row.names = F))
