@@ -207,8 +207,8 @@ rule DESeq2_DEG_analysis:
         cnt_matrix = "results/abundances/count_matrix/genes_count_matrix.csv",
         r_script = "scripts/r_code/deseq_analysis.R"
     output:
-        expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72]),
-        expand("results/r/tables/total_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
+        sigs = expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72]),
+        total = expand("results/r/tables/total_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
     shell:
         """
         {input.r_script}
@@ -216,32 +216,29 @@ rule DESeq2_DEG_analysis:
 
 
 ####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
-rule extract_geneIDs_GO_KEGG:
+rule save_significant_DEG_tables:
     input:
-        # counts = rules.generate_count_matrices.output,
-        r_script1 = "scripts/r_code/deg_analysis.R",
-        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
-        tp = [4, 12, 24, 72]),
-        r_script2 = "scripts/r_code/extract_deg_geneIDs.R",
+        deg_files = rules.DESeq2_DEG_analysis.output.sigs,
+        r_script1 = "scripts/r_code/my_degAnalyses.R",
+        r_script2 = "scripts/r_code/extract_myDEG_geneIDs.R",
         r_script3 = "scripts/r_code/save_deg_tabs.R"
     output:
         expand("results/r/tables/{names}.txt", \
-        names = ["all_bg_geneIDs", "down_degIDs_4hrs", "down_degIDs_12hrs", \
-        "up_degIDs_12hrs", "down_degIDs_24hrs", "up_degIDs_24hrs", "all_down_degs", \
-        "all_up_degs"])
+        names = ["down_degIDs_4hrs", "down_degIDs_12hrs", "down_degIDs_24hrs", \
+        "down_degIDs_72hrs", "up_degIDs_4hrs", "up_degIDs_12hrs", "up_degIDs_24hrs", \
+        "all_down_degs", "all_up_degs"])
     shell:
         "{input.r_script3}"
 
 # ####### PLOT COMPOSITE FIGURE FOR UP AND DOWN REGULATED DEGs ###########################
 rule plot_DEGs_patch_fig:
     input:
-        deg_files = expand("raw_analysis/diff_exp/diff_gene_exp_{tp}hrs.xlsx", \
-        tp = [4, 12, 24, 72]),
-        r_script1 = "scripts/r_code/plot_degs.R",
-        r_script2 = "scripts/r_code/plot_heatmaps.R",
-        r_script3 = "scripts/r_code/deg_analysis.R",
-        r_script4 = "scripts/r_code/extract_deg_geneIDs.R",
-        r_script5 = "scripts/r_code/venn_diagram.R"
+        deg_files = rules.DESeq2_DEG_analysis.output.sigs,
+        r_script1 = "scripts/r_code/plot_myDEGS.R",
+        r_script2 = "scripts/r_code/plot_myHeatmap.R",
+        r_script3 = "scripts/r_code/my_degAnalyses.R",
+        r_script4 = "scripts/r_code/extract_myDEG_geneIDs.R",
+        r_script5 = "scripts/r_code/my_vennDiagram.R"
     output:
         "results/r/figures/deg_patch_fig.png"
     shell:
@@ -253,10 +250,10 @@ rule plot_DEGs_patch_fig:
 ####### GO TERM AND PATHWAY ENRICHMENT ANALYSIS ###########################
 rule plot_enrichment:
     input:
-        r_script1 = "scripts/r_code/extract_deg_geneIDs.R",
-        r_script2 = "scripts/r_code/deg_analysis.R",
-        degfiles = rules.plot_DEGs_patch_fig.input.deg_files,
-        main_script = "scripts/r_code/enrichment_analyses.R"
+        r_script1 = "scripts/r_code/extract_myDEG_geneIDs.R",
+        r_script2 = "scripts/r_code/my_degAnalyses.R",
+        degfiles = rules.DESeq2_DEG_analysis.output.sigs,
+        main_script = "scripts/r_code/my_enrichment_analyses.R"
     output:
         expand("results/r/figures/go_enrich_{tp}{reg}.png", tp = [12, 24], reg = ["up", "down"]),
         "results/r/figures/patch_GO_enrich.png"
@@ -267,7 +264,6 @@ rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
         rules.MultiQC_reads.output,
-        rules.DESeq2_DEG_analysis.output,
-        rules.extract_geneIDs_GO_KEGG.output,
+        rules.save_significant_DEG_tables.output,
         rules.plot_DEGs_patch_fig.output,
         rules.plot_enrichment.output
