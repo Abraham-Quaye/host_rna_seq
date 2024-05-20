@@ -231,7 +231,7 @@ rule save_significant_DEG_tables:
         "{input.r_script3}"
 
 # ####### PLOT COMPOSITE FIGURE FOR UP AND DOWN REGULATED DEGs ###########################
-rule plot_DEGs_patch_fig:
+rule plot_DEG_figures:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
         r_script1 = "scripts/r_code/plot_myDEGS.R",
@@ -265,5 +265,5 @@ rule run_pipeline:
         rules.make_Mgallopavo_OrgDB.output,
         rules.MultiQC_reads.output,
         rules.save_significant_DEG_tables.output,
-        rules.plot_DEGs_patch_fig.output,
+        rules.plot_DEG_figures.output,
         rules.plot_enrichment.output
