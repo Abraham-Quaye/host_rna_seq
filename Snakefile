@@ -193,7 +193,7 @@ rule estimate_trancript_abundances:
 rule generate_count_matrices:
     input:
         counts = rules.estimate_trancript_abundances.output,
-        # prog = "scripts/python/prepDE.py3",
+        prog = "scripts/python/prepDE.py3",
         script = "scripts/shell_code/make_count_matrix.zsh"
     output:
         expand("results/abundances/count_matrix/{feat}_count_matrix.csv", \
