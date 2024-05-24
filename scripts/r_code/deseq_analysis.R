@@ -234,8 +234,8 @@ map2(deseq_results$dist_plt[c(2, 3)], deseq_results$timepoint[c(2, 3)],
 patch_pca <- (deseq_results$pca_plt[[2]] + deseq_results$pca_plt[[3]]) +
   plot_layout(heights = c(1, 1), tag_level = "new")
 
-patch_volcano <- (deseq_results$volcano_plt[[2]] | plot_spacer()| deseq_results$volcano_plt[[3]]) +
-  plot_layout(widths = c(1, 0.01, 1),
+patch_volcano <- (deseq_results$volcano_plt[[2]] | deseq_results$volcano_plt[[3]]) +
+  plot_layout(widths = c(1, 1),
               tag_level = "new",
               axes = "collect") 
 
@@ -250,7 +250,7 @@ left_plts[[1]] <- left_plts[[1]] + plot_layout(tag_level = "new")
 left_plts[[3]] <- left_plts[[3]] + plot_layout(tag_level = "new")
 
 merge_plts <- (left_plts | patch_volcano) +
-  plot_layout(widths = c(0.45, 1.55))
+  plot_layout(widths = c(0.5, 1.5))
 
 # merge_plts[[1]][[4]] <- merge_plts[[1]][[4]] + plot_layout(tag_level = "new")
 merge_plts[[2]] <- merge_plts[[2]] + plot_layout(tag_level = "new")
