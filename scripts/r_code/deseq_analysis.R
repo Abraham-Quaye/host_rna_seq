@@ -70,13 +70,19 @@ make_norm_counts_df <- function(ncount){
 }
 
 make_PCA <- function(dds, tp_lab){
-  tt <- rlogTransformation(dds, blind = F)
+  rld <- vst(dds, blind = F)
+  pcaData <- plotPCA(rld, intgroup = "infection", returnData = T)
+  pvar <- round(attr(pcaData, "percentVar") * 100)
   
-  plt <- plotPCA(tt, intgroup = "infection") +
+  plt <- pcaData %>% 
+    ggplot(aes(PC1, PC2, colour = infection)) +
+    geom_point(size = 5) +
     scale_color_manual(values = c("#ff0000", "#0000ff"),
                        breaks = c("infected", "mock"),
                        labels = c("Infected", "Mock")) +
-    labs(title = paste0("THEV-infected VS Uninfected PCA: ", tp_lab)) +
+    labs(title = paste0("THEV-infected VS Uninfected PCA: ", tp_lab),
+         x = paste0("PC1: ", pvar[[1]], "% Variance"),
+         y = paste0("PC2: ", pvar[[2]], "% Variance")) +
     theme_bw() +
     theme(plot.title = element_text(size = 20, face = "bold", hjust = 0),
           plot.title.position = "plot",
@@ -88,7 +94,7 @@ make_PCA <- function(dds, tp_lab){
           legend.position = "top",
           legend.direction = "horizontal",
           legend.key.size = unit(1, "cm"),
-          legend.margin = margin(b = -40))
+          legend.margin = margin(b = -10))
   
   return(plt)
 }
@@ -262,14 +268,22 @@ ggsave(plot = merge_plts, filename = "results/r/figures/sample_corr_figure.png",
 #                                colData = exp_metadata, design = ~infection)
 # 
 # bulk_dds <- DESeq(bulk)
-# bulk_tt <- rlogTransformation(bulk_dds, blind = F)
-
+# bulk_rld <- vst(bulk_dds, blind = F)
+# bulk_pcaData <- plotPCA(bulk_rld, intgroup = "infection", returnData = T) %>%
+#   mutate(timepoint = c(rep(12, 2), rep(c(24, 4, 72), each = 3),
+#                        rep(c(12, 24, 4, 72), each = 2)))
+# bulk_pvar <- round(attr(bulk_pcaData, "percentVar") * 100)
 # 
-# plotPCA(bulk_tt, intgroup = "infection") +
-#   geom_text(aes(label = bulk_tt$treatment)) +
-#   labs(title = paste0("PCA Plot")) +
-#   # theme_minimal() +
-#   facet_wrap(~bulk_tt@colData$timepoint)
+# 
+# bulk_pcaData %>%
+#   ggplot(aes(PC1, PC2, colour = infection))+
+#   geom_point(size = 5) +
+#   # geom_text(aes(label = bulk_tt$treatment)) +
+#   labs(title = "THEV-infected VS Uninfected PCA",
+#        x = paste0("PC1: ", bulk_pvar[[1]], "% Variance"),
+#        y = paste0("PC2: ", bulk_pvar[[2]], "% Variance")) +
+#   theme_bw() +
+#   facet_wrap(~timepoint, scales = "free")
 
 # bulk_dists <- dist(t(assay(bulk_tt)))
 # bulk_dist_mat <- as.matrix(bulk_dists)
