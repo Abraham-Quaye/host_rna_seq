@@ -14,13 +14,16 @@ prep_heatmap_data <- function(tp){
     pull(gene_name)
   
   if(tp == "t12"){
-    c_names <- c("12hrsS1", "12hrsS2", "12hrsN1", "12hrsN2")
+    c_names <- c("Infected 12hrs1", "Infected 12hrs2", "Mock 12hrs1", "Mock 12hrs2")
   }else if(tp == "t24"){
-    c_names <- c("24hrsS1", "24hrsS2", "24hrsS3", "24hrsN1", "24hrsN2")
+    c_names <- c("Infected 24hrs1", "Infected 24hrs2", "Infected 24hrs3",
+                 "Mock 24hrs1", "Mock 24hrs2")
   }else if(tp == "t4"){
-    c_names <- c("4hrsS1", "4hrsS2", "4hrsS3", "4hrsN1", "4hrsN2")
+    c_names <- c("Infected 4hrs1", "Infected 4hrs2", "Infected 4hrs3",
+                 "Mock 4hrs1", "Mock 4hrs2")
   }else{
-    c_names <- c("72hrsS1", "72hrsS2", "72hrsS3", "72hrsN1", "72hrsN2")
+    c_names <- c("Infected 72hrs1", "Infected 72hrs2", "Infected 72hrs3",
+                 "Mock 72hrs1", "Mock 72hrs2")
   }
   
   data <- diff_exp_genes %>%

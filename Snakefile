@@ -208,7 +208,10 @@ rule DESeq2_DEG_analysis:
         r_script = "scripts/r_code/deseq_analysis.R"
     output:
         sigs = expand("results/r/tables/signif_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72]),
-        total = expand("results/r/tables/total_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72])
+        total = expand("results/r/tables/total_{tp}hrsDEGs.csv", tp = [4, 12, 24, 72]),
+        fig = expand("results/r/figures/{type}_{tp}hrs.png",
+        type = ["pca", "volcano", "distPlot"], tp = [12, 24]),
+        corr_fig = "results/r/figures/sample_corr_figure.png"
     shell:
         """
         {input.r_script}
