@@ -219,7 +219,7 @@ rule DESeq2_DEG_analysis:
 
 
 ####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
-rule save_significant_DEG_tables:
+rule save_DESeq2_result_PlotsandTables:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
         r_script1 = "scripts/r_code/my_degAnalyses.R",
@@ -258,7 +258,8 @@ rule plot_enrichment:
         degfiles = rules.DESeq2_DEG_analysis.output.sigs,
         main_script = "scripts/r_code/my_enrichment_analyses.R"
     output:
-        expand("results/r/figures/go_enrich_{tp}{reg}.png", tp = [12, 24], reg = ["up", "down"]),
+        expand("results/r/figures/go_enrich_{tp}{reg}{GO}.png", tp = [12, 24], \
+        reg = ["up", "down"], GO = ["BP", "CC", "MF"]),
         "results/r/figures/patch_GO_enrich.png"
     shell:
         "{input.main_script}"
@@ -267,6 +268,6 @@ rule run_pipeline:
     input:
         rules.make_Mgallopavo_OrgDB.output,
         rules.MultiQC_reads.output,
-        rules.save_significant_DEG_tables.output,
+        rules.save_DESeq2_result_PlotsandTables.output,
         rules.plot_DEG_figures.output,
         rules.plot_enrichment.output

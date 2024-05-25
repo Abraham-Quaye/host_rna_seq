@@ -11,9 +11,9 @@ gene_lists <- tibble(genesets = names(all_deg_tables),
                                     \(df){pull(df, gene_id)}))
 
 g_results <- gost(gene_lists$gene_ids,
-                   organism = "mgallopavo",
-                   multi_query = F,
-                   significant = T)
+                  organism = "mgallopavo",
+                  multi_query = F,
+                  significant = T)
 
 
 g_results <- g_results[["result"]] %>%
@@ -32,13 +32,15 @@ separate_feature <- function(df, feature){
 }
 
 plot_goterms <- function(df){
+  goTerm <- df %>% pull(source) %>% unique(.)
+
   df %>%
     ggplot(aes(reorder(term_name, recall), recall,
                group = padj, color = padj, size = gene_count)) +
     geom_point() +
     coord_flip() +
     theme_classic() +
-    labs() +
+    labs(x = paste0("Go Term - " , goTerm), y = "Rich Factor") +
     scale_y_continuous(breaks = c(seq(0, 1, 0.05)),
                        labels = c(seq(0, 1, 0.05))) +
     scale_color_gradient(low = "red", high = "blue", name = "Adjusted P-value") +
@@ -53,13 +55,6 @@ plot_goterms <- function(df){
           legend.justification = c(0, 0),
           legend.position = "inside",
           legend.position.inside = c(0.8, 0.2))
-}
-
-annotate_plt <- function(plt, annot){
-  
-  return(plt +
-    labs(x = annot[["x"]],
-         y = annot[["y"]]))
 }
 
 tab_res <- tibble(timepoint = c("t4", "t12", "t24", "t72"),
@@ -81,32 +76,38 @@ tab_res <- tibble(timepoint = c("t4", "t12", "t24", "t72"),
                   up_hp = map(up, ~separate_feature(.x, feature = "HP")),
                   p_up_bp = map(up_bp, plot_goterms),
                   p_down_bp = map(down_bp, plot_goterms),
-                  plt_anot = list(list(x = "GO Term:BP", y = "Rich Factor")),
-                  p_up_bp_f = map2(p_up_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
-                  p_down_bp_f = map2(p_down_bp, plt_anot, ~annotate_plt(plt = .x, annot = .y)),
-                  plot_name = paste0("results/r/figures/go_enrich_", parse_number(timepoint))
-                  )
+                  p_up_cc = map(up_cc, plot_goterms),
+                  p_down_cc = map(down_cc, plot_goterms),
+                  p_up_mf = map(up_mf, plot_goterms),
+                  p_down_mf = map(down_mf, plot_goterms),
+                  plot_name = paste0("results/r/figures/go_enrich_", parse_number(timepoint)))
 
-plts <- tab_res %>% select(p_up_bp_f, p_down_bp_f, plot_name) %>%
-  slice(c(2, 3))
-
-up12 <- plts$p_up_bp_f[[1]] + labs(title = "Upregulated GO:BP Enrichment at 12h.p.i")
-up24 <- plts$p_up_bp_f[[2]] + labs(title = "Upregulated GO:BP Enrichment at 24h.p.i")
-
-down12 <- plts$p_down_bp_f[[1]] + labs(title = "Downregulated GO:BP Enrichment: 12h.p.i")
-down24 <- plts$p_down_bp_f[[2]] + labs(title = "Downregulated GO:BP Enrichment: 24h.p.i")
+plts <- tibble(
+  plts = list(tab_res$p_up_bp[[2]] + labs(title = "Upregulated GO:BP Enrichment at 12h.p.i"),
+             tab_res$p_up_cc[[2]] + labs(title = "Upregulated GO:CC Enrichment at 12h.p.i"),
+             tab_res$p_up_mf[[2]] + labs(title = "Upregulated GO:MF Enrichment at 12h.p.i"),
+             tab_res$p_up_bp[[3]] + labs(title = "Upregulated GO:BP Enrichment at 24h.p.i"),
+             tab_res$p_up_cc[[3]] + labs(title = "Upregulated GO:CC Enrichment at 24h.p.i"),
+             tab_res$p_up_mf[[3]] + labs(title = "Upregulated GO:MF Enrichment at 24h.p.i"),
+             tab_res$p_down_bp[[2]] + labs(title = "Downregulated GO:BP Enrichment: 12h.p.i"),
+             tab_res$p_down_cc[[2]] + labs(title = "Downregulated GO:CC Enrichment: 12h.p.i"),
+             tab_res$p_down_mf[[2]] + labs(title = "Downregulated GO:MF Enrichment: 12h.p.i"),
+             tab_res$p_down_bp[[3]] + labs(title = "Downregulated GO:BP Enrichment: 24h.p.i"),
+             tab_res$p_down_cc[[3]] + labs(title = "Downregulated GO:CC Enrichment: 24h.p.i"),
+             tab_res$p_down_mf[[3]] + labs(title = "Downregulated GO:MF Enrichment: 24h.p.i")),
+  plot_name = c(paste0(tab_res$plot_name[[2]], c("upBP.png", "upCC.png", "upMF.png")),
+                   paste0(tab_res$plot_name[[3]], c("upBP.png", "upCC.png", "upMF.png")),
+                   paste0(tab_res$plot_name[[2]], c("downBP.png", "downCC.png", "downMF.png")),
+                   paste0(tab_res$plot_name[[3]], c("downBP.png", "downCC.png", "downMF.png")))
+             )
 
 # save individua plots
-map2(list(up12, up24), plts$plot_name,
-     ~ggsave(plot = .x, filename = paste0(.y, "up.png"),
-             width = 14, height = 12, dpi = 400))
-
-map2(list(down12, down24), plts$plot_name,
-     ~ggsave(plot = .x, filename = paste0(.y, "down.png"),
+map2(plts$plts, plts$plot_name,
+     ~ggsave(plot = .x, filename = .y,
              width = 14, height = 12, dpi = 400))
 
 # save composite plots as one fig
-total_plts <- ((up12 | up24) / (down12 | down24)) +
+total_plts <- ((plts$plts[[1]] | plts$plts[[4]]) / (plts$plts[[7]] | plts$plts[[10]])) +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(size = 22, face = "bold"))
 
