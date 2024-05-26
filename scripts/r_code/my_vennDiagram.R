@@ -28,10 +28,9 @@ draw_venn_plott <- function(input_sets, tittl){
                set_name_size = 8, text_size = 5,
                fill_color = c("red", "blue", "grey30", "green")) +
     coord_cartesian(clip = "off") +
-    labs(caption = paste0(tittl, "regulated DEGs")) +
-    theme(plot.caption = element_text(size = 22, face = "bold",
-                                      colour = "black", hjust = 0.5,
-                                      margin = margin(t = -15)))
+    labs(title = paste0(tittl, "regulated DEGs")) +
+    theme(plot.title = element_text(size = 22, face = "bold",
+                                      colour = "black", hjust = 0.5))
 
   return(pl)
 }
