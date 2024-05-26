@@ -1,13 +1,3 @@
-##########  MAKE LOCAL ORGANISM DATABASE FOR M gallopavo ###############
-rule make_Mgallopavo_OrgDB:
-    input:
-        data = "raw_analysis/count_matrix/all_genes_fpkm_exp.xlsx",
-        r_script = "scripts/r_code/install_Mga_annotationDB.R"
-    output:
-       directory("org.Mgallopavo.eg.db")
-    shell:
-        "{input.r_script}"
-        
 ##########  DOWNLOAD M gallopavo GENOMIC FILES ####################
 rule fetch_Mgallopavo_files:
     input:
@@ -266,7 +256,6 @@ rule plot_enrichment:
     
 rule run_pipeline:
     input:
-        rules.make_Mgallopavo_OrgDB.output,
         rules.MultiQC_reads.output,
         rules.save_DESeq2_result_PlotsandTables.output,
         rules.plot_DEG_figures.output,
