@@ -49,24 +49,51 @@ opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 ## ABSTRACT
 \newpage
-## BACKGROUND
+## INTRODUCTION
+* Discuss the hemorrhagic enteritis disease
+* Discuss proposed mechanisms/pathways/ideas
+* Discuss why NGS will help elucidate the host response and show examples of NGS used to as such
+* End with the study aims/goals
 \newpage
+
 ## RESULTS
 \newpage
+
 ## DISCUSSION
 \newpage
+
 ## CONCLUSIONS
 \newpage
-## METHODS
+
+## MATERIALS AND METHODS
+**Cell culture and THEV Infection**
+
+**RNA extraction and Sequencing**
+
+**Quality Control and Mapping Process**
+
+**Functional Enrichment Analysis**
+
+**Expression Profiling and Differentially Expressed Genes**
+
+**Quantitative Real-Time Reverse Transcriptase PCR**
+
+**Statistical Analysis**
 \newpage
+
 ## DATA AVAILABILITY
 \newpage
+
 ## CODE AVAILABILITY
 \newpage
+
 ## ACKNOWLEDGMENTS
 \newpage
+
 ## REFERENCES
 \newpage
+
 ## TABLES AND FIGURES
 \newpage
+
 ## SUPPLEMENTARY INFORMATION/MATERIALS
