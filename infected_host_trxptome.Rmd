@@ -1,0 +1,72 @@
+---
+title: "Transcriptomics of a THEV-infected Turkey B-cell Line"
+output:
+  pdf_document:
+    keep_tex: true
+geometry: margin=1in
+font-size: 11pt
+header-includes:
+  - \usepackage{helvet}
+  - \renewcommand*\familydefault{\sfdefault}
+  - \usepackage{setspace}
+  - \doublespacing
+  - \usepackage[left]{lineno}
+  - \linenumbers
+bibliography: trxptome_refs.bib
+csl: asm.csl
+editor_options:
+  chunck_output_type: console
+  markdown:
+  wrap: sentence
+---
+
+\vspace{5mm}
+
+Abraham Quaye${^\dagger}$^,a^, Brian D. Poole^a,\*^
+
+\vspace{5mm}
+  
+^a^Department of Microbiology and Molecular Biology, Brigham Young University\
+${^\dagger}$First-author\
+^\*^Corresponding Author
+
+\vspace{5mm}
+
+**Corresponding Author Information**\
+[brian_poole\@byu.edu](mailto:brian_poole@byu.edu)\
+Department of Microbiology and Molecular Biology,\
+4007 Life Sciences Building (LSB),\
+Brigham Young University,\
+Provo, Utah\
+
+\newpage
+  
+```{r setup, echo=FALSE,include=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(flextable)
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+## ABSTRACT
+\newpage
+## BACKGROUND
+\newpage
+## RESULTS
+\newpage
+## DISCUSSION
+\newpage
+## CONCLUSIONS
+\newpage
+## METHODS
+\newpage
+## DATA AVAILABILITY
+\newpage
+## CODE AVAILABILITY
+\newpage
+## ACKNOWLEDGMENTS
+\newpage
+## REFERENCES
+\newpage
+## TABLES AND FIGURES
+\newpage
+## SUPPLEMENTARY INFORMATION/MATERIALS

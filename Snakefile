@@ -254,9 +254,23 @@ rule plot_enrichment:
     shell:
         "{input.main_script}"
     
+####### WRITE MANUSCRIPT FOR PUBLICATION ###########################
+rule write_manuscript:
+    input:
+        rmd = "infected_host_trxptome.Rmd",
+        ref_style = "asm.csl",
+        refs = "trxptome_refs.bib",
+    output:
+        "infected_host_trxptome.pdf",
+        "infected_host_trxptome.tex"
+    shell:
+        """
+        R -e "library(rmarkdown);render('{input.rmd}', output_format = 'all')";
+        """
 rule run_pipeline:
     input:
         rules.MultiQC_reads.output,
         rules.save_DESeq2_result_PlotsandTables.output,
         rules.plot_DEG_figures.output,
-        rules.plot_enrichment.output
+        rules.plot_enrichment.output,
+        rules.write_manuscript.output
