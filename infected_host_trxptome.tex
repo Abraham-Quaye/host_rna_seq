@@ -54,6 +54,39 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{helvet}
 \renewcommand*\familydefault{\sfdefault}
 \usepackage{setspace}
@@ -107,6 +140,59 @@ Provo, Utah\\
 
 \subsection{INTRODUCTION}\label{introduction}
 
+Turkey hemorrhagic enteritis virus (THEV), a virus isolated from
+turkeys, chickens, and pheasants, belongs to the family
+\emph{Adenoviridae}, genus \emph{Siadenovirus} (1, 2). Infecting its
+hosts via the feco-oral route, THEV causes hemorrhagic enteritis (HE) in
+turkeys, a debilitating disease affecting predominantly 6-12 week old
+poults characterized by immunosuppression (IMS), splenomegaly,
+intestinal lesions leading to bloody diarrhea, and up to 80\% mortality
+(3--6). The clinical disease usually persists in affected flocks for
+about 7--10 days. However, secondary bacterial infections may extend the
+duration of illness and mortality for an additional 2--3 weeks due to
+the immunosuppressive nature of the virus, exacerbating the economic
+losses (5, 7). Low pathogenic (avirulent) strains of THEV have been
+isolated, which show subclinical infections but retain their
+immunosuppressive effects. One such avirulent strain called Virginia
+Avirulent Strain (VAS) is used as a live vaccine; thus, vaccinated birds
+are rendered more susceptible to opportunistic infections and death than
+unvaccinated birds leading to significant economic losses (4, 5, 8, 9).
+
+It is well-established that THEV primarily infects and replicates in
+turkey B-cells and macrophages of the bursa and spleen, inducing
+apoptosis and necrosis. Consequently, a significant drop in number of
+B-cells (specifically, IgM+ B-cells) and macrophages ensue along with
+increased T-cell counts with abnormal T-cell subpopulation ratios. The
+cell death seen in the B-cells and macrophages is generally proposed as
+the cause of THEV-induced IMS as both humoral and cell-mediated immunity
+are impaired (5, 6, 8, 10). It is also thought that a humoral immune
+response may contribute to the IMS as follows. The virus replication in
+the spleen attracts T-cells and peripheral blood macrophages to the
+spleen where T-cells are activated by cytokines from infected
+macrophages and vice versa. The activated T-cells proliferate and
+secrete interferons: type I (IFN-\(\alpha\) and IFN-\(\beta\)) and type
+II (IFN-\(\gamma\)) as well as tumor necrosis factor (TNF) while
+activated macrophages secrete interleukin 6 (IL-6), TNF, and nitric
+oxide (NO), an antiviral with immunosuppressive properties. The
+inflammatory cytokines released by T cells and macrophages (e.g., TNF
+and IL-6) may also induce apoptosis in bystander splenocytes,
+exacerbating the already numerous apoptotic and necrotic splenocytes,
+culminating in IMS (8, 10) (see \textbf{Figure 1}). However, the precise
+molecular mechanisms and pathways of THEV-induced IMS has not been
+studied.
+
+\begin{itemize}
+\tightlist
+\item
+  Discuss NGS here
+\end{itemize}
+
+To eliminate the immunosupressive effect of the vaccine strain, it is
+essential to elucidate the host mechanisms/pathways influenced by the
+virus to bring about IMS. Elucidating the mechanisms of THEV-induced IMS
+is the most crucial step in THEV research as it will present a means of
+mitigating IMS.
+
 \begin{itemize}
 \tightlist
 \item
@@ -117,8 +203,31 @@ Provo, Utah\\
   Discuss why NGS will help elucidate the host response and show
   examples of NGS used to as such
 \item
-  End with the study aims/goals \newpage
+  End with the study aims/goals
 \end{itemize}
+
+Introduction: RNA-Seq and Differential Gene Expression: Briefly
+introduce RNA sequencing (RNA-seq) as a powerful tool for studying gene
+expression. Explain how RNA-seq can identify differentially expressed
+genes between infected and uninfected cells. Highlight that this
+approach allows us to explore potential pathways affected by THEV.
+Objectives of Your Study: Clearly state your research objectives:
+Identify differentially expressed genes in MDTC-RP19 turkey B-cells
+infected with THEV. Investigate pathways associated with
+immunosuppression caused by THEV. Methods: Describe how you obtained
+RNA-seq data from infected and uninfected cells. Mention any
+preprocessing steps (quality control, normalization, etc.). Briefly
+outline the statistical analysis for identifying differentially
+expressed genes. Expected Outcomes: Anticipate that you'll discover
+specific genes upregulated or downregulated in infected cells. Expect to
+find pathways related to immune response modulation affected by THEV.
+Significance and Implications: Discuss the importance of understanding
+THEV-induced immunosuppression. Highlight potential applications, such
+as developing targeted therapies or improving turkey health management.
+
+\url{https://link.springer.com/article/10.1007/s11259-014-9596-z}
+\url{https://bioone.org/journals/avian-diseases/volume-61/issue-1/11506-092916-Reg/Molecular-Characterization-of-Hemorrhagic-Enteritis-Viruses-HEV-Detected-in-HEV/10.1637/11506-092916-Reg.full}
+\newpage
 
 \subsection{RESULTS}\label{results}
 
@@ -168,7 +277,82 @@ Provo, Utah\\
 
 \newpage
 
-\subsection{SUPPLEMENTARY
+\subsection*{SUPPLEMENTARY
 INFORMATION/MATERIALS}\label{supplementary-informationmaterials}
+\addcontentsline{toc}{subsection}{SUPPLEMENTARY INFORMATION/MATERIALS}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\bibitem[\citeproctext]{ref-Harrach2008}
+\CSLLeftMargin{1. }%
+\CSLRightInline{Harrach B. 2008.
+\href{https://doi.org/10.1016/B978-012374410-4.00680-4}{Adenoviruses:
+General features}, p. 1--9. \emph{In} Mahy, BWJ, Van Regenmortel, MHV
+(eds.), Encyclopedia of virology (third edition). Book Section. Academic
+Press, Oxford.}
+
+\bibitem[\citeproctext]{ref-Davison2003}
+\CSLLeftMargin{2. }%
+\CSLRightInline{Davison A, Benko M, Harrach B. 2003.
+\href{https://doi.org/10.1099/vir.0.19497-0}{Genetic content and
+evolution of adenoviruses}. The Journal of general virology
+84:2895--908.}
+
+\bibitem[\citeproctext]{ref-Gross1967}
+\CSLLeftMargin{3. }%
+\CSLRightInline{Gross WB, Moore WE. 1967. Hemorrhagic enteritis of
+turkeys. Avian Dis 11:296--307.}
+
+\bibitem[\citeproctext]{ref-Beach2006}
+\CSLLeftMargin{4. }%
+\CSLRightInline{Beach NM. 2006.
+\href{http://scholar.lib.vt.edu/theses/available/etd-08142006-145339/}{Characterization
+of avirulent turkey hemorrhagic enteritis virus: A study of the
+molecular basis for variation in virulence and the occurrence of
+persistent infection}. Thesis.}
+
+\bibitem[\citeproctext]{ref-Dhama2017}
+\CSLLeftMargin{5. }%
+\CSLRightInline{Dhama K, Gowthaman V, Karthik K, Tiwari R, Sachan S,
+Kumar MA, Palanivelu M, Malik YS, Singh RK, Munir M. 2017.
+\href{https://doi.org/10.1080/01652176.2016.1277281}{Haemorrhagic
+enteritis of turkeys -- current knowledge}. Veterinary Quarterly
+37:31--42.}
+
+\bibitem[\citeproctext]{ref-Tykaowski2019}
+\CSLLeftMargin{6. }%
+\CSLRightInline{Tykałowski B, Śmiałek M, Koncicki A, Ognik K, Zduńczyk
+Z, Jankowski J. 2019.
+\href{https://doi.org/10.1186/s12917-019-2138-8}{The immune response of
+young turkeys to haemorrhagic enteritis virus infection at different
+levels and sources of methionine in the diet}. BMC Veterinary Research
+15.}
+
+\bibitem[\citeproctext]{ref-Pierson2008}
+\CSLLeftMargin{7. }%
+\CSLRightInline{Pierson F, Fitzgerald S. 2008. Hemorrhagic enteritis and
+related infections. Diseases of Poultry 276--286.}
+
+\bibitem[\citeproctext]{ref-Rautenschlein2000}
+\CSLLeftMargin{8. }%
+\CSLRightInline{Rautenschlein S, Sharma JM. 2000.
+\href{https://doi.org/10.1016/s0145-305x(99)00075-0}{Immunopathogenesis
+of haemorrhagic enteritis virus (HEV) in turkeys}. Dev Comp Immunol
+24:237--46.}
+
+\bibitem[\citeproctext]{ref-Larsen1985}
+\CSLLeftMargin{9. }%
+\CSLRightInline{Larsen CT, Domermuth CH, Sponenberg DP, Gross WB. 1985.
+Colibacillosis of turkeys exacerbated by hemorrhagic enteritis virus.
+Laboratory studies. Avian Dis 29:729--32.}
+
+\bibitem[\citeproctext]{ref-Rautenschlein2000b}
+\CSLLeftMargin{10. }%
+\CSLRightInline{Rautenschlein S, Suresh M, Sharma JM. 2000.
+\href{https://doi.org/10.1007/s007050070083}{Pathogenic avian adenovirus
+type II induces apoptosis in turkey spleen cells}. Archives of Virology
+145:1671--1683.}
+
+\end{CSLReferences}
 
 \end{document}

@@ -50,10 +50,44 @@ opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ## ABSTRACT
 \newpage
 ## INTRODUCTION
+
+Turkey hemorrhagic enteritis virus (THEV), a virus isolated from turkeys, chickens, and pheasants, belongs to the family _Adenoviridae_, genus _Siadenovirus_ [@Harrach2008; @Davison2003]. Infecting its hosts via the feco-oral route, THEV causes hemorrhagic enteritis (HE) in turkeys, a debilitating disease affecting predominantly 6-12 week old poults characterized by immunosuppression (IMS), splenomegaly, intestinal lesions leading to bloody diarrhea, and up to 80% mortality [@Gross1967; @Beach2006; @Dhama2017; @Tykaowski2019]. The clinical disease usually persists in affected flocks for about 7–10 days. However, secondary bacterial infections may extend the duration of illness and mortality for an additional 2–3 weeks due to the immunosuppressive nature of the virus, exacerbating the economic losses [@Pierson2008; @Dhama2017]. Low pathogenic (avirulent) strains of THEV have been isolated, which show subclinical infections but retain their immunosuppressive effects. One such avirulent strain called Virginia Avirulent Strain (VAS) is used as a live vaccine; thus, vaccinated birds are rendered more susceptible to opportunistic infections and death than unvaccinated birds leading to significant economic losses [@Beach2006; @Rautenschlein2000; @Larsen1985; @Dhama2017]. 
+
+It is well-established that THEV primarily infects and replicates in turkey B-cells and macrophages of the bursa and spleen, inducing apoptosis and necrosis. Consequently, a significant drop in number of B-cells (specifically, IgM+ B-cells) and macrophages ensue along with increased T-cell counts with abnormal T-cell subpopulation ratios. The cell death seen in the B-cells and macrophages is generally proposed as the cause of THEV-induced IMS as both humoral and cell-mediated immunity are impaired [@Tykaowski2019; @Rautenschlein2000; @Dhama2017; @Rautenschlein2000b]. It is also thought that a humoral immune response may contribute to the IMS as follows. The virus replication in the spleen attracts T-cells and peripheral blood macrophages to the spleen where T-cells are activated by cytokines from infected macrophages and vice versa. The activated T-cells proliferate and secrete interferons: type I (IFN-\(\alpha\) and IFN-\(\beta\)) and type II (IFN-\(\gamma\)) as well as tumor necrosis factor (TNF) while activated macrophages secrete interleukin 6 (IL-6), TNF, and nitric oxide (NO), an antiviral with immunosuppressive properties. The inflammatory cytokines released by T cells and macrophages (e.g., TNF and IL-6) may also induce apoptosis in bystander splenocytes, exacerbating the already numerous apoptotic and necrotic splenocytes, culminating in IMS [@Rautenschlein2000; @Rautenschlein2000b] (see **Figure 1**). However, the precise molecular mechanisms and pathways of THEV-induced IMS has not been studied.
+
+* Discuss NGS here
+
+To eliminate the immunosupressive effect of the vaccine strain, it is essential to elucidate the host mechanisms/pathways influenced by the virus to bring about IMS.  Elucidating the mechanisms of THEV-induced IMS is the most crucial step in THEV research as it will present a means of mitigating IMS.
+
+
 * Discuss the hemorrhagic enteritis disease
 * Discuss proposed mechanisms/pathways/ideas
 * Discuss why NGS will help elucidate the host response and show examples of NGS used to as such
 * End with the study aims/goals
+
+
+Introduction:
+RNA-Seq and Differential Gene Expression:
+  Briefly introduce RNA sequencing (RNA-seq) as a powerful tool for studying gene expression.
+  Explain how RNA-seq can identify differentially expressed genes between infected and uninfected cells.
+  Highlight that this approach allows us to explore potential pathways affected by THEV.
+Objectives of Your Study:
+  Clearly state your research objectives:
+  Identify differentially expressed genes in MDTC-RP19 turkey B-cells infected with THEV.
+  Investigate pathways associated with immunosuppression caused by THEV.
+Methods:
+  Describe how you obtained RNA-seq data from infected and uninfected cells.
+  Mention any preprocessing steps (quality control, normalization, etc.).
+  Briefly outline the statistical analysis for identifying differentially expressed genes.
+Expected Outcomes:
+  Anticipate that you’ll discover specific genes upregulated or downregulated in infected cells.
+  Expect to find pathways related to immune response modulation affected by THEV.
+Significance and Implications:
+  Discuss the importance of understanding THEV-induced immunosuppression.
+  Highlight potential applications, such as developing targeted therapies or improving turkey health management.
+
+https://link.springer.com/article/10.1007/s11259-014-9596-z
+https://bioone.org/journals/avian-diseases/volume-61/issue-1/11506-092916-Reg/Molecular-Characterization-of-Hemorrhagic-Enteritis-Viruses-HEV-Detected-in-HEV/10.1637/11506-092916-Reg.full
 \newpage
 
 ## RESULTS
