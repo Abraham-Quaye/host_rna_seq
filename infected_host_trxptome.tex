@@ -93,6 +93,23 @@
 \doublespacing
 \usepackage[left]{lineno}
 \linenumbers
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage[labelformat=empty]{caption}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -140,93 +157,81 @@ Provo, Utah\\
 
 \subsection{INTRODUCTION}\label{introduction}
 
-Turkey hemorrhagic enteritis virus (THEV), a virus isolated from
-turkeys, chickens, and pheasants, belongs to the family
-\emph{Adenoviridae}, genus \emph{Siadenovirus} (1, 2). Infecting its
-hosts via the feco-oral route, THEV causes hemorrhagic enteritis (HE) in
-turkeys, a debilitating disease affecting predominantly 6-12 week old
-poults characterized by immunosuppression (IMS), splenomegaly,
-intestinal lesions leading to bloody diarrhea, and up to 80\% mortality
+Turkey hemorrhagic enteritis virus (THEV), belonging to the family
+\emph{Adenoviridae}, genus \emph{Siadenovirus}, infects turkeys,
+chickens, and pheasants (1, 2). Infecting its hosts via the feco-oral
+route, THEV causes hemorrhagic enteritis (HE) in turkeys, a debilitating
+disease affecting predominantly 6-12 week old turkey poults
+characterized by immunosuppression (IMS), depression, splenomegaly,
+intestinal lesions leading to bloody droppings, and up to 80\% mortality
 (3--6). The clinical disease usually persists in affected flocks for
-about 7--10 days. However, secondary bacterial infections may extend the
-duration of illness and mortality for an additional 2--3 weeks due to
-the immunosuppressive nature of the virus, exacerbating the economic
-losses (5, 7). Low pathogenic (avirulent) strains of THEV have been
-isolated, which show subclinical infections but retain their
-immunosuppressive effects. One such avirulent strain called Virginia
-Avirulent Strain (VAS) is used as a live vaccine; thus, vaccinated birds
-are rendered more susceptible to opportunistic infections and death than
-unvaccinated birds leading to significant economic losses (4, 5, 8, 9).
+about 7-10 days. However, secondary bacterial infections may extend the
+duration of illness and mortality for an additional 2-3 weeks due to the
+immunosuppressive nature of the virus, exacerbating the economic losses
+(5, 7). Low pathogenic (avirulent) strains of THEV have been isolated,
+which show subclinical infections but retain the immunosuppressive
+effects. Since its isolation from a pheasant spleen, the Virginia
+Avirulent Strain (VAS) has been used effectively as a live vaccine
+despite the immunosuppressive side-effects but the vaccinated birds are
+rendered more susceptible to opportunistic infections and death than
+unvaccinated cohorts leading to significant economic losses (4, 5,
+8--10).
 
 It is well-established that THEV primarily infects and replicates in
-turkey B-cells and macrophages of the bursa and spleen, inducing
-apoptosis and necrosis. Consequently, a significant drop in number of
-B-cells (specifically, IgM+ B-cells) and macrophages ensue along with
-increased T-cell counts with abnormal T-cell subpopulation ratios. The
-cell death seen in the B-cells and macrophages is generally proposed as
-the cause of THEV-induced IMS as both humoral and cell-mediated immunity
-are impaired (5, 6, 8, 10). It is also thought that a humoral immune
-response may contribute to the IMS as follows. The virus replication in
-the spleen attracts T-cells and peripheral blood macrophages to the
-spleen where T-cells are activated by cytokines from infected
-macrophages and vice versa. The activated T-cells proliferate and
-secrete interferons: type I (IFN-\(\alpha\) and IFN-\(\beta\)) and type
-II (IFN-\(\gamma\)) as well as tumor necrosis factor (TNF) while
-activated macrophages secrete interleukin 6 (IL-6), TNF, and nitric
-oxide (NO), an antiviral with immunosuppressive properties. The
-inflammatory cytokines released by T cells and macrophages (e.g., TNF
-and IL-6) may also induce apoptosis in bystander splenocytes,
-exacerbating the already numerous apoptotic and necrotic splenocytes,
-culminating in IMS (8, 10) (see \textbf{Figure 1}). However, the precise
-molecular mechanisms and pathways of THEV-induced IMS has not been
-studied.
+turkey B-cells of the bursa and spleen and somewhat in macrophages,
+inducing apoptosis and necrosis. Consequently, a significant drop in
+number of B-cells (specifically, IgM+ B-cells) and macrophages ensue
+along with increased T-cell counts with abnormal T-cell subpopulation
+(CD4+ and CD8+) ratios. The cell death seen in the B-cells and
+macrophages is generally proposed as the major cause of THEV-induced IMS
+as both humoral and cell-mediated immunity are impaired (5, 6, 8, 11).
+It is also thought that the virus replication in the spleen attracts
+T-cells and peripheral blood macrophages to the spleen where the T-cells
+are activated by cytokines from activated macrophages and vice versa.
+The activated T-cells undergo clonal expansion and secrete interferons:
+type I (IFN-\(\alpha\) and IFN-\(\beta\)) and type II (IFN-\(\gamma\))
+as well as tumor necrosis factor (TNF) while activated macrophages
+secrete interleukin 6 (IL-6), TNF, and nitric oxide (NO), an antiviral
+agent with immunosuppressive properties. The inflammatory cytokines
+released by T-cells and macrophages (e.g., TNF and IL-6) may also induce
+apoptosis in bystander splenocytes, exacerbating the already numerous
+apoptotic and necrotic splenocytes, culminating in IMS (8, 11) (see
+\textbf{Figure 1}). However, the precise molecular mechanisms of
+THEV-induced IMS or pathways involved are poorly understood (6).
+Elucidating the specific mechanisms and pathways of THEV-induced IMS is
+the most crucial step in THEV research as it will present a means of
+mitigating the IMS.
 
-\begin{itemize}
-\tightlist
-\item
-  Discuss NGS here
-\end{itemize}
+Next generation sequencing (NGS) is a groundbreaking technology that has
+significantly enhanced our understanding of DNA and RNA structure and
+function, and facilitated exceptional advancements in all domains of
+biology and the Life Sciences, including rare genetic diseases, cancer
+genomics, microbiome analysis, infectious diseases, and population
+genetics (12). mRNA sequencing (RNA-seq), an NGS approach to
+transcriptomic studies, is a versatile, high throughput, and
+cost-effective technology that allows a broad scan of the entire
+transcriptome (the complete set of RNA molecules produced under specific
+conditions or in specific cells), thereby uncovering the active
+molecular pathways and processes. This technology has been leveraged in
+uncountable number of studies to elucidate cellular mechanisms under a
+wide range of treatment conditions, including virus-infected versus
+uninfected transcriptome comparisons (12--16). In RNA-seq studies,
+differentially expressed genes (DEGs) identified under different
+experimental conditions are key to unlocking the interesting biology or
+mechanism under study.
 
-To eliminate the immunosupressive effect of the vaccine strain, it is
-essential to elucidate the host mechanisms/pathways influenced by the
-virus to bring about IMS. Elucidating the mechanisms of THEV-induced IMS
-is the most crucial step in THEV research as it will present a means of
-mitigating IMS.
-
-\begin{itemize}
-\tightlist
-\item
-  Discuss the hemorrhagic enteritis disease
-\item
-  Discuss proposed mechanisms/pathways/ideas
-\item
-  Discuss why NGS will help elucidate the host response and show
-  examples of NGS used to as such
-\item
-  End with the study aims/goals
-\end{itemize}
-
-Introduction: RNA-Seq and Differential Gene Expression: Briefly
-introduce RNA sequencing (RNA-seq) as a powerful tool for studying gene
-expression. Explain how RNA-seq can identify differentially expressed
-genes between infected and uninfected cells. Highlight that this
-approach allows us to explore potential pathways affected by THEV.
-Objectives of Your Study: Clearly state your research objectives:
-Identify differentially expressed genes in MDTC-RP19 turkey B-cells
-infected with THEV. Investigate pathways associated with
-immunosuppression caused by THEV. Methods: Describe how you obtained
-RNA-seq data from infected and uninfected cells. Mention any
-preprocessing steps (quality control, normalization, etc.). Briefly
-outline the statistical analysis for identifying differentially
-expressed genes. Expected Outcomes: Anticipate that you'll discover
-specific genes upregulated or downregulated in infected cells. Expect to
-find pathways related to immune response modulation affected by THEV.
-Significance and Implications: Discuss the importance of understanding
-THEV-induced immunosuppression. Highlight potential applications, such
-as developing targeted therapies or improving turkey health management.
-
-\url{https://link.springer.com/article/10.1007/s11259-014-9596-z}
-\url{https://bioone.org/journals/avian-diseases/volume-61/issue-1/11506-092916-Reg/Molecular-Characterization-of-Hemorrhagic-Enteritis-Viruses-HEV-Detected-in-HEV/10.1637/11506-092916-Reg.full}
+To the best of our knowledge, no studies have been done leveraging the
+wealth of information offered by RNA-seq to elucidate the molecular
+mechanisms and pathways leading to THEV-induced IMS. To effectively
+counteract the immunosupressive effect of the vaccine, it is essential
+to unravel the host mechanisms/pathways influenced by the virus to bring
+about IMS. In this work, we present the first transcriptome profile
+analysis of THEV-infected turkey MDTC-RP19 B-cells by paired-end
+RNA-seq, highlighting specific host cellular/molecular processes
+affected during a THEV infection. Our paired-end sequencing allowed for
+reading 149 bp long high quality (mean Phred Score of 36) sequences from
+each end of cDNA fragments, which were mapped to the genome of domestic
+turkey (\emph{Meleagris gallopavo}). ***put overview of results here
 \newpage
 
 \subsection{RESULTS}\label{results}
@@ -243,9 +248,39 @@ as developing targeted therapies or improving turkey health management.
 
 \subsection{MATERIALS AND METHODS}\label{materials-and-methods}
 
-\textbf{Cell culture and THEV Infection}
+\textbf{Cell culture and THEV Infection}\\
+The Turkey B-cell line (MDTC-RP19, ATCC CRL-8135) was grown as
+suspension cultures in 1:1 complete Leibovitz's L-15/McCoy's 5A medium
+with 10\% fetal bovine serum (FBS), 20\% chicken serum (ChS), 5\%
+tryptose phosphate broth (TPB), and 1\% antibiotic solution (100 U/mL
+Penicillin and 100\(\mu g\)/mL Streptomycin), at 41\textsuperscript{o}C
+in a humidified atmosphere with 5\% CO\textsubscript{2}. Infected cells
+were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
+(SRLM) with 2.5\% FBS, 5\% ChS, 1.2\% TPB, and 1\% antibiotic solution.
+A commercially available THEV vaccine was purchased from Hygieia
+Biological Labs (VAS strain). The stock virus was titrated using an
+in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
+similar to Mahshoub \emph{et al} (17) with modifications. Cells were
+infected in triplicate at a multiplicity of infection (MOI) of 100
+GCN/cell, incubated at 41\textsuperscript{o}C for 1 hour, and washed
+three times with phosphate buffered saline (PBS) to get rid of free
+virus particles. Triplicate samples were harvested at 4-, 12-, 24-, and
+72-hpi for total RNA extraction.
 
-\textbf{RNA extraction and Sequencing}
+\textbf{RNA extraction and Sequencing}\\
+Total RNA was extracted from infected cells using the Thermofisher
+RNAqueous™-4PCR Total RNA Isolation Kit (which includes a DNase I
+digestion step) per manufacturer's instructions. An agarose gel
+electrophoresis was performed to check RNA integrity. The RNA quantity
+and purity was initially assessed using nanodrop, and RNA was used only
+if the A260/A280 ratio was 2.0 ± 0.05 and the A260/A230 ratio was
+\textgreater2 and \textless2.2. Extracted total RNA samples were sent to
+LC Sciences, Houston TX for poly-A-tailed mRNA sequencing where RNA
+integrity was checked with Agilent Technologies 2100 Bioanalyzer High
+Sensitivity DNA Chip and poly(A) RNA-seq library was prepared following
+Illumina's TruSeq-stranded-mRNA sample preparation protocol. Paired-end
+sequencing to generate 150 bp reads was performed on the Illumina
+NovaSeq 6000 sequencing system.
 
 \textbf{Quality Control and Mapping Process}
 
@@ -271,15 +306,10 @@ as developing targeted therapies or improving turkey health management.
 
 \subsection{REFERENCES}\label{references}
 
-\newpage
+\setlength{\parindent}{-0.25in}
+\setlength{\leftskip}{0.25in}
 
-\subsection{TABLES AND FIGURES}\label{tables-and-figures}
-
-\newpage
-
-\subsection*{SUPPLEMENTARY
-INFORMATION/MATERIALS}\label{supplementary-informationmaterials}
-\addcontentsline{toc}{subsection}{SUPPLEMENTARY INFORMATION/MATERIALS}
+\noindent
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{0}{1}
@@ -346,13 +376,87 @@ of haemorrhagic enteritis virus (HEV) in turkeys}. Dev Comp Immunol
 Colibacillosis of turkeys exacerbated by hemorrhagic enteritis virus.
 Laboratory studies. Avian Dis 29:729--32.}
 
-\bibitem[\citeproctext]{ref-Rautenschlein2000b}
+\bibitem[\citeproctext]{ref-Beach2009a}
 \CSLLeftMargin{10. }%
+\CSLRightInline{Beach NM, Duncan RB, Larsen CT, Meng XJ, Sriranganathan
+N, Pierson FW. 2009.
+\href{https://doi.org/10.1637/8575-010509-reg.1}{Persistent infection of
+turkeys with an avirulent strain of turkey hemorrhagic enteritis virus}.
+Avian Diseases 53:370--375.}
+
+\bibitem[\citeproctext]{ref-Rautenschlein2000b}
+\CSLLeftMargin{11. }%
 \CSLRightInline{Rautenschlein S, Suresh M, Sharma JM. 2000.
 \href{https://doi.org/10.1007/s007050070083}{Pathogenic avian adenovirus
 type II induces apoptosis in turkey spleen cells}. Archives of Virology
 145:1671--1683.}
 
+\bibitem[\citeproctext]{ref-Satam2023}
+\CSLLeftMargin{12. }%
+\CSLRightInline{Satam H, Joshi K, Mangrolia U, Waghoo S, Zaidi G, Rawool
+S, Thakare RP, Banday S, Mishra AK, Das G, Malonia SK. 2023.
+\href{https://doi.org/10.3390/biology12070997}{Next-generation
+sequencing technology: Current trends and advancements}. Biology
+12:997.}
+
+\bibitem[\citeproctext]{ref-Pandey2023}
+\CSLLeftMargin{13. }%
+\CSLRightInline{Pandey D, Onkara Perumal P. 2023.
+\href{https://doi.org/10.1007/s10142-023-01064-6}{A scoping review on
+deep learning for next-generation RNA-seq. Data analysis}. Functional
+\&amp; Integrative Genomics 23.}
+
+\bibitem[\citeproctext]{ref-Wang2019}
+\CSLLeftMargin{14. }%
+\CSLRightInline{Wang B, Kumar V, Olson A, Ware D. 2019.
+\href{https://doi.org/10.3389/fgene.2019.00384}{Reviving the
+transcriptome studies: An insight into the emergence of single-molecule
+transcriptome sequencing}. Frontiers in Genetics 10.}
+
+\bibitem[\citeproctext]{ref-Choi2016}
+\CSLLeftMargin{15. }%
+\CSLRightInline{Choi SC. 2016.
+\href{https://doi.org/10.1007/s12275-016-6233-2}{On the study of
+microbial transcriptomes using second- and third-generation sequencing
+technologies}. Journal of Microbiology 54:527--536.}
+
+\bibitem[\citeproctext]{ref-Mo2023}
+\CSLLeftMargin{16. }%
+\CSLRightInline{Mo Q, Feng K, Dai S, Wu Q, Zhang Z, Ali A, Deng F, Wang
+H, Ning Y-J. 2023.
+\href{https://doi.org/10.1016/j.virs.2022.09.002}{Transcriptome
+profiling highlights regulated biological processes and type III
+interferon antiviral responses upon crimean-congo hemorrhagic fever
+virus infection}. Virologica Sinica 38:34--46.}
+
+\bibitem[\citeproctext]{ref-Mahsoub2017}
+\CSLLeftMargin{17. }%
+\CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
+Pierson FW. 2017.
+\href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
+{PCR}-based infectivity assay for the titration of turkey hemorrhagic
+enteritis virus, an adenovirus, in live vaccines}. Journal of
+Virological Methods 239:42--49.}
+
 \end{CSLReferences}
+
+\setlength{\parindent}{0in}
+\setlength{\leftskip}{0in}
+\newpage
+
+\newpage
+
+\subsection{TABLES AND FIGURES}\label{tables-and-figures}
+
+\includegraphics{results/imss_model.png} \textbf{Figure 1: Model of
+THEV-induced immunosuppression in turkeys}. THEV infection of target
+cells is indicated with black dotted arrows. Black unbroken arrows
+indicate cell activation. Red arrows indicated signals leading to
+apoptosis. Blue arrows indicate all cytokines released by the cell. Blue
+arrows with square heads indicated an event leading to IMS. Adapted from
+((8)) \newpage
+
+\subsection{SUPPLEMENTARY
+INFORMATION/MATERIALS}\label{supplementary-informationmaterials}
 
 \end{document}
