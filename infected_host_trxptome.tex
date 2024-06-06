@@ -279,10 +279,33 @@ LC Sciences, Houston TX for poly-A-tailed mRNA sequencing where RNA
 integrity was checked with Agilent Technologies 2100 Bioanalyzer High
 Sensitivity DNA Chip and poly(A) RNA-seq library was prepared following
 Illumina's TruSeq-stranded-mRNA sample preparation protocol. Paired-end
-sequencing to generate 150 bp reads was performed on the Illumina
-NovaSeq 6000 sequencing system.
+sequencing, generating 150 bp reads was performed on the Illumina
+NovaSeq 6000 sequencing system. The paired-end 150bp sequences obtained
+during this study and all expression data have been submitted to the
+Gene Expression Omnibus database, under accession no \#\#\#\#\#\#\#
 
-\textbf{Quality Control and Mapping Process}
+\textbf{Quality Control and Mapping Process}\\
+Sequencing reads were processed following a well-established protocol
+described by Pertea \emph{et al} (18), using Snakemake - version 7.32.4
+(19), a popular workflow management system to drive the pipeline.
+Briefly, raw sequencing reads were trimmed with Cutadapt (20) and the
+quality of trimmed reads evaluated using the FastQC software, version
+0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge,
+United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall
+Mean Sequence Quality (Phred Score) of 36. Trimmed reads were mapped the
+reference \emph{Meleagris gallopavo} genome
+(\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz})
+with Hisat2 - version 2.2.1 (18) using the accompanying gene transfer
+format (GTF) annotation file
+(\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz})
+to build a genomic index. Samtools - version 1.19.2 was used to convert
+the output Sequence Alignment Map (SAM) file to the more manageable
+Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software (18),
+set to expression estimation mode was used to generate normalized gene
+expression estimates from the BAM files for genes in the reference GTF
+file after which the prepDE.py3 script was used to extract read count
+information from the StringTie gene expression files, providing a gene
+expression count matrix for downstream DEG analysis.
 
 \textbf{Functional Enrichment Analysis}
 
@@ -437,6 +460,27 @@ Pierson FW. 2017.
 {PCR}-based infectivity assay for the titration of turkey hemorrhagic
 enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
+
+\bibitem[\citeproctext]{ref-Pertea2016}
+\CSLLeftMargin{18. }%
+\CSLRightInline{Pertea M, Kim D, Pertea GM, Leek JT, Salzberg SL. 2016.
+\href{https://doi.org/10.1038/nprot.2016.095}{Transcript-level
+expression analysis of RNA-seq experiments with HISAT, StringTie and
+ballgown}. Nature Protocols 11:1650--1667.}
+
+\bibitem[\citeproctext]{ref-Snakemake2021}
+\CSLLeftMargin{19. }%
+\CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
+Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
+Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
+\href{https://doi.org/10.12688/f1000research.29032.2}{Sustainable data
+analysis with snakemake}. F1000Research 10:33.}
+
+\bibitem[\citeproctext]{ref-Martin2011}
+\CSLLeftMargin{20. }%
+\CSLRightInline{Martin M. 2011.
+\href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
+sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 
 \end{CSLReferences}
 
