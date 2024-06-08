@@ -288,12 +288,13 @@ Gene Expression Omnibus database, under accession no \#\#\#\#\#\#\#
 Sequencing reads were processed following a well-established protocol
 described by Pertea \emph{et al} (18), using Snakemake - version 7.32.4
 (19), a popular workflow management system to drive the pipeline.
-Briefly, raw sequencing reads were trimmed with Cutadapt (20) and the
-quality of trimmed reads evaluated using the FastQC software, version
-0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge,
-United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall
-Mean Sequence Quality (Phred Score) of 36. Trimmed reads were mapped the
-reference \emph{Meleagris gallopavo} genome
+Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
+(20) and the quality of trimmed reads evaluated using the FastQC
+software, version 0.12.1 (Bioinformatics Group at the Babraham
+Institute, Cambridge, United Kingdom;
+www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
+Quality (Phred Score) of 36. Trimmed reads were mapped the reference
+\emph{Meleagris gallopavo} genome
 (\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz})
 with Hisat2 - version 2.2.1 (18) using the accompanying gene transfer
 format (GTF) annotation file
@@ -304,10 +305,16 @@ Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software (18),
 set to expression estimation mode was used to generate normalized gene
 expression estimates from the BAM files for genes in the reference GTF
 file after which the prepDE.py3 script was used to extract read count
-information from the StringTie gene expression files, providing a gene
-expression count matrix for downstream DEG analysis.
+information from the StringTie gene expression files, providing an
+expression-count matrix for downstream DEG analysis.
 
-\textbf{Functional Enrichment Analysis}
+\textbf{DEG Analysis and Functional Enrichment Analysis}\\
+DEG analysis between mock- and THEV-infected samples was performed using
+very popular DESeq2 (21), which employs a Negative Binomial distribution
+model for read count comparisons. Genes with
+P\textsubscript{ajusted}-value \(\leq\) 0.05 were considered as
+differentially expressed. The data is deposited at GEO under accession
+number \#\#\#
 
 \textbf{Expression Profiling and Differentially Expressed Genes}
 
@@ -481,6 +488,13 @@ analysis with snakemake}. F1000Research 10:33.}
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
+
+\bibitem[\citeproctext]{ref-Deseq2}
+\CSLLeftMargin{21. }%
+\CSLRightInline{Love MI, Huber W, Anders S. 2014.
+\href{https://doi.org/10.1186/s13059-014-0550-8}{Moderated estimation of
+fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
+15:550.}
 
 \end{CSLReferences}
 
