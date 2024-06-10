@@ -6,6 +6,7 @@ channels:
   - nodefaults
 dependencies:
   - python
+  - pysam
   - samtools
   - hisat2
   - gffcompare
