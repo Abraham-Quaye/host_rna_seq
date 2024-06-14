@@ -141,4 +141,37 @@ DEG analysis between mock- and THEV-infected samples was performed using very po
 **Figure 1: Model of THEV-induced immunosuppression in turkeys**. THEV infection of target cells is indicated with black dotted arrows. Black unbroken arrows indicate cell activation. Red arrows indicated signals leading to apoptosis. Blue arrows indicate all cytokines released by the cell. Blue arrows with square heads indicated an event leading to IMS. Adapted from ([@Rautenschlein2000])
 \newpage
 
+```{r, mapping_stats_table}
+source("scripts/r_code/reads_mapping_stats.R")
+
+set_flextable_defaults(font.size = 8, table.layout = "fixed", float = "none")
+mapStats %>%
+  flextable(.) %>%
+  theme_vanilla() %>%
+  set_header_labels(sample = "Sample", raw_reads = "Raw Reads", trimmed_reads = "Trimmed Reads",
+                    mapped_reads = "Mapped Reads", unq_map_reads = "Uniquely Mapped \nReads",
+                    multi_map_reads = "Non-uniquely \nMapped Reads", q20 = "Q20%",
+                    q30 = "Q30%", gc_content = "GC\nContent (%)") %>%
+  flextable::font(part = "all", fontname = "Arial") %>%
+  flextable::bold(part = "header") %>%
+  flextable::set_table_properties(layout = "fixed", align = "center",
+                                  opts_pdf = list(caption_repeat = F),
+                                  opts_word = list(split = F, keep_with_next = T)) %>%
+  flextable::align(align = "center", part = "all") %>%
+  footnote(., j = c(2:6),
+           value = as_paragraph(c("All values for number of reads are in millions")),
+           ref_symbols = c("M"), part = "header", inline = T) %>%
+  footnote(., j = 1, i = c(1:11),
+           value = as_paragraph(c("These are infected samples indicated by the letter 'I' and 'S' in sample names")),
+           ref_symbols = c("Inf"), part = "body", inline = F) %>%
+  footnote(., j = 1, i = c(12:19),
+           value = as_paragraph(c("These are mock-infected samples indicated by the letters 'U' and 'N' in sample names")),
+           ref_symbols = c("Mk"), part = "body", inline = F) %>%
+  flextable::height(part = "header", height = 0.6) %>%
+  flextable::height(part = "body", height = 0.2) %>%
+  set_caption("Table 1: Summary of sequencing, quality control, and mapping processes")
+
+```
+\newpage
+
 ## SUPPLEMENTARY INFORMATION/MATERIALS

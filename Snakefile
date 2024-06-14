@@ -68,15 +68,15 @@ rule build_genomic_index:
     output:
         expand("raw_files/index/turkey_tran.{num}.ht2", \
         num = range(1, 9))
-    shell:
-        """
-        echo "Building TURKEY genomic index ..."
-        hisat2-build -p 8 --ss {input.ss} --exon {input.exons} {input.genome} raw_files/index/Mgallopavo_tran &&
-        echo "Index built successfully" || echo "Program Aborted!!!"
-        """
+    # shell:
+    #     """
+    #     echo "Building TURKEY genomic index ..."
+    #     hisat2-build -p 8 --ss {input.ss} --exon {input.exons} {input.genome} raw_files/index/turkey_tran &&
+    #     echo "Index built successfully" || echo "Program Aborted!!!"
+    #     """
 
-# #################### TRIM READS WITH TRIMGALORE #############
-rule FastQC_reads:
+#################### CLEAN FASTQC READS ####################
+rule trimmed_fastQ_files:
     input:
         f1 = expand("raw_files/initial_reads/forwardData/I_{tp}hrsS{rep}_Data1.fq.gz", \
         tp = [4, 24, 72], rep = range(1, 4)),
@@ -91,6 +91,11 @@ rule FastQC_reads:
         rep = [1, 3]),
         r3 = expand("raw_files/initial_reads/reverseData/U_{tp}hrsN{rep}_Data2.fq.gz", \
         tp = [4, 12, 24, 72], rep = [1, 2])
+
+# #################### QC READS WITH FASTQC ####################
+rule FastQC_reads:
+    input:
+       rules.trimmed_fastQ_files.input
     output:
         expand("qc_reports/fastqc_files/I_{tp}hrsS{rep}_Data1_fastqc.{ext}", \
         tp = [4, 24, 72], rep = range(1, 4), ext = ["html", "zip"]),
@@ -112,6 +117,7 @@ rule FastQC_reads:
         fastqc --memory 5120 -t 19 -o qc_reports/fastqc_files {input.r1} {input.r2} {input.r3}
         """
 
+#################### QC READS WITH MULTIQC ####################
 rule MultiQC_reads:
     input:
         rules.FastQC_reads.output
@@ -122,6 +128,16 @@ rule MultiQC_reads:
         """
         multiqc -f -o qc_reports/multiqc_files {input}
         """
+
+#################### COUNT TOTAL READS IN FASTQC FILES (TRIMMED READS) #######
+rule count_trimmed_reads:
+    input:
+        fastqc = rules.trimmed_fastQ_files.input,
+        script = "scripts/shell_code/fastqc_readCounts.sh"
+    output:
+        expand("results/fastqc_count{end}_Reads.txt", end = ["F", "R"])
+    shell:
+        "{input.script}"
 
 # #################### MAP READS TO TURKEY GENOME WITH HISAT2 #############
 rule map_reads_convert_to_bam:
@@ -163,6 +179,21 @@ rule index_sorted_bamFiles:
     shell:
         "{input.script}"
 
+#################### MAPPING STATISTICS FOR BAM FILES #######
+rule extract_mapping_statistics:
+    input:
+        fastqc = rules.map_reads_convert_to_bam.output,
+        script = "scripts/shell_code/mapping_stats.sh",
+        py_script = "scripts/python/calc_GC_content.py"
+    output:
+        expand("results/count{feat}_Mapped_reads.txt", feat = ["All", "Unq"]),
+        expand("results/countQ{q}_reads.txt", q = [20, 30]),
+        "results/gc_content_results.csv"
+    shell:
+        """
+        {input.script}
+        {input.py_script}
+        """
 
 #################### ESTIMATE TRANSCRIPT ABUNDANCES WITH STRINGTIE #############
 rule estimate_trancript_abundances:
@@ -260,9 +291,13 @@ rule write_manuscript:
         rmd = "infected_host_trxptome.Rmd",
         ref_style = "asm.csl",
         refs = "trxptome_refs.bib",
+        map_stats_script = "scripts/r_code/reads_mapping_stats.R",
+        map_stats_data = rules.extract_mapping_statistics.output,
+        trimmed_rds = rules.count_trimmed_reads.output,
     output:
         "infected_host_trxptome.pdf",
-        "infected_host_trxptome.tex"
+        "infected_host_trxptome.tex",
+        "infected_host_trxptome.docx"
     shell:
         """
         R -e "library(rmarkdown);render('{input.rmd}', output_format = 'all')";
@@ -273,4 +308,5 @@ rule run_pipeline:
         rules.save_DESeq2_result_PlotsandTables.output,
         rules.plot_DEG_figures.output,
         rules.plot_enrichment.output,
-        rules.write_manuscript.output
+        rules.write_manuscript.output,
+        rules.index_sorted_bamFiles.output
