@@ -216,34 +216,38 @@ mitigating the IMS.
 Next generation sequencing (NGS) is a groundbreaking technology that has
 significantly enhanced our understanding of DNA and RNA structure and
 function, and facilitated exceptional advancements in all domains of
-biology and the Life Sciences, including rare genetic diseases, cancer
-genomics, microbiome analysis, infectious diseases, and population
-genetics (12). mRNA sequencing (RNA-seq), an NGS approach to
+biology and the Life Sciences, including studies in rare genetic
+diseases, cancer genomics, microbiome analysis, infectious diseases, and
+population genetics (12). mRNA sequencing (RNA-seq), an NGS approach to
 transcriptomic studies, is a versatile, high throughput, and
 cost-effective technology that allows a broad scan of the entire
 transcriptome (the complete set of RNA molecules produced under specific
 conditions or in specific cells), thereby uncovering the active
 molecular pathways and processes. This technology has been leveraged in
-uncountable number of studies to elucidate cellular mechanisms under a
-wide range of treatment conditions, including virus-infected versus
-uninfected transcriptome comparisons (12--16). In RNA-seq studies,
+uncountable number of studies to elucidate active cellular processes
+under a wide range of treatment conditions, including the
+transcriptomics of viral infections (12--16). In RNA-seq studies,
 differentially expressed genes (DEGs) identified under different
 experimental conditions are key to unlocking the interesting biology or
-mechanism under study.
+mechanism under study. Identified DEGs are typically used for functional
+enrichment analysis in large curated knowledgebases which connect genes
+to specific biological processes, functions, and pathways such as gene
+ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG)
+pathways, shedding light on the biological question under study (17,
+18).
 
-To the best of our knowledge, no studies have been done leveraging the
-wealth of information offered by RNA-seq to elucidate the molecular
-mechanisms and pathways leading to THEV-induced IMS. To effectively
-counteract the immunosupressive effect of the vaccine, it is essential
-to unravel the host mechanisms/pathways influenced by the virus to bring
-about IMS. In this work, we present the first transcriptome profile
-analysis of THEV-infected turkey MDTC-RP19 B-cells by paired-end
-RNA-seq, highlighting specific host cellular/molecular processes
-affected during a THEV infection. Our paired-end sequencing allowed for
-reading 149 bp long high quality (mean Phred Score of 36) sequences from
-each end of cDNA fragments, which were mapped to the genome of domestic
-turkey (\emph{Meleagris gallopavo}). ***put overview of results here
-\newpage
+To the best of our knowledge, no study has leveraged the wealth of
+information offered by RNA-seq to elucidate the molecular mechanisms and
+pathways leading to THEV-induced IMS. To effectively counteract the
+immunosupressive effect of the vaccine, it is essential to unravel the
+host mechanisms/pathways influenced by the virus to bring about IMS. In
+this study, we present the first transcriptomic profile of a THEV
+infection using paired-end RNA-seq of a turkey B-cell line (MDTC-RP19),
+highlighting key host genes, cellular/molecular processes and pathways
+affected during a THEV infection. Our RNA-seq yielded 149 bp long high
+quality (mean Phred Score of 36) sequences from each end of cDNA
+fragments, which were mapped to the genome of domestic turkey
+(\emph{Meleagris gallopavo}). \newpage
 
 \subsection{RESULTS}\label{results}
 
@@ -271,7 +275,7 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (17) with modifications. Cells were
+similar to Mahshoub \emph{et al} (19) with modifications. Cells were
 infected in triplicate at a multiplicity of infection (MOI) of 100
 GCN/cell, incubated at 41\textsuperscript{o}C for 1 hour, and washed
 three times with phosphate buffered saline (PBS) to get rid of free
@@ -297,22 +301,22 @@ Gene Expression Omnibus database, under accession no \#\#\#\#\#\#\#
 
 \textbf{Quality Control and Mapping Process}\\
 Sequencing reads were processed following a well-established protocol
-described by Pertea \emph{et al} (18), using Snakemake - version 7.32.4
-(19), a popular workflow management system to drive the pipeline.
+described by Pertea \emph{et al} (20), using Snakemake - version 7.32.4
+(21), a popular workflow management system to drive the pipeline.
 Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
-(20) and the quality of trimmed reads evaluated using the FastQC
+(22) and the quality of trimmed reads evaluated using the FastQC
 software, version 0.12.1 (Bioinformatics Group at the Babraham
 Institute, Cambridge, United Kingdom;
 www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
 Quality (Phred Score) of 36. Trimmed reads were mapped the reference
 \emph{Meleagris gallopavo} genome
 (\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz})
-with Hisat2 - version 2.2.1 (18) using the accompanying gene transfer
+with Hisat2 - version 2.2.1 (20) using the accompanying gene transfer
 format (GTF) annotation file
 (\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz})
 to build a genomic index. Samtools - version 1.19.2 was used to convert
 the output Sequence Alignment Map (SAM) file to the more manageable
-Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software (18),
+Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software (20),
 set to expression estimation mode was used to generate normalized gene
 expression estimates from the BAM files for genes in the reference GTF
 file after which the prepDE.py3 script was used to extract read count
@@ -321,7 +325,7 @@ expression-count matrix for downstream DEG analysis.
 
 \textbf{DEG Analysis and Functional Enrichment Analysis}\\
 DEG analysis between mock- and THEV-infected samples was performed using
-very popular DESeq2 (21), which employs a Negative Binomial distribution
+very popular DESeq2 (23), which employs a Negative Binomial distribution
 model for read count comparisons. Genes with
 P\textsubscript{ajusted}-value \(\leq\) 0.05 were considered as
 differentially expressed. The data is deposited at GEO under accession
@@ -470,8 +474,23 @@ profiling highlights regulated biological processes and type III
 interferon antiviral responses upon crimean-congo hemorrhagic fever
 virus infection}. Virologica Sinica 38:34--46.}
 
-\bibitem[\citeproctext]{ref-Mahsoub2017}
+\bibitem[\citeproctext]{ref-Ashburner2000}
 \CSLLeftMargin{17. }%
+\CSLRightInline{Ashburner M, Ball CA, Blake JA, Botstein D, Butler H,
+Cherry JM, Davis AP, Dolinski K, Dwight SS, Eppig JT, Harris MA, Hill
+DP, Issel-Tarver L, Kasarskis A, Lewis S, Matese JC, Richardson JE,
+Ringwald M, Rubin GM, Sherlock G. 2000.
+\href{https://doi.org/10.1038/75556}{Gene ontology: Tool for the
+unification of biology}. Nature Genetics 25:25--29.}
+
+\bibitem[\citeproctext]{ref-Kanehisa2000}
+\CSLLeftMargin{18. }%
+\CSLRightInline{Kanehisa M. 2000.
+\href{https://doi.org/10.1093/nar/28.1.27}{KEGG: Kyoto encyclopedia of
+genes and genomes}. Nucleic Acids Research 28:27--30.}
+
+\bibitem[\citeproctext]{ref-Mahsoub2017}
+\CSLLeftMargin{19. }%
 \CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
 Pierson FW. 2017.
 \href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
@@ -480,14 +499,14 @@ enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
 
 \bibitem[\citeproctext]{ref-Pertea2016}
-\CSLLeftMargin{18. }%
+\CSLLeftMargin{20. }%
 \CSLRightInline{Pertea M, Kim D, Pertea GM, Leek JT, Salzberg SL. 2016.
 \href{https://doi.org/10.1038/nprot.2016.095}{Transcript-level
 expression analysis of RNA-seq experiments with HISAT, StringTie and
 ballgown}. Nature Protocols 11:1650--1667.}
 
 \bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{19. }%
+\CSLLeftMargin{21. }%
 \CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
 Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
 Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
@@ -495,13 +514,13 @@ Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
 analysis with snakemake}. F1000Research 10:33.}
 
 \bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{20. }%
+\CSLLeftMargin{22. }%
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 
 \bibitem[\citeproctext]{ref-Deseq2}
-\CSLLeftMargin{21. }%
+\CSLLeftMargin{23. }%
 \CSLRightInline{Love MI, Huber W, Anders S. 2014.
 \href{https://doi.org/10.1186/s13059-014-0550-8}{Moderated estimation of
 fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
