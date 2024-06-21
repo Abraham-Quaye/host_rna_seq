@@ -50,6 +50,12 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -222,9 +228,9 @@ population genetics (12). mRNA sequencing (RNA-seq), an NGS approach to
 transcriptomic studies, is a versatile, high throughput, and
 cost-effective technology that allows a broad scan of the entire
 transcriptome (the complete set of RNA molecules produced under specific
-conditions or in specific cells), thereby uncovering the active
-molecular pathways and processes. This technology has been leveraged in
-uncountable number of studies to elucidate active cellular processes
+conditions or in specific cells), thereby uncovering the active genes
+and molecular pathways and processes. This technology has been leveraged
+in uncountable number of studies to elucidate active cellular processes
 under a wide range of treatment conditions, including the
 transcriptomics of viral infections (12--16). In RNA-seq studies,
 differentially expressed genes (DEGs) identified under different
@@ -242,7 +248,7 @@ pathways leading to THEV-induced IMS. To effectively counteract the
 immunosupressive effect of the vaccine, it is essential to unravel the
 host mechanisms/pathways influenced by the virus to bring about IMS. In
 this study, we present the first transcriptomic profile of a THEV
-infection using paired-end RNA-seq of a turkey B-cell line (MDTC-RP19),
+infection using paired-end RNA-seq in a turkey B-cell line (MDTC-RP19),
 highlighting key host genes, cellular/molecular processes and pathways
 affected during a THEV infection. Our RNA-seq yielded 149 bp long high
 quality (mean Phred Score of 36) sequences from each end of cDNA
@@ -325,15 +331,21 @@ expression-count matrix for downstream DEG analysis.
 
 \textbf{DEG Analysis and Functional Enrichment Analysis}\\
 DEG analysis between mock- and THEV-infected samples was performed using
-very popular DESeq2 (23), which employs a Negative Binomial distribution
-model for read count comparisons. Genes with
-P\textsubscript{ajusted}-value \(\leq\) 0.05 were considered as
-differentially expressed. The data is deposited at GEO under accession
-number \#\#\#
+the very popular DESeq2 (23), which employs a Negative Binomial
+distribution model for read count comparisons. Genes with
+P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered as
+differentially expressed. The read count data are deposited at Gene
+Expression Omnibus (GEO) under accession number \#\#\#. GO and KEGG
+analyses for DEGs were performed based on GO databases and KEGG
+databases using the R package gprofiler2 (24) with \emph{Meleagris
+gallopavo} as the reference organism. Results with
+P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
+functionally enriched. \st{Additionally, the DAVID analysis tool was
+used for KEGG pathway analysis}. All visualization plots were made using
+ggplot2, pheatmap, and ggvenn R package (25--27). Venn diagram ---
 
-\textbf{Expression Profiling and Differentially Expressed Genes}
-
-\textbf{Quantitative Real-Time Reverse Transcriptase PCR}
+\textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
+(RT-qPCR)}
 
 \textbf{Statistical Analysis} \newpage
 
@@ -525,6 +537,29 @@ sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 \href{https://doi.org/10.1186/s13059-014-0550-8}{Moderated estimation of
 fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
 15:550.}
+
+\bibitem[\citeproctext]{ref-Gprofiler2}
+\CSLLeftMargin{24. }%
+\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
+2020. gprofiler2-- an r package for gene list functional enrichment
+analysis and namespace conversion toolset g:profiler. F1000Research 9
+(ELIXIR).}
+
+\bibitem[\citeproctext]{ref-ggplot2}
+\CSLLeftMargin{25. }%
+\CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
+analysis. Springer-Verlag New York.
+\url{https://ggplot2.tidyverse.org}.}
+
+\bibitem[\citeproctext]{ref-pheatmap}
+\CSLLeftMargin{26. }%
+\CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
+\url{https://CRAN.R-project.org/package=pheatmap}.}
+
+\bibitem[\citeproctext]{ref-ggvenn}
+\CSLLeftMargin{27. }%
+\CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
+\url{https://CRAN.R-project.org/package=ggvenn}.}
 
 \end{CSLReferences}
 

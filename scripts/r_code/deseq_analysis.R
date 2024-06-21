@@ -203,11 +203,6 @@ deseq_results <- tibble(timepoint = c("4hrs", "12hrs", "24hrs", "72hrs"),
          dist_plt = map2(dds_obj, timepoint, ~plot_sample_dists(dds = .x, lab_tp = .y))
          )
 
-# map(deseq_results$lfc_results, ~plotMA(.x))
-# map(deseq_results$dds_results, ~plotMA(.x))
-# map(deseq_results$dds_obj, ~plotDispEsts(.x))
-# resultsNames(deseq_results$dds_obj[[1]])
-
 # save DEG tables
 map2(deseq_results$sig_res, deseq_results$timepoint,
      ~write.csv(.x, file = paste0("results/r/tables/signif_", .y, "DEGs.csv"),
@@ -260,37 +255,3 @@ merge_plts <- merge_plts + plot_annotation(tag_levels = c("A", "1")) &
 
 ggsave(plot = merge_plts, filename = "results/r/figures/sample_corr_figure.png",
        width = 21.5, height = 14, dpi = 400)
-
-# bmatrix <- gene_matrix %>% set_rownames(.$gene_id) %>%
-#   select(-gene_id) %>% as.matrix(.)
-# 
-# bulk <- DESeqDataSetFromMatrix(countData = bmatrix,
-#                                colData = exp_metadata, design = ~infection)
-# 
-# bulk_dds <- DESeq(bulk)
-# bulk_rld <- vst(bulk_dds, blind = F)
-# bulk_pcaData <- plotPCA(bulk_rld, intgroup = "infection", returnData = T) %>%
-#   mutate(timepoint = c(rep(12, 2), rep(c(24, 4, 72), each = 3),
-#                        rep(c(12, 24, 4, 72), each = 2)))
-# bulk_pvar <- round(attr(bulk_pcaData, "percentVar") * 100)
-# 
-# 
-# bulk_pcaData %>%
-#   ggplot(aes(PC1, PC2, colour = infection))+
-#   geom_point(size = 5) +
-#   # geom_text(aes(label = bulk_tt$treatment)) +
-#   labs(title = "THEV-infected VS Uninfected PCA",
-#        x = paste0("PC1: ", bulk_pvar[[1]], "% Variance"),
-#        y = paste0("PC2: ", bulk_pvar[[2]], "% Variance")) +
-#   theme_bw() +
-#   facet_wrap(~timepoint, scales = "free")
-
-# bulk_dists <- dist(t(assay(bulk_tt)))
-# bulk_dist_mat <- as.matrix(bulk_dists)
-# 
-# pheatmap(bulk_dist_mat,
-#          clustering_distance_cols = bulk_dists,
-#          clustering_distance_rows = bulk_dists,
-#          color = col_heat,
-#          treeheight_row = 30,
-#          treeheight_col = 30)
