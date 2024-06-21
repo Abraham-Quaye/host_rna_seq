@@ -63,6 +63,14 @@ Provo, Utah\
 library(knitr)
 library(flextable)
 opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+inline_hook <- function(x) {
+  if(is.numeric(x)){
+    formatted <- format(x, big.mark = ",")
+  }else{formatted <- x}
+  paste0("**", formatted, "**")
+}
+knit_hooks$set(inline = inline_hook)
 ```
 
 ## ABSTRACT
@@ -75,10 +83,39 @@ It is well-established that THEV primarily infects and replicates in turkey B-ce
 
 Next generation sequencing (NGS) is a groundbreaking technology that has significantly enhanced our understanding of DNA and RNA structure and function, and facilitated exceptional advancements in all domains of biology and the Life Sciences, including studies in rare genetic diseases, cancer genomics, microbiome analysis, infectious diseases, and population genetics [@Satam2023]. mRNA sequencing (RNA-seq), an NGS approach to transcriptomic studies, is a versatile, high throughput, and cost-effective technology that allows a broad scan of the entire transcriptome (the complete set of RNA molecules produced under specific conditions or in specific cells), thereby uncovering the active genes and molecular pathways and processes. This technology has been leveraged in uncountable number of studies to elucidate active cellular processes under a wide range of treatment conditions, including the transcriptomics of viral infections [@Pandey2023; @Wang2019; @Choi2016; @Satam2023; @Mo2023]. In RNA-seq studies, differentially expressed genes (DEGs) identified under different experimental conditions are key to unlocking the interesting biology or mechanism under study. Identified DEGs are typically used for functional enrichment analysis in large curated knowledgebases which connect genes to specific biological processes, functions, and pathways such as gene ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways, shedding light on the biological question under study [@Ashburner2000; @Kanehisa2000].
 
-To the best of our knowledge, no study has leveraged the wealth of information offered by RNA-seq to elucidate the molecular mechanisms and pathways leading to THEV-induced IMS. To effectively counteract the immunosupressive effect of the vaccine, it is essential to unravel the host mechanisms/pathways influenced by the virus to bring about IMS. In this study, we present the first transcriptomic profile of a THEV infection using paired-end RNA-seq in a turkey B-cell line (MDTC-RP19), highlighting key host genes, cellular/molecular processes and pathways affected during a THEV infection. Our RNA-seq yielded 149 bp long high quality (mean Phred Score of 36) sequences from each end of cDNA fragments, which were mapped to the genome of domestic turkey (*Meleagris gallopavo*).
+To the best of our knowledge, no study has leveraged the wealth of information offered by RNA-seq to elucidate the molecular mechanisms and pathways leading to THEV-induced IMS. To effectively counteract the immunosupressive effect of the vaccine, it is essential to unravel the host mechanisms/pathways influenced by the virus to bring about IMS. In this study, we present the first transcriptomic profile of a THEV infection using paired-end RNA-seq in a turkey B-cell line (MDTC-RP19), highlighting key host genes, cellular/molecular processes and pathways affected during a THEV infection. Our RNA-seq yielded 149 bp long high quality (mean PHRED Score of 36) sequences from each end of cDNA fragments, which were mapped to the genome of domestic turkey (*Meleagris gallopavo*).
 \newpage
 
 ## RESULTS
+```{r mapping_stats}
+source("scripts/r_code/reads_mapping_stats.R")
+
+tot_raw_rds <- mapStats %>% pull(raw_reads) %>% sum(.)
+tot_trm_rds <- mapStats %>% pull(trimmed_reads) %>% sum(.)
+min_tr_rds <- mapStats %>% pull(trimmed_reads) %>% min(.)
+max_tr_rds <- mapStats %>% pull(trimmed_reads) %>% max(.)
+
+min_map_perc <- mapStats %>%
+  mutate(map_perc = str_replace(mapped_reads, "\\d+\\.?\\d+\\s\\((\\d+\\.?\\d+)%\\)", "\\1")) %>%
+  mutate(map_per = as.numeric(map_perc)) %>% pull(map_perc) %>%
+  min(.) %>% as.numeric(.) %>% round(., 1)
+max_map_perc <- mapStats %>%
+  mutate(map_perc = str_replace(mapped_reads, "\\d+\\.?\\d+\\s\\((\\d+\\.?\\d+)%\\)", "\\1"),
+         map_per = as.numeric(map_perc)) %>% pull(map_perc) %>%
+  max(.) %>% as.numeric(.) %>% round(., 1)
+```
+
+**Sequencing Results**    
+To identify the host transcriptome profile of THEV infection, MDTC-RP19 cells were THEV-infected or mock-infected in triplicates or duplicates, respectively, and collected in like manner at 4-, 12-, 24-, and 72-hours post infection (hpi). mRNAs extracted from mock- or THEV-infected cells in duplicates or triplicates, respectively, were sequenced on the Illumina platform. The sequencing yielded a total of `r tot_raw_rds` million raw reads (149 bp in length) across all samples (statistics for the sequencing reads obtained from each RNA library are presented in **Table 1**). After trimming off low-quality reads, the remaining `r tot_trm_rds` million total paired-end trimmed reads (approximately, `r min_tr_rds`-`r max_tr_rds` million reads per sample) were mapped to the genome of *Meleagris gallopavo* obtained from the National Center for Biotechnology Information (NCBI). The percentage of reads mapping to the host genome across all samples ranged from `r min_map_perc`-`r max_map_perc`%. Although our sequencing reads have excellent quality scores (see **Table 1**) for all time points, the DEGs identified at 4- and 72-hpi did not yield any results in the functional enrichment analyses (i.e, GO term and KEGG pathway); hence, they were excluded from all subsequent analyses.
+
+**DEGs of Infected Versus Mock-infected Cells**   
+~~Discuss selection criteria and method/software used~~   
+~~Number of DEGs~~   
+~~Discuss all the QC plots (volcano, sample corr, pca, etc.) here~~   
+~~Discuss fold changes?~~   
+ 
+**Functional Enrichment Analyses (GO, KEGG pathway, and interaction network analyses)**   
+~~Discuss enrichment analysis plots and tables here~~
 \newpage
 
 ## DISCUSSION
@@ -90,16 +127,16 @@ To the best of our knowledge, no study has leveraged the wealth of information o
 ## MATERIALS AND METHODS
 
 **Cell culture and THEV Infection**   
-The Turkey B-cell line (MDTC-RP19, ATCC CRL-8135) was grown as suspension cultures in 1:1 complete Leibovitz's L-15/McCoy's 5A medium with 10% fetal bovine serum (FBS), 20% chicken serum (ChS), 5% tryptose phosphate broth (TPB), and 1% antibiotic solution (100 U/mL Penicillin and 100$\mu g$/mL Streptomycin), at 41^o^C in a humidified atmosphere with 5% CO~2~. Infected cells were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media (SRLM) with 2.5% FBS, 5% ChS, 1.2% TPB, and 1% antibiotic solution. A commercially available THEV vaccine was purchased from Hygieia Biological Labs (VAS strain). The stock virus was titrated using an in-house qPCR assay with titer expressed as genome copy number (GCN)/mL, similar to Mahshoub *et al* [@Mahsoub2017] with modifications. Cells were infected in triplicate at a multiplicity of infection (MOI) of 100 GCN/cell, incubated at 41^o^C for 1 hour, and washed three times with phosphate buffered saline (PBS) to get rid of free virus particles. Triplicate samples were harvested at 4-, 12-, 24-, and 72-hpi for total RNA extraction.
+The Turkey B-cell line (MDTC-RP19, ATCC CRL-8135) was grown as suspension cultures in 1:1 complete Leibovitz's L-15/McCoy's 5A medium with 10% fetal bovine serum (FBS), 20% chicken serum (ChS), 5% tryptose phosphate broth (TPB), and 1% antibiotic solution (100 U/mL Penicillin and 100$\mu g$/mL Streptomycin), at 41^o^C in a humidified atmosphere with 5% CO~2~. Infected cells were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media (SRLM) with 2.5% FBS, 5% ChS, 1.2% TPB, and 1% antibiotic solution. A commercially available THEV vaccine was purchased from Hygieia Biological Labs (VAS strain). The stock virus was titrated using an in-house qPCR assay with titer expressed as genome copy number (GCN)/mL, similar to Mahshoub *et al* [@Mahsoub2017] with modifications. Cells were THEV-infected or mock-infected in triplicates or duplicates, respectively at a multiplicity of infection (MOI) of 100 GCN/cell, incubated at 41^o^C for 1 hour, and washed three times with phosphate buffered saline (PBS) to get rid of free virus particles. At each time point (4-, 12-, 24-, and 72-hpi), triplicate (THEV-infected) and duplicate (mock-infected) samples were harvested for total RNA extraction.
 
 **RNA extraction and Sequencing**   
 Total RNA was extracted from infected cells using the Thermofisher RNAqueous™-4PCR Total RNA Isolation Kit (which includes a DNase I digestion step) per manufacturer's instructions. An agarose gel electrophoresis was performed to check RNA integrity. The RNA quantity and purity was initially assessed using nanodrop, and RNA was used only if the A260/A280 ratio was 2.0 ± 0.05 and the A260/A230 ratio was \>2 and \<2.2. Extracted total RNA samples were sent to LC Sciences, Houston TX for poly-A-tailed mRNA sequencing where RNA integrity was checked with Agilent Technologies 2100 Bioanalyzer High Sensitivity DNA Chip and poly(A) RNA-seq library was prepared following Illumina's TruSeq-stranded-mRNA sample preparation protocol. Paired-end sequencing, generating 150 bp reads was performed on the Illumina NovaSeq 6000 sequencing system. The paired-end 150bp sequences obtained during this study and all expression data have been submitted to the Gene Expression Omnibus database, under accession no #######
 
 **Quality Control and Mapping Process**   
-Sequencing reads were processed following a well-established protocol described by Pertea *et al* [@Pertea2016], using Snakemake - version 7.32.4 [@Snakemake2021], a popular workflow management system to drive the pipeline. Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10 [@Martin2011] and the quality of trimmed reads evaluated using the FastQC software, version 0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge, United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence Quality (Phred Score) of 36. Trimmed reads were mapped the reference *Meleagris gallopavo* genome (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz>) with Hisat2 - version 2.2.1 [@Pertea2016] using the accompanying gene transfer format (GTF) annotation file (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz>) to build a genomic index. Samtools - version 1.19.2 was used to convert the output Sequence Alignment Map (SAM) file to the more manageable Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software [@Pertea2016], set to expression estimation mode was used to generate normalized gene expression estimates from the BAM files for genes in the reference GTF file after which the prepDE.py3 script was used to extract read count information from the StringTie gene expression files, providing an expression-count matrix for downstream DEG analysis.
+Sequencing reads were processed following a well-established protocol described by Pertea *et al* [@Pertea2016], using Snakemake - version 7.32.4 [@Snakemake2021], a popular workflow management system to drive the pipeline. Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10 [@Martin2011] and the quality of trimmed reads evaluated using the FastQC software, version 0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge, United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence Quality (PHRED Score) of 36. Trimmed reads were mapped the reference *Meleagris gallopavo* genome (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz>) with Hisat2 - version 2.2.1 [@Pertea2016] using the accompanying gene transfer format (GTF) annotation file (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz>) to build a genomic index. Samtools - version 1.19.2 was used to convert the output Sequence Alignment Map (SAM) file to the more manageable Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software [@Pertea2016], set to expression estimation mode was used to generate normalized gene expression estimates from the BAM files for genes in the reference GTF file after which the prepDE.py3 script was used to extract read count information from the StringTie gene expression files, providing an expression-count matrix for downstream DEG analysis.
 
 **DEG Analysis and Functional Enrichment Analysis**   
-DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. GO and KEGG analyses for DEGs were performed based on GO databases and KEGG databases using the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. ~~Additionally, the DAVID analysis tool was used for KEGG pathway analysis~~. All visualization plots were made using ggplot2, pheatmap, and ggvenn R package [@ggplot2; @pheatmap; @ggvenn]. Venn diagram ---
+DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. GO and KEGG analyses for DEGs were performed based on GO databases and KEGG databases using the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. ~~Additionally, the DAVID analysis tool was used for KEGG pathway analysis~~. All visualization plots were made using ggplot2, pheatmap, and ggvenn R packages [@ggplot2; @pheatmap; @ggvenn]. Venn diagram ---
 
 **Validation of DEGs by Reverse Transcriptase Quantitative PCR (RT-qPCR)**
 
@@ -139,8 +176,6 @@ DEG analysis between mock- and THEV-infected samples was performed using the ver
 \newpage
 
 ```{r, mapping_stats_table}
-source("scripts/r_code/reads_mapping_stats.R")
-
 set_flextable_defaults(font.size = 8, table.layout = "fixed", float = "none")
 mapStats %>%
   flextable(.) %>%
