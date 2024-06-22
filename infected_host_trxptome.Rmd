@@ -106,13 +106,40 @@ max_map_perc <- mapStats %>%
 ```
 
 **Sequencing Results**    
-To identify the host transcriptome profile of THEV infection, MDTC-RP19 cells were THEV-infected or mock-infected in triplicates or duplicates, respectively, and collected in like manner at 4-, 12-, 24-, and 72-hours post infection (hpi). mRNAs extracted from mock- or THEV-infected cells in duplicates or triplicates, respectively, were sequenced on the Illumina platform. The sequencing yielded a total of `r tot_raw_rds` million raw reads (149 bp in length) across all samples (statistics for the sequencing reads obtained from each RNA library are presented in **Table 1**). After trimming off low-quality reads, the remaining `r tot_trm_rds` million total paired-end trimmed reads (approximately, `r min_tr_rds`-`r max_tr_rds` million reads per sample) were mapped to the genome of *Meleagris gallopavo* obtained from the National Center for Biotechnology Information (NCBI). The percentage of reads mapping to the host genome across all samples ranged from `r min_map_perc`-`r max_map_perc`%. Although our sequencing reads have excellent quality scores (see **Table 1**) for all time points, the DEGs identified at 4- and 72-hpi did not yield any results in the functional enrichment analyses (i.e, GO term and KEGG pathway); hence, they were excluded from all subsequent analyses.
+To identify the host transcriptome profile during THEV infection, MDTC-RP19 cells were THEV-infected or mock-infected in triplicates or duplicates, respectively, and collected in like manner at 4-, 12-, 24-, and 72-hours post infection (hpi). mRNAs extracted from mock- or THEV-infected cells were sequenced on the Illumina platform, yielding a total of `r tot_raw_rds` million raw reads (149 bp in length) across all samples (statistics for the sequencing reads obtained from each RNA library are presented in **Table 1**). After trimming off low-quality reads, the remaining `r tot_trm_rds` million total paired-end trimmed reads (approximately, `r min_tr_rds`-`r max_tr_rds` million reads per sample) were mapped to the genome of *Meleagris gallopavo* obtained from the National Center for Biotechnology Information (NCBI). The percentage of reads mapping to the host genome across all samples ranged from `r min_map_perc`-`r max_map_perc`%. Although our sequencing reads have excellent quality scores (see **Table 1**) at all time points, the DEGs identified at 4- and 72-hpi did not yield any results in the functional enrichment analyses (i.e, GO term and KEGG pathway analysis); hence, they were excluded from all subsequent analyses. In the remaining samples from 12- and 24-hpi, there is a high correlation was seen between biological replicates (**Figure 2A** and **B**)
 
 **DEGs of Infected Versus Mock-infected Cells**   
-~~Discuss selection criteria and method/software used~~   
-~~Number of DEGs~~   
-~~Discuss all the QC plots (volcano, sample corr, pca, etc.) here~~   
-~~Discuss fold changes?~~   
+```{r DEG_stats, message=F}
+source("scripts/r_code/extract_myDEG_geneIDs.R")
+
+# extracting counts for number of genes
+tot_12 <- diff_exp_genes %>% filter(timepoint == "t12") %>% nrow(.) %>% format(., big.mark = ",")
+tot_24 <- diff_exp_genes %>% filter(timepoint == "t24") %>% nrow(.) %>% format(., big.mark = ",")
+
+up_12 <- all_deg_tables[["up_degIDs_12hrs"]] %>% nrow(.) %>% format(., big.mark = ",")
+down_12 <- all_deg_tables[["down_degIDs_12hrs"]] %>% nrow(.) %>% format(., big.mark = ",")
+up_24 <- all_deg_tables[["up_degIDs_24hrs"]] %>% nrow(.) %>% format(., big.mark = ",")
+down_24 <- all_deg_tables[["down_degIDs_24hrs"]] %>% nrow(.) %>% format(., big.mark = ",")
+
+# extracting log2FC ranges
+min_fc_12 <- diff_exp_genes %>% filter(timepoint == "t12") %>%
+  pull(log2fc) %>% min(.) %>% round(., 1)
+min_fc_12_name <- diff_exp_genes %>% filter(timepoint == "t12") %>%
+  slice_min(log2fc) %>% pull(gene_name)
+max_fc_12 <- diff_exp_genes %>% filter(timepoint == "t12") %>%
+  pull(log2fc) %>% max(.) %>% round(., 1)
+max_fc_12_name <- diff_exp_genes %>% filter(timepoint == "t12") %>%
+  slice_max(log2fc) %>% pull(gene_name)
+min_fc_24 <- diff_exp_genes %>% filter(timepoint == "t24") %>%
+  pull(log2fc) %>% min(.) %>% round(., 1) %>% format(., nsmall = 1)
+min_fc_24_name <- diff_exp_genes %>% filter(timepoint == "t24") %>%
+  slice_min(log2fc) %>% pull(gene_name)
+max_fc_24 <- diff_exp_genes %>% filter(timepoint == "t24") %>%
+  pull(log2fc) %>% max(.) %>% round(., 1)
+max_fc_24_name <- diff_exp_genes %>% filter(timepoint == "t24") %>%
+  slice_max(log2fc) %>% pull(gene_name)
+```
+Gene expression levels were estimated with the StringTie software [@Pertea2016] in Fragments per kilobase of transcript per million (FPKM) units. The analysis of DEGs was performed with the DESeq2 R package [@Deseq2] which employs negative binomial distribution model for read count comparisons. Using P~adjusted~-value $\leq$ 0.05 as the inclusion criteria, a total of `r tot_12` and `r tot_24` genes were identified as differentially expressed at 12-hpi and 24-hpi, respectively. ~~DEG analyses results between mock- and THEV-infected samples at 12 and 24-hpi are presented in **Supplementary Tables 1 and 2**, respectively~~. At 12-hpi, `r up_12` genes were upregulated and `r down_12` genes downregulated, whereas `r up_24` genes were upregulated and `r down_24` genes downregulated at 24-hpi (**Figure 2C**,and **Figure 3A-C**). The log~2~fold-change(FC) values at 12-hpi ranged between `r min_fc_12` and +`r max_fc_12` for `r min_fc_12_name` (Transmembrane Protein 156) and `r max_fc_12_name` (Lipase G), respectively. At 24-hpi, the log~2~FC values ranged between `r min_fc_24` and +`r max_fc_24` for `r min_fc_24_name` (C1q And TNF Related 12) and `r max_fc_24_name` (Potassium Voltage-Gated Channel Modifier Subfamily G Member 1), respectively.  
  
 **Functional Enrichment Analyses (GO, KEGG pathway, and interaction network analyses)**   
 ~~Discuss enrichment analysis plots and tables here~~
@@ -173,6 +200,13 @@ DEG analysis between mock- and THEV-infected samples was performed using the ver
 ## TABLES AND FIGURES
 ![](results/imss_model.png)
 **Figure 1: Model of THEV-induced immunosuppression in turkeys**. THEV infection of target cells is indicated with black dotted arrows. Black unbroken arrows indicate cell activation. Red arrows indicated signals leading to apoptosis. Blue arrows indicate all cytokines released by the cell. Blue arrows with square heads indicated an event leading to IMS. Adapted from ([@Rautenschlein2000])
+
+![](results/r/figures/sample_corr_figure.png)
+**Figure 2. (A) Principal component analysis (PCA) of turkey B-cells during THEV infection.** At 12-hpi **(A1)**,the results indicate that the first (PC1) and second (PC2) principal components account for 96% and 3% of the variation in the samples, respectively. Whereas PC1 and PC2 account for 96% and 2% of the variation, respectively at 24-hpi **(A2)**. **(B) Poisson distance matrices illustrating the RNA-seq library integrity within treatment (infected versus mock) groups**. The color scale represents the distances between biological replicates for both 12-hpi samples **(B1)** and 24-hpi samples **(B2)**. Dark colors represent high correlation (similarity) between the samples involved. **(C) Volcano plots of DEGs between THEV-infected versus mock-infected cells at 12- and 24-hpi**. Red, blue, and grey dots represent upregulated, downregulated, and non-significant genes, respectively for both 12-hpi samples **(C1)** and 24-hpi samples **(C2)**.
+
+![](results/r/figures/deg_patch_fig.png)
+**Figure 3: Differentially expressed genes (DEGs) of THEV-infected versus mock-infected samples at different time points.** **(A) Bar plots of number DEGs between mock- and THEV-infected samples.**  Red represents upregulated genes and blue represents downregulated genes.  **(B) Heatmaps of scaled expression data (Z-scores) of DEGs.** DEGs identified at 12-hpi are shown in **(B1)** and DEGs at 24-hpi in **(B2).** **(C) Venn diagrams showing the number of DEGs identified at different time points.** For the upregulated genes **(C1)**, the red circle represents genes at 4-hpi, the blue circle, 12-hpi, and the grey circle, 24-hpi. For the downregulated genes **(C2)**, the green circle represents genes at 72-hpi, while all the other time points retain the colors from **(C1).**
+
 \newpage
 
 ```{r, mapping_stats_table}
