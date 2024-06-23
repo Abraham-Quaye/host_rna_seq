@@ -134,11 +134,12 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Transcriptomics of a THEV-infected Turkey B-cell Line},
+  pdftitle={The Transcriptome Profile of a Turkey B-cell Line Upon Infection With Turkey Hemorrhagic Enteritis Virus},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Transcriptomics of a THEV-infected Turkey B-cell Line}
+\title{The Transcriptome Profile of a Turkey B-cell Line Upon Infection
+With Turkey Hemorrhagic Enteritis Virus}
 \author{}
 \date{\vspace{-2.5em}}
 
@@ -147,14 +148,16 @@
 
 \vspace{5mm}
 
-Abraham Quaye\({^\dagger}\)\textsuperscript{,a}, Brian D.
+Abraham Quaye\({^\dagger}\)\textsuperscript{,a}, Brett E.
+Pickett\textsuperscript{a}, Joel S. Griffitts\textsuperscript{a},
+Bradford K. Berges\textsuperscript{a}, Brian D.
 Poole\textsuperscript{a,*}
 
 \vspace{5mm}
 
 \textsuperscript{a}Department of Microbiology and Molecular Biology,
 Brigham Young University\\
-\({^\dagger}\)First-author\\
+\({^\dagger}\)Primary Author\\
 \textsuperscript{*}Corresponding Author
 
 \vspace{5mm}
@@ -178,7 +181,7 @@ Turkey hemorrhagic enteritis virus (THEV), belonging to the family
 \emph{Adenoviridae}, genus \emph{Siadenovirus}, infects turkeys,
 chickens, and pheasants (1, 2). Infecting its hosts via the feco-oral
 route, THEV causes hemorrhagic enteritis (HE) in turkeys, a debilitating
-disease affecting predominantly 6-12 week old turkey poults
+disease affecting predominantly 6-12-week-old turkey poults
 characterized by immunosuppression (IMS), depression, splenomegaly,
 intestinal lesions leading to bloody droppings, and up to 80\% mortality
 (3--6). The clinical disease usually persists in affected flocks for
@@ -189,7 +192,7 @@ immunosuppressive nature of the virus, exacerbating the economic losses
 which show subclinical infections but retain the immunosuppressive
 effects. Since its isolation from a pheasant spleen, the Virginia
 Avirulent Strain (VAS) has been used effectively as a live vaccine
-despite the immunosuppressive side-effects but the vaccinated birds are
+despite the immunosuppressive side-effects, but the vaccinated birds are
 rendered more susceptible to opportunistic infections and death than
 unvaccinated cohorts leading to significant economic losses (4, 5,
 8--10).
@@ -221,16 +224,13 @@ mitigating the IMS.
 
 Next generation sequencing (NGS) is a groundbreaking technology that has
 significantly enhanced our understanding of DNA and RNA structure and
-function, and facilitated exceptional advancements in all domains of
-biology and the Life Sciences, including studies in rare genetic
-diseases, cancer genomics, microbiome analysis, infectious diseases, and
-population genetics (12). mRNA sequencing (RNA-seq), an NGS approach to
-transcriptomic studies, is a versatile, high throughput, and
+function and facilitated exceptional advancements in all domains of
+biology and the Life Sciences (12). mRNA sequencing (RNA-seq), an NGS
+approach to transcriptomic studies, is a versatile, high throughput, and
 cost-effective technology that allows a broad scan of the entire
-transcriptome (the complete set of RNA molecules produced under specific
-conditions or in specific cells), thereby uncovering the active genes
-and molecular pathways and processes. This technology has been leveraged
-in uncountable number of studies to elucidate active cellular processes
+transcriptome, thereby uncovering the active genes and molecular
+pathways and processes. This technology has been leveraged in an ever
+increasing number of studies to elucidate active cellular processes
 under a wide range of treatment conditions, including the
 transcriptomics of viral infections (12--16). In RNA-seq studies,
 differentially expressed genes (DEGs) identified under different
@@ -279,28 +279,27 @@ hence, they were excluded from all subsequent analyses. In the remaining
 samples from 12- and 24-hpi, there is a high correlation was seen
 between biological replicates (\textbf{Figure 2A} and \textbf{B})
 
-\textbf{DEGs of Infected Versus Mock-infected Cells}
+\textbf{DEGs of THEV-infected Versus Mock-infected Cells}
 
 Gene expression levels were estimated with the StringTie software (19)
 in Fragments per kilobase of transcript per million (FPKM) units. The
 analysis of DEGs was performed with the DESeq2 R package (20) which
 employs negative binomial distribution model for read count comparisons.
-Using P\textsubscript{adjusted}-value \(\leq\) 0.05 as the inclusion
-criteria, a total of \textbf{2,343} and \textbf{3,295} genes were
-identified as differentially expressed at 12-hpi and 24-hpi,
-respectively. \st{DEG analyses results between mock- and THEV-infected
-samples at 12 and 24-hpi are presented in \textbf{Supplementary Tables 1
-and 2}, respectively}. At 12-hpi, \textbf{1,079} genes were upregulated
-and \textbf{1,264} genes downregulated, whereas \textbf{1,512} genes
-were upregulated and \textbf{1,783} genes downregulated at 24-hpi
-(\textbf{Figure 2C},and \textbf{Figure 3A-C}). The
-log\textsubscript{2}fold-change(FC) values at 12-hpi ranged between
-\textbf{-1.4} and +\textbf{1.7} for \textbf{TMEM156} (Transmembrane
-Protein 156) and \textbf{LIPG} (Lipase G), respectively. At 24-hpi, the
-log\textsubscript{2}FC values ranged between \textbf{-2.0} and
-+\textbf{2.6} for \textbf{C1QTNF12} (C1q And TNF Related 12) and
-\textbf{KCNG1} (Potassium Voltage-Gated Channel Modifier Subfamily G
-Member 1), respectively.
+Using a P\textsubscript{adjusted}-value cutoff \(\leq\) 0.05 as the
+inclusion criteria, a total of \textbf{2,343} and \textbf{3,295} genes
+were identified as differentially expressed at 12-hpi and 24-hpi,
+respectively. \st{DEG analyses results at 12 and 24-hpi are presented in
+\textbf{Supplementary Tables 1 and 2}, respectively}. At 12-hpi,
+\textbf{1,079} genes were upregulated and \textbf{1,264} genes
+downregulated, whereas \textbf{1,512} genes were upregulated and
+\textbf{1,783} genes downregulated at 24-hpi (\textbf{Figure 2C},and
+\textbf{Figure 3A-C}). The log\textsubscript{2}fold-change(FC) values at
+12-hpi ranged between \textbf{-1.4} and +\textbf{1.7} for
+\textbf{TMEM156} (Transmembrane Protein 156) and \textbf{LIPG} (Lipase
+G), respectively. At 24-hpi, the log\textsubscript{2}FC values ranged
+between \textbf{-2.0} and +\textbf{2.6} for \textbf{C1QTNF12} (C1q And
+TNF Related 12) and \textbf{KCNG1} (Potassium Voltage-Gated Channel
+Modifier Subfamily G Member 1), respectively.
 
 \textbf{Functional Enrichment Analyses (GO, KEGG pathway, and
 interaction network analyses)}\\
@@ -317,8 +316,8 @@ interaction network analyses)}\\
 \subsection{MATERIALS AND METHODS}\label{materials-and-methods}
 
 \textbf{Cell culture and THEV Infection}\\
-The Turkey B-cell line (MDTC-RP19, ATCC CRL-8135) was grown as
-suspension cultures in 1:1 complete Leibovitz's L-15/McCoy's 5A medium
+The Turkey B-cell line (MDTC-RP19, ATCC CRL-8135) was grown as a
+suspension culture in 1:1 complete Leibovitz's L-15/McCoy's 5A medium
 with 10\% fetal bovine serum (FBS), 20\% chicken serum (ChS), 5\%
 tryptose phosphate broth (TPB), and 1\% antibiotic solution (100 U/mL
 Penicillin and 100\(\mu g\)/mL Streptomycin), at 41\textsuperscript{o}C
@@ -328,14 +327,14 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (21) with modifications. Cells were
-THEV-infected or mock-infected in triplicates or duplicates,
-respectively at a multiplicity of infection (MOI) of 100 GCN/cell,
-incubated at 41\textsuperscript{o}C for 1 hour, and washed three times
-with phosphate buffered saline (PBS) to get rid of free virus particles.
-At each time point (4-, 12-, 24-, and 72-hpi), triplicate
-(THEV-infected) and duplicate (mock-infected) samples were harvested for
-total RNA extraction.
+similar to Mahshoub \emph{et al} (21). Cells were THEV-infected or
+mock-infected in triplicates or duplicates, respectively at a
+multiplicity of infection (MOI) of 100 GCN/cell, incubated at
+41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
+buffered saline (PBS) to get rid of free virus particles. At each time
+point (4-, 12-, 24-, and 72-hpi), triplicate (THEV-infected) and
+duplicate (mock-infected) samples were harvested for total RNA
+extraction.
 
 \textbf{RNA extraction and Sequencing}\\
 Total RNA was extracted from infected cells using the Thermofisher
@@ -345,14 +344,14 @@ electrophoresis was performed to check RNA integrity. The RNA quantity
 and purity was initially assessed using nanodrop, and RNA was used only
 if the A260/A280 ratio was 2.0 ± 0.05 and the A260/A230 ratio was
 \textgreater2 and \textless2.2. Extracted total RNA samples were sent to
-LC Sciences, Houston TX for poly-A-tailed mRNA sequencing where RNA
-integrity was checked with Agilent Technologies 2100 Bioanalyzer High
-Sensitivity DNA Chip and poly(A) RNA-seq library was prepared following
-Illumina's TruSeq-stranded-mRNA sample preparation protocol. Paired-end
-sequencing, generating 150 bp reads was performed on the Illumina
-NovaSeq 6000 sequencing system. The paired-end 150bp sequences obtained
-during this study and all expression data have been submitted to the
-Gene Expression Omnibus database, under accession no \#\#\#\#\#\#\#
+LC Sciences, Houston TX for poly-A-tailed mRNA sequencing. RNA integrity
+was checked with Agilent Technologies 2100 Bioanalyzer High Sensitivity
+DNA Chip and poly(A) RNA-seq library was prepared following Illumina's
+TruSeq-stranded-mRNA sample preparation protocol. Paired-end sequencing,
+generating 150 bp reads was performed on the Illumina NovaSeq 6000
+sequencing system. The paired-end 150bp sequences obtained during this
+study and all expression data have been submitted to the Gene Expression
+Omnibus database, under accession no \#\#\#\#\#\#\#
 
 \textbf{Quality Control and Mapping Process}\\
 Sequencing reads were processed following a well-established protocol
@@ -620,44 +619,53 @@ analysis. Springer-Verlag New York.
 
 \subsection{TABLES AND FIGURES}\label{tables-and-figures}
 
-\includegraphics{results/imss_model.png} \textbf{Figure 1: Model of
-THEV-induced immunosuppression in turkeys}. THEV infection of target
-cells is indicated with black dotted arrows. Black unbroken arrows
-indicate cell activation. Red arrows indicated signals leading to
-apoptosis. Blue arrows indicate all cytokines released by the cell. Blue
-arrows with square heads indicated an event leading to IMS. Adapted from
-((8))
+\begin{figure}
+\centering
+\includegraphics{results/imss_model.png}
+\caption{\textbf{Figure 1: Model of THEV-induced immunosuppression in
+turkeys}. THEV infection of target cells is indicated with black dotted
+arrows. Black unbroken arrows indicate cell activation. Red arrows
+indicated signals leading to apoptosis. Blue arrows indicate all
+cytokines released by the cell. Blue arrows with square heads indicated
+an event leading to IMS. Adapted from Rautenschlein \emph{et al.} (8).}
+\end{figure}
 
+\begin{figure}
+\centering
 \includegraphics{results/r/figures/sample_corr_figure.png}
-\textbf{Figure 2. (A) Principal component analysis (PCA) of turkey
-B-cells during THEV infection.} At 12-hpi \textbf{(A1)},the results
-indicate that the first (PC1) and second (PC2) principal components
-account for 96\% and 3\% of the variation in the samples, respectively.
-Whereas PC1 and PC2 account for 96\% and 2\% of the variation,
-respectively at 24-hpi \textbf{(A2)}. \textbf{(B) Poisson distance
-matrices illustrating the RNA-seq library integrity within treatment
-(infected versus mock) groups}. The color scale represents the distances
-between biological replicates for both 12-hpi samples \textbf{(B1)} and
-24-hpi samples \textbf{(B2)}. Dark colors represent high correlation
-(similarity) between the samples involved. \textbf{(C) Volcano plots of
-DEGs between THEV-infected versus mock-infected cells at 12- and
-24-hpi}. Red, blue, and grey dots represent upregulated, downregulated,
-and non-significant genes, respectively for both 12-hpi samples
-\textbf{(C1)} and 24-hpi samples \textbf{(C2)}.
+\caption{\textbf{Figure 2. (A) Principal component analysis (PCA) of
+turkey B-cells during THEV infection.} At 12-hpi \textbf{(A1)},the
+results indicate that the first (PC1) and second (PC2) principal
+components account for 96\% and 3\% of the variation in the samples,
+respectively. Whereas PC1 and PC2 account for 96\% and 2\% of the
+variation, respectively at 24-hpi \textbf{(A2)}. \textbf{(B) Poisson
+distance matrices illustrating the RNA-seq library integrity within
+treatment (infected versus mock) groups}. The color scale represents the
+distances between biological replicates for both 12-hpi samples
+\textbf{(B1)} and 24-hpi samples \textbf{(B2)}. Dark colors represent
+high correlation (similarity) between the samples involved. \textbf{(C)
+Volcano plots of DEGs between THEV-infected versus mock-infected cells
+at 12- and 24-hpi}. Red, blue, and grey dots represent upregulated,
+downregulated, and non-significant genes, respectively for both 12-hpi
+samples \textbf{(C1)} and 24-hpi samples \textbf{(C2)}.}
+\end{figure}
 
-\includegraphics{results/r/figures/deg_patch_fig.png} \textbf{Figure 3:
-Differentially expressed genes (DEGs) of THEV-infected versus
-mock-infected samples at different time points.} \textbf{(A) Bar plots
-of number DEGs between mock- and THEV-infected samples.} Red represents
-upregulated genes and blue represents downregulated genes. \textbf{(B)
-Heatmaps of scaled expression data (Z-scores) of DEGs.} DEGs identified
-at 12-hpi are shown in \textbf{(B1)} and DEGs at 24-hpi in
-\textbf{(B2).} \textbf{(C) Venn diagrams showing the number of DEGs
-identified at different time points.} For the upregulated genes
-\textbf{(C1)}, the red circle represents genes at 4-hpi, the blue
-circle, 12-hpi, and the grey circle, 24-hpi. For the downregulated genes
-\textbf{(C2)}, the green circle represents genes at 72-hpi, while all
-the other time points retain the colors from \textbf{(C1).}
+\begin{figure}
+\centering
+\includegraphics{results/r/figures/deg_patch_fig.png}
+\caption{\textbf{Figure 3: Differentially expressed genes (DEGs) of
+THEV-infected versus mock-infected samples at different time points. (A)
+Bar plot of number DEGs identified.} Red represents upregulated genes
+and blue represents downregulated genes. \textbf{(B) Heatmaps of scaled
+expression data (Z-scores) of DEGs.} DEGs identified at 12-hpi are shown
+in \textbf{(B1)} and DEGs at 24-hpi in \textbf{(B2).} \textbf{(C) Venn
+diagrams showing the number of DEGs identified at different time
+points.} For the upregulated genes \textbf{(C1)}, the red circle
+represents genes at 4-hpi, the blue circle, 12-hpi, and the grey circle,
+24-hpi. For the downregulated genes \textbf{(C2)}, the green circle
+represents genes at 72-hpi, while all the other time points retain the
+colors from \textbf{(C1)}.}
+\end{figure}
 
 \newpage
 
