@@ -303,6 +303,30 @@ Modifier Subfamily G Member 1), respectively.
 
 \textbf{Functional Enrichment Analyses (GO, KEGG pathway, and
 interaction network analyses)}\\
+Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi
+DEGs with the gprofiler2 R package (21), which outputs results in three
+GO categories -- cellular components, biological processes, and
+molecular functions. Results with P\textsubscript{adjusted}-value
+\(\leq\) 0.05 were considered as functionally enriched. GO enrichment
+analyses at 12-hpi and 24-hpi showed significant intersections of
+results that were enriched among all three GO categories (ref
+tables/figures here).
+
+At 12-hpi, The primary molecular functions of the DEGs are mainly
+enriched into binding (44.5\%), catalytic activity (29.9\%),
+transcription regulator activity (7.6\%), molecular function regulation
+(7.6\%), transporter ac- tivity (6.6\%), molecular transducer activity
+(1.4\%), and structural molecule activity (1.4\%) (Fig. 2A). The
+distribution patterns of the up- regulated or down-regulated genes are
+similar to those of the whole DEGs (Fig. 2B and C). As for the cellular
+component, DEGs were roughly related to endoplasmic reticulum chaperone
+complex, melanosome, pigment granule, lewy body core and protein
+complexes (Fig. 3A and Fig. 4). Based on the biological processes, the
+GO terms were mainly summarized into the following categories, namely,
+defense response to virus, response to stress, interferon signaling
+pathway, regulation of viral process, immune response, metabolism,
+stimulus, apoptosis and protein catabolic process (Figs. 3B and 4).
+
 \st{Discuss enrichment analysis plots and tables here} \newpage
 
 \subsection{DISCUSSION}\label{discussion}
@@ -327,7 +351,7 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (21). Cells were THEV-infected or
+similar to Mahshoub \emph{et al} (22). Cells were THEV-infected or
 mock-infected in triplicates or duplicates, respectively at a
 multiplicity of infection (MOI) of 100 GCN/cell, incubated at
 41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
@@ -356,9 +380,9 @@ Omnibus database, under accession no \#\#\#\#\#\#\#
 \textbf{Quality Control and Mapping Process}\\
 Sequencing reads were processed following a well-established protocol
 described by Pertea \emph{et al} (19), using Snakemake - version 7.32.4
-(22), a popular workflow management system to drive the pipeline.
+(23), a popular workflow management system to drive the pipeline.
 Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
-(23) and the quality of trimmed reads evaluated using the FastQC
+(24) and the quality of trimmed reads evaluated using the FastQC
 software, version 0.12.1 (Bioinformatics Group at the Babraham
 Institute, Cambridge, United Kingdom;
 www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
@@ -383,10 +407,10 @@ the very popular DESeq2 (20), which employs a Negative Binomial
 distribution model for read count comparisons. Genes with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered as
 differentially expressed. The read count data are deposited at Gene
-Expression Omnibus (GEO) under accession number \#\#\#. GO and KEGG
-analyses for DEGs were performed based on GO databases and KEGG
-databases using the R package gprofiler2 (24) with \emph{Meleagris
-gallopavo} as the reference organism. Results with
+Expression Omnibus (GEO) under accession number \#\#\#. The functional
+profiling of DEGs (GO and KEGG analyses) were performed based on GO
+databases and KEGG databases using the R package gprofiler2 (21) with
+\emph{Meleagris gallopavo} as the reference organism. Results with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
 functionally enriched. \st{Additionally, the DAVID analysis tool was
 used for KEGG pathway analysis}. All visualization plots were made using
@@ -563,8 +587,15 @@ ballgown}. Nature Protocols 11:1650--1667.}
 fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
 15:550.}
 
-\bibitem[\citeproctext]{ref-Mahsoub2017}
+\bibitem[\citeproctext]{ref-Gprofiler2}
 \CSLLeftMargin{21. }%
+\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
+2020. gprofiler2-- an r package for gene list functional enrichment
+analysis and namespace conversion toolset g:profiler. F1000Research 9
+(ELIXIR).}
+
+\bibitem[\citeproctext]{ref-Mahsoub2017}
+\CSLLeftMargin{22. }%
 \CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
 Pierson FW. 2017.
 \href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
@@ -573,7 +604,7 @@ enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
 
 \bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{22. }%
+\CSLLeftMargin{23. }%
 \CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
 Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
 Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
@@ -581,17 +612,10 @@ Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
 analysis with snakemake}. F1000Research 10:33.}
 
 \bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{23. }%
+\CSLLeftMargin{24. }%
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
-
-\bibitem[\citeproctext]{ref-Gprofiler2}
-\CSLLeftMargin{24. }%
-\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
-2020. gprofiler2-- an r package for gene list functional enrichment
-analysis and namespace conversion toolset g:profiler. F1000Research 9
-(ELIXIR).}
 
 \bibitem[\citeproctext]{ref-ggplot2}
 \CSLLeftMargin{25. }%
