@@ -113,3 +113,9 @@ total_plts <- ((plts$plts[[1]] | plts$plts[[4]]) / (plts$plts[[7]] | plts$plts[[
 
 ggsave(plot = total_plts, filename = "results/r/figures/patch_GO_enrich.png",
        width = 30, height = 25, dpi = 350)
+
+# save GO term results for 12 and 24hpi results
+write_tsv(tab_res$res[[2]], file = "results/r/tables/t12_GO_results.tsv", col_names = T)
+
+write_tsv(tab_res$res[[3]], file = "results/r/tables/t24_GO_results.tsv", col_names = T)
+

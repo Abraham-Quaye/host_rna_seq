@@ -240,7 +240,7 @@ rule DESeq2_DEG_analysis:
 
 
 ####### EXTRACT AND SAVE GENE IDS FOR GO AND KEGG ANALYSES ###########################
-rule save_DESeq2_result_PlotsandTables:
+rule save_DESeq2_results:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
         r_script1 = "scripts/r_code/my_degAnalyses.R",
@@ -279,9 +279,10 @@ rule plot_enrichment:
         degfiles = rules.DESeq2_DEG_analysis.output.sigs,
         main_script = "scripts/r_code/my_enrichment_analyses.R"
     output:
-        expand("results/r/figures/go_enrich_{tp}{reg}{GO}.png", tp = [12, 24], \
-        reg = ["up", "down"], GO = ["BP", "CC", "MF"]),
-        "results/r/figures/patch_GO_enrich.png"
+        go_figs = expand("results/r/figures/go_enrich_{tp}{reg}{GO}.png", \
+        tp = [12, 24], reg = ["up", "down"], GO = ["BP", "CC", "MF"]),
+        patch_fig = "results/r/figures/patch_GO_enrich.png",
+        go_res_tables = expand("results/r/tables/t{tp}_GO_results.tsv", tp = [12, 24])
     shell:
         "{input.main_script}"
     
@@ -294,6 +295,9 @@ rule write_manuscript:
         map_stats_script = "scripts/r_code/reads_mapping_stats.R",
         map_stats_data = rules.extract_mapping_statistics.output,
         trimmed_rds = rules.count_trimmed_reads.output,
+        fig2 = rules.plot_enrichment.output.patch_fig,
+        fig3 = rules.plot_DEG_figures.output,
+        go_res = rules.plot_enrichment.output.go_res_tables
     output:
         "infected_host_trxptome.pdf",
         "infected_host_trxptome.tex",
@@ -305,8 +309,6 @@ rule write_manuscript:
 rule run_pipeline:
     input:
         rules.MultiQC_reads.output,
-        rules.save_DESeq2_result_PlotsandTables.output,
-        rules.plot_DEG_figures.output,
-        rules.plot_enrichment.output,
+        rules.save_DESeq2_results.output,
         rules.write_manuscript.output,
         rules.index_sorted_bamFiles.output
