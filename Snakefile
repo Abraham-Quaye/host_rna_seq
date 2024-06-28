@@ -297,7 +297,8 @@ rule write_manuscript:
         trimmed_rds = rules.count_trimmed_reads.output,
         fig2 = rules.plot_enrichment.output.patch_fig,
         fig3 = rules.plot_DEG_figures.output,
-        go_res = rules.plot_enrichment.output.go_res_tables
+        go_res = rules.plot_enrichment.output.go_res_tables,
+        go_tables_script = "scripts/r_code/generate_GO_tables.R"
     output:
         "infected_host_trxptome.pdf",
         "infected_host_trxptome.tex",
