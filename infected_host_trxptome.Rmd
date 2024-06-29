@@ -143,12 +143,13 @@ max_fc_24_name <- diff_exp_genes %>% filter(timepoint == "t24") %>%
 Gene expression levels were estimated with the StringTie software [@Pertea2016] in Fragments per kilobase of transcript per million (FPKM) units. The analysis of DEGs was performed with the DESeq2 R package [@Deseq2] which employs negative binomial distribution model for read count comparisons. Using a P~adjusted~-value cutoff $\leq$ 0.05 as the inclusion criteria, a total of `r tot_12` and `r tot_24` genes were identified as differentially expressed at 12-hpi and 24-hpi, respectively. ~~DEG analyses results at 12 and 24-hpi are presented in **Supplementary Tables 1 and 2**, respectively~~. At 12-hpi, `r up_12` genes were upregulated and `r down_12` genes downregulated, whereas `r up_24` genes were upregulated and `r down_24` genes downregulated at 24-hpi (**Figure 2C**,and **Figure 3A-C**). The log~2~fold-change(FC) values at 12-hpi ranged between `r min_fc_12` and +`r max_fc_12` for `r min_fc_12_name` (Transmembrane Protein 156) and `r max_fc_12_name` (Lipase G), respectively. At 24-hpi, the log~2~FC values ranged between `r min_fc_24` and +`r max_fc_24` for `r min_fc_24_name` (C1q And TNF Related 12) and `r max_fc_24_name` (Potassium Voltage-Gated Channel Modifier Subfamily G Member 1), respectively.  
  
 **Functional Enrichment Analyses (GO, KEGG pathway, and interaction network analyses)**  
-Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi DEGs with the gprofiler2 (version `r packageVersion("gprofiler2")`) R package [@Gprofiler2], which outputs results in three GO categories -- cellular components (CP), biological processes (BP), and molecular functions (MF). Results with P~adjusted~-value $\leq$ 0.05 were considered functionally enriched. GO enrichment analyses results at 12-hpi and 24-hpi showed significant similarities among all three GO categories. At both 12 and 24-hpi, cellular breakdown processes were upregulated while cellular maintenance processes and structures were downregulated in all three GO categories (**Table 2A-B** and **Table 3A-B**).
+Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi DEGs with the gprofiler2 (version `r packageVersion("gprofiler2")`) R package [@Gprofiler2], which outputs results in three GO categories -- cellular components (CP), biological processes (BP), and molecular functions (MF). Results with P~adjusted~-value $\leq$ 0.05 were considered functionally enriched. The GO enrichment analyses results at 12-hpi and 24-hpi showed significant similarities among all three GO categories. At both time points, cellular breakdown processes were upregulated while cellular maintenance processes and structures were downregulated in all three GO categories (**Table 2A-B** and **Table 3A-B**).
 
-For upregulated DEGs at 12-hpi, GO terms annotated under the biological processes (BP) category broadly cluster into: apoptosis, catabolic processes, cellular metabolism, response to stimuli, and protein processing (**Figure 4A**). Under the cellular components (CP) GO category, the GO terms relate with cytoplasmic vacuolation while the GO terms under the molecular functions (MF) category broadly fit under protein binding (**Table 2A**). For the downregulated DEGs, the GO terms in BP category generally fall under: translation, protein biosynthesis and folding; ribosome biogenesis; nitrogen compound metabolism; nucleic acid synthesis, metabolism, processing, and replication;  and energy metabolism (**Figure 4C**). As for the CC category GO terms, they broadly group into: ribosome, mitochondria, respirosome, and nucleus while the MF category GO terms belong to: translation regulator activity and protein folding chaperone, catalytic activity (acting on a nucleic acids), and ATP hydrolysis activity (**Table 2B**).
+For upregulated DEGs at 12-hpi, GO terms annotated under the biological processes (BP) category broadly cluster into: apoptosis, catabolic processes, cellular metabolism, response to stimuli, and protein processing (**Figure 4A**). Under the cellular components (CC) GO category, the GO terms relate with cytoplasmic vacuolation while the GO terms under the molecular functions (MF) category broadly fit under protein binding (**Table 2A**). For 12-hpi downregulated DEGs, the GO terms in BP category generally fall under: translation, protein biosynthesis and folding; ribosome biogenesis; nitrogen compound metabolism; nucleic acid synthesis, metabolism, processing, and replication;  and energy metabolism (**Figure 4C**). As for the CC category GO terms, they broadly group into: ribosome, mitochondria, respirosome, and nucleus while the MF category GO terms generally belong to: translation regulator activity, protein folding chaperone, catalytic activity (acting on a nucleic acids), and ATP hydrolysis activity (**Table 2B**).
 
-At 24-hpi, the GO terms under the BP GO category for the upregulated DEGs are connected with: catabolic process, protein ubiquitination and proteolysis, cell signalling, and cell metabolism (**Figure 4B**). The GO terms of the CC category, similar to those identified at 12-hpi, are also related with cytoplasmic vacuolation. The MF category GO terms group into: protein ubiquitination activity, acyltransferase activity, and macromolecule binding activity (**Table 3A**). The GO terms for the downregulated DEGs are markedly similar to those at 12-hpi in all three GO categories. The BP category GO terms broadly group into: translation, peptide biosynthesis and folding, ribosome biogenesis, aerobic respiration and ATP synthesis, and cell cycle process and DNA replication (**Figure 4D**). The GO terms of the CC category group under: ribosome, organelle, mitochondrion, nucleus and chromosomes while the MF category GO terms group into: structural constituent of ribosome and translation regulator activity, catalytic activity acting on a nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding (**Table 3B**).
+At 24-hpi, the GO terms under the BP GO category for the upregulated DEGs are connected with: catabolic process, protein ubiquitination and proteolysis, cell signalling, and cell metabolism (**Figure 4B**). The GO terms of the CC category, similar to those identified at 12-hpi, are also related with cytoplasmic vacuolation. The MF category GO terms group into: protein ubiquitination activity, acyltransferase activity, and macromolecule binding activity (**Table 3A**). The GO terms for the downregulated DEGs are markedly similar to those at 12-hpi in all three GO categories. Lastly, the BP category GO terms broadly group into: translation, peptide biosynthesis and folding, ribosome biogenesis, aerobic respiration and ATP synthesis, and cell cycle process and DNA replication (**Figure 4D**). The GO terms of the CC category group under: ribosome, organelle, mitochondrion, nucleus and chromosomes while the MF category GO terms group into: structural constituent of ribosome and translation regulator activity, catalytic activity acting on a nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding (**Table 3B**).
 
+KEGG analysis on the DEGs was performed using both the gprofiler2 R package [@Gprofiler2] and the DAVID (Database for Annotation, Visualization and Integrated Discovery; version 2021) online resource [@Sherman2022]. Both analysis resources gave similar results but the results from DAVID (**Table 4A**) includes more information than the gprofiler2 results (**Table 4B**)... revealed that ...
 \newpage
 
 ## DISCUSSION
@@ -169,7 +170,7 @@ Total RNA was extracted from infected cells using the Thermofisher RNAqueous™-
 Sequencing reads were processed following a well-established protocol described by Pertea *et al* [@Pertea2016], using Snakemake - version 7.32.4 [@Snakemake2021], a popular workflow management system to drive the pipeline. Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10 [@Martin2011] and the quality of trimmed reads evaluated using the FastQC software, version 0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge, United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence Quality (PHRED Score) of 36. Trimmed reads were mapped the reference *Meleagris gallopavo* genome (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz>) with Hisat2 - version 2.2.1 [@Pertea2016] using the accompanying gene transfer format (GTF) annotation file (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz>) to build a genomic index. Samtools - version 1.19.2 was used to convert the output Sequence Alignment Map (SAM) file to the more manageable Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software [@Pertea2016], set to expression estimation mode was used to generate normalized gene expression estimates from the BAM files for genes in the reference GTF file after which the prepDE.py3 script was used to extract read count information from the StringTie gene expression files, providing an expression-count matrix for downstream DEG analysis.
 
 **DEG Analysis and Functional Enrichment Analysis**   
-DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. The functional profiling of DEGs (GO and KEGG analyses) were performed based on GO databases and KEGG databases using the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. ~~Additionally, the DAVID analysis tool was used for KEGG pathway analysis~~. All visualization plots were made using ggplot2, pheatmap, and ggvenn R packages [@ggplot2; @pheatmap; @ggvenn]. Venn diagram ---
+DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. The functional profiling of DEGs (GO and KEGG analyses) were performed based on GO databases and KEGG databases using the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. Additionally, the DAVID (Database for Annotation, Visualization and Integrated Discovery; version 2021) online analysis tool was used for KEGG pathway analysis. All visualization plots were made using ggplot2, pheatmap, and ggvenn R packages [@ggplot2; @pheatmap; @ggvenn].
 
 **Validation of DEGs by Reverse Transcriptase Quantitative PCR (RT-qPCR)**
 
@@ -244,11 +245,54 @@ mapStats %>%
 
 ```
 
-```{r GOTerm_Enrich_UP_12hpi}
-# Table 2A
-# Load script with GO result tables
+```{r KEGG_result_DAVID}
+# Load script with KEGG result tables
+source("scripts/r_code/process_DAVID_kegg.R")
+
+david_kegg <- kegg_result %>%
+  mutate(across(c(num_degs:qval), as.numeric),
+         across(c(pval, qval), ~format(., digits = 3))) %>%
+  select(-rich_factor) %>%
+  mutate(regulation = str_replace(timepoint, "^((down|up))\\d{2}hrs$", "\\1"),
+         timepoint = str_replace(timepoint, "^(down|up)(\\d{2})hrs$", "\\2-hpi")) %>%
+  select(timepoint, regulation, everything())
+  
+
+david_kegg %>% flextable(.) %>%
+  theme_vanilla() %>% 
+  width(., j = "term", width = 2.5) %>%
+  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
+                    term = "GO Term", num_degs = "DEG Count",
+                    fold_enrich = "Fold Enrichment", pval = "P-value", qval = "Benjamini") %>%
+  flextable::align(align = "center", part = "all") %>%
+  set_caption("Table 4A: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the DAVID online resource)")
+
+```
+
+```{r KEGG_result_grofiler2}
+# Load script with KEGG result tables
 source("scripts/r_code/generate_GO_tables.R")
 
+gprofiler_kegg <- goTerm_tables[["kegg_res_all"]] %>%
+  mutate(regulation = str_replace(query, "^(down|up)_degIDs_\\d{2}hrs$", "\\1"),
+         timepoint = str_replace(query, "^(down|up)_degIDs_(\\d{2})hrs$", "\\2-hpi")) %>%
+  select(timepoint, regulation, term_name, deg_count = intersection_size, p_value) %>%
+  mutate(p_value = format(p_value, digits = 3))
+  
+
+gprofiler_kegg %>% flextable(.) %>%
+  theme_vanilla() %>% 
+  width(., j = "term_name", width = 3) %>%
+  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
+                    term_name = "GO Term", deg_count = "DEG Count",
+                      p_value = "P-value (Adjusted)") %>%
+  flextable::align(align = "center", part = "all") %>%
+  set_caption("Table 4B: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the gprofiler2 R package)")
+
+```
+
+```{r GOTerm_Enrich_UP_12hpi}
+# Table 2A
 make_GO_table <- function(goTerms_res){
   # Calculate row number to merge GOTerm category label
   bp_row_num <-  goTerms_res %>%

@@ -297,8 +297,11 @@ rule write_manuscript:
         trimmed_rds = rules.count_trimmed_reads.output,
         fig2 = rules.plot_enrichment.output.patch_fig,
         fig3 = rules.plot_DEG_figures.output,
-        go_res = rules.plot_enrichment.output.go_res_tables,
-        go_tables_script = "scripts/r_code/generate_GO_tables.R"
+        go_tables = rules.plot_enrichment.output.go_res_tables,
+        go_tables_script = "scripts/r_code/generate_GO_tables.R",
+        david_kegg_script = "scripts/r_code/process_DAVID_kegg.R",
+        david_kegg_files = expand("results/r/tables/davidKEGG_{reg}{tp}hrs.tsv", \
+        reg = ["up", "down"], tp = [12, 24])
     output:
         "infected_host_trxptome.pdf",
         "infected_host_trxptome.tex",
