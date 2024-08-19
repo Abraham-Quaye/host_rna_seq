@@ -147,12 +147,13 @@ Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi DEGs wit
 
 For upregulated DEGs at 12-hpi, GO terms annotated under the biological processes (BP) category broadly cluster into: apoptosis, catabolic processes, cellular metabolism, response to stimuli, and protein processing (**Figure 4A**). Under the cellular components (CC) GO category, the GO terms relate with cytoplasmic vacuolation while the GO terms under the molecular functions (MF) category broadly fit under protein binding (**Table 2A**). For 12-hpi downregulated DEGs, the GO terms in BP category generally fall under: translation, protein biosynthesis and folding; ribosome biogenesis; nitrogen compound metabolism; nucleic acid synthesis, metabolism, processing, and replication;  and energy metabolism (**Figure 4C**). As for the CC category GO terms, they broadly group into: ribosome, mitochondria, respirosome, and nucleus while the MF category GO terms generally belong to: translation regulator activity, protein folding chaperone, catalytic activity (acting on a nucleic acids), and ATP hydrolysis activity (**Table 2B**).
 
-At 24-hpi, the GO terms under the BP GO category for the upregulated DEGs are connected with: catabolic process, protein ubiquitination and proteolysis, cell signalling, and cell metabolism (**Figure 4B**). The GO terms of the CC category, similar to those identified at 12-hpi, are also related with cytoplasmic vacuolation. The MF category GO terms group into: protein ubiquitination activity, acyltransferase activity, and macromolecule binding activity (**Table 3A**). The GO terms for the downregulated DEGs are markedly similar to those at 12-hpi in all three GO categories. Lastly, the BP category GO terms broadly group into: translation, peptide biosynthesis and folding, ribosome biogenesis, aerobic respiration and ATP synthesis, and cell cycle process and DNA replication (**Figure 4D**). The GO terms of the CC category group under: ribosome, organelle, mitochondrion, nucleus and chromosomes while the MF category GO terms group into: structural constituent of ribosome and translation regulator activity, catalytic activity acting on a nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding (**Table 3B**).
+At 24-hpi, the GO terms under the BP GO category for the upregulated DEGs are connected with: catabolic process, protein ubiquitination and proteolysis, cell signalling, and cell metabolism (**Figure 4B**). The GO terms of the CC category, similar to those identified at 12-hpi, are also related with cytoplasmic vacuolation. The MF category GO terms group into: protein ubiquitination activity, acyltransferase activity, and macromolecule binding activity (**Table 3A**). The GO terms for the downregulated DEGs are markedly similar to those at 12-hpi in all three GO categories. The BP category GO terms broadly group into: translation, peptide biosynthesis and folding, ribosome biogenesis, aerobic respiration and ATP synthesis, and cell cycle process and DNA replication (**Figure 4D**). The GO terms of the CC category group under: ribosome, organelle, mitochondrion, nucleus and chromosomes while the MF category GO terms group into: structural constituent of ribosome and translation regulator activity, catalytic activity acting on a nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding (**Table 3B**).
 
-KEGG analysis on the DEGs was performed using both the gprofiler2 R package [@Gprofiler2] and the DAVID (Database for Annotation, Visualization and Integrated Discovery; version 2021) online resource [@Sherman2022]. Both analysis resources gave similar results but the results from DAVID (**Table 4A**) includes more information than the gprofiler2 results (**Table 4B**). The KEGG pathway analysis was congruent with the GO results, revealing that cell maintenance and upkeep pathways were downregulated while cell death and breakdown pathways were upregulated.
+KEGG analysis on the DEGs was performed using both the gprofiler2 R package [@Gprofiler2] and the DAVID (Database for Annotation, Visualization and Integrated Discovery; version 2021) online resource [@Sherman2022]. Both analysis resources gave similar results but the results from DAVID (**Table 4A**) includes more information than the gprofiler2 results (**Table 4B**). The KEGG pathway analysis was congruent with the GO results, revealing that generally, cell maintenance and upkeep pathways were downregulated while cell death and breakdown pathways were upregulated. Cell maintenance pathways such as DNA replication and repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation were downregulated at 12-hpi. Similar pathways were downregulated at 24-hpi. Cell breakdown pathways such as: autophagy, response to Influenza A, and steroid biosynthesis were upregulated at 12-hpi similar to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated proteolysis, lysosome, protein processing in endoplasmic reticulum, and steroid biosynthesis were upregulated.
 \newpage
 
 ## DISCUSSION
+We may not have seen a measurable immune response/pathway in the infected host cells because the these B-cells may likely require other immune cells such as macrophages and T-cells for activation/mount an immune response.
 \newpage
 
 ## CONCLUSIONS
@@ -245,53 +246,8 @@ mapStats %>%
 
 ```
 
-```{r KEGG_result_DAVID}
-# Load script with KEGG result tables
-source("scripts/r_code/process_DAVID_kegg.R")
-
-david_kegg <- kegg_result %>%
-  mutate(across(c(num_degs:qval), as.numeric),
-         across(c(pval, qval), ~format(., digits = 3))) %>%
-  select(-rich_factor) %>%
-  mutate(regulation = str_replace(timepoint, "^((down|up))\\d{2}hrs$", "\\1"),
-         timepoint = str_replace(timepoint, "^(down|up)(\\d{2})hrs$", "\\2-hpi")) %>%
-  select(timepoint, regulation, everything())
-  
-
-david_kegg %>% flextable(.) %>%
-  theme_vanilla() %>% 
-  width(., j = "term", width = 2.5) %>%
-  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
-                    term = "GO Term", num_degs = "DEG Count",
-                    fold_enrich = "Fold Enrichment", pval = "P-value", qval = "Benjamini") %>%
-  flextable::align(align = "center", part = "all") %>%
-  set_caption("Table 4A: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the DAVID online resource)")
-
-```
-
-```{r KEGG_result_grofiler2}
-# Load script with KEGG result tables
-source("scripts/r_code/generate_GO_tables.R")
-
-gprofiler_kegg <- goTerm_tables[["kegg_res_all"]] %>%
-  mutate(regulation = str_replace(query, "^(down|up)_degIDs_\\d{2}hrs$", "\\1"),
-         timepoint = str_replace(query, "^(down|up)_degIDs_(\\d{2})hrs$", "\\2-hpi")) %>%
-  select(timepoint, regulation, term_name, deg_count = intersection_size, p_value) %>%
-  mutate(p_value = format(p_value, digits = 3))
-  
-
-gprofiler_kegg %>% flextable(.) %>%
-  theme_vanilla() %>% 
-  width(., j = "term_name", width = 3) %>%
-  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
-                    term_name = "GO Term", deg_count = "DEG Count",
-                      p_value = "P-value (Adjusted)") %>%
-  flextable::align(align = "center", part = "all") %>%
-  set_caption("Table 4B: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the gprofiler2 R package)")
-
-```
-
 ```{r GOTerm_Enrich_UP_12hpi}
+source("scripts/r_code/generate_GO_tables.R")
 # Table 2A
 make_GO_table <- function(goTerms_res){
   # Calculate row number to merge GOTerm category label
@@ -304,7 +260,7 @@ make_GO_table <- function(goTerms_res){
     flextable() %>%
     theme_vanilla() %>%
     set_header_labels(source = "GO Category", term_name = "GO:Term",
-                      p_value = "P value\n(Adjusted)",
+                      p_value = "P-value\n(Adjusted)",
                       intersection_size = "Number of DEGs") %>%
     flextable::font(part = "all", fontname = "Times New Roman") %>%
     flextable::bold(part = "header") %>%
@@ -348,6 +304,53 @@ make_GO_table(goTerm_tables[["t24_go_res_up"]]) %>%
 make_GO_table(goTerm_tables[["t24_go_res_down"]]) %>%
     set_caption("Table 3B: Gene ontology analysis of Significantly Downregulated DEGs identified at 24-hpi")
 ```
+
+```{r KEGG_result_DAVID}
+# Load script with KEGG result tables
+source("scripts/r_code/process_DAVID_kegg.R")
+
+david_kegg <- kegg_result %>%
+  mutate(across(c(num_degs:qval), as.numeric),
+         qval = format(qval, digits = 3)) %>%
+  select(-c(rich_factor, pval)) %>%
+  mutate(regulation = str_replace(timepoint, "^((down|up))\\d{2}hrs$", "\\1"),
+         timepoint = str_replace(timepoint, "^(down|up)(\\d{2})hrs$", "\\2-hpi")) %>%
+  select(timepoint, regulation, everything())
+  
+
+david_kegg %>% flextable(.) %>%
+  theme_vanilla() %>% 
+  width(., j = "term", width = 2.5) %>%
+  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
+                    term = "KEGG Term", num_degs = "DEG Count",
+                    fold_enrich = "Fold Enrichment", qval = "P-value\n(Adjusted)") %>%
+  flextable::align(align = "center", part = "all") %>%
+  set_caption("Table 4A: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the DAVID online resource)")
+
+```
+
+```{r KEGG_result_grofiler2}
+# Load script with KEGG result tables
+source("scripts/r_code/generate_GO_tables.R")
+
+gprofiler_kegg <- goTerm_tables[["kegg_res_all"]] %>%
+  mutate(regulation = str_replace(query, "^(down|up)_degIDs_\\d{2}hrs$", "\\1"),
+         timepoint = str_replace(query, "^(down|up)_degIDs_(\\d{2})hrs$", "\\2-hpi")) %>%
+  select(timepoint, regulation, term_name, deg_count = intersection_size, p_value) %>%
+  mutate(p_value = format(p_value, digits = 3))
+  
+
+gprofiler_kegg %>% flextable(.) %>%
+  theme_vanilla() %>% 
+  width(., j = "term_name", width = 3) %>%
+  set_header_labels(timepoint = "Time Point", regulation = "Regulation",
+                    term_name = "KEGG Term", deg_count = "DEG Count",
+                      p_value = "P-value (Adjusted)") %>%
+  flextable::align(align = "center", part = "all") %>%
+  set_caption("Table 4B: Significantly Enriched KEGG Pathways from DEGs identified at 12 and 24-hpi (Results from the gprofiler2 R package)")
+
+```
+
 \newpage
 
 ## SUPPLEMENTARY INFORMATION/MATERIALS

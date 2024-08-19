@@ -4,20 +4,20 @@ library(tidyverse)
 library(magrittr)
 
 # Download KEGG data from DAVID online analysis resource
-down12 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719613037242.txt"
-up12 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719613700031.txt"
-
-down24 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719614251153.txt"
-up24 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719614284567.txt"
-
-get_keggData <- function(link, filename){
-  download.file(url = link,
-                destfile = paste0("results/r/tables/davidKEGG_", filename, "hrs.tsv"))
-}
-
-map2(list(down12, up12, down24, up24),
-    list("down12", "up12", "down24", "up24"), ~get_keggData(link = .x, filename = .y))
-
+# down12 <- "https://david.ncifcrf.gov/data/download/chart_3AC8819126C41724101963794.txt"
+# up12 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719613700031.txt"
+# 
+# down24 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719614251153.txt"
+# up24 <- "https://david.ncifcrf.gov/data/download/chart_798F8A48EC0A1719614284567.txt"
+# 
+# get_keggData <- function(link, filename){
+#   download.file(url = link,
+#                 destfile = paste0("results/r/tables/davidKEGG_", filename, "hrs.tsv"))
+# }
+# 
+# map2(list(down12, up12, down24, up24),
+#     list("down12", "up12", "down24", "up24"), ~get_keggData(link = .x, filename = .y))
+# 
 
 ###############################################################################
 #             Process KEGG results from DAVID to plot as table in paper
