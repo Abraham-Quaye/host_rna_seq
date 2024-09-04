@@ -39,15 +39,17 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \ifLuaTeX
@@ -127,19 +129,17 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{wrapfig}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={The Transcriptome Profile of a Turkey B-cell Line Upon Infection With Turkey Hemorrhagic Enteritis Virus},
+  pdftitle={Host Turkey B-cell Transcriptomics During THEV Infection Highlights Upregulated Cell Death and Breakdown Pathways and Other Biological Processes},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{The Transcriptome Profile of a Turkey B-cell Line Upon Infection
-With Turkey Hemorrhagic Enteritis Virus}
+\title{Host Turkey B-cell Transcriptomics During THEV Infection
+Highlights Upregulated Cell Death and Breakdown Pathways and Other
+Biological Processes}
 \author{}
 \date{\vspace{-2.5em}}
 
@@ -360,18 +360,57 @@ were downregulated while cell death and breakdown pathways were
 upregulated. Cell maintenance pathways such as DNA replication and
 repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation
 were downregulated at 12-hpi. Similar pathways were downregulated at
-24-hpi. Cell breakdown pathways such as: autophagy, response to
-Influenza A, and steroid biosynthesis were upregulated at 12-hpi similar
-to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated
+24-hpi. Cell breakdown pathways such as: autophagy, response to virus
+(Influenza A), and steroid biosynthesis were upregulated at 12-hpi
+similar to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated
 proteolysis, lysosome, protein processing in endoplasmic reticulum, and
-steroid biosynthesis were upregulated. \newpage
+steroid biosynthesis were upregulated.
+
+It is well-established that THEV induces cell death (apoptosis and
+necrosis) in infected B-cells, which is linked to the IMS associated
+with THEV (8, 11, 23). Hence, we are particularly interested in cellular
+processes and pathways associated with cell death and pathways that may
+affect the survivability of the host cells, thereby accounting for
+THEV-induced IMS. We highlight the upregulated cell death (apoptosis and
+autophagy) pathways, cellular metabolism, and responses to stimuli
+(especially ER-stress response) pathways identified by our GO and KEGG
+analyses as the likely key aspects of THEV-host cell interaction leading
+to IMS.
+
+\textbf{Cell Death and Breakdown Pathways Upregulated by THEV}\\
+Many virus families, including adenoviruses, herpesviruses, poxviruses,
+baculoviruses, parvoviruses, retroviruses, rhabdoviruses,
+pararmyxoviruses, orthomyxoviruses, togaviruses, and picornaviruses are
+known to trigger apoptosis in infected host cells either by a direct
+action of a viral protein or due to the host antiviral response
+(24--26). Adenoviruses generally possess the protein, E1B 19K to inhibit
+host cell apoptosis long enough to complete their replication cycle (24,
+26, 27). However, no such protein is known in THEV. A recent paper
+showed several novel transcripts and open reading frames (ORFs) in the
+genome of THEV which may offer a similar anti-apoptotic functions but
+the functions of these novel ORFs are yet to be shown (28). Our data
+shows that apoptotic and autophagic pathways are upregulated during THEV
+infection, supporting previous findings of apoptosis and necrosis of
+THEV-infected cells (8, 11, 23). For example, \ldots, which are
+proapoptotic, were upregulated.
+
+\textbf{Cellular Metabolism Changes During THEV Infection}\\
+Many viruses, such as hepatitis C virus, human cytomegalovirus,
+influenza virus, and rhinovirus, have been documented to manipulate the
+cellular metabolism process for their use
+
+\textbf{Cellular Responses to Stimuli during THEV infection}\\
+\newpage
 
 \subsection{DISCUSSION}\label{discussion}
 
-We may not have seen a measurable immune response/pathway in the
-infected host cells because the these B-cells may likely require other
-immune cells such as macrophages and T-cells for activation/mount an
-immune response. \newpage
+We may not have seen a measurable immune response/pathway enrichment in
+the infected host cells because the these B-cells may likely require
+other immune cells such as macrophages and T-cells for activation/mount
+an immune response. Secondly, the curated data in the GO, and KEGG
+databases are most complete for human and other model organisms; hence,
+there may not be enough information curated for turkeys to highlight the
+anything that is not very strong immune response. \newpage
 
 \subsection{CONCLUSIONS}\label{conclusions}
 
@@ -391,7 +430,7 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (23). Cells were THEV-infected or
+similar to Mahshoub \emph{et al} (29). Cells were THEV-infected or
 mock-infected in triplicates or duplicates, respectively at a
 multiplicity of infection (MOI) of 100 GCN/cell, incubated at
 41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
@@ -420,9 +459,9 @@ Omnibus database, under accession no \#\#\#\#\#\#\#
 \textbf{Quality Control and Mapping Process}\\
 Sequencing reads were processed following a well-established protocol
 described by Pertea \emph{et al} (19), using Snakemake - version 7.32.4
-(24), a popular workflow management system to drive the pipeline.
+(30), a popular workflow management system to drive the pipeline.
 Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
-(25) and the quality of trimmed reads evaluated using the FastQC
+(31) and the quality of trimmed reads evaluated using the FastQC
 software, version 0.12.1 (Bioinformatics Group at the Babraham
 Institute, Cambridge, United Kingdom;
 www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
@@ -455,7 +494,7 @@ P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
 functionally enriched. Additionally, the DAVID (Database for Annotation,
 Visualization and Integrated Discovery; version 2021) online analysis
 tool was used for KEGG pathway analysis. All visualization plots were
-made using ggplot2, pheatmap, and ggvenn R packages (26--28).
+made using ggplot2, pheatmap, and ggvenn R packages (32--34).
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
 (RT-qPCR)}
@@ -643,8 +682,50 @@ Imamichi T, Chang W. 2022.
 functional enrichment analysis and functional annotation of gene lists
 (2021 update)}. Nucleic Acids Research 50:W216--W221.}
 
-\bibitem[\citeproctext]{ref-Mahsoub2017}
+\bibitem[\citeproctext]{ref-Saunders1993}
 \CSLLeftMargin{23. }%
+\CSLRightInline{Saunders GK, Pierson FW, Hurk JV van den. 1993.
+\href{https://doi.org/10.1080/03079459308418899}{Haemorhagic enteritis
+virus infection in turkeys: A comparison of virulent and avirulent virus
+infections, and a proposed pathogenesis}. Avian Pathology 22:47--58.}
+
+\bibitem[\citeproctext]{ref-Barber2001}
+\CSLLeftMargin{24. }%
+\CSLRightInline{Barber GN. 2001.
+\href{https://doi.org/10.1038/sj.cdd.4400823}{Host defense, viruses and
+apoptosis}. Cell Death \&amp; Differentiation 8:113--126.}
+
+\bibitem[\citeproctext]{ref-Hardwick1997}
+\CSLLeftMargin{25. }%
+\CSLRightInline{Hardwick JM. 1997.
+\href{https://doi.org/10.1016/s1054-3589(08)61063-7}{Virus-induced
+apoptosis}, p. 295--336. \emph{In} Apoptosls - pharmacological
+implications and therapeutic opportunities. Elsevier.}
+
+\bibitem[\citeproctext]{ref-Verburg2022}
+\CSLLeftMargin{26. }%
+\CSLRightInline{Verburg SG, Lelievre RM, Westerveld MJ, Inkol JM, Sun
+YL, Workenhe ST. 2022.
+\href{https://doi.org/10.1371/journal.ppat.1010718}{Viral-mediated
+activation and inhibition of programmed cell death}. PLOS Pathogens
+18:e1010718.}
+
+\bibitem[\citeproctext]{ref-Ezoe1981}
+\CSLLeftMargin{27. }%
+\CSLRightInline{Ezoe H, Fatt RB, Mak S. 1981.
+\href{https://doi.org/10.1128/jvi.40.1.20-27.1981}{Degradation of
+intracellular DNA in KB cells infected with cyt mutants of human
+adenovirus type 12}. Journal of Virology 40:20--27.}
+
+\bibitem[\citeproctext]{ref-Quaye2024}
+\CSLLeftMargin{28. }%
+\CSLRightInline{Quaye A, Pickett BE, Griffitts JS, Berges BK, Poole BD.
+2024. \href{https://doi.org/10.1186/s12985-024-02449-0}{Characterizing
+the splice map of turkey hemorrhagic enteritis virus}. Virology Journal
+21.}
+
+\bibitem[\citeproctext]{ref-Mahsoub2017}
+\CSLLeftMargin{29. }%
 \CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
 Pierson FW. 2017.
 \href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
@@ -653,7 +734,7 @@ enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
 
 \bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{24. }%
+\CSLLeftMargin{30. }%
 \CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
 Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
 Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
@@ -661,24 +742,24 @@ Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
 analysis with snakemake}. F1000Research 10:33.}
 
 \bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{25. }%
+\CSLLeftMargin{31. }%
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 
 \bibitem[\citeproctext]{ref-ggplot2}
-\CSLLeftMargin{26. }%
+\CSLLeftMargin{32. }%
 \CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
 analysis. Springer-Verlag New York.
 \url{https://ggplot2.tidyverse.org}.}
 
 \bibitem[\citeproctext]{ref-pheatmap}
-\CSLLeftMargin{27. }%
+\CSLLeftMargin{33. }%
 \CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
 \url{https://CRAN.R-project.org/package=pheatmap}.}
 
 \bibitem[\citeproctext]{ref-ggvenn}
-\CSLLeftMargin{28. }%
+\CSLLeftMargin{34. }%
 \CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
 \url{https://CRAN.R-project.org/package=ggvenn}.}
 
@@ -694,7 +775,7 @@ analysis. Springer-Verlag New York.
 
 \begin{figure}
 \centering
-\includegraphics{results/imss_model.png}
+\pandocbounded{\includegraphics[keepaspectratio]{results/imss_model.png}}
 \caption{\textbf{Figure 1: Model of THEV-induced immunosuppression in
 turkeys}. THEV infection of target cells is indicated with black dotted
 arrows. Black unbroken arrows indicate cell activation. Red arrows
@@ -705,7 +786,7 @@ an event leading to IMS. Adapted from Rautenschlein \emph{et al.} (8).}
 
 \begin{figure}
 \centering
-\includegraphics{results/r/figures/sample_corr_figure.png}
+\pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/sample_corr_figure.png}}
 \caption{\textbf{Figure 2. (A) Principal component analysis (PCA) of
 turkey B-cells during THEV infection.} At 12-hpi \textbf{(A1)},the
 results indicate that the first (PC1) and second (PC2) principal
@@ -725,7 +806,7 @@ samples \textbf{(C1)} and 24-hpi samples \textbf{(C2)}.}
 
 \begin{figure}
 \centering
-\includegraphics{results/r/figures/deg_patch_fig.png}
+\pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/deg_patch_fig.png}}
 \caption{\textbf{Figure 3: Differentially expressed genes (DEGs) of
 THEV-infected versus mock-infected samples at different time points. (A)
 Bar plot of number DEGs identified.} Red represents upregulated genes
@@ -742,7 +823,7 @@ colors from \textbf{(C1)}.}
 
 \begin{figure}
 \centering
-\includegraphics[width=1.1\textwidth,height=1.1\textheight]{results/r/figures/patch_GO_enrich.png}
+\includegraphics[width=1.1\linewidth,height=1.1\textheight]{results/r/figures/patch_GO_enrich.png}
 \caption{\textbf{Figure 4: Dotplot of Enriched Gene Ontology Biological
 Processes (BP)}. Significant BP GO terms identified for upregulated DEGs
 at 12-hpi and 24-hpi are shown in \textbf{(A)} and \textbf{(B)},
