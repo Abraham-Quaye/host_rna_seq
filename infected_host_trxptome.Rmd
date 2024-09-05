@@ -223,7 +223,7 @@ DEG analysis between mock- and THEV-infected samples was performed using the ver
 
 ![**Figure 3: Differentially expressed genes (DEGs) of THEV-infected versus mock-infected samples at different time points. (A) Bar plot of number DEGs identified.** Red represents upregulated genes and blue represents downregulated genes.  **(B) Heatmaps of scaled expression data (Z-scores) of DEGs.** DEGs identified at 12-hpi are shown in **(B1)** and DEGs at 24-hpi in **(B2).** **(C) Venn diagrams showing the number of DEGs identified at different time points.** For the upregulated genes **(C1)**, the red circle represents genes at 4-hpi, the blue circle, 12-hpi, and the grey circle, 24-hpi. For the downregulated genes **(C2)**, the green circle represents genes at 72-hpi, while all the other time points retain the colors from **(C1)**.](results/r/figures/deg_patch_fig.png)
 
-![**Figure 4: Dotplot of Enriched Gene Ontology Biological Processes (BP)**. Significant BP GO terms identified for upregulated DEGs at 12-hpi and 24-hpi are shown in **(A)** and **(B)**, respectively. Significant BP GO terms for downregulated DEGs at 12-hpi and 24-hpi are shown in **(C)** and **(D)**, respectively. The y-axis indicates GO terms and the x-axis represents the rich factor, which indicates the ratio of the number of DEGs annotated to the term to the total number of genes annotated to the term. The diameter indicates the number of genes overlapping the gene ontology term and the color indicates the enrichment P-value.](results/r/figures/patch_GO_enrich.png){width=110% height=110%}
+![**Figure 4: Dotplot of Enriched Gene Ontology Biological Processes (BP)**. Significant BP GO terms identified for upregulated DEGs at 12-hpi and 24-hpi are shown in **(A)** and **(B)**, respectively. Significant BP GO terms for downregulated DEGs at 12-hpi and 24-hpi are shown in **(C)** and **(D)**, respectively. The y-axis indicates GO terms and the x-axis represents the rich factor, which indicates the ratio of the number of DEGs annotated to the term to the total number of genes annotated to the term. The diameter indicates the number of genes overlapping the gene ontology term and the color indicates the enrichment P-value.](results/r/figures/patch_GO_enrich.png)
 
 \newpage
 ```{r, mapping_stats_table}
@@ -260,6 +260,7 @@ mapStats %>%
 source("scripts/r_code/generate_GO_tables.R")
 # Table 2A
 make_GO_table <- function(goTerms_res){
+  
   # Calculate row number to merge GOTerm category label
   bp_row_num <-  goTerms_res %>%
     filter(source %in% c("GO:BP", "Biological Process")) %>% nrow(.) + 1
@@ -269,49 +270,60 @@ make_GO_table <- function(goTerms_res){
   table <- goTerms_res %>% 
     flextable() %>%
     theme_vanilla() %>%
-    set_header_labels(source = "GO Category", term_name = "GO:Term",
-                      p_value = "P-value\n(Adjusted)",
-                      intersection_size = "Number of DEGs") %>%
+    set_header_labels(source = "GO Category", term = "GO:Term",
+                      qval = "P-value\n(Adjusted)",
+                      num_degs = "Number of DEGs",
+                      fold_enrich = "Fold Enrichment") %>%
     flextable::font(part = "all", fontname = "Times New Roman") %>%
     flextable::bold(part = "header") %>%
     flextable::set_table_properties(layout = "fixed", align = "center",
                                     opts_pdf = list(caption_repeat = F),
                                     opts_word = list(split = F, keep_with_next = T)) %>%
     flextable::align(align = "center", part = "all") %>%
-    merge_at(., i = 1, j = 1:4, part = "body") %>%
-    merge_at(., i = bp_row_num, j = 1:4, part = "body") %>%
-    merge_at(., i = cc_row_num, j = 1:4, part = "body") %>%
+    merge_at(., i = 1, j = 1:5, part = "body") %>%
+    merge_at(., i = bp_row_num, j = 1:5, part = "body") %>%
+    merge_at(., i = cc_row_num, j = 1:5, part = "body") %>%
     flextable::bold(part = "body", i = c(1, bp_row_num, cc_row_num)) %>%
+    flextable::fontsize(part = "body", size = 8) %>%
     flextable::fontsize(part = "body", i = c(1, bp_row_num, cc_row_num), size = 12) %>%
     flextable::width(., j = 2, width = 3.5) %>%
-    flextable::height(., height = 0.1) %>%
+    flextable::height(., height = 0.03) %>%
+    flextable::height(., height = 0.1, i = c(1, bp_row_num, cc_row_num)) %>%
     flextable::height(part = "header", height = 0.2)
   
   return(table)
 }
 
-make_GO_table(goTerm_tables[["t12_go_res_up"]]) %>%
+go_res_table12up <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_up) %>% unnest(.)
+
+make_GO_table(go_res_table12up) %>%
     set_caption("Table 2A: Gene ontology analysis of Significantly Upregulated DEGs identified at 12-hpi")
 
 ```
 
 ```{r GOTerm_Enrich_DOWN_12hpi}
 # Table 2B
-make_GO_table(goTerm_tables[["t12_go_res_down"]]) %>%
+go_res_table12dw <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_down) %>% unnest(.)
+
+make_GO_table(go_res_table12dw) %>%
     set_caption("Table 2B: Gene ontology analysis of Significantly Downregulated DEGs identified at 12-hpi")
 
 ```
 
 ```{r GOTerm_Enrich_UP_24hpi}
 # Table 3A
-make_GO_table(goTerm_tables[["t24_go_res_up"]]) %>%
+go_res_table24up <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_up) %>% unnest(.)
+
+make_GO_table(go_res_table24up) %>%
     set_caption("Table 3A: Gene ontology analysis of Significantly Upregulated DEGs identified at 24-hpi")
 
 ```
 
 ```{r GOTerm_Enrich_DOWN_24hpi}
 # Table 3B
-make_GO_table(goTerm_tables[["t24_go_res_down"]]) %>%
+go_res_table24dw <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_down) %>% unnest(.)
+
+make_GO_table(go_res_table24dw) %>%
     set_caption("Table 3B: Gene ontology analysis of Significantly Downregulated DEGs identified at 24-hpi")
 ```
 
@@ -340,10 +352,8 @@ david_kegg %>% flextable(.) %>%
 ```
 
 ```{r KEGG_result_grofiler2}
-# Load script with KEGG result tables
-source("scripts/r_code/generate_GO_tables.R")
 
-gprofiler_kegg <- goTerm_tables[["kegg_res_all"]] %>%
+gprofiler_kegg <- kegg_res_all %>%
   mutate(regulation = str_replace(query, "^(down|up)_degIDs_\\d{2}hrs$", "\\1"),
          timepoint = str_replace(query, "^(down|up)_degIDs_(\\d{2})hrs$", "\\2-hpi")) %>%
   select(timepoint, regulation, term_name, deg_count = intersection_size, p_value) %>%
