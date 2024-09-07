@@ -304,67 +304,74 @@ Modifier Subfamily G Member 1), respectively.
 \textbf{Functional Enrichment Analyses (GO, KEGG pathway, and
 interaction network analyses)}\\
 Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi
-DEGs with the gprofiler2 (version \textbf{0.2.3}) R package (21), which
-outputs results in three GO categories -- cellular components (CP),
-biological processes (BP), and molecular functions (MF). Results with
+DEGs with the DAVID (Database for Annotation, Visualization and
+Integrated Discovery; version 2021) online resource (21) and the
+gprofiler2 (version \textbf{0.2.3}) R package (22), which output results
+in three GO categories -- cellular components (CP), biological processes
+(BP), and molecular functions (MF). Results with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered
 functionally enriched. The GO enrichment analyses results at 12-hpi and
-24-hpi showed significant similarities among all three GO categories. At
-both time points, cellular breakdown processes were upregulated while
+24-hpi showed significant intersections among all three GO categories.
+At both time points, cellular breakdown processes were upregulated while
 cellular maintenance processes and structures were downregulated in all
 three GO categories (\textbf{Table 2A-B} and \textbf{Table 3A-B}).
 
-For upregulated DEGs at 12-hpi, GO terms annotated under the biological
-processes (BP) category broadly cluster into: apoptosis, catabolic
-processes, cellular metabolism, response to stimuli, and protein
-processing (\textbf{Figure 4A}). Under the cellular components (CC) GO
-category, the GO terms relate with cytoplasmic vacuolation while the GO
-terms under the molecular functions (MF) category broadly fit under
-protein binding (\textbf{Table 2A}). For 12-hpi downregulated DEGs, the
-GO terms in BP category generally fall under: translation, protein
-biosynthesis and folding; ribosome biogenesis; nitrogen compound
-metabolism; nucleic acid synthesis, metabolism, processing, and
-replication; and energy metabolism (\textbf{Figure 4C}). As for the CC
-category GO terms, they broadly group into: ribosome, mitochondria,
-respirosome, and nucleus while the MF category GO terms generally belong
+For upregulated DEGs at 12-hpi, GO terms annotated under the BP category
+broadly cluster into: apoptosis and autophagy, cellular metabolism
+(catabolic processes), sterol biosynthesis, response to stimuli, and
+protein processing (\textbf{Figure 4A} and \textbf{Table 2A}). Under the
+CC category, the GO terms relate primarily with cytoplasmic vacuolation
+while the GO terms under the MF category broadly fit under protein
+binding and kinase activity (\textbf{Table 2A}). For 12-hpi
+downregulated DEGs, the GO terms in BP category generally fall under:
+translation, protein biosynthesis and folding, ribosome biogenesis,
+nitrogen compound metabolism, nucleic acid synthesis, repair,
+metabolism, processing, and replication; and energy metabolism. Also,
+immunoglobulin production and isotype switching was downregulated
+(\textbf{Figure 4C} and \textbf{Table 2B}). As for the CC category GO
+terms, they broadly group into: ribosome, mitochondria, respirosome,
+nucleus, and spliceosome while the MF category GO terms generally belong
 to: translation regulator activity, protein folding chaperone, catalytic
 activity (acting on a nucleic acids), and ATP hydrolysis activity
 (\textbf{Table 2B}).
 
 At 24-hpi, the GO terms under the BP GO category for the upregulated
-DEGs are connected with: catabolic process, protein ubiquitination and
-proteolysis, cell signalling, and cell metabolism (\textbf{Figure 4B}).
-The GO terms of the CC category, similar to those identified at 12-hpi,
-are also related with cytoplasmic vacuolation. The MF category GO terms
-group into: protein ubiquitination activity, acyltransferase activity,
-and macromolecule binding activity (\textbf{Table 3A}). The GO terms for
-the downregulated DEGs are markedly similar to those at 12-hpi in all
-three GO categories. The BP category GO terms broadly group into:
+DEGs are connected with: apoptosis and autophagy, lipid and sterol
+biosynthesis, catabolic process, protein ubiquitination and proteolysis,
+cell signalling, and cell metabolism. Additionally, host defense
+response and genes that negatively regulate cytokine production were
+upregulated (\textbf{Figure 4B} and \textbf{Table 3A}). The GO terms of
+the CC category, similar to those identified at 12-hpi, are also related
+with cytoplasmic vacuolation and the lysosome. The MF category GO terms
+group into: protein ubiquitination activity, kinase and acyltransferase
+activity, and macromolecule binding activity (\textbf{Table 3A}). The GO
+terms for the downregulated DEGs are markedly similar to those at 12-hpi
+in all three GO categories. The BP category GO terms broadly group into:
 translation, peptide biosynthesis and folding, ribosome biogenesis,
-aerobic respiration and ATP synthesis, and cell cycle process and DNA
-replication (\textbf{Figure 4D}). The GO terms of the CC category group
-under: ribosome, organelle, mitochondrion, nucleus and chromosomes while
-the MF category GO terms group into: structural constituent of ribosome
-and translation regulator activity, catalytic activity acting on a
-nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity,
-and NAD binding (\textbf{Table 3B}).
+aerobic respiration and ATP synthesis, and cell cycle process and
+nucleic acid replication and processing (\textbf{Figure 4D} and
+\textbf{Table 3B}). The GO terms of the CC category group under:
+ribosome, organelle, mitochondrion, nucleus and chromosomes while the MF
+category GO terms group into: structural constituent of ribosome and
+translation regulator activity, catalytic activity acting on a nucleic
+acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD
+binding (\textbf{Table 3B}).
 
 KEGG analysis on the DEGs was performed using both the gprofiler2 R
-package (21) and the DAVID (Database for Annotation, Visualization and
-Integrated Discovery; version 2021) online resource (22). Both analysis
-resources gave similar results but the results from DAVID (\textbf{Table
-4A}) includes more information than the gprofiler2 results
-(\textbf{Table 4B}). The KEGG pathway analysis was congruent with the GO
-results, revealing that generally, cell maintenance and upkeep pathways
-were downregulated while cell death and breakdown pathways were
-upregulated. Cell maintenance pathways such as DNA replication and
-repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation
-were downregulated at 12-hpi. Similar pathways were downregulated at
-24-hpi. Cell breakdown pathways such as: autophagy, response to virus
-(Influenza A), and steroid biosynthesis were upregulated at 12-hpi
-similar to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated
-proteolysis, lysosome, protein processing in endoplasmic reticulum, and
-steroid biosynthesis were upregulated.
+package (22) and the DAVID online resource. Both analysis resources gave
+similar results but the results from DAVID (\textbf{Table 4A}) includes
+more information than the gprofiler2 results (\textbf{Table 4B}). The
+KEGG pathway analysis was congruent with the GO results, revealing that
+generally, cell maintenance and upkeep pathways were downregulated while
+cell death and breakdown pathways were upregulated. Cell maintenance
+pathways such as DNA replication and repair, ribosome biogenesis,
+spliceosome, and oxidative phosphorylation were downregulated at 12-hpi.
+Similar pathways were downregulated at 24-hpi. Cell breakdown pathways
+such as: autophagy, response to virus (Influenza A), and steroid
+biosynthesis were upregulated at 12-hpi similar to 24-hpi, where
+pathways such as: autophagy, ubiquitin-mediated proteolysis, lysosome,
+protein processing in endoplasmic reticulum, and steroid biosynthesis
+were upregulated.
 
 It is well-established that THEV induces cell death (apoptosis and
 necrosis) in infected B-cells, which is linked to the IMS associated
@@ -392,7 +399,10 @@ but the functions of these novel ORFs are yet to be shown (28). Our data
 shows that apoptotic and autophagic pathways are upregulated during THEV
 infection, supporting previous findings of apoptosis and necrosis of
 THEV-infected cells (8, 11, 23). For example, \ldots, which are
-proapoptotic, were upregulated.
+proapoptotic, were upregulated. We also see several cell upkeep
+processes downregulated which can trigger apoptosis. For instance,
+several pathways related DNA repair are downregulated \ldots. Severe DNA
+damage is an known mechanism of apoptosis induction.
 
 \textbf{Cellular Metabolism Changes During THEV Infection}\\
 Many viruses, such as hepatitis C virus, human cytomegalovirus,
@@ -488,7 +498,7 @@ P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered as
 differentially expressed. The read count data are deposited at Gene
 Expression Omnibus (GEO) under accession number \#\#\#. The functional
 profiling of DEGs (GO and KEGG analyses) were performed based on GO
-databases and KEGG databases using the R package gprofiler2 (21) with
+databases and KEGG databases using the R package gprofiler2 (22) with
 \emph{Meleagris gallopavo} as the reference organism. Results with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
 functionally enriched. Additionally, the DAVID (Database for Annotation,
@@ -667,20 +677,20 @@ ballgown}. Nature Protocols 11:1650--1667.}
 fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
 15:550.}
 
-\bibitem[\citeproctext]{ref-Gprofiler2}
-\CSLLeftMargin{21. }%
-\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
-2020. gprofiler2-- an r package for gene list functional enrichment
-analysis and namespace conversion toolset g:profiler. F1000Research 9
-(ELIXIR).}
-
 \bibitem[\citeproctext]{ref-Sherman2022}
-\CSLLeftMargin{22. }%
+\CSLLeftMargin{21. }%
 \CSLRightInline{Sherman BT, Hao M, Qiu J, Jiao X, Baseler MW, Lane HC,
 Imamichi T, Chang W. 2022.
 \href{https://doi.org/10.1093/nar/gkac194}{DAVID: A web server for
 functional enrichment analysis and functional annotation of gene lists
 (2021 update)}. Nucleic Acids Research 50:W216--W221.}
+
+\bibitem[\citeproctext]{ref-Gprofiler2}
+\CSLLeftMargin{22. }%
+\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
+2020. gprofiler2-- an r package for gene list functional enrichment
+analysis and namespace conversion toolset g:profiler. F1000Research 9
+(ELIXIR).}
 
 \bibitem[\citeproctext]{ref-Saunders1993}
 \CSLLeftMargin{23. }%
