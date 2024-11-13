@@ -31,7 +31,7 @@ prep_heatmap_data <- function(tp){
     set_names(c("t12", "t24", "t4", "t72"))
   
   if(tp == "t12"){
-    data[[tp]] <- data[[tp]] %>% select(-inf_fpkm_r3)
+    data[[tp]] <- data[[tp]] %>% select(-inf_fpkm_r2)
   }
   
   heat <- data[[tp]] %>%
@@ -49,7 +49,7 @@ prep_heatmap_data <- function(tp){
 timpnts <- c("t12", "t24", "t4", "t72")
 
 heatmap_data_list <- map(timpnts, prep_heatmap_data) %>%
-  set_names(c("t12", "t24", "t4", "t72"))
+  set_names(timpnts)
 
 # function to plot heatmaps
 plot_heatmap <- function(tp){
@@ -73,7 +73,7 @@ plot_heatmap <- function(tp){
 }
 
 # save heatmaps in a tibble with appropriate identifier (timepoint)
-plotted_heatmaps <- tibble(timepoints = c("t12", "t24", "t4", "t72")) %>%
+plotted_heatmaps <- tibble(timepoints = timpnts) %>%
   mutate(plts = map(timepoints, plot_heatmap))
 
 p12 <- as.ggplot(plotted_heatmaps[, "plts"][[1]][[1]])

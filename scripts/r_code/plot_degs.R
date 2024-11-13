@@ -3,7 +3,7 @@
 library(ggtext)
 
 # prepare data for visualization
-p_data <- diff_exp_genes %>%
+p_data <- as_tibble(diff_exp_genes) %>%
   group_by(timepoint, regulation) %>%
   reframe(num_genes = n()) %>%
   mutate(pos_shift = ifelse(regulation == "up", 0.2, -0.2),
@@ -18,7 +18,7 @@ deg_bar_plt <- p_data %>%
   scale_fill_manual(values = c("#0000ff", "#ff0000"),
                     breaks = c("down", "up"),
                     labels = c("Down Regulated", "Up Regulated")) +
-  scale_y_continuous(limits = c(0, 2700),
+  scale_y_continuous(limits = c(0, 2000),
                      expand = c(0, 0)) +
   scale_x_discrete(expand = c(0.16, 0.16),
                    breaks = c("t4", "t12", "t24", "t72"),
@@ -52,7 +52,7 @@ deg_bar_plt <- p_data %>%
         axis.ticks = element_blank(),
         legend.justification = c(0,1),
         legend.position = "inside",
-        legend.position.inside = c(0.1, 0.8),
+        legend.position.inside = c(0.1, 0.95),
         legend.text = element_text(face = 'bold', 
                                    size = 18,
                                    family = 'Arial'),

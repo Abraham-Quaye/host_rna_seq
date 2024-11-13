@@ -243,8 +243,8 @@ rule DESeq2_DEG_analysis:
 rule save_DESeq2_results:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
-        r_script1 = "scripts/r_code/my_degAnalyses.R",
-        r_script2 = "scripts/r_code/extract_myDEG_geneIDs.R",
+        r_script1 = "scripts/r_code/deg_analysis.R",
+        r_script2 = "scripts/r_code/extract_deg_geneIDs.R",
         r_script3 = "scripts/r_code/save_deg_tabs.R"
     output:
         expand("results/r/tables/{names}.txt", \
@@ -258,11 +258,11 @@ rule save_DESeq2_results:
 rule plot_DEG_figures:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
-        r_script1 = "scripts/r_code/plot_myDEGS.R",
-        r_script2 = "scripts/r_code/plot_myHeatmap.R",
-        r_script3 = "scripts/r_code/my_degAnalyses.R",
-        r_script4 = "scripts/r_code/extract_myDEG_geneIDs.R",
-        r_script5 = "scripts/r_code/my_vennDiagram.R"
+        r_script1 = "scripts/r_code/plot_degs.R",
+        r_script2 = "scripts/r_code/plot_heatmap.R",
+        r_script3 = "scripts/r_code/deg_analysis.R",
+        r_script4 = "scripts/r_code/extract_deg_geneIDs.R",
+        r_script5 = "scripts/r_code/venn_diagram.R"
     output:
         "results/r/figures/deg_patch_fig.png"
     shell:
@@ -274,10 +274,10 @@ rule plot_DEG_figures:
 ####### GO TERM AND PATHWAY ENRICHMENT ANALYSIS ###########################
 rule plot_enrichment:
     input:
-        r_script1 = "scripts/r_code/extract_myDEG_geneIDs.R",
-        r_script2 = "scripts/r_code/my_degAnalyses.R",
+        r_script1 = "scripts/r_code/extract_deg_geneIDs.R",
+        r_script2 = "scripts/r_code/deg_analysis.R",
         degfiles = rules.DESeq2_DEG_analysis.output.sigs,
-        main_script = "scripts/r_code/my_enrichment_analyses.R"
+        main_script = "scripts/r_code/enrichment_analyses.R"
     output:
         go_figs = expand("results/r/figures/go_enrich_{tp}{reg}{GO}.png", \
         tp = [12, 24], reg = ["up", "down"], GO = ["BP", "CC", "MF"]),

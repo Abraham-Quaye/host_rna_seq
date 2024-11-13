@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-source("scripts/r_code/extract_myDEG_geneIDs.R")
+source("scripts/r_code/extract_deg_geneIDs.R")
 
 # Save geneID tables
 for(t in names(all_deg_tables)){

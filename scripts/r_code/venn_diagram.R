@@ -1,22 +1,20 @@
 #!/usr/bin/env Rscript
 
+library(ggVennDiagram)
 library(ggvenn)
 library(patchwork)
 
 source("scripts/r_code/extract_deg_geneIDs.R")
 
 up <- all_deg_tables[c("up_degIDs_4hrs", "up_degIDs_12hrs",
-                       "up_degIDs_24hrs", "up_degIDs_72hrs")]
+                       "up_degIDs_24hrs")]
 
 v_up <- list(`4hpi` = up$up_degIDs_4hrs %>% pull(gene_id),
              `12hpi` = up$up_degIDs_12hrs %>% pull(gene_id),
-             `24hpi` = up$up_degIDs_24hrs %>% pull(gene_id),
-             `72hpi` = up$up_degIDs_72hrs %>% pull(gene_id))
+             `24hpi` = up$up_degIDs_24hrs %>% pull(gene_id))
 
-down <- all_deg_tables[c("down_degIDs_4hrs",
-                         "down_degIDs_12hrs",
-                         "down_degIDs_24hrs",
-                         "down_degIDs_72hrs")]
+down <- all_deg_tables[c("down_degIDs_4hrs", "down_degIDs_12hrs",
+                         "down_degIDs_24hrs", "down_degIDs_72hrs")]
 
 v_down <- list(`4hpi` = down$down_degIDs_4hrs %>% pull(gene_id),
                `12hpi` = down$down_degIDs_12hrs %>% pull(gene_id),
@@ -30,10 +28,9 @@ draw_venn_plott <- function(input_sets, tittl){
                set_name_size = 8, text_size = 5,
                fill_color = c("red", "blue", "grey30", "green")) +
     coord_cartesian(clip = "off") +
-    labs(caption = paste0(tittl, "regulated DEGs")) +
-    theme(plot.caption = element_text(size = 22, face = "bold",
-                                      colour = "black", hjust = 0.5,
-                                      margin = margin(t = -15)))
+    labs(title = paste0(tittl, "regulated DEGs")) +
+    theme(plot.title = element_text(size = 22, face = "bold",
+                                      colour = "black", hjust = 0.5))
 
   return(pl)
 }
