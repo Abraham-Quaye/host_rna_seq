@@ -9,8 +9,9 @@ library(rtracklayer)
 library(ggplotify)
 library(patchwork)
 library(pheatmap)
+library(ggrepel)
 
-# sessionInfo()
+
 # ====================================================================
 # TRANSCRIPT ABUNDANCE ANALYSIS WITH DEseq2
 # ====================================================================
@@ -77,14 +78,15 @@ make_PCA <- function(dds, tp_lab){
   plt <- pcaData %>% 
     ggplot(aes(PC1, PC2, colour = infection)) +
     geom_point(size = 5) +
+    coord_cartesian(clip = "off") +
     scale_color_manual(values = c("#ff0000", "#0000ff"),
                        breaks = c("infected", "mock"),
                        labels = c("Infected", "Mock")) +
-    labs(title = paste0("THEV-infected VS Uninfected PCA: ", tp_lab),
+    labs(title = paste0("THEV-infected VS Mock-infected PCA: ", tp_lab),
          x = paste0("PC1: ", pvar[[1]], "% Variance"),
          y = paste0("PC2: ", pvar[[2]], "% Variance")) +
     theme_bw() +
-    theme(plot.title = element_text(size = 20, face = "bold", hjust = 0),
+    theme(plot.title = element_text(size = 18.5, face = "bold", hjust = 0),
           plot.title.position = "plot",
           axis.title = element_text(size = 18, face = "bold"),
           axis.text = element_text(size = 16, colour = "#000000"),
@@ -100,27 +102,46 @@ make_PCA <- function(dds, tp_lab){
 }
 
 make_volcanoPlot <- function(res_dds, lab_tp){
+  
   dff <- as.data.frame(res_dds) %>%
     mutate(sig = padj <= 0.05,
            reg = case_when(sig & log2FoldChange > 0 ~ "up",
                            sig & log2FoldChange < 0 ~ "down",
-                           TRUE ~ "normal")) 
+                           TRUE ~ "normal"),
+           gene_id = row.names(.),
+           gene_name = sub("\\d+\\|(.+)", "\\1", gene_id)) %>%
+    select(gene_id, gene_name, everything())
+  
+  if(lab_tp == "12hrs"){
+    most_sig <- dff %>%
+      filter(-log10(padj) >= 30)
+  }else{
+    most_sig <- dff %>%
+      filter(-log10(padj) >= 100)
+  }
   
   xmin <- dff %>% drop_na(log2FoldChange, padj) %>%
     pull(log2FoldChange) %>% min(., na.rm = T)
+  
   xmax <- dff %>% drop_na(log2FoldChange, padj) %>%
     pull(log2FoldChange) %>% max(., na.rm = T)
   
   plt <- dff %>% 
     ggplot(aes(log2FoldChange, -log10(padj), colour = reg)) +
     geom_point(alpha = 0.8, size = 2.5) +
+    geom_text_repel(data = most_sig,
+                    aes(log2FoldChange, -log10(padj),
+                        label = gene_name), 
+                    min.segment.length = 0, fontface = "bold",
+                    box.padding = 1.5, point.padding = 0.5,
+                    show.legend = F, size = 5) +
     geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
     scale_x_continuous(expand = c(0, 0),
                        breaks = seq(-10, 10, 1),
                        labels = seq(-10, 10, 1),
                        limits = c((xmin - 0.1), (xmax + 0.1))) +
     coord_cartesian(clip = "off") +
-    labs(title = paste0("THEV-infected VS Uninfected: ", lab_tp),
+    labs(title = paste0("THEV-infected VS Mock-infected: ", lab_tp),
          y = expression("-Log"[10]*"(P-adjusted Values)"),
          x = expression("Log"[2]*"(Fold Change)")) +
     scale_color_manual(values = c("blue", "grey", "red"),
@@ -128,16 +149,18 @@ make_volcanoPlot <- function(res_dds, lab_tp){
                        labels = c("Downregulated", "Not Significant", "Upregulated")) +
     theme_bw() +
     theme(plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+          plot.title.position = "plot",
           axis.title = element_text(size = 18, face = "bold"),
           axis.text = element_text(size = 16, colour = "#000000"),
           legend.title = element_blank(),
           legend.text = element_text(size = 18, face = "bold",
                                      margin = margin(r = 30, l = 0)),
           legend.position = "inside",
-          legend.position.inside = c(0.2, 0.8),
-          legend.key.size = unit(1.5, "cm"),
+          legend.position.inside = c(0.2, 0.78),
+          legend.key.size = unit(1.2, "cm"),
           legend.background = element_blank(),
-          legend.key = element_rect(fill = NA))
+          legend.key = element_rect(fill = NA)) +
+    guides(color = guide_legend(override.aes = list(size = 7)))
   
   return(plt)
 }
