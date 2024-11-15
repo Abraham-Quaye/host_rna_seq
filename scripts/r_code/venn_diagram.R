@@ -25,7 +25,8 @@ v_down <- list(`4hpi` = down$down_degIDs_4hrs %>% pull(gene_id),
 draw_venn_plott <- function(input_sets, tittl){
   
   pl <- ggvenn(input_sets, stroke_size = 0.1,
-               set_name_size = 8, text_size = 5,
+               set_name_size = 10, show_percentage = F,
+               text_size = 10,
                fill_color = c("red", "blue", "grey30", "green")) +
     coord_cartesian(clip = "off") +
     labs(title = paste0(tittl, "regulated DEGs")) +
@@ -35,8 +36,8 @@ draw_venn_plott <- function(input_sets, tittl){
   return(pl)
 }
 
-plts <- map2(list(v_up, v_down), list("Up", "Down"), ~draw_venn_plott(input_sets = .x,
-                                                                      tittl = .y)) %>%
+plts <- map2(list(v_up, v_down), list("Up", "Down"),
+             ~draw_venn_plott(input_sets = .x,tittl = .y)) %>%
   set_names(c("up", "down"))
 
 fplot <- (plts[["up"]] | plot_spacer() | plts[["down"]]) +

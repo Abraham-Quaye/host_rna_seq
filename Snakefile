@@ -236,6 +236,7 @@ rule DESeq2_DEG_analysis:
     shell:
         """
         {input.r_script}
+        rm Rplots.pdf
         """
 
 
@@ -259,7 +260,7 @@ rule plot_DEG_figures:
     input:
         deg_files = rules.DESeq2_DEG_analysis.output.sigs,
         r_script1 = "scripts/r_code/plot_degs.R",
-        r_script2 = "scripts/r_code/plot_heatmap.R",
+        r_script2 = "scripts/r_code/plot_heatmaps.R",
         r_script3 = "scripts/r_code/deg_analysis.R",
         r_script4 = "scripts/r_code/extract_deg_geneIDs.R",
         r_script5 = "scripts/r_code/venn_diagram.R"
