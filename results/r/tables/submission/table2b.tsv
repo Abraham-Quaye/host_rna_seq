@@ -1,0 +1,346 @@
+source	term	fold_enrich	num_degs	qval
+Biological Process	Biological Process	NA	0	      NA
+GO:BP	gene expression	3.07	289	4.61e-70
+GO:BP	macromolecule biosynthetic process	2.69	313	8.24e-63
+GO:BP	biosynthetic process	2.25	377	3.04e-57
+GO:BP	translation	6.31	110	7.08e-55
+GO:BP	cellular biosynthetic process	2.29	329	4.05e-50
+GO:BP	ribonucleoprotein complex biogenesis	5.52	108	1.71e-47
+GO:BP	metabolic process	1.57	618	9.00e-47
+GO:BP	cellular metabolic process	1.77	482	3.42e-45
+GO:BP	macromolecule metabolic process	1.79	466	6.20e-45
+GO:BP	nucleobase-containing compound metabolic process	2.41	276	9.74e-45
+GO:BP	primary metabolic process	1.63	556	1.30e-44
+GO:BP	nucleic acid metabolic process	2.56	226	1.57e-39
+GO:BP	ribosome biogenesis	5.8	86	2.32e-39
+GO:BP	organonitrogen compound biosynthetic process	2.74	170	3.69e-32
+GO:BP	nucleobase-containing compound biosynthetic process	2.57	178	2.25e-30
+GO:BP	rRNA processing	5.97	62	1.61e-28
+GO:BP	rRNA metabolic process	5.57	63	4.00e-27
+GO:BP	RNA processing	3.04	120	6.65e-26
+GO:BP	RNA metabolic process	2.49	152	6.25e-24
+GO:BP	nucleic acid biosynthetic process	2.57	142	1.38e-23
+GO:BP	RNA biosynthetic process	2.55	135	4.64e-22
+GO:BP	ribosomal large subunit biogenesis	8.18	34	8.01e-20
+GO:BP	protein-RNA complex assembly	5.76	40	3.24e-17
+GO:BP	cytoplasmic translation	9.15	27	7.21e-17
+GO:BP	protein-RNA complex organization	5.54	40	1.35e-16
+GO:BP	ribosomal small subunit biogenesis	7.36	31	2.14e-16
+GO:BP	DNA replication	4.95	39	2.28e-14
+GO:BP	organonitrogen compound metabolic process	1.5	331	2.81e-14
+GO:BP	DNA metabolic process	2.74	82	3.18e-14
+GO:BP	cellular component biogenesis	1.83	182	5.57e-14
+GO:BP	DNA-templated DNA replication	5.29	33	8.34e-13
+GO:BP	protein metabolic process	1.52	261	2.39e-11
+GO:BP	ribosome assembly	8.13	20	6.51e-11
+GO:BP	aerobic respiration	5.1	29	1.17e-10
+GO:BP	protein folding	4	35	6.76e-10
+GO:BP	oxidative phosphorylation	6.29	22	1.17e-09
+GO:BP	protein-containing complex organization	1.95	112	1.17e-09
+GO:BP	protein-containing complex assembly	2.19	83	2.81e-09
+GO:BP	cellular respiration	4.5	29	2.81e-09
+GO:BP	DNA damage response	2.35	69	7.26e-09
+GO:BP	maturation of LSU-rRNA	8.13	16	1.88e-08
+GO:BP	ATP synthesis coupled electron transport	6.1	18	1.95e-07
+GO:BP	nucleoside triphosphate metabolic process	3.95	27	2.73e-07
+GO:BP	cellular process	1.1	827	3.50e-07
+GO:BP	maturation of SSU-rRNA	6.22	17	4.15e-07
+GO:BP	electron transport chain	5.08	20	5.49e-07
+GO:BP	mitochondrial ATP synthesis coupled electron transport	6.1	17	5.49e-07
+GO:BP	ribonucleoside triphosphate metabolic process	4.14	24	8.49e-07
+GO:BP	generation of precursor metabolites and energy	2.77	40	1.13e-06
+GO:BP	regulation of DNA replication	6.23	16	1.18e-06
+GO:BP	DNA repair	2.39	51	1.44e-06
+GO:BP	aerobic electron transport chain	5.97	16	2.15e-06
+GO:BP	respiratory electron transport chain	4.99	18	4.43e-06
+GO:BP	cellular response to stress	1.79	90	5.95e-06
+GO:BP	ribosomal large subunit assembly	10.16	10	9.32e-06
+GO:BP	maturation of 5.8S rRNA	6.79	13	1.21e-05
+GO:BP	nucleoside triphosphate biosynthetic process	5.23	16	1.41e-05
+GO:BP	energy derivation by oxidation of organic compounds	3	30	1.49e-05
+GO:BP	ATP metabolic process	4.29	19	1.86e-05
+GO:BP	mitochondrion organization	2.51	39	1.97e-05
+GO:BP	purine ribonucleoside triphosphate metabolic process	3.88	21	2.09e-05
+GO:BP	mRNA processing	2.5	39	2.09e-05
+GO:BP	RNA localization	3.69	22	2.39e-05
+GO:BP	regulation of DNA metabolic process	2.92	30	2.42e-05
+GO:BP	tRNA metabolic process	2.81	31	3.49e-05
+GO:BP	mRNA metabolic process	2.21	47	4.07e-05
+GO:BP	purine nucleoside triphosphate metabolic process	3.69	21	4.37e-05
+GO:BP	ribonucleoside triphosphate biosynthetic process	5.45	14	5.12e-05
+GO:BP	nuclear transport	2.79	30	5.99e-05
+GO:BP	nucleocytoplasmic transport	2.79	30	5.99e-05
+GO:BP	'de novo' post-translational protein folding	8.31	10	6.05e-05
+GO:BP	mitochondrial transport	3.47	22	6.14e-05
+GO:BP	nucleobase-containing small molecule metabolic process	2.04	53	7.60e-05
+GO:BP	maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)	6.27	12	8.09e-05
+GO:BP	'de novo' protein folding	7.95	10	8.96e-05
+GO:BP	cellular component organization or biogenesis	1.26	310	9.53e-05
+GO:BP	nucleoside monophosphate biosynthetic process	5.12	14	9.79e-05
+GO:BP	cell cycle checkpoint signaling	3.59	20	1.16e-04
+GO:BP	regulation of cell cycle process	2.18	44	1.16e-04
+GO:BP	RNA splicing	2.51	33	1.35e-04
+GO:BP	regulation of cell cycle	1.95	55	1.68e-04
+GO:BP	nucleotide metabolic process	2.1	46	1.68e-04
+GO:BP	translational initiation	5.78	12	1.79e-04
+GO:BP	nucleobase-containing compound transport	3.22	22	1.83e-04
+GO:BP	mRNA splicing, via spliceosome	2.7	28	2.22e-04
+GO:BP	RNA splicing, via transesterification reactions with bulged adenosine as nucleophile	2.7	28	2.22e-04
+GO:BP	RNA splicing, via transesterification reactions	2.7	28	2.22e-04
+GO:BP	nucleotide biosynthetic process	2.53	31	2.28e-04
+GO:BP	protein maturation	2.16	42	2.32e-04
+GO:BP	establishment of RNA localization	3.7	18	2.32e-04
+GO:BP	mitochondrial transmembrane transport	3.7	18	2.32e-04
+GO:BP	nucleic acid transport	3.7	18	2.32e-04
+GO:BP	RNA transport	3.7	18	2.32e-04
+GO:BP	nucleoside phosphate biosynthetic process	2.5	31	2.80e-04
+GO:BP	nuclear export	3.33	20	3.06e-04
+GO:BP	nucleoside monophosphate metabolic process	4.57	14	3.08e-04
+GO:BP	chaperone cofactor-dependent protein refolding	7.84	9	3.37e-04
+GO:BP	regulation of protein stability	3.41	19	3.76e-04
+GO:BP	formation of cytoplasmic translation initiation complex	11.64	7	3.80e-04
+GO:BP	cytoplasmic translational initiation	7.48	9	4.85e-04
+GO:BP	nucleoside phosphate metabolic process	2	46	4.85e-04
+GO:BP	protein stabilization	3.85	16	4.94e-04
+GO:BP	chromosome organization	2.15	38	6.51e-04
+GO:BP	DNA integrity checkpoint signaling	3.75	16	6.72e-04
+GO:BP	regulation of cell cycle phase transition	2.42	30	6.83e-04
+GO:BP	ribose phosphate metabolic process	2.19	36	7.72e-04
+GO:BP	ribonucleoside monophosphate biosynthetic process	4.88	12	8.23e-04
+GO:BP	small molecule metabolic process	1.5	106	8.46e-04
+GO:BP	response to stress	1.45	123	9.23e-04
+GO:BP	proton motive force-driven ATP synthesis	6.86	9	9.28e-04
+GO:BP	mitochondrial DNA metabolic process	9.85	7	1.15e-03
+GO:BP	ATP biosynthetic process	6.58	9	1.26e-03
+GO:BP	mitochondrial electron transport, NADH to ubiquinone	6.58	9	1.26e-03
+GO:BP	viral gene expression	18.29	5	1.45e-03
+GO:BP	chaperone-mediated protein folding	5.03	11	1.45e-03
+GO:BP	purine ribonucleoside triphosphate biosynthetic process	5.03	11	1.45e-03
+GO:BP	nuclear DNA replication	6.33	9	1.67e-03
+GO:BP	cell cycle DNA replication	6.33	9	1.67e-03
+GO:BP	purine nucleoside triphosphate biosynthetic process	4.91	11	1.78e-03
+GO:BP	DNA strand elongation involved in DNA replication	7.32	8	1.93e-03
+GO:BP	ribose phosphate biosynthetic process	2.55	24	2.07e-03
+GO:BP	ribonucleoside monophosphate metabolic process	4.39	12	2.07e-03
+GO:BP	ribonucleotide metabolic process	2.12	34	2.14e-03
+GO:BP	DNA strand elongation	6.97	8	2.67e-03
+GO:BP	ribosomal small subunit assembly	8.54	7	2.70e-03
+GO:BP	RNA export from nucleus	3.77	13	4.16e-03
+GO:BP	DNA replication checkpoint signaling	6.36	8	5.00e-03
+GO:BP	import into the mitochondrion	3.92	12	5.82e-03
+GO:BP	rRNA modification	5.14	9	7.66e-03
+GO:BP	positive regulation of signal transduction by p53 class mediator	13.06	5	8.24e-03
+GO:BP	GMP biosynthetic process	9.15	6	8.32e-03
+GO:BP	ribonucleotide biosynthetic process	2.42	22	8.55e-03
+GO:BP	protein targeting to mitochondrion	3.66	12	1.06e-02
+GO:BP	establishment of protein localization to organelle	1.91	35	1.13e-02
+GO:BP	negative regulation of cell cycle phase transition	2.49	20	1.22e-02
+GO:BP	'de novo' IMP biosynthetic process	11.43	5	1.51e-02
+GO:BP	non-membrane-bounded organelle assembly	1.99	30	1.66e-02
+GO:BP	negative regulation of cell cycle	2.19	24	1.71e-02
+GO:BP	DNA replication initiation	5.23	8	1.71e-02
+GO:BP	XMP biosynthetic process	18.29	4	1.71e-02
+GO:BP	'de novo' XMP biosynthetic process	18.29	4	1.71e-02
+GO:BP	viral translation	18.29	4	1.71e-02
+GO:BP	XMP metabolic process	18.29	4	1.71e-02
+GO:BP	negative regulation of DNA metabolic process	3.43	12	1.71e-02
+GO:BP	AMP biosynthetic process	7.84	6	1.71e-02
+GO:BP	GMP metabolic process	7.84	6	1.71e-02
+GO:BP	regulation of DNA-templated DNA replication	7.84	6	1.71e-02
+GO:BP	mitochondrial genome maintenance	6.1	7	1.85e-02
+GO:BP	regulation of signal transduction by p53 class mediator	6.1	7	1.85e-02
+GO:BP	mitotic cell cycle	1.69	45	2.01e-02
+GO:BP	mitotic cell cycle checkpoint signaling	3.13	13	2.10e-02
+GO:BP	positive regulation of translation	3.59	11	2.11e-02
+GO:BP	carbohydrate derivative biosynthetic process	1.64	49	2.14e-02
+GO:BP	protein import into nucleus	2.8	15	2.20e-02
+GO:BP	DNA geometric change	4.33	9	2.22e-02
+GO:BP	'de novo' AMP biosynthetic process	10.16	5	2.26e-02
+GO:BP	cellular component assembly	1.34	117	2.26e-02
+GO:BP	double-strand break repair via break-induced replication	7.32	6	2.28e-02
+GO:BP	immunoglobulin production involved in immunoglobulin-mediated immune response	5.82	7	2.28e-02
+GO:BP	carbohydrate derivative metabolic process	1.49	69	2.28e-02
+GO:BP	negative regulation of cell cycle process	2.26	21	2.46e-02
+GO:BP	purine ribonucleotide metabolic process	1.94	29	2.52e-02
+GO:BP	maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)	5.57	7	2.86e-02
+GO:BP	regulation of apoptotic signaling pathway	2.29	20	2.86e-02
+GO:BP	tRNA aminoacylation	3.41	11	2.94e-02
+GO:BP	regulation of G2/M transition of mitotic cell cycle	3.41	11	2.94e-02
+GO:BP	protein localization to nucleus	2.49	17	3.01e-02
+GO:BP	import into nucleus	2.69	15	3.01e-02
+GO:BP	macromolecule methylation	2.81	14	3.04e-02
+GO:BP	cell cycle	1.47	69	3.10e-02
+GO:BP	regulation of translation	2.26	20	3.13e-02
+GO:BP	telomere maintenance	3.35	11	3.13e-02
+GO:BP	mitochondrial DNA replication	9.15	5	3.13e-02
+GO:BP	somatic recombination of immunoglobulin genes involved in immune response	9.15	5	3.13e-02
+GO:BP	somatic diversification of immunoglobulins involved in immune response	9.15	5	3.13e-02
+GO:BP	isotype switching	9.15	5	3.13e-02
+GO:BP	positive regulation of gene expression	1.74	37	3.13e-02
+GO:BP	NADH dehydrogenase complex assembly	4.57	8	3.13e-02
+GO:BP	mitochondrial respiratory chain complex I assembly	4.57	8	3.13e-02
+GO:BP	purine nucleoside monophosphate biosynthetic process	4.57	8	3.13e-02
+GO:BP	purine ribonucleoside monophosphate biosynthetic process	4.57	8	3.13e-02
+GO:BP	tRNA transport	14.63	4	3.24e-02
+GO:BP	RNA modification	2.3	19	3.26e-02
+GO:BP	establishment of protein localization to mitochondrion	3.09	12	3.30e-02
+GO:BP	DNA recombination	2.07	23	3.64e-02
+GO:BP	DNA-templated DNA replication maintenance of fidelity	4.43	8	3.69e-02
+GO:BP	protein targeting	2.11	22	3.80e-02
+GO:BP	amino acid activation	3.25	11	3.83e-02
+GO:BP	protein localization to mitochondrion	3.01	12	4.05e-02
+GO:BP	telomere organization	3.19	11	4.28e-02
+GO:BP	translational elongation	4.3	8	4.31e-02
+GO:BP	regulation of DNA strand elongation	8.31	5	4.39e-02
+GO:BP	mitotic cell cycle process	1.71	36	4.39e-02
+GO:BP	purine nucleotide metabolic process	1.76	33	4.40e-02
+GO:BP	regulation of apoptotic process	1.58	46	4.77e-02
+GO:BP	mitochondrial gene expression	2.93	12	4.86e-02
+GO:BP	cell cycle process	1.5	57	4.88e-02
+GO:BP	organelle organization	1.23	174	4.94e-02
+Cellular Component	Cellular Component	NA	0	      NA
+GO:CC	ribonucleoprotein complex	5.28	181	7.13e-79
+GO:CC	ribosome	8.45	100	9.07e-64
+GO:CC	ribosomal subunit	9.31	90	8.18e-62
+GO:CC	cytosolic ribosome	10.7	69	3.41e-52
+GO:CC	intracellular anatomical structure	1.26	951	6.67e-51
+GO:CC	membrane-enclosed lumen	2.62	271	6.67e-51
+GO:CC	intracellular organelle lumen	2.62	271	6.67e-51
+GO:CC	organelle lumen	2.62	271	6.67e-51
+GO:CC	nucleolus	4.68	111	8.60e-42
+GO:CC	intracellular organelle	1.33	823	1.15e-41
+GO:CC	protein-containing complex	1.73	467	5.00e-40
+GO:CC	organelle	1.3	829	4.21e-37
+GO:CC	nuclear lumen	2.49	221	4.84e-37
+GO:CC	intracellular membrane-bounded organelle	1.39	719	2.65e-36
+GO:CC	non-membrane-bounded organelle	1.85	362	1.14e-34
+GO:CC	intracellular non-membrane-bounded organelle	1.85	361	2.45e-34
+GO:CC	large ribosomal subunit	8.79	52	1.03e-33
+GO:CC	membrane-bounded organelle	1.34	729	1.48e-31
+GO:CC	cytosolic large ribosomal subunit	10.51	40	1.85e-29
+GO:CC	mitochondrion	2.46	177	2.97e-28
+GO:CC	cytosol	2.09	237	4.82e-28
+GO:CC	small ribosomal subunit	10	37	3.59e-26
+GO:CC	nucleus	1.53	462	4.75e-26
+GO:CC	preribosome	8.06	43	6.98e-26
+GO:CC	cytosolic small ribosomal subunit	12.2	29	1.62e-23
+GO:CC	cytoplasm	1.29	685	9.10e-22
+GO:CC	mitochondrial protein-containing complex	4.57	55	9.42e-20
+GO:CC	nuclear protein-containing complex	2.21	137	2.38e-17
+GO:CC	organelle envelope	2.56	101	8.81e-17
+GO:CC	small-subunit processome	8.2	26	1.78e-15
+GO:CC	mitochondrial matrix	3.99	42	9.69e-13
+GO:CC	nucleoplasm	1.94	133	3.47e-12
+GO:CC	mitochondrial envelope	2.71	68	3.51e-12
+GO:CC	mitochondrial inner membrane	3.34	50	3.51e-12
+GO:CC	organelle inner membrane	3.14	54	4.23e-12
+GO:CC	90S preribosome	8.05	20	1.61e-11
+GO:CC	inner mitochondrial membrane protein complex	4.5	29	6.05e-10
+GO:CC	mitochondrial membrane	2.58	60	8.01e-10
+GO:CC	chromosome	1.98	91	1.20e-08
+GO:CC	organellar ribosome	5.03	21	5.82e-08
+GO:CC	mitochondrial ribosome	5.03	21	5.82e-08
+GO:CC	catalytic complex	1.63	136	2.38e-07
+GO:CC	translation preinitiation complex	13.1	9	1.03e-06
+GO:CC	eukaryotic 48S preinitiation complex	15.14	8	1.98e-06
+GO:CC	eukaryotic translation initiation factor 3 complex	12.17	9	2.20e-06
+GO:CC	protein folding chaperone complex	7.33	12	4.35e-06
+GO:CC	eukaryotic 43S preinitiation complex	12.62	8	1.11e-05
+GO:CC	preribosome, large subunit precursor	8.6	10	1.27e-05
+GO:CC	nuclear chromosome	3.03	25	3.48e-05
+GO:CC	spliceosomal complex	2.63	29	8.28e-05
+GO:CC	replication fork	4.82	13	1.51e-04
+GO:CC	mitochondrial large ribosomal subunit	4.73	13	1.79e-04
+GO:CC	organellar large ribosomal subunit	4.73	13	1.79e-04
+GO:CC	nuclear envelope	2.3	34	1.90e-04
+GO:CC	oxidoreductase complex	4.27	14	2.31e-04
+GO:CC	protein-DNA complex	1.89	52	2.33e-04
+GO:CC	U2-type spliceosomal complex	4.32	13	4.48e-04
+GO:CC	sno(s)RNA-containing ribonucleoprotein complex	7.57	8	6.08e-04
+GO:CC	mitochondrial proton-transporting ATP synthase complex	6.08	9	8.94e-04
+GO:CC	proton-transporting ATP synthase complex	5.87	9	1.16e-03
+GO:CC	Ctf18 RFC-like complex	15.77	5	1.30e-03
+GO:CC	catalytic step 2 spliceosome	3.4	14	2.49e-03
+GO:CC	chaperonin-containing T-complex	7.36	7	2.67e-03
+GO:CC	mitochondrial small ribosomal subunit	6.06	8	2.67e-03
+GO:CC	organellar small ribosomal subunit	6.06	8	2.67e-03
+GO:CC	Sm-like protein family complex	3.57	13	2.69e-03
+GO:CC	nuclear pore	3.51	13	3.05e-03
+GO:CC	respiratory chain complex	5.82	8	3.33e-03
+GO:CC	spliceosomal snRNP complex	3.86	11	4.98e-03
+GO:CC	mitochondrial intermembrane space	4.73	9	5.04e-03
+GO:CC	respirasome	5.22	8	6.59e-03
+GO:CC	small nuclear ribonucleoprotein complex	3.65	11	7.47e-03
+GO:CC	organelle envelope lumen	4.37	9	8.53e-03
+GO:CC	endopeptidase complex	3.11	13	8.59e-03
+GO:CC	spliceosomal tri-snRNP complex	4.88	8	9.58e-03
+GO:CC	proton-transporting ATP synthase complex, coupling factor F(o)	7.1	6	1.05e-02
+GO:CC	preribosome, small subunit precursor	7.1	6	1.05e-02
+GO:CC	peptidase complex	2.7	15	1.18e-02
+GO:CC	DNA replication preinitiation complex	9.46	5	1.18e-02
+GO:CC	eukaryotic translation initiation factor 3 complex, eIF3m	15.14	4	1.26e-02
+GO:CC	U2-type prespliceosome	6.31	6	1.77e-02
+GO:CC	prespliceosome	6.31	6	1.77e-02
+GO:CC	cytochrome complex	5.1	7	1.77e-02
+GO:CC	fibrillar center	3.44	10	1.94e-02
+GO:CC	chromatin	1.64	41	2.10e-02
+GO:CC	Arp2/3 protein complex	7.89	5	2.33e-02
+GO:CC	Ino80 complex	7.89	5	2.33e-02
+GO:CC	nuclear membrane	2.38	16	2.43e-02
+GO:CC	proton-transporting two-sector ATPase complex	3.26	10	2.66e-02
+GO:CC	INO80-type complex	5.68	6	2.68e-02
+GO:CC	MCM complex	7.28	5	3.08e-02
+GO:CC	organelle membrane	1.25	140	3.13e-02
+GO:CC	rough endoplasmic reticulum	3.88	8	3.13e-02
+GO:CC	mitochondrial respirasome	5.16	6	3.92e-02
+GO:CC	exosome (RNase complex)	5.16	6	3.92e-02
+GO:CC	mitochondrial proton-transporting ATP synthase complex, coupling factor F(o)	6.76	5	3.92e-02
+Molecular Function	Molecular Function	NA	0	      NA
+GO:MF	structural constituent of ribosome	9.21	88	5.28e-59
+GO:MF	RNA binding	3.2	181	1.08e-43
+GO:MF	nucleic acid binding	1.74	292	1.36e-21
+GO:MF	structural molecule activity	2.69	109	8.75e-19
+GO:MF	organic cyclic compound binding	1.43	438	2.05e-17
+GO:MF	rRNA binding	7.82	21	8.21e-11
+GO:MF	translation regulator activity	4.84	29	8.60e-10
+GO:MF	snoRNA binding	10.84	14	7.89e-09
+GO:MF	translation factor activity, RNA binding	5.36	23	1.83e-08
+GO:MF	translation regulator activity, nucleic acid binding	4.94	24	3.61e-08
+GO:MF	unfolded protein binding	4.65	25	4.96e-08
+GO:MF	catalytic activity, acting on a nucleic acid	2.13	71	3.41e-07
+GO:MF	identical protein binding	2.09	58	2.05e-05
+GO:MF	translation initiation factor activity	5.58	15	2.21e-05
+GO:MF	ATP-dependent protein folding chaperone	4.92	15	1.11e-04
+GO:MF	protein folding chaperone	4.01	17	2.99e-04
+GO:MF	catalytic activity, acting on DNA	2.37	32	1.02e-03
+GO:MF	mRNA binding	2.26	35	1.02e-03
+GO:MF	DNA helicase activity	4.66	13	1.02e-03
+GO:MF	catalytic activity, acting on RNA	2.07	41	1.27e-03
+GO:MF	single-stranded DNA binding	3.64	16	1.61e-03
+GO:MF	hydrolase activity, acting on acid anhydrides	1.66	71	1.87e-03
+GO:MF	ribonucleoprotein complex binding	3.39	17	1.91e-03
+GO:MF	oxidoreductase activity, acting on NAD(P)H, quinone or similar compound as acceptor	7.74	8	2.16e-03
+GO:MF	pyrophosphatase activity	1.65	70	2.23e-03
+GO:MF	hydrolase activity, acting on acid anhydrides, in phosphorus-containing anhydrides	1.64	70	2.65e-03
+GO:MF	ribosome binding	3.99	13	3.66e-03
+GO:MF	single-stranded DNA helicase activity	7.04	8	3.73e-03
+GO:MF	oxidoreductase activity, acting on NAD(P)H	4.63	11	4.18e-03
+GO:MF	ATP-dependent activity, acting on DNA	2.75	20	4.94e-03
+GO:MF	helicase activity	2.66	21	4.94e-03
+GO:MF	catalytic activity, acting on a tRNA	2.83	19	4.94e-03
+GO:MF	translation elongation factor activity	7.53	7	7.78e-03
+GO:MF	NADH dehydrogenase (ubiquinone) activity	9.68	6	7.91e-03
+GO:MF	heat shock protein binding	3.45	13	1.17e-02
+GO:MF	protein-folding chaperone binding	3.45	13	1.17e-02
+GO:MF	oxidoreductase activity	1.55	68	1.17e-02
+GO:MF	proton transmembrane transporter activity	2.79	17	1.23e-02
+GO:MF	oxidoreduction-driven active transmembrane transporter activity	6.77	7	1.26e-02
+GO:MF	ribonucleoside triphosphate phosphatase activity	1.57	61	1.65e-02
+GO:MF	ATP hydrolysis activity	1.81	38	1.92e-02
+GO:MF	electron transfer activity	5.16	8	2.07e-02
+GO:MF	isomerase activity	2.25	21	3.26e-02
+GO:MF	poly(U) RNA binding	9.68	5	3.33e-02
+GO:MF	nucleotide binding	1.24	173	3.69e-02
+GO:MF	nucleoside phosphate binding	1.24	173	3.69e-02
+GO:MF	structural constituent of nuclear pore	5.42	7	3.82e-02
+GO:MF	heterocyclic compound binding	1.23	180	4.54e-02

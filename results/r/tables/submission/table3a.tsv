@@ -1,0 +1,246 @@
+source	term	fold_enrich	num_degs	qval
+Biological Process	Biological Process	NA	0	      NA
+GO:BP	primary metabolic process	1.32	558	9.52e-14
+GO:BP	protein metabolic process	1.48	313	1.04e-10
+GO:BP	protein modification process	1.68	202	1.04e-10
+GO:BP	macromolecule metabolic process	1.35	435	1.22e-10
+GO:BP	organonitrogen compound metabolic process	1.39	381	1.64e-10
+GO:BP	metabolic process	1.25	609	1.89e-10
+GO:BP	macromolecule modification	1.62	212	2.68e-10
+GO:BP	catabolic process	1.71	165	3.58e-09
+GO:BP	secondary alcohol biosynthetic process	7.4	17	6.60e-08
+GO:BP	transport	1.41	283	9.39e-08
+GO:BP	establishment of localization	1.4	298	9.39e-08
+GO:BP	sterol biosynthetic process	6.99	17	1.44e-07
+GO:BP	macromolecule catabolic process	1.95	90	5.00e-07
+GO:BP	localization	1.34	322	9.94e-07
+GO:BP	organonitrogen compound catabolic process	1.84	100	1.01e-06
+GO:BP	nitrogen compound transport	1.73	118	1.35e-06
+GO:BP	protein catabolic process	2.07	71	2.36e-06
+GO:BP	establishment of localization in cell	1.6	145	2.78e-06
+GO:BP	cholesterol biosynthetic process	7.14	14	3.72e-06
+GO:BP	regulation of catabolic process	2.09	66	5.48e-06
+GO:BP	intracellular protein transport	2.03	69	6.74e-06
+GO:BP	cellular metabolic process	1.25	422	7.24e-06
+GO:BP	vesicle-mediated transport	1.66	119	8.14e-06
+GO:BP	intracellular transport	1.66	118	8.14e-06
+GO:BP	cellular localization	1.44	196	1.35e-05
+GO:BP	ERAD pathway	6.28	14	1.77e-05
+GO:BP	phytosteroid metabolic process	9.86	10	1.77e-05
+GO:BP	phytosteroid biosynthetic process	9.86	10	1.77e-05
+GO:BP	cellular response to stress	1.69	105	1.87e-05
+GO:BP	negative regulation of gene expression	2.15	54	3.27e-05
+GO:BP	macromolecule localization	1.48	162	4.06e-05
+GO:BP	peptidyl-amino acid modification	2.4	42	4.49e-05
+GO:BP	heparan sulfate proteoglycan biosynthetic process	7.75	11	5.17e-05
+GO:BP	proteolysis involved in protein catabolic process	1.97	63	5.57e-05
+GO:BP	proteasomal protein catabolic process	2.36	42	6.24e-05
+GO:BP	regulation of metabolic process	1.27	329	6.35e-05
+GO:BP	protein localization	1.51	135	1.30e-04
+GO:BP	cellular macromolecule localization	1.51	135	1.34e-04
+GO:BP	negative regulation of cellular metabolic process	1.64	99	1.56e-04
+GO:BP	positive regulation of catabolic process	2.38	38	1.68e-04
+GO:BP	steroid biosynthetic process	3.65	20	1.68e-04
+GO:BP	intracellular pH reduction	6.12	12	1.68e-04
+GO:BP	establishment of protein localization	1.63	100	1.68e-04
+GO:BP	negative regulation of cellular process	1.37	203	1.70e-04
+GO:BP	response to endoplasmic reticulum stress	3.24	23	1.76e-04
+GO:BP	ergosterol metabolic process	10.76	8	1.76e-04
+GO:BP	ergosterol biosynthetic process	10.76	8	1.76e-04
+GO:BP	negative regulation of intracellular signal transduction	2.24	41	2.58e-04
+GO:BP	alcohol biosynthetic process	3.22	22	3.23e-04
+GO:BP	negative regulation of metabolic process	1.55	112	3.27e-04
+GO:BP	sterol metabolic process	3.6	19	3.27e-04
+GO:BP	regulation of intracellular signal transduction	1.6	99	3.58e-04
+GO:BP	post-translational protein modification	1.73	75	4.24e-04
+GO:BP	protein modification by small protein conjugation or removal	1.73	73	5.68e-04
+GO:BP	negative regulation of biological process	1.33	216	5.68e-04
+GO:BP	protein phosphorylation	1.8	64	5.84e-04
+GO:BP	response to chemical	1.49	123	6.61e-04
+GO:BP	response to stress	1.42	149	8.20e-04
+GO:BP	secondary alcohol metabolic process	3.5	18	8.20e-04
+GO:BP	protein transport	1.62	86	8.20e-04
+GO:BP	regulation of cellular metabolic process	1.26	290	8.57e-04
+GO:BP	cellular catabolic process	1.76	64	1.02e-03
+GO:BP	vacuolar acidification	6.16	10	1.18e-03
+GO:BP	cellular lipid metabolic process	1.6	87	1.20e-03
+GO:BP	regulation of signal transduction	1.41	146	1.27e-03
+GO:BP	cholesterol metabolic process	3.7	16	1.34e-03
+GO:BP	regulation of protein metabolic process	1.6	85	1.41e-03
+GO:BP	regulation of cellular pH	3.19	19	1.47e-03
+GO:BP	lipid metabolic process	1.5	105	1.77e-03
+GO:BP	cellular lipid biosynthetic process	7.89	8	1.81e-03
+GO:BP	regulation of response to stress	1.78	58	1.81e-03
+GO:BP	ubiquitin-dependent protein catabolic process	1.89	49	1.89e-03
+GO:BP	regulation of cytokine production	2.27	32	2.03e-03
+GO:BP	regulation of protein catabolic process	2.47	27	2.19e-03
+GO:BP	regulation of response to stimulus	1.34	179	2.19e-03
+GO:BP	proteoglycan metabolic process	3.7	15	2.31e-03
+GO:BP	lipid biosynthetic process	1.77	57	2.31e-03
+GO:BP	positive regulation of biological process	1.26	249	2.53e-03
+GO:BP	negative regulation of cellular biosynthetic process	1.57	83	2.79e-03
+GO:BP	regulation of intracellular pH	3.13	18	2.85e-03
+GO:BP	modification-dependent protein catabolic process	1.84	49	2.99e-03
+GO:BP	regulation of pH	2.99	19	3.08e-03
+GO:BP	modification-dependent macromolecule catabolic process	1.84	49	3.12e-03
+GO:BP	response to organonitrogen compound	2.06	37	3.12e-03
+GO:BP	positive regulation of signal transduction	1.64	70	3.22e-03
+GO:BP	negative regulation of biosynthetic process	1.56	83	3.32e-03
+GO:BP	positive regulation of metabolic process	1.38	142	3.34e-03
+GO:BP	peptidyl-threonine modification	5.28	10	3.48e-03
+GO:BP	autophagy	2.33	28	3.55e-03
+GO:BP	process utilizing autophagic mechanism	2.33	28	3.55e-03
+GO:BP	homeostatic process	1.6	73	3.78e-03
+GO:BP	regulation of macromolecule metabolic process	1.22	291	3.83e-03
+GO:BP	protein folding	2.4	26	3.87e-03
+GO:BP	steroid metabolic process	2.5	24	4.19e-03
+GO:BP	proteoglycan biosynthetic process	3.85	13	4.99e-03
+GO:BP	response to nitrogen compound	1.93	40	5.15e-03
+GO:BP	organic hydroxy compound biosynthetic process	2.48	23	6.55e-03
+GO:BP	proteolysis	1.45	101	6.55e-03
+GO:BP	regulation of proteolysis involved in protein catabolic process	2.78	19	6.74e-03
+GO:BP	vacuolar transport	2.47	23	7.10e-03
+GO:BP	regulation of cell communication	1.33	158	7.93e-03
+GO:BP	establishment of protein localization to organelle	1.85	42	7.96e-03
+GO:BP	negative regulation of macromolecule biosynthetic process	1.53	79	8.47e-03
+GO:BP	glycoprotein metabolic process	1.88	40	8.79e-03
+GO:BP	intracellular signal transduction	1.39	119	8.90e-03
+GO:BP	negative regulation of macromolecule metabolic process	1.45	97	9.56e-03
+GO:BP	phosphorus metabolic process	1.31	160	9.82e-03
+GO:BP	regulation of signaling	1.32	158	1.06e-02
+GO:BP	sulfur compound biosynthetic process	2.75	18	1.13e-02
+GO:BP	positive regulation of cell communication	1.53	74	1.13e-02
+GO:BP	positive regulation of signaling	1.53	74	1.13e-02
+GO:BP	endocytosis	1.83	41	1.20e-02
+GO:BP	phosphate-containing compound metabolic process	1.31	158	1.20e-02
+GO:BP	regulation of autophagy	2.31	24	1.20e-02
+GO:BP	positive regulation of cellular process	1.24	217	1.54e-02
+GO:BP	regulation of apoptotic process	1.62	58	1.54e-02
+GO:BP	carbohydrate derivative metabolic process	1.47	84	1.58e-02
+GO:BP	cellular biosynthetic process	1.24	220	1.58e-02
+GO:BP	response to topologically incorrect protein	3	15	1.61e-02
+GO:BP	positive regulation of protein catabolic process	2.64	18	1.71e-02
+GO:BP	biosynthetic process	1.21	252	1.72e-02
+GO:BP	positive regulation of protein metabolic process	1.67	50	1.78e-02
+GO:BP	positive regulation of apoptotic process	2.19	25	1.78e-02
+GO:BP	regulation of lysosomal lumen pH	8.07	6	1.86e-02
+GO:BP	cytosolic transport	2.78	16	2.09e-02
+GO:BP	positive regulation of response to stimulus	1.43	90	2.09e-02
+GO:BP	regulation of programmed cell death	1.58	59	2.12e-02
+GO:BP	morphogenesis of embryonic epithelium	3.7	11	2.25e-02
+GO:BP	small molecule biosynthetic process	1.72	44	2.28e-02
+GO:BP	chemical homeostasis	1.61	54	2.28e-02
+GO:BP	regulation of defense response	1.88	34	2.33e-02
+GO:BP	embryonic morphogenesis	2.03	28	2.34e-02
+GO:BP	lysosomal lumen acidification	10.57	5	2.34e-02
+GO:BP	protein modification by small protein conjugation	1.59	56	2.50e-02
+GO:BP	negative regulation of cytokine production	3.15	13	2.50e-02
+GO:BP	cell death	1.73	42	2.50e-02
+GO:BP	programmed cell death	1.73	42	2.50e-02
+GO:BP	intracellular monoatomic cation homeostasis	1.82	36	2.50e-02
+GO:BP	regulation of primary metabolic process	1.2	262	2.50e-02
+GO:BP	protein modification by small protein removal	2.51	18	2.60e-02
+GO:BP	intracellular monoatomic ion homeostasis	1.82	36	2.63e-02
+GO:BP	monoatomic ion homeostasis	1.75	40	2.65e-02
+GO:BP	sulfur compound metabolic process	1.95	30	2.66e-02
+GO:BP	embryonic epithelial tube formation	3.89	10	2.70e-02
+GO:BP	regulation of cytoplasmic pattern recognition receptor signaling pathway	3.89	10	2.70e-02
+GO:BP	positive regulation of programmed cell death	2.1	25	2.71e-02
+GO:BP	monoatomic cation homeostasis	1.75	39	2.96e-02
+GO:BP	positive regulation of macromolecule metabolic process	1.32	123	3.22e-02
+GO:BP	epithelial tube formation	3.79	10	3.22e-02
+GO:BP	regulation of cellular catabolic process	2.07	25	3.36e-02
+GO:BP	tissue morphogenesis	2.1	24	3.43e-02
+GO:BP	protein ubiquitination	1.6	51	3.47e-02
+GO:BP	protein maturation	1.7	41	3.55e-02
+GO:BP	regulation of proteasomal protein catabolic process	2.6	16	3.55e-02
+GO:BP	positive regulation of intracellular signal transduction	1.61	49	3.55e-02
+GO:BP	chaperone-mediated protein folding	3.7	10	3.73e-02
+GO:BP	cellular homeostasis	1.64	45	3.99e-02
+GO:BP	macroautophagy	2.32	19	4.03e-02
+GO:BP	neural tube formation	4.03	9	4.08e-02
+GO:BP	phospholipid metabolic process	1.71	39	4.17e-02
+GO:BP	protein export from nucleus	4.55	8	4.17e-02
+GO:BP	protein localization to organelle	1.53	57	4.32e-02
+GO:BP	vacuole organization	2.24	20	4.33e-02
+GO:BP	protein localization to vacuole	2.76	14	4.39e-02
+GO:BP	vesicle organization	1.89	29	4.52e-02
+GO:BP	phosphorylation	1.42	79	4.67e-02
+GO:BP	cellular response to topologically incorrect protein	2.87	13	4.82e-02
+GO:BP	peptidyl-serine modification	2.87	13	4.82e-02
+GO:BP	phospholipid biosynthetic process	2.03	24	4.91e-02
+GO:BP	proteasome-mediated ubiquitin-dependent protein catabolic process	1.9	28	4.97e-02
+Cellular Component	Cellular Component	NA	0	      NA
+GO:CC	cytoplasm	1.3	827	6.20e-27
+GO:CC	intracellular membrane-bounded organelle	1.3	805	3.83e-25
+GO:CC	membrane-bounded organelle	1.26	822	4.43e-22
+GO:CC	endomembrane system	1.68	315	1.99e-20
+GO:CC	intracellular anatomical structure	1.16	1043	5.44e-20
+GO:CC	organelle membrane	1.82	244	1.57e-19
+GO:CC	intracellular organelle	1.19	881	2.20e-16
+GO:CC	organelle	1.17	893	9.33e-14
+GO:CC	endoplasmic reticulum	1.88	145	8.54e-12
+GO:CC	bounding membrane of organelle	1.89	141	1.37e-11
+GO:CC	cytosol	1.58	214	4.32e-10
+GO:CC	organelle subcompartment	1.93	111	1.94e-09
+GO:CC	vacuole	2.48	64	2.52e-09
+GO:CC	lysosome	2.62	52	2.58e-08
+GO:CC	lytic vacuole	2.59	52	3.79e-08
+GO:CC	organelle lumen	1.53	190	5.31e-08
+GO:CC	intracellular organelle lumen	1.53	190	5.31e-08
+GO:CC	membrane-enclosed lumen	1.53	190	5.31e-08
+GO:CC	endoplasmic reticulum subcompartment	1.98	85	9.98e-08
+GO:CC	nucleoplasm	1.67	137	9.98e-08
+GO:CC	endoplasmic reticulum membrane	1.98	84	1.17e-07
+GO:CC	nuclear outer membrane-endoplasmic reticulum membrane network	1.94	84	2.90e-07
+GO:CC	nuclear lumen	1.55	164	4.35e-07
+GO:CC	cytoplasmic vesicle	1.65	128	5.29e-07
+GO:CC	vacuolar membrane	2.73	39	9.21e-07
+GO:CC	intracellular vesicle	1.63	128	1.01e-06
+GO:CC	nucleus	1.24	447	1.08e-06
+GO:CC	lysosomal membrane	3.03	32	1.47e-06
+GO:CC	lytic vacuole membrane	3.03	32	1.47e-06
+GO:CC	vesicle	1.56	136	3.62e-06
+GO:CC	Golgi apparatus	1.68	105	4.83e-06
+GO:CC	vesicle membrane	1.94	66	9.55e-06
+GO:CC	Golgi membrane	2.28	45	1.13e-05
+GO:CC	endosome	1.81	71	3.79e-05
+GO:CC	perinuclear region of cytoplasm	2.47	34	6.02e-05
+GO:CC	cytoplasmic vesicle membrane	1.85	62	9.07e-05
+GO:CC	endosome membrane	2.16	37	4.17e-04
+GO:CC	coated vesicle	2.38	26	1.90e-03
+GO:CC	membrane	1.12	612	2.43e-03
+GO:CC	vacuolar proton-transporting V-type ATPase complex	6.33	8	2.95e-03
+GO:CC	cation-transporting ATPase complex	4.14	11	4.36e-03
+GO:CC	ATPase dependent transmembrane transport complex	3.96	11	6.39e-03
+GO:CC	intracellular protein-containing complex	1.47	79	1.13e-02
+GO:CC	ATPase complex	2.46	19	1.18e-02
+GO:CC	clathrin-coated vesicle	2.72	16	1.23e-02
+GO:CC	membrane raft	2.69	16	1.35e-02
+GO:CC	membrane microdomain	2.66	16	1.48e-02
+GO:CC	early endosome	1.94	28	2.07e-02
+GO:CC	Golgi cisterna	3.11	12	2.23e-02
+GO:CC	proton-transporting V-type ATPase complex	4.52	8	2.23e-02
+GO:CC	nuclear body	1.81	33	2.23e-02
+GO:CC	catalytic complex	1.3	130	2.23e-02
+GO:CC	nucleolus	1.62	46	2.25e-02
+GO:CC	endocytic vesicle	2.26	18	3.61e-02
+GO:CC	protein-containing complex	1.13	366	4.13e-02
+GO:CC	Golgi apparatus subcompartment	1.83	28	4.19e-02
+Molecular Function	Molecular Function	NA	0	      NA
+GO:MF	enzyme binding	1.95	120	2.10e-09
+GO:MF	protein binding	1.24	551	4.61e-08
+GO:MF	identical protein binding	2.17	75	2.02e-07
+GO:MF	misfolded protein binding	7.4	10	9.76e-04
+GO:MF	catalytic activity	1.16	522	1.47e-03
+GO:MF	kinase binding	2.08	45	1.47e-03
+GO:MF	transferase activity	1.3	233	2.67e-03
+GO:MF	catalytic activity, acting on a protein	1.28	230	4.88e-03
+GO:MF	protein kinase binding	2.04	40	4.88e-03
+GO:MF	acyltransferase activity	1.63	72	7.45e-03
+GO:MF	binding	1.07	924	1.02e-02
+GO:MF	manganese ion binding	4.71	10	2.12e-02
+GO:MF	protein domain specific binding	2.12	28	3.51e-02
+GO:MF	steroid binding	3.2	14	3.61e-02
+GO:MF	lipid binding	1.57	62	4.54e-02
+GO:MF	ubiquitin-like protein ligase binding	2.5	19	4.88e-02
