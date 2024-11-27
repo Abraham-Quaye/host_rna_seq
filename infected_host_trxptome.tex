@@ -289,7 +289,7 @@ Using a P\textsubscript{adjusted}-value cutoff \(\leq\) 0.05 as the
 inclusion criteria, a total of \textbf{2,343} and \textbf{3,295} genes
 were identified as differentially expressed at 12-hpi and 24-hpi,
 respectively. \st{The DEG analyses results at 12 and 24-hpi are
-presented in \textbf{Supplementary Tables 1 and 2}, respectively}. At
+presented in \textbf{Supplementary Tables S1 and S2}, respectively}. At
 12-hpi, \textbf{1,079} genes were upregulated and \textbf{1,264} genes
 downregulated, whereas \textbf{1,512} genes were upregulated and
 \textbf{1,783} genes downregulated at 24-hpi (\textbf{Figure 2C}, and
@@ -448,12 +448,13 @@ translation were significantly downregulated. We identified notable
 genes such as: eukaryotic translation initiation factors (EIF1, EIF1AX,
 EIF3E and EIF3F, EIF3H, EIF3I, EIF3L and EIF3M), biogenesis of ribosomes
 BRX1 (BRIX1), MCTS1 re-initiation and release factor (MCTS1), and
-ribosomal protein subunits (L10a, L11, 12, 13, 14, 15, 18a, 19).
+ribosomal protein subunits (RPL8, RPL10a, RPL11, RP12, RP13, RP14, RP15,
+RP18a, RP19).
 
 \textbf{Cellular Responses to Stimuli during THEV infection}\\
-The transcriptome profile indicates that THEV infection likely induced
-the ER‐associated protein degradation (ERAD) pathway. The ER is the
-major site for protein synthesis, folding and quality control, and
+The transcriptome profile also suggests that THEV infection likely
+induced the ER‐associated protein degradation (ERAD) pathway. The ER is
+the major site for protein synthesis, folding and quality control, and
 sorting. It is also accommodates proteins and protein complexes
 necessary for other cellular functions including innate immune signaling
 and metabolism, and serves as the site for lipid biosynthesis (31). The
@@ -476,7 +477,7 @@ shock family of chaperone proteins such as: DnaJ heat shock protein
 family (Hsp40) members (DNAJB11, DNAJB12, DNAJB2, DNAJC10), heat shock
 protein family A (Hsp70) members (HSPA4L, HSPA5, HSPA8), and heat shock
 protein 90 alpha family class A member 1 (HSP90AA1) were upregulated.
-Moreover, the KEGG pathway analysis (\textbf{Table 4A}) shows that a
+Moreover, the KEGG pathway analysis (\textbf{Table 4A}) shows a
 significant upregulation in lysosomal degradation, likely an indication
 of ER-to-lysosome-associated degradation. Taken together, these results
 suggest that THEV infection triggers significant ER-associated protein
@@ -487,22 +488,22 @@ Many viruses, such as hepatitis C virus, human cytomegalovirus,
 influenza virus, and rhinovirus, have been documented to manipulate
 cellular metabolism processes to their advantage (16). A common
 consequence of infection by many viruses is to induce high glucose
-metabolism in cells. Adenoviruses have also been shown to upregulate
-energy metabolic pathways such as glycolysis (32). However, our results
+metabolism in host cells to provide energy for viral gene expression and
+replication. Adenoviruses have been shown to upregulate energy metabolic
+pathways such as glycolysis in host cells (32). However, our GO results
 show a downregulation in glycolysis, tricarboxylic acid cycle, oxidative
 phosphorylation, and ATP synthesis (\textbf{Table 2B}). These results
 indicate that THEV infection may modulate cellular energy metabolism
-processes differently than other adenoviruses. \st{However, the
-previously documented metabolic changes were seen in primary cells;
-therefore, studies done with primary host cells would be required to
-confirm this finding}.
+processes differently than other adenoviruses. \st{Studies done with
+primary host cells would be required to confirm this finding}.
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
 (RT-qPCR)}\\
-To validate the RNA-seq results, 12 DEGs (6 upregulated and 5
+To validate the RNA-seq results, 12 DEGs (8 upregulated and 4
 downregulated) were selected for RT-qPCR. The DEGs were representative
-of apoptosis (\ldots), ERAD and ubiquitination (\ldots), and ribosome
-biosynthetic (\ldots) pathways. As shown in \st{\textbf{Figure 5}, the
+of apoptosis (APAF1, FAS, FADD, PDCD4, and MADD), ERAD and
+ubiquitination (VCP, UFD1, EDEM1), and ribosome biosynthetic (EIF3D,
+EIF3M, RPL8, RPL10a) pathways. As shown in \st{\textbf{Figure 5}, the
 RT-qPCR results corroborate the RNA-seq results, further reinforcing the
 validity of the RNA-seq transcriptomic profile results.} \newpage
 
@@ -606,7 +607,22 @@ tool was used for KEGG pathway analysis. All visualization plots were
 made using ggplot2, pheatmap, and ggvenn R packages (36--38).
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
-(RT-qPCR)}
+(RT-qPCR)} The gene expression levels of representative DEGs (APAF1,
+FAS, FADD, PDCD4, MADD, VCP, UFD1, EDEM1, EIF3D, EIF3M, RPL8, RPL10a)
+were validated by quantification of relative mRNA levels with turkey
+GAPDH mRNA levels as the control gene. Briefly, the samples were
+infected and RNA extracted as described for the RNA sequencing samples
+with three biological replicates at 12 and 24 hpi each for both
+THEV-infected or mock-infected samples. First-strand cDNA synthesis of
+total RNA was performed with an oligo-dT primer to amplify poly-A-tailed
+mRNA using SuperScript™ IV First-Strand Synthesis System. The parent RNA
+were digested using RNase H after cDNA synthesis was complete to ensured
+that only cDNA remain as the template for the RT-qPCR quantification.
+The RT-qPCR was performed with SYBR Green master mix from \#\#\# with
+primers designed using the Primer3 software (ref\#\#\#\#). Primers used
+in this study are listed in \textbf{Supplementary Table S3}. Relative
+mRNA levels were calculated by
+2\textsuperscript{-\(\Delta\)\(\Delta\)CT} method (39).
 
 \textbf{Statistical Analysis} \newpage
 
@@ -899,6 +915,11 @@ analysis. Springer-Verlag New York.
 \CSLLeftMargin{38. }%
 \CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
 \url{https://CRAN.R-project.org/package=ggvenn}.}
+
+\bibitem[\citeproctext]{ref-Livak2001}
+\CSLLeftMargin{39. }%
+\CSLRightInline{\href{https://doi.org/10.1006/meth.2001.1262}{Livak KJ,
+Schmittgen TD. 2001.. Methods 25:402--408}.}
 
 \end{CSLReferences}
 
