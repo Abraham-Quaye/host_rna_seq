@@ -165,7 +165,7 @@ The transcriptome profile also suggests that THEV infection likely induced the E
 Many viruses, such as hepatitis C virus, human cytomegalovirus, influenza virus, and rhinovirus, have been documented to manipulate cellular metabolism processes to their advantage [@Mo2023]. A common consequence of infection by many viruses is to induce high glucose metabolism in host cells to provide energy for viral gene expression and replication. Adenoviruses have been shown to upregulate energy metabolic pathways such as glycolysis in host cells [@Thai2014]. However, our GO results show a downregulation in glycolysis, tricarboxylic acid cycle, oxidative phosphorylation, and ATP synthesis (**Table 2B**). These results indicate that THEV infection may modulate cellular energy metabolism processes differently than other adenoviruses. ~~Studies done with primary host cells would be required to confirm this finding~~.
 
 **Validation of DEGs by Reverse Transcriptase Quantitative PCR (RT-qPCR)**    
-To validate the RNA-seq results, 12 DEGs (8 upregulated and 4 downregulated) were selected for RT-qPCR. The DEGs were representative of apoptosis (APAF1, FAS, FADD, PDCD4, and MADD), ERAD and ubiquitination (VCP, UFD1, EDEM1), and ribosome biosynthetic (EIF3D, EIF3M, RPL8, RPL10a) pathways. As shown in ~~**Figure 5**, the RT-qPCR results corroborate the RNA-seq results, further reinforcing the validity of the RNA-seq transcriptomic profile results.~~
+To validate the RNA-seq results, 12 DEGs (8 upregulated and 4 downregulated) were selected for RT-qPCR. The DEGs were representative of apoptosis (APAF1, BMF, FADD, PDCD4, and MADD), ERAD and ubiquitination (VCP, UFD1, EDEM1), and ribosome biosynthetic (EIF3D, EIF3M, RPL8, RPL10a) pathways. As shown in ~~**Figure 5**, the RT-qPCR results corroborate the RNA-seq results, further reinforcing the validity of the RNA-seq transcriptomic profile results.~~
 \newpage
 
 ## DISCUSSION
@@ -187,11 +187,11 @@ Total RNA was extracted from infected cells using the Thermofisher RNAqueous™-
 Sequencing reads were processed following a well-established protocol described by Pertea *et al* [@Pertea2016], using Snakemake - version 7.32.4 [@Snakemake2021], a popular workflow management system to drive the pipeline. Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10 [@Martin2011] and the quality of trimmed reads evaluated using the FastQC software, version 0.12.1 (Bioinformatics Group at the Babraham Institute, Cambridge, United Kingdom; www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence Quality (PHRED Score) of 36. Trimmed reads were mapped the reference *Meleagris gallopavo* genome (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz>) with Hisat2 - version 2.2.1 [@Pertea2016] using the accompanying gene transfer format (GTF) annotation file (<https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz>) to build a genomic index. Samtools - version 1.19.2 was used to convert the output Sequence Alignment Map (SAM) file to the more manageable Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software [@Pertea2016], set to expression estimation mode was used to generate normalized gene expression estimates from the BAM files for genes in the reference GTF file after which the prepDE.py3 script was used to extract read count information from the StringTie gene expression files, providing an expression-count matrix for downstream DEG analysis.
 
 **DEG Analysis and Functional Enrichment Analysis**   
-DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. The functional profiling of DEGs (GO and KEGG analyses) were performed based on GO databases and KEGG databases using the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. Additionally, the DAVID (Database for Annotation, Visualization and Integrated Discovery; version 2021) online analysis tool was used for KEGG pathway analysis. All visualization plots were made using ggplot2, pheatmap, and ggvenn R packages [@ggplot2; @pheatmap; @ggvenn].
+DEG analysis between mock- and THEV-infected samples was performed using the very popular DESeq2 [@Deseq2], which employs a Negative Binomial distribution model for read count comparisons. Genes with P~adjusted~-value $\leq$ 0.05 were considered as differentially expressed. The read count data are deposited at Gene Expression Omnibus (GEO) under accession number ###. The functional profiling of DEGs (GO and KEGG analyses) were performed based on GO databases and KEGG databases using DAVID and the R package gprofiler2 [@Gprofiler2] with *Meleagris gallopavo* as the reference organism. Results with P~adjusted~-value $\leq$ 0.05 were included as functionally enriched. All visualization plots were made using ggplot2, pheatmap, and ggvenn R packages [@ggplot2; @pheatmap; @ggvenn].
 
 **Validation of DEGs by Reverse Transcriptase Quantitative PCR (RT-qPCR)**
-The gene expression levels of representative DEGs (APAF1, FAS, FADD, PDCD4, MADD, VCP, UFD1, EDEM1, EIF3D, EIF3M, RPL8, RPL10a) were validated by quantification
-of relative mRNA levels with turkey GAPDH mRNA levels as the control gene. Briefly, the samples were infected and RNA extracted as described for the RNA
+The gene expression levels of representative DEGs (APAF1, BMF, FADD, PDCD4, MADD, VCP, UFD1, EDEM1, EIF3D, EIF3M, RPL8, RPL10a) were validated by quantification
+of relative mRNA levels with turkey ~~GAPDH~~ mRNA levels as the control gene. Briefly, the samples were infected and RNA extracted as described for the RNA
 sequencing samples with three biological replicates at 12 and 24 hpi each for both THEV-infected or mock-infected samples. First-strand cDNA synthesis of total RNA was performed with an oligo-dT primer to amplify poly-A-tailed mRNA using SuperScript™ IV First-Strand Synthesis System. The parent RNA were digested using RNase H after cDNA synthesis was complete to ensured that only cDNA remain as the template for the RT-qPCR quantification. The RT-qPCR was performed with SYBR Green master mix from ### with primers designed using the Primer3 software (ref####). Primers used in this study are listed in **Supplementary Table S3**. Relative mRNA levels were calculated by 2^-$\Delta$$\Delta$CT^ method [@Livak2001].
 
 **Statistical Analysis**
@@ -395,3 +395,29 @@ gprofiler_kegg %>% flextable(.) %>%
 \newpage
 
 ## SUPPLEMENTARY INFORMATION/MATERIALS
+```{r}
+# candidate house-keeping genes: TATA-box binding protein (TBP), GAPDH, actin beta (ACTB)
+# TBP is not a DEG
+tibble(target = c("GAPDH", "ACTB", "TBP", "APAF1", "BMF", "FADD", "PDCD4", "MADD", "VCP", "UFD1", "EDEM1", "EIF3D", "EIF3M", "RPL8", "RPL10a"),
+       forwardP = c("CACTATCTTCCAGGAGCGTGACC", "CACGGCATTGTCACCAACTGG",
+                    "CTCAGGGTGCAATGACTCCTGG", "GCTGCGCAAATACCCGAGGTC",
+                    "CGGAGACTCTTCTATGGGAATGCTGG", "GGAGCTCTGCAACTTCCTCATGG",
+                    rep(NA, 9)),
+       reverseP = c("CTGAGATGATAACACGCTTAGCACCAC", "GAAGGTCTCGAACATGATCTGTGTCATC",
+                    "GACAGACTGTTGGTGCTCTGGAC", "GCCAGACACAGCATCTGTCACAC",
+                    "CTGCTGATGCCGCTGTATGTGG", "CCTTCATGTCAGGCCACTCATCAG",
+                    rep(NA, 9)),
+       cross_exon_j = c("forward", "reverse", "forward", rep("both", 2),
+                        "none", rep(NA, 9)),
+       amplicon = c(146, 165, 100, 133, 189, 167, rep(NA, 9))) %>%
+  flextable(.) %>%
+  theme_box() %>%
+  set_header_labels(target = "Target Gene", forwardP = "Forward Primer",
+                    reverseP = "Reverse Primer", amplicon = "Amplicon Size") %>%
+  align(align = "center", part = "all") %>%
+  footnote(j = 1, i = 1:3,
+           value = as_paragraph(c("Control (house-keeping) gene")),
+           ref_symbols = c("C"), part = "body")
+
+## Run gel after qPCR reaction showing single bands to prove specificity of primers
+```
