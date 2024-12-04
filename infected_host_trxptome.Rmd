@@ -395,29 +395,58 @@ gprofiler_kegg %>% flextable(.) %>%
 \newpage
 
 ## SUPPLEMENTARY INFORMATION/MATERIALS
-```{r}
+```{r qpcr_primers}
 # candidate house-keeping genes: TATA-box binding protein (TBP), GAPDH, actin beta (ACTB)
 # TBP is not a DEG
-tibble(target = c("GAPDH", "ACTB", "TBP", "APAF1", "BMF", "FADD", "PDCD4", "MADD", "VCP", "UFD1", "EDEM1", "EIF3D", "EIF3M", "RPL8", "RPL10a"),
+tibble(gene_id = c("100303685", "100303677", "100543138", "100549497",
+                   "100550591", "100540536", "100547583", "100551463",
+                   "100548376", "104913522", "100543065", "100545922",
+                   "100545633", "100544011", "100544053"),
+       target = c("GAPDH", "ACTB", "TBP", "APAF1", "BMF", "FADD", "PDCD4", "MADD",
+                  "VCP", "UFD1", "EDEM1", "EIF3D", "EIF3M", "RPL8", "RPL10a"),
        forwardP = c("CACTATCTTCCAGGAGCGTGACC", "CACGGCATTGTCACCAACTGG",
                     "CTCAGGGTGCAATGACTCCTGG", "GCTGCGCAAATACCCGAGGTC",
                     "CGGAGACTCTTCTATGGGAATGCTGG", "GGAGCTCTGCAACTTCCTCATGG",
-                    rep(NA, 9)),
+                    "GCACAGTAGAAGTGGAGAATCTGAGTG", "GAGCTGACGAGGTTGAACTTGCTG",
+                    "CAAGGCCATAGGAGTGAAGCCTC", "GTGGTCTGCTTCAACATCTGTGGTC",
+                    "CTGGACTACAGGTGTTGATAGGAGACG", "GCACAGAGGAACCTTCGGAGAG",
+                    "CTCTCAGACTGCAGCTACTGAGC", "GCCGAGAGACATGGCTACATCAAGG",
+                    "GGCACCGTCAGGCTGAAGTC"),
        reverseP = c("CTGAGATGATAACACGCTTAGCACCAC", "GAAGGTCTCGAACATGATCTGTGTCATC",
                     "GACAGACTGTTGGTGCTCTGGAC", "GCCAGACACAGCATCTGTCACAC",
                     "CTGCTGATGCCGCTGTATGTGG", "CCTTCATGTCAGGCCACTCATCAG",
-                    rep(NA, 9)),
+                    "CTTCCTCAACCGCCTCTTTGC", "CTGGCTCCAATGATAACAAGGTAGTCG",
+                    "CTCAGGTTGCTCTCAGACTCACC", "GATCTATGAGCTTCGGGTAATGGAGAC",
+                    "CCACTAACTCTGGCCTCAGTGG", "GTCACGAGGCTTCTGCTGTGAC",
+                    "GTCTGTGCTGAGGTTCCAGTCAG", "CAGCTGAGCTTTCTTGCCACAG",
+                    "GGCATCGTACTTCTTAGCCAGCTTC"),
        cross_exon_j = c("forward", "reverse", "forward", rep("both", 2),
-                        "none", rep(NA, 9)),
-       amplicon = c(146, 165, 100, 133, 189, 167, rep(NA, 9))) %>%
-  flextable(.) %>%
+                        "none", rep("forward", 3), "both", "forward",
+                        "both", "forward", "reverse", "both"),
+       amplicon = base::paste(c(146, 165, 100, 133, 189, 167, 161, 200,
+                                171, 154, 159, 180, 179, 186, 177), "bp")) %>%
+  flextable(., col_keys = c("gene_id", "target", "forwardP", "reverseP",
+                            "amplicon")) %>%
   theme_box() %>%
   set_header_labels(target = "Target Gene", forwardP = "Forward Primer",
-                    reverseP = "Reverse Primer", amplicon = "Amplicon Size") %>%
-  align(align = "center", part = "all") %>%
-  footnote(j = 1, i = 1:3,
+                    reverseP = "Reverse Primer", amplicon = "Amplicon Size",
+                    gene_id = "Entrez ID") %>%
+  flextable::align(align = "center", part = "all") %>%
+  flextable::fontsize(., size = 7, part = "all") %>%
+  # flextable::fontsize(., j = c("forwardP", "reverseP"),
+  #                     size = 6, part = "body") %>%
+  flextable::width(width = 0.6) %>%
+  flextable::width(j = c("forwardP", "reverseP"), width = 2.2) %>%
+  flextable::set_table_properties(layout = "fixed", align = "left",
+                       opts_pdf = list(caption_repeat = FALSE),
+                       opts_word = list(split = F)) %>% 
+  footnote(j = 2, i = 1:3,
            value = as_paragraph(c("Control (house-keeping) gene")),
-           ref_symbols = c("C"), part = "body")
+           ref_symbols = c("HK"), part = "body") %>%
+  footnote(j = c(rep("forwardP", 12), rep("reverseP", 7)),
+           i = c(1, 3, 4, 5, 7:13, 15, 2, 4, 5, 10, 12, 14, 15),
+           value = as_paragraph(c("Primer spans exon-exon junction")),
+           ref_symbols = c("ExJ"), part = "body")
 
 ## Run gel after qPCR reaction showing single bands to prove specificity of primers
 ```
