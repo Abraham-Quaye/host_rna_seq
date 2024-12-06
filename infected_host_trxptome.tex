@@ -484,18 +484,25 @@ suggest that THEV infection triggers significant ER-associated protein
 degradation, which may contribute to cell death.
 
 \textbf{Cellular Metabolism Changes During THEV Infection}\\
-Many viruses, such as hepatitis C virus, human cytomegalovirus,
+Many viruses, such as hepatitis C virus (HCV), human cytomegalovirus,
 influenza virus, and rhinovirus, have been documented to manipulate
-cellular metabolism processes to their advantage (16). A common
+cellular metabolism processes to their advantage (16, 32). A common
 consequence of infection by many viruses is to induce high glucose
 metabolism in host cells to provide energy for viral gene expression and
-replication. Adenoviruses have been shown to upregulate energy metabolic
-pathways such as glycolysis in host cells (32). However, our GO results
-show a downregulation in glycolysis, tricarboxylic acid cycle, oxidative
+replication. Adenoviruses typically upregulate energy metabolic pathways
+such as glycolysis in host cells (33). However, our GO results indicate
+a downregulation in glycolysis, tricarboxylic acid cycle, oxidative
 phosphorylation, and ATP synthesis (\textbf{Table 2B}). These results
-indicate that THEV infection may modulate cellular energy metabolism
-processes differently than other adenoviruses. \st{Studies done with
-primary host cells would be required to confirm this finding}.
+suggest that THEV infection may modulate cellular energy metabolism
+processes differently than other adenoviruses. Interestingly, some
+viruses such as HCV cause opposite metabolic effects at different times
+after infection (32); therefore it is possible that THEV may have
+similar characteristics. Also, the host interferon (IFN) antiviral
+response potently reverses the metabolic reprogramming (such as
+increased energy metabolism) imposed by the virus as a mechanism of
+inhibiting viral replication (32); hence, the downregulation of energy
+metabolic processes may be a host response to THEV. \st{Further studies
+done with primary host cells would be required to confirm this finding}.
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
 (RT-qPCR)}\\
@@ -540,7 +547,7 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (33). Cells were THEV-infected or
+similar to Mahshoub \emph{et al} (34). Cells were THEV-infected or
 mock-infected in triplicates or duplicates, respectively at a
 multiplicity of infection (MOI) of 100 GCN/cell, incubated at
 41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
@@ -569,9 +576,9 @@ Omnibus database, under accession no \#\#\#\#\#\#\#
 \textbf{Quality Control and Mapping Process}\\
 Sequencing reads were processed following a well-established protocol
 described by Pertea \emph{et al} (19), using Snakemake - version 7.32.4
-(34), a popular workflow management system to drive the pipeline.
+(35), a popular workflow management system to drive the pipeline.
 Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
-(35) and the quality of trimmed reads evaluated using the FastQC
+(36) and the quality of trimmed reads evaluated using the FastQC
 software, version 0.12.1 (Bioinformatics Group at the Babraham
 Institute, Cambridge, United Kingdom;
 www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
@@ -602,7 +609,7 @@ databases and KEGG databases using DAVID and the R package gprofiler2
 (22) with \emph{Meleagris gallopavo} as the reference organism. Results
 with P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
 functionally enriched. All visualization plots were made using ggplot2,
-pheatmap, and ggvenn R packages (36--38).
+pheatmap, and ggvenn R packages (37--39).
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
 (RT-qPCR)} The gene expression levels of representative DEGs (APAF1,
@@ -617,10 +624,12 @@ mRNA using SuperScript™ IV First-Strand Synthesis System. The parent RNA
 were digested using RNase H after cDNA synthesis was complete to ensured
 that only cDNA remain as the template for the RT-qPCR quantification.
 The RT-qPCR was performed with SYBR Green master mix from \#\#\# with
-primers designed using the Primer3 software (ref\#\#\#\#). Primers used
-in this study are listed in \textbf{Supplementary Table S3}. Relative
-mRNA levels were calculated by
-2\textsuperscript{-\(\Delta\)\(\Delta\)CT} method (39).
+primers designed manually in the SnapGene software. The primers were
+checked for specificity using NCBI Nucleotide BLAST
+(\url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome})
+before use. All primers used in this study are listed in
+\textbf{Supplementary Table S3}. Relative mRNA levels were calculated by
+2\textsuperscript{-\(\Delta\)\(\Delta\)CT} method (40).
 
 \textbf{Statistical Analysis} \newpage
 
@@ -867,8 +876,15 @@ blasts}. Immunology Letters 35:125--134.}
 destruction: How ER‐associated protein degradation contributes to
 organelle homeostasis}. The EMBO Journal 41.}
 
-\bibitem[\citeproctext]{ref-Thai2014}
+\bibitem[\citeproctext]{ref-Sumbria2021}
 \CSLLeftMargin{32. }%
+\CSLRightInline{Sumbria D, Berber E, Mathayan M, Rouse BT. 2021.
+\href{https://doi.org/10.3389/fimmu.2020.594963}{Virus infections and
+host metabolism---can we manage the interactions?} Frontiers in
+Immunology 11.}
+
+\bibitem[\citeproctext]{ref-Thai2014}
+\CSLLeftMargin{33. }%
 \CSLRightInline{Thai M, Graham NA, Braas D, Nehil M, Komisopoulou E,
 Kurdistani SK, McCormick F, Graeber TG, Christofk HR. 2014.
 \href{https://doi.org/10.1016/j.cmet.2014.03.009}{Adenovirus
@@ -876,7 +892,7 @@ E4ORF1-induced MYC activation promotes host cell anabolic glucose
 metabolism and virus replication}. Cell Metabolism 19:694--701.}
 
 \bibitem[\citeproctext]{ref-Mahsoub2017}
-\CSLLeftMargin{33. }%
+\CSLLeftMargin{34. }%
 \CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
 Pierson FW. 2017.
 \href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
@@ -885,7 +901,7 @@ enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
 
 \bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{34. }%
+\CSLLeftMargin{35. }%
 \CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
 Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
 Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
@@ -893,29 +909,29 @@ Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
 analysis with snakemake}. F1000Research 10:33.}
 
 \bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{35. }%
+\CSLLeftMargin{36. }%
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 
 \bibitem[\citeproctext]{ref-ggplot2}
-\CSLLeftMargin{36. }%
+\CSLLeftMargin{37. }%
 \CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
 analysis. Springer-Verlag New York.
 \url{https://ggplot2.tidyverse.org}.}
 
 \bibitem[\citeproctext]{ref-pheatmap}
-\CSLLeftMargin{37. }%
+\CSLLeftMargin{38. }%
 \CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
 \url{https://CRAN.R-project.org/package=pheatmap}.}
 
 \bibitem[\citeproctext]{ref-ggvenn}
-\CSLLeftMargin{38. }%
+\CSLLeftMargin{39. }%
 \CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
 \url{https://CRAN.R-project.org/package=ggvenn}.}
 
 \bibitem[\citeproctext]{ref-Livak2001}
-\CSLLeftMargin{39. }%
+\CSLLeftMargin{40. }%
 \CSLRightInline{\href{https://doi.org/10.1006/meth.2001.1262}{Livak KJ,
 Schmittgen TD. 2001.. Methods 25:402--408}.}
 
@@ -8903,7 +8919,7 @@ INFORMATION/MATERIALS}\label{supplementary-informationmaterials}
 
 \begin{longtable}[l]{|p{0.60in}|p{0.60in}|p{2.20in}|p{2.20in}|p{0.60in}}
 
-
+\caption{Table\ S3:\ Primers\ for\ RT-qPCR\ Validation\ of\ RNA-seq\ data}\\
 
 \ascline{0.75pt}{666666}{1-5}
 
