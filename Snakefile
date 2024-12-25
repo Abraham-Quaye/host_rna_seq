@@ -287,6 +287,16 @@ rule plot_enrichment:
     shell:
         "{input.main_script}"
     
+####### GO TERM AND PATHWAY ENRICHMENT ANALYSIS ###########################
+rule plot_qpcr_validation:
+    input:
+        r_script = "scripts/r_code/qpcr_validation.R",
+        data = "qpcr_validation/qpcr_validation.xls"
+    output:
+        "results/r/figures/qpcr_validation.png"
+    shell:
+        "{input.r_script}"
+    
 ####### WRITE MANUSCRIPT FOR PUBLICATION ###########################
 rule write_manuscript:
     input:
@@ -303,7 +313,8 @@ rule write_manuscript:
         go_tables_script = "scripts/r_code/generate_GO_tables.R",
         david_kegg_script = "scripts/r_code/process_DAVID_kegg.R",
         david_kegg_files = expand("results/r/tables/davidKEGG_{reg}{tp}hrs.tsv", \
-        reg = ["up", "down"], tp = [12, 24])
+        reg = ["up", "down"], tp = [12, 24]),
+        qpc_results = rules.plot_qpcr_validation.output
     output:
         "infected_host_trxptome.pdf",
         "infected_host_trxptome.tex",
