@@ -45,14 +45,22 @@ grp_expr <- expr_data %>%
             tech_reps = n(),
             .groups = "drop")
 
+####### Group by biological replicates and plot / calculate statistics #########
+
+# Get mean ct values for all samples and their respective genes
+grp_expr <- expr_data %>%
+  group_by(treatment, gene) %>%
+  summarise(mean_ct = mean(ct), 
+            sd_ct = sd(ct), 
+            sq_sd_ct = sd_ct^2,
+            tech_reps = n(),
+            .groups = "drop")
 
 # Get the mean ct values for reference gene(s)
 ref_gene_ct <- grp_expr %>%
   filter(gene == ref_gene) %>%
-  group_by(treatment) %>%
-  summarise(refG_meanCT = mean(mean_ct), refG_sd_ct = mean(sd_ct),
-            refG_sq_sd_ct = mean(sq_sd_ct), .groups = "drop")
-
+  select(-c(gene, tech_reps)) %>%
+  dplyr::rename(refG_meanCT = mean_ct, refG_sd_ct = sd_ct, refG_sq_sd_ct = sq_sd_ct)
 
 # Calculate Delta-CT values using the reference gene mean CT values
 expr_dCT_ready <- inner_join(grp_expr, ref_gene_ct, by = "treatment") %>%
@@ -63,8 +71,7 @@ expr_dCT_ready <- inner_join(grp_expr, ref_gene_ct, by = "treatment") %>%
 # Get the mean Delta-CT values for the calibrator samples
 refSample_dCT <- expr_dCT_ready %>%
   filter(treatment == ref_sample) %>%
-  select(gene, refS_delta_ct = delta_ct) %>%
-  reframe(refS_delta_ct = mean(refS_delta_ct), .by = gene)
+  select(gene, refS_delta_ct = delta_ct)
 
 # Calculate Delta-delta-CT and Relative Quantities (RQs) using the calibrator sample mean dCT values
 # The calculation of ΔΔCT involves subtraction of the ΔCT calibrator value. This is subtraction of an arbitrary constant, so the standard deviation of the ΔΔCT value is the same as the standard deviation of the ΔCT value. _In other words, we just use the ΔCT standard deviation values_.
@@ -73,83 +80,12 @@ expr_ddCT_ready <- inner_join(expr_dCT_ready, refSample_dCT, by = "gene") %>%
   mutate(del_delta_ct = delta_ct - refS_delta_ct,
          rq = 2^(-del_delta_ct),
          min_rq = 2^(-(del_delta_ct + se_dCT)),
-         max_rq = 2^(-(del_delta_ct - se_dCT))
-  )
-
-plot_ready_data <- inner_join(expr_data, expr_ddCT_ready,
-                              by = c("treatment", "sample_name", "gene")) %>%
-  select(treatment, sample_name, gene, se_dCT, del_delta_ct, rq, min_rq, max_rq)
-
-# Visualize -----
-
-all_gene_plt <- ggplot(plot_ready_data, aes(sample_name, rq, fill = gene)) +
-  geom_col(position = position_dodge(0.9)) +
-  geom_errorbar(aes(ymin = min_rq, ymax = max_rq),
-                position = position_dodge(0.9), width = 0.4) +
-  scale_fill_manual(values = rainbow(13)) +
-  scale_y_continuous(expand = c(0, 0),
-                     breaks = seq(0, 3, 0.25),
-                     labels = format(seq(0, 3, 0.25), nsmall = 1)) +
-  labs(x = "Treatment", 
-       y = "Relative Quantities",
-       fill = element_blank()) +
-  theme_classic() +
-  theme(panel.grid.major.y = element_line(colour = "grey40", linetype = "dashed",
-                                          linewidth = 0.3),
-        axis.title = element_text(size = 24, face = "bold", colour = "#000000"),
-        axis.text.y = element_text(size = 16, face = "bold", colour = "#000000"),
-        axis.text.x = element_text(size = 16, face = "bold",
-                                   colour = "#000000", angle = 90),
-        legend.text = element_text(size = 12, face = "bold", colour = "#000000"),
-        legend.key.height = unit(0.5, "cm"),
-        legend.key.spacing.x = unit(1, "cm"),
-        legend.key = element_rect(fill = NA),
-        legend.position = "top",
-        legend.direction = "horizontal",
-        legend.text.position = "top") +
-  guides(fill = guide_legend(nrow = 1))
-
-####### Group by biological replicates and plot / calculate statistics #########
-
-# Get mean ct values for all samples and their respective genes
-grp_expr_2 <- expr_data %>%
-  group_by(treatment, gene) %>%
-  summarise(mean_ct = mean(ct), 
-            sd_ct = sd(ct), 
-            sq_sd_ct = sd_ct^2,
-            tech_reps = n(),
-            .groups = "drop")
-
-# Get the mean ct values for reference gene(s)
-ref_gene_ct_2 <- grp_expr_2 %>%
-  filter(gene == ref_gene) %>%
-  select(-c(gene, tech_reps)) %>%
-  dplyr::rename(refG_meanCT = mean_ct, refG_sd_ct = sd_ct, refG_sq_sd_ct = sq_sd_ct)
-
-# Calculate Delta-CT values using the reference gene mean CT values
-expr_dCT_ready_2 <- inner_join(grp_expr_2, ref_gene_ct_2, by = "treatment") %>%
-  mutate(delta_ct = mean_ct - refG_meanCT,
-         sd_dCT = sqrt(sq_sd_ct + refG_sq_sd_ct),
-         se_dCT = sd_dCT/sqrt(tech_reps))
-
-# Get the mean Delta-CT values for the calibrator samples
-refSample_dCT_2 <- expr_dCT_ready_2 %>%
-  filter(treatment == ref_sample) %>%
-  select(gene, refS_delta_ct = delta_ct)
-
-# Calculate Delta-delta-CT and Relative Quantities (RQs) using the calibrator sample mean dCT values
-# The calculation of ΔΔCT involves subtraction of the ΔCT calibrator value. This is subtraction of an arbitrary constant, so the standard deviation of the ΔΔCT value is the same as the standard deviation of the ΔCT value. _In other words, we just use the ΔCT standard deviation values_.
-
-expr_ddCT_ready_2 <- inner_join(expr_dCT_ready_2, refSample_dCT_2, by = "gene") %>%
-  mutate(del_delta_ct = delta_ct - refS_delta_ct,
-         rq = 2^(-del_delta_ct),
-         min_rq = 2^(-(del_delta_ct + se_dCT)),
          max_rq = 2^(-(del_delta_ct - se_dCT)))
 
 
 # Visualize
 
-plot_ready_data <- expr_ddCT_ready_2 %>%
+plot_ready_data <- expr_ddCT_ready %>%
   mutate(gene = toupper(gene),
          gene = factor(gene, levels = toupper(c("apaf1", "bmf", "fadd", "madd", "pdcd4",
                                         "edem1", "ufd1", "vcp", "eif3d",
@@ -158,17 +94,30 @@ plot_ready_data <- expr_ddCT_ready_2 %>%
                                 rq < 1  ~ "down",
                                 TRUE ~ NA_character_)) %>%
   drop_na(regulation)
-  
-qpcr_plt <- plot_ready_data %>% 
+
+plt_accessory <- tibble(x = c(0.5, 0.5, 5.4, 5.5, 5.5, 8.4, 8.5, 8.5, 12.4),
+       xend = c(5.4, 0.5, 5.4, 8.4, 5.5, 8.4, 12.4, 8.5, 12.4),
+       y = c(-0.5, -0.45, -0.45, -0.5, -0.45, -0.45, 0.5, 0.45, 0.45),
+       yend = c(-0.5, -0.55, -0.55, -0.5, -0.55, -0.55, 0.5, 0.55, 0.55))
+
+qpcr_plt <- plot_ready_data %>%
   ggplot(aes(gene, log2(rq), fill = regulation)) +
   geom_col() +
   geom_errorbar(aes(ymin = log2(min_rq), ymax = log2(max_rq)),
                 position = position_dodge(0.9), width = 0.4) +
   geom_hline(yintercept = 0, color = "#000000") +
   annotate(geom = "text", x = c(1:12), y = c(rep(-0.1, 8), rep(0.1, 4)),
-           label = levels(plot_ready_data$gene)[-13], size = 7,
+           label = levels(plot_ready_data$gene)[-13], size = 6,
            fontface = "bold.italic") +
-  scale_fill_manual(values = rainbow(2),
+  geom_segment(data = plt_accessory,
+               aes(x = x, xend = xend, y = y, yend = yend),
+               linewidth = 1.5, inherit.aes = F,
+               color = "#000000") +
+  annotate(geom = "text", x = c(3, 7, 10.5), y = c(rep(-0.8, 2), 0.8),
+           label = paste0(c("Apoptosis\n", "ERAD\n", "Protein Synthesis\n"),
+                          " Pathway"),
+           size = 8, fontface = "bold") +
+  scale_fill_manual(values = c("#ff0000", "#0000ff"),
                     breaks = c("up", "down"),
                     labels = c("Upregulated", "Downregulated")) +
   scale_y_continuous(expand = c(0, 0),
@@ -187,7 +136,7 @@ qpcr_plt <- plot_ready_data %>%
         axis.text.y = element_text(size = 16, face = "bold", colour = "#000000"),
         axis.text.x = element_blank(),
         axis.line.x = element_blank(),
-        axis.ticks.x = element_blank(),
+        axis.ticks = element_blank(),
         legend.text = element_text(size = 14, face = "bold", colour = "#000000"),
         legend.key.height = unit(0.8, "cm"),
         legend.key.spacing.x = unit(1, "cm"),
@@ -200,4 +149,3 @@ qpcr_plt <- plot_ready_data %>%
 
 ggsave(plot = qpcr_plt, filename = "results/r/figures/qpcr_validation.png",
        dpi = 350, width = 12, height = 10)
-  
