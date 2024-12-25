@@ -26,8 +26,9 @@ draw_venn_plott <- function(input_sets, tittl){
   
   pl <- ggvenn(input_sets, stroke_size = 0.1,
                set_name_size = 10, show_percentage = F,
-               text_size = 10,
-               fill_color = c("red", "blue", "grey30", "green")) +
+               text_size = 10
+               # fill_color = c("red", "blue", "grey30", "green")
+               ) +
     coord_cartesian(clip = "off") +
     labs(title = paste0(tittl, "regulated DEGs")) +
     theme(plot.title = element_text(size = 22, face = "bold",

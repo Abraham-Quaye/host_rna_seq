@@ -11,7 +11,7 @@ trimStats <- read.table("raw_files/ReadsQC.txt", sep = "\t", skip = 2,
 mapStats <- read.table("raw_files/mapped_stat.txt", header = T, sep = "\t") %>% 
   rename_with(.fn = tolower) %>%
   select(sample:multi.mapped.reads) %>%
-  rename(trimmed_reads = valid.reads) %>%
+  dplyr::rename(trimmed_reads = valid.reads) %>%
   inner_join(.,trimStats, by = "sample") %>%
   select(sample, raw_reads, everything()) %>%
   mutate(mapped_reads = str_replace(mapped.reads, "^(\\d+)\\(.*\\)$", "\\1"),

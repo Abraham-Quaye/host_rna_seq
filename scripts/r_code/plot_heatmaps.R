@@ -9,32 +9,29 @@ source("scripts/r_code/plot_degs.R")
 
 ## select columns to use for making heatmap
 prep_heatmap_data <- function(tp){
-  r_names <- diff_exp_genes %>%
+  
+  heat_data <- diff_exp_genes %>%
     filter(timepoint == tp) %>%
+    arrange(qval) %>%
+    slice_head(n  = 60) %>%
+    arrange(desc(log2fc))
+  
+  r_names <- heat_data %>%
     pull(gene_name)
   
   if(tp == "t12"){
-    c_names <- c("Infected 12hrs1", "Infected 12hrs2", "Mock 12hrs1", "Mock 12hrs2")
-  }else if(tp == "t24"){
+    c_names <- c("Infected 12hrs1", "Infected 12hrs2",
+                 "Mock 12hrs1", "Mock 12hrs2")
+  }else{
     c_names <- c("Infected 24hrs1", "Infected 24hrs2", "Infected 24hrs3",
                  "Mock 24hrs1", "Mock 24hrs2")
-  }else if(tp == "t4"){
-    c_names <- c("Infected 4hrs1", "Infected 4hrs2", "Infected 4hrs3",
-                 "Mock 4hrs1", "Mock 4hrs2")
-  }else{
-    c_names <- c("Infected 72hrs1", "Infected 72hrs2", "Infected 72hrs3",
-                 "Mock 72hrs1", "Mock 72hrs2")
   }
-  
-  data <- diff_exp_genes %>%
-    split(.$timepoint) %>%
-    set_names(c("t12", "t24", "t4", "t72"))
   
   if(tp == "t12"){
-    data[[tp]] <- data[[tp]] %>% select(-inf_fpkm_r2)
+    heat_data <- heat_data %>% select(-inf_fpkm_r2)
   }
   
-  heat <- data[[tp]] %>%
+  heat_matrix <- heat_data %>%
     select(inf_fpkm_r1:mock_fpkm_r2) %>%
     data.matrix(.) %>%
     set_rownames(r_names) %>%
@@ -43,10 +40,10 @@ prep_heatmap_data <- function(tp){
     scale(.) %>%
     t(.)
   
-  return(heat)
+  return(heat_matrix)
 }
 
-timpnts <- c("t12", "t24", "t4", "t72")
+timpnts <- c("t12", "t24")
 
 heatmap_data_list <- map(timpnts, prep_heatmap_data) %>%
   set_names(timpnts)
@@ -56,16 +53,17 @@ plot_heatmap <- function(tp){
   tpp <- paste0(parse_number(tp), "h.p.i")
   
   ht <- pheatmap(heatmap_data_list[[tp]],
-                 main = paste0("DEGs at " , tpp),
-                 cellwidth = 60,
-                 color = colorRampPalette(colors = c('blue','white','red'))(250),
+                 main = paste0("Top 60 Significant DEGs at " , tpp),
+                 cellwidth = 50,
+                 cellheight = 10,
+                 color = colorRampPalette(
+                   colors = c('blue','white','red'))(250),
                  angle_col = 45,
                  fontsize = 15,
-                 fontsize_row = 5,
+                 fontsize_row = 10,
                  fontsize_col = 15,
-                 treeheight_row = 0,
-                 show_rownames = F
-  )
+                 treeheight_row = 0
+                 )
   if(!is.null(dev.list())){
     graphics.off()
   }
@@ -73,8 +71,8 @@ plot_heatmap <- function(tp){
 }
 
 # save heatmaps in a tibble with appropriate identifier (timepoint)
-plotted_heatmaps <- tibble(timepoints = timpnts) %>%
-  mutate(plts = map(timepoints, plot_heatmap))
+plotted_heatmaps <- tibble(timepoints = timpnts,
+                           plts = map(timepoints, plot_heatmap))
 
 p12 <- as.ggplot(plotted_heatmaps[, "plts"][[1]][[1]])
 p24 <- as.ggplot(plotted_heatmaps[, "plts"][[1]][[2]])
