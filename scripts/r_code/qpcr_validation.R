@@ -3,6 +3,7 @@
 library(tidyverse)
 library(readxl)
 library(ggtext)
+library(broom)
 
 ## Analysis Steps to obtaining gene expression levels
 # 1. normalize CT-values of target genes by CT-values of reference gene by subtracting the CT-values of reference gene from all others -> d-CT
@@ -149,3 +150,17 @@ qpcr_plt <- plot_ready_data %>%
 
 ggsave(plot = qpcr_plt, filename = "results/r/figures/qpcr_validation.png",
        dpi = 350, width = 12, height = 10)
+
+# test for normal distribution
+shapiro.test(expr_data$ct)
+# not normally distributed -> use wilcoxon test
+
+stats_test <- tibble(genes = c("apaf1", "bmf", "fadd", "pdcd4","madd", "vcp",
+                               "ufd1", "edem1", "eif3d", "eif3m", "rpl8", "rpl10a"),
+       ct_data = map(genes, \(.x)expr_data %>% filter(gene == .x)),
+       wilcox_test = map(ct_data, \(.x) wilcox.test(ct ~ treatment, exact = T,
+                                                    data = .x) %>%
+                           tidy(.) %>% pull(p.value)),
+       t_test = map(ct_data, \(.x) t.test(ct ~ treatment, data = .x) %>%
+                      tidy(.) %>% pull(p.value))
+       )
