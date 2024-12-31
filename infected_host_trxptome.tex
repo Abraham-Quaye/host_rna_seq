@@ -132,11 +132,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Host Turkey B-cell Transcriptomics During THEV Infection Highlights Upregulated Cell Death and Breakdown Pathways That May Mediate Immunosuppression},
+  pdftitle={Turkey B-cell Transcriptome Profile During THEV Infection Highlights Upregulated Cell Death and Breakdown Pathways That May Mediate Immunosuppression},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Host Turkey B-cell Transcriptomics During THEV Infection
+\title{Turkey B-cell Transcriptome Profile During THEV Infection
 Highlights Upregulated Cell Death and Breakdown Pathways That May
 Mediate Immunosuppression}
 \author{}
@@ -178,8 +178,8 @@ Provo, Utah\\
 
 Turkey hemorrhagic enteritis virus (THEV), belonging to the family
 \emph{Adenoviridae}, genus \emph{Siadenovirus}, infects turkeys,
-chickens, and pheasants (1, 2). Infecting its hosts via the feco-oral
-route, THEV causes hemorrhagic enteritis (HE) in turkeys, a debilitating
+chickens, and pheasants (1, 2). THEV is transmitted via the fecal-oral
+route and causes hemorrhagic enteritis (HE) in turkeys, a debilitating
 disease affecting predominantly 6-12-week-old turkey poults
 characterized by immunosuppression (IMS), depression, splenomegaly,
 intestinal lesions leading to bloody droppings, and up to 80\% mortality
@@ -187,39 +187,41 @@ intestinal lesions leading to bloody droppings, and up to 80\% mortality
 about 7-10 days. However, secondary bacterial infections may extend the
 duration of illness and mortality for an additional 2-3 weeks due to the
 immunosuppressive nature of the virus, exacerbating the economic losses
-(5, 7). Low pathogenic (avirulent) strains of THEV have been isolated,
-which show subclinical infections but retain the immunosuppressive
-effects. Since its isolation from a pheasant spleen, the Virginia
-Avirulent Strain (VAS) has been used effectively as a live vaccine
-despite the immunosuppressive side-effects, but the vaccinated birds are
-rendered more susceptible to opportunistic infections and death than
-unvaccinated cohorts leading to significant economic losses (4, 5,
-8--10).
+(5, 7). Naturally-occurring low pathogenic (avirulent) strains of THEV
+have been isolated, which show subclinical infections but retain the
+immunosuppressive effects. Since its isolation from a pheasant spleen,
+the Virginia Avirulent Strain (VAS) has been used effectively as a live
+vaccine despite the immunosuppressive side-effects, but the vaccinated
+birds are rendered more susceptible to opportunistic infections and
+death than unvaccinated cohorts leading to significant economic losses
+(4, 5, 8--10).
 
 It is well-established that THEV primarily infects and replicates in
 turkey B-cells of the bursa and spleen and somewhat in macrophages,
 inducing apoptosis and necrosis. Consequently, a significant drop in
 number of B-cells (specifically, IgM+ B-cells) and macrophages ensue
 along with increased T-cell counts with abnormal T-cell subpopulation
-(CD4+ and CD8+) ratios. The cell death seen in the B-cells and
+(CD4+ and CD8+) ratios. The cell death seen in the infected B-cells and
 macrophages is generally proposed as the major cause of THEV-induced IMS
 as both humoral and cell-mediated immunity are impaired (5, 6, 8, 11).
-It is also thought that the virus replication in the spleen attracts
-T-cells and peripheral blood macrophages to the spleen where the T-cells
-are activated by cytokines from activated macrophages and vice versa.
-The activated T-cells undergo clonal expansion and secrete interferons:
-type I (IFN-\(\alpha\) and IFN-\(\beta\)) and type II (IFN-\(\gamma\))
-as well as tumor necrosis factor (TNF) while activated macrophages
-secrete interleukin 6 (IL-6), TNF, and nitric oxide (NO), an antiviral
-agent with immunosuppressive properties. The inflammatory cytokines
-released by T-cells and macrophages (e.g., TNF and IL-6) may also induce
+Immunopathogenesis via cytokines from T-cells and macrophages has also
+been suggested as a mechanism of apoptosis leading to IMS. It is thought
+that the virus replication in the spleen attracts T-cells and peripheral
+blood macrophages to the spleen where the T-cells are activated by
+cytokines from activated macrophages and vice versa. The activated
+T-cells undergo clonal expansion and secrete interferons: type I
+(IFN-\(\alpha\) and IFN-\(\beta\)) and type II (IFN-\(\gamma\)) as well
+as tumor necrosis factor (TNF) while activated macrophages secrete
+interleukin 6 (IL-6), TNF, and nitric oxide (NO), an antiviral agent
+with immunosuppressive properties. These cytokines released by T-cells
+and macrophages (e.g., TNF) are pro-apoptotic and may also induce
 apoptosis in bystander splenocytes, exacerbating the already numerous
 apoptotic and necrotic splenocytes, culminating in IMS (8, 11) (see
 \textbf{Figure 1}). However, the precise molecular mechanisms of
 THEV-induced IMS or pathways involved are poorly understood (6).
 Elucidating the specific mechanisms and pathways of THEV-induced IMS is
 the most crucial step in THEV research as it will present a means of
-mitigating the IMS.
+mitigating IMS.
 
 Next generation sequencing (NGS) is a groundbreaking technology that has
 significantly enhanced our understanding of DNA and RNA structure and
@@ -228,32 +230,33 @@ biology and the Life Sciences (12). mRNA sequencing (RNA-seq), an NGS
 approach to transcriptomic studies, is a versatile, high throughput, and
 cost-effective technology that allows a broad scan of the entire
 transcriptome, thereby uncovering the active genes and molecular
-pathways and processes. This technology has been leveraged in an ever
-increasing number of studies to elucidate active cellular processes
+pathways and processes. This technology has been leveraged in an
+ever-increasing number of studies to elucidate active cellular processes
 under a wide range of treatment conditions, including the
 transcriptomics of viral infections (12--16). In RNA-seq studies,
 differentially expressed genes (DEGs) identified under different
 experimental conditions are key to unlocking the interesting biology or
 mechanism under study. Identified DEGs are typically used for functional
-enrichment analysis in large curated knowledgebases which connect genes
-to specific biological processes, functions, and pathways such as gene
+enrichment analyses in large curated knowledgebases such as gene
 ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG)
-pathways, shedding light on the biological question under study (17,
-18).
+pathways which connect genes to specific biological processes,
+functions, and pathways, shedding light on the biological question under
+study (17, 18).
 
 To the best of our knowledge, no study has leveraged the wealth of
 information offered by RNA-seq to elucidate the molecular mechanisms and
 pathways leading to THEV-induced IMS. To effectively counteract the
 immunosupressive effect of the vaccine, it is essential to unravel the
-host cell mechanisms/pathways influenced by the virus to bring about
-IMS. In this study, we present the first transcriptomic profile of
+host cell processes/pathways influenced by the virus to bring about IMS.
+In this study, we present the first transcriptomic profile of
 THEV-infected cells using paired-end RNA-seq in a turkey B-cell line
 (MDTC-RP19), highlighting key host genes, cellular/molecular processes
 and pathways affected during a THEV infection. We specifically focus on
-cellular processes that would help in elucidating THEV-induced IMS. Our
-RNA-seq yielded 149 bp long high quality (mean PHRED Score of 36)
-sequences from each end of cDNA fragments, which were mapped to the
-genome of domestic turkey (\emph{Meleagris gallopavo}). \newpage
+cellular processes related to cell survivability that would help in
+elucidating THEV-induced IMS. Our RNA-seq yielded 149 bp long high
+quality (mean PHRED Score of 36) sequences from each end of cDNA
+fragments, which were mapped to the genome of domestic turkey
+(\emph{Meleagris gallopavo}). \newpage
 
 \subsection{RESULTS}\label{results}
 
@@ -264,20 +267,22 @@ duplicates, respectively, and harvested at 4-, 12-, 24-, and 72-hours
 post infection (hpi). mRNAs extracted from mock- or THEV-infected cells
 were sequenced on the Illumina platform, yielding a total of
 \textbf{776.1} million raw reads (149 bp in length) across all samples
-(statistics for the sequencing reads obtained from each RNA library are
-presented in \textbf{Table 1}). After trimming off low-quality reads,
-the remaining \textbf{742.8} million total paired-end trimmed reads
-(approximately, \textbf{34.7}-\textbf{47.9} million reads per sample)
-were mapped to the genome of \emph{Meleagris gallopavo} obtained from
-the National Center for Biotechnology Information (NCBI). The percentage
-of reads mapping to the host genome across all samples ranged from
-\textbf{32.4}-\textbf{89.2}\%. Although our sequencing reads have
-excellent quality scores at all time points (see \textbf{Table 1}), the
-DEGs identified at 4- and 72-hpi did not yield any results in the
-functional enrichment analyses (i.e, GO term and KEGG pathway analysis);
-hence, they were excluded from all subsequent analyses. In the remaining
-samples from 12- and 24-hpi, a high correlation was seen between
-biological replicates (\textbf{Figure 2A} and \textbf{B}).
+(see \textbf{Table 1} for sequencing statistics). After trimming
+low-quality reads, the remaining \textbf{742.8} million total paired-end
+trimmed reads (approximately, \textbf{34.7}-\textbf{47.9} million reads
+per sample) were mapped to the genome of \emph{Meleagris gallopavo}
+obtained from the National Center for Biotechnology Information (NCBI).
+The percentage of reads mapping to the host genome across all samples
+ranged from \textbf{32.4} to \textbf{89.2}\%. The fraction of reads
+mapping to the host genome decreased while those mapping to the virus
+genome increased over course of the infection as the virus infectious
+cycle progressed. Despite excellent quality scores at all time points
+(\textbf{Table 1}), DEGs identified at 4 and 72 hpi did not yield any
+results in the downstream functional enrichment analyses (GO term and
+KEGG pathway analysis) and they were excluded from all subsequent
+analyses. In the remaining 12 and 24 hpi samples, a high correlation was
+observed between biological replicates (\textbf{Figure 2A} and
+\textbf{B}).
 
 \textbf{DEGs of THEV-infected Versus Mock-infected Cells}
 
@@ -286,23 +291,25 @@ in Fragments per kilobase of transcript per million (FPKM) units. The
 analysis of DEGs was performed with the DESeq2 R package (20) which
 employs negative binomial distribution model for read count comparisons.
 Using a P\textsubscript{adjusted}-value cutoff \(\leq\) 0.05 as the
-inclusion criteria, a total of \textbf{2,343} and \textbf{3,295} genes
-were identified as differentially expressed at 12-hpi and 24-hpi,
-respectively. \st{The DEG analyses results at 12 and 24-hpi are
-presented in \textbf{Supplementary Tables S1 and S2}, respectively}. At
-12-hpi, \textbf{1,079} genes were upregulated and \textbf{1,264} genes
-downregulated, whereas \textbf{1,512} genes were upregulated and
-\textbf{1,783} genes downregulated at 24-hpi (\textbf{Figure 2C}, and
-\textbf{Figure 3A-C}). The log\textsubscript{2}fold-change(FC) values at
-12-hpi ranged between \textbf{-1.4} and +\textbf{1.7} for
-\textbf{TMEM156} (Transmembrane Protein 156) and \textbf{LIPG} (Lipase
-G), respectively. At 24-hpi, the log\textsubscript{2}FC values ranged
-between \textbf{-2.0} and +\textbf{2.6} for \textbf{C1QTNF12} (C1q And
-TNF Related 12) and \textbf{KCNG1} (Potassium Voltage-Gated Channel
-Modifier Subfamily G Member 1), respectively.
+inclusion criteria, \textbf{2,343} and \textbf{3,295} genes were
+identified as differentially expressed at 12-hpi and 24-hpi,
+respectively. The DEG analyses results at 12 and 24-hpi have been
+deposited in NCBI Gene Expression Omnibus
+(\url{http://www.ncbi.nlm.nih.gov/geo}) under accession number \#\#\#
+with files named \textasciitilde file\_name12hpi and
+file\_name24hpi\textasciitilde, respectively. At 12-hpi, \textbf{1,079}
+genes were upregulated and \textbf{1,264} genes downregulated, whereas
+\textbf{1,512} genes were upregulated and \textbf{1,783} genes
+downregulated at 24-hpi (\textbf{Figure 2C}, and \textbf{Figure 3A-C}).
+The log\textsubscript{2}fold-change(FC) values at 12-hpi ranged between
+\textbf{-1.4} and +\textbf{1.7} for \textbf{TMEM156} (Transmembrane
+Protein 156) and \textbf{LIPG} (Lipase G), respectively. At 24-hpi, the
+log\textsubscript{2}FC values ranged between \textbf{-2.0} and
++\textbf{2.6} for \textbf{C1QTNF12} (C1q And TNF Related 12) and
+\textbf{KCNG1} (Potassium Voltage-Gated Channel Modifier Subfamily G
+Member 1), respectively.
 
-\textbf{Functional Enrichment Analyses (GO, KEGG pathway, and
-interaction network analyses)}\\
+\textbf{Functional Enrichment Analyses (GO and KEGG pathway Analyses)}\\
 Gene ontology (GO) enrichment analysis was performed for 12- and 24-hpi
 DEGs with the DAVID (Database for Annotation, Visualization and
 Integrated Discovery; version 2021) online resource (21) and the
@@ -311,67 +318,65 @@ results in three GO categories -- cellular components (CP), biological
 processes (BP), and molecular functions (MF). Results with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered
 functionally enriched. The GO enrichment analyses results at 12-hpi and
-24-hpi showed significant intersections among all three GO categories.
-At both time points, cellular breakdown processes were upregulated while
+24-hpi showed significant overlaps among all three GO categories. At
+both time points, cellular breakdown processes were upregulated while
 cellular maintenance processes and structures were downregulated in all
 three GO categories (\textbf{Table 2A-B} and \textbf{Table 3A-B}).
 
 For upregulated DEGs at 12-hpi, GO terms annotated under the BP category
 broadly cluster into: apoptosis and autophagy, cellular metabolism
 (catabolic processes), sterol biosynthesis, response to stimuli, and
-protein processing (\textbf{Figure 4A} and \textbf{Table 2A}). Under the
-CC category, the GO terms relate primarily with cytoplasmic vacuolation
-while the GO terms under the MF category broadly fit under protein
-binding and kinase activity (\textbf{Table 2A}). For 12-hpi
-downregulated DEGs, the GO terms in BP category generally fall under:
-translation, protein biosynthesis and folding, ribosome biogenesis,
-nitrogen compound metabolism, nucleic acid synthesis, repair,
-metabolism, processing, and replication; and energy metabolism. Also,
-immunoglobulin production and isotype switching was downregulated
-(\textbf{Figure 4C} and \textbf{Table 2B}). As for the CC category GO
-terms, they broadly group into: ribosome, mitochondria, respirosome,
-nucleus, and spliceosome while the MF category GO terms generally belong
-to: translation regulator activity, protein folding chaperone, catalytic
-activity (acting on a nucleic acids), and ATP hydrolysis activity
-(\textbf{Table 2B}).
+protein processing (\textbf{Figure 4A} and \textbf{Table 2A}). In the CC
+category, the GO terms relate primarily with cytoplasmic vacuolation,
+while in the MF category, they broadly fit under protein binding and
+kinase activity (\textbf{Table 2A}). For downregulated DEGs at 12 hpi,
+GO terms in BP category generally fell under translation, protein
+biosynthesis and folding, ribosome biogenesis, nitrogen compound
+metabolism, nucleic acid synthesis, repair, metabolism, processing, and
+replication, and energy metabolism. Also, immunoglobulin production and
+isotype switching were downregulated (\textbf{Figure 4C} and
+\textbf{Table 2B}). In the CC category GO terms broadly grouped into
+ribosome, mitochondria, respirosome, nucleus, and spliceosome, while in
+the MF category, they generally belong to translation regulator
+activity, protein folding chaperone, catalytic activity (acting on a
+nucleic acids), and ATP hydrolysis activity (\textbf{Table 2B}).
 
-At 24-hpi, the GO terms under the BP GO category for the upregulated
-DEGs are connected with: apoptosis and autophagy, lipid and sterol
-biosynthesis, catabolic process, protein ubiquitination and proteolysis,
-cell signalling, and cell metabolism. Additionally, host defense
-response and genes that negatively regulate cytokine production were
-upregulated (\textbf{Figure 4B} and \textbf{Table 3A}). The GO terms of
-the CC category, similar to those identified at 12-hpi, are also related
-with cytoplasmic vacuolation and the lysosome. The MF category GO terms
-group into: protein ubiquitination activity, kinase and acyltransferase
-activity, and macromolecule binding activity (\textbf{Table 3A}). The GO
-terms for the downregulated DEGs are markedly similar to those at 12-hpi
-in all three GO categories. The BP category GO terms broadly group into:
+At 24-hpi, the GO terms in the BP category for upregulated DEGs were
+connected with apoptosis and autophagy, lipid and sterol biosynthesis,
+catabolic process, protein ubiquitination and proteolysis, cell
+signalling, and cell metabolism. Additionally, host defense response and
+genes that negatively regulate cytokine production were upregulated
+(\textbf{Figure 4B} and \textbf{Table 3A}). In the CC category, GO terms
+were related to cytoplasmic vacuolation and the lysosome, similar to
+those identified at 12-hpi. In the MF category GO terms group into
+protein ubiquitination activity, kinase and acyltransferase activity,
+and macromolecule binding activity (\textbf{Table 3A}). GO terms for the
+downregulated DEGs were markedly similar to those at 12-hpi in all three
+GO categories. In the BP category, GO terms broadly group into
 translation, peptide biosynthesis and folding, ribosome biogenesis,
 aerobic respiration and ATP synthesis, and cell cycle process and
 nucleic acid replication and processing (\textbf{Figure 4D} and
-\textbf{Table 3B}). The GO terms of the CC category group under:
-ribosome, mitochondrion, nucleus and chromosomes while the MF category
-GO terms group into: structural constituent of ribosome and translation
+\textbf{Table 3B}). The GO terms in the CC category group under
+ribosome, mitochondrion, nucleus and chromosomes, while the MF category
+GO terms group into structural constituent of ribosome and translation
 regulator activity, catalytic activity acting on a nucleic acid and
 nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding
 (\textbf{Table 3B}).
 
 KEGG pathway analysis on the DEGs was also performed using both the
-gprofiler2 R package (22) and the DAVID online resource. Both analysis
-resources gave similar results but the results from DAVID (\textbf{Table
-4A}) includes more information than the gprofiler2 results
-(\textbf{Table 4B}). The KEGG pathway analysis was congruent with the GO
-results, revealing that generally, cell maintenance and upkeep pathways
-were downregulated while cell death and breakdown pathways were
-upregulated. Cell maintenance pathways such as DNA replication and
-repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation
-were downregulated at 12-hpi. Similar pathways were downregulated at
-24-hpi. Pathways such as: autophagy, response to virus (Influenza A),
-and steroid biosynthesis were upregulated at 12-hpi similar to 24-hpi,
-where pathways such as: autophagy, ubiquitin-mediated proteolysis,
-lysosome, protein processing in endoplasmic reticulum, and steroid
-biosynthesis were upregulated.
+gprofiler2 R package (22) and the DAVID online resource. Both resources
+gave similar results, but the results from DAVID (\textbf{Table 4A})
+included more information than the gprofiler2 results (\textbf{Table
+4B}). KEGG pathway analysis was congruent with the GO results, revealing
+that generally, cell maintenance and upkeep pathways were downregulated
+while cell death and breakdown pathways were upregulated. Cell
+maintenance pathways such as DNA replication and repair, ribosome
+biogenesis, spliceosome, and oxidative phosphorylation were
+downregulated at both 12- and 24-hpi. Pathways such as: autophagy,
+response to virus (Influenza A), and steroid biosynthesis were
+upregulated at 12-hpi similar to 24-hpi, where pathways such as:
+autophagy, ubiquitin-mediated proteolysis, lysosome, protein processing
+in endoplasmic reticulum, and steroid biosynthesis were upregulated.
 
 It is well-established that THEV induces cell death (apoptosis and
 necrosis) in infected B-cells, which is linked to THEV-induced IMS (8,
@@ -388,24 +393,24 @@ THEV-host cell interaction relevant to THEV-induced IMS.
 Many virus families, including adenoviruses, herpesviruses, poxviruses,
 baculoviruses, parvoviruses, retroviruses, rhabdoviruses,
 pararmyxoviruses, orthomyxoviruses, togaviruses, and picornaviruses are
-known to trigger apoptosis in infected host cells either by a direct
-action of a viral protein or due to the host antiviral response
-(24--26). The Mastadenovirus family possess the protein, E1B-19K, used
-to inhibit host cell apoptosis long enough to complete their replication
-cycle (24, 26, 27). However, no such protein is known in THEV. A recent
-paper showed several novel transcripts and open reading frames (ORFs) in
-the genome of THEV which may offer similar anti-apoptotic functions but
-the functions of these novel ORFs are yet to be studied (28). Our data
-show that apoptotic and autophagic pathways are upregulated during THEV
+known to trigger apoptosis in infected host cells either through direct
+viral protein action or the host antiviral response (24--26). The
+Mastadenovirus family possess the protein, E1B-19K, used to inhibit host
+cell apoptosis long enough to complete their replication cycle (24, 26,
+27). However, no such protein is known in THEV. A recent paper showed
+several novel transcripts and open reading frames (ORFs) in the genome
+of THEV which may offer similar anti-apoptotic functions but the
+functions of these novel ORFs are yet to be studied (28). Our data show
+that apoptotic and autophagic pathways are upregulated during THEV
 infection, supporting previous findings of apoptosis and necrosis of
 THEV-infected cells (8, 11, 23). For example, several proapoptotic
-members of the BCL2 (B-cell lymphoma 2) protein family such as: BCL2
+members of the BCL2 (B-cell lymphoma 2) protein family such as BCL2
 antagonist/killer 1 (\emph{BAK1}), BCL2 interacting protein 3 like
 (\emph{BNIP3L}), BCL2 interacting protein 3 (\emph{BNIP3}), and Bcl2
 modifying factor (\emph{BMF}) were upregulated. Additionally, Fas cell
 surface death receptor (\emph{FAS}), Fas associated via death domain
 (\emph{FADD}), MAP kinase-activating death domain (\emph{MADD}),
-programmed cell death 4(\emph{PDCD4}), RB1 inducible coiled-coil 1
+programmed cell death 4 (\emph{PDCD4}), RB1 inducible coiled-coil 1
 (\emph{RB1CC1}), activating transcription factor 4 (\emph{ATF4}),
 receptor interacting serine/threonine kinase 1 (\emph{RIPK1}), tumor
 necrosis factor receptor superfamily member 1B (\emph{TNFRSF1B}),
@@ -414,99 +419,123 @@ activating factor 1 (\emph{APAF1}), which are potent proapoptotic
 factors were upregulated. Interestingly, both the intrinsic (\emph{BAK1,
 BNIP3L, BNIP3, BMF, RB1CC1, ATF4, PDCD4}, and \emph{APAF1}) and
 extrinsic (\emph{FAS, FADD, TNFRSF1B, MADD, and RIPK1}) apoptotic
-pathways were represented. Conversely, we noted that, several
-anti-apoptotic proteins such as: BCL2 apoptosis regulator (\emph{BCL2}),
-BCL2 interacting protein 2 (\emph{BNIP2}; interacts directly with
-adenovirus E1B-19K protein), BCL2 related protein A1 (\emph{BCL2A1}),
-and apoptosis inhibitor 5 (\emph{API5}) were also upregulated. Thus,
-apoptosis and its regulation pathways are clearly upregulated; this
-likely highlights the host-virus tug-of-war and underscores the ability
-of adenoviruses to trigger both apoptotic and anti-apoptotic pathways as
-seen in Mastadenoviruses. Moreover, several genes associated with
-autophagy such as: TNF receptor associated factor 6 (\emph{TRAF6}),
-autophagy related 9A (\emph{ATG9A}), unc-51 like autophagy activating
-kinase 2 (\emph{ULK2}), and autophagy related 4B cysteine peptidase
-(\emph{ATG4B}) were upregulated.
+pathways were represented. Conversely, several anti-apoptotic proteins
+such as BCL2 apoptosis regulator (\emph{BCL2}), BCL2 interacting protein
+2 (\emph{BNIP2}; interacts directly with adenovirus E1B-19K protein),
+BCL2 related protein A1 (\emph{BCL2A1}), and apoptosis inhibitor 5
+(\emph{API5}) were also upregulated. Thus, apoptosis and its regulation
+pathways are clearly upregulated; this highlights the host-virus
+tug-of-war and underscores the ability of adenoviruses to trigger both
+apoptotic and anti-apoptotic pathways as seen in Mastadenoviruses.
+Moreover, several genes associated with autophagy such as: TNF receptor
+associated factor 6 (\emph{TRAF6}), autophagy related 9A (\emph{ATG9A}),
+unc-51 like autophagy activating kinase 2 (\emph{ULK2}), and autophagy
+related 4B cysteine peptidase (\emph{ATG4B}) were upregulated.
 
-We also found several essential cell maintenance processes whose
-downregulation can trigger apoptosis. For instance, severe DNA damage is
-a known mechanism of apoptosis induction, which is called DNA
-damage-dependent apoptosis (29). Repression of RNA and protein synthesis
-are also strongly associated with apoptosis (30). Several processes
-related nucleic acid (DNA and RNA) synthesis, maintenance, and repair
-such as: nucleotide biosynthesis and metabolism, double strand break
-repair, DNA excision repair, RNA biosynthesis, RNA processing, DNA
-replication, mitotic cell cycle process, protein-RNA complex
-organization, and DNA damage response were downregulated. Some notable
-genes identified include: DNA ligase 1 (\emph{LIG1}), X-ray repair cross
-complementing 1 (\emph{XRCC1}), cyclin dependent kinase 1 and 2
-(\emph{CDK1, CDK2}), checkpoint kinase 1 (\emph{CHEK1}), 8-oxoguanine
-DNA glycosylase (\emph{OGG1}), BLM RecQ-like-helicase (\emph{BLM}),
-BRCA1 DNA repair associated (\emph{BRCA1}), and several RAD family
-proteins (\emph{RAD21, RAD51, RAD51B, RAD51C, RAD54B}). Additionally,
-protein-related processes including: ribosome biogenesis, rRNA
-processing, ribosome assembly, protein folding, translational
-initiation, protein maturation, ribosome and ribonucleoprotein complex
-formation, translation pre-initiation complex formation, and cytoplasmic
-translation were significantly downregulated. We identified notable
-genes such as: eukaryotic translation initiation factors (\emph{EIF1,
-EIF1AX, EIF3E and EIF3F, EIF3H, EIF3I, EIF3L and EIF3M}), biogenesis of
-ribosomes BRX1 (\emph{BRIX1}), MCTS1 re-initiation and release factor
-(\emph{MCTS1}), and ribosomal protein subunits (\emph{RPL8, RPL10a,
-RPL11, RP12, RP13, RP14, RP15, RP18a, RP19}).
+\textbf{Cell Cycle and Cell Maintenance Pathway Regulation Impacting
+Apoptosis}\\
+Forcibly transitioning of the host cell cycle to the S phase during the
+early phase of infection is a prerequisite for a productive adenovirus
+infection. Interaction of the viral E1A early proteins with the host pRb
+(retinoblastoma) protein releases the host transcription factor E2F,
+which activates genes required for S phase cell cycle induction. Viral
+E1A also binds the host transcriptional co-activator p300/CBP (29). Our
+KEGG pathway results (\textbf{Table 4A}) showed that at 12 hpi, several
+key genes involved with cell cycle transition were upregulated. Notably,
+E1A binding protein p300 (\emph{EP300}), cyclin genes (\emph{CCND3,
+CCNG1, CCNG2, CDK6}), anaphase promoting complex subunit 1
+(\emph{ANAPC1}), and cell division cycle 27 (\emph{CDC27}) were
+upregulated. However, unlike observed in Mastadenoviruses, the cell
+cycle regulation at 12 hpi seems complicated as some key cell cycle
+related genes as well as DNA and RNA synthesis, repair, metabolism,
+processing, and replication were concurrently downregulated. At 24 hpi,
+our KEGG pathway and GO analysis show that cell cycle was unanimously
+downregulated.
 
-\textbf{Cellular Responses to Stimuli during THEV infection}\\
-The transcriptome profile also suggests that THEV infection likely
-induced the ER‐associated protein degradation (ERAD) pathway. The ER is
-the major site for protein synthesis, folding and quality control, and
-sorting. It is also accommodates proteins and protein complexes
-necessary for other cellular functions including innate immune signaling
-and metabolism, and serves as the site for lipid biosynthesis (31). The
-ERAD pathway, a ubiquitin‐proteasome‐dependent process, is a protein
-quality control system primarily activated for degradation of unwanted
-byproducts of protein biogenesis, such as misfolded and
-unassembled/orphaned proteins (31). In our results, the THEV-infected
-samples showed significant increase in ERAD pathway effector proteins
-such as: valosin containing protein (\emph{VCP}), ubiquitin recognition
-factor in ER associated degradation 1 (\emph{UFD1}), ER degradation
-enhancing alpha-mannosidase like proteins 1 and 3 (\emph{EDEM1, EDEM3}),
-cullin 1 (\emph{CUL1}), and ubiquilin 1 (\emph{UBQLN1}). Our KEGG
-pathway (\textbf{Table 4B}) and GO (\textbf{Figure 4B}) results indicate
-a significant upregulation of ubiquitin mediated proteolysis with other
-ubiquitination pathway proteins such as: ubiquitin conjugating enzymes
-(\emph{UBE2J2, UBE2E3, UBE2Z}), ubiquitin protein ligases (\emph{UBE3A,
-UBE3B}), NPL4 homolog ubiquitin recognition factor (\emph{NPLOC4}), and
-ubiquitin like modifier activating enzyme 6 (\emph{UBA6}) showing
-significant upregulation. Additionally, the heat shock family of
-chaperone proteins such as: DnaJ heat shock protein family
-(\emph{HSP40}) members (\emph{DNAJB11, DNAJB12, DNAJB2, DNAJC10}), heat
-shock protein family A (\emph{HSP70}) members (\emph{HSPA4L, HSPA5,
-HSPA8}), and heat shock protein 90 alpha family class A member 1
-(\emph{HSP90AA1}) were upregulated. Moreover, the KEGG pathway analysis
-(\textbf{Table 4A}) shows a significant upregulation in lysosomal
-degradation, likely an indication of ER-to-lysosome-associated
-degradation. Taken together, these results suggest that THEV infection
-triggers significant ER-associated protein degradation, which may
-contribute to cell death.
+We found that several essential cell maintenance processes whose
+suppression can trigger apoptosis, were downregulated. Severe DNA damage
+is a known mechanism of apoptosis induction, called DNA damage-dependent
+apoptosis (30). Repression of RNA and protein synthesis is also strongly
+associated with apoptosis (31). Several processes related to DNA and RNA
+synthesis, maintenance, and repair such as nucleotide biosynthesis and
+metabolism, double strand break repair, DNA excision repair, RNA
+biosynthesis, RNA processing, DNA replication, mitotic cell cycle
+process, protein-RNA complex organization, and DNA damage response were
+downregulated. Notable genes identified include DNA ligase 1
+(\emph{LIG1}), X-ray repair cross complementing 1 (\emph{XRCC1}), cyclin
+dependent kinase 1 and 2 (\emph{CDK1, CDK2}), checkpoint kinase 1
+(\emph{CHEK1}), 8-oxoguanine DNA glycosylase (\emph{OGG1}), BLM
+RecQ-like-helicase (\emph{BLM}), BRCA1 DNA repair associated
+(\emph{BRCA1}), and several RAD family proteins (\emph{RAD21, RAD51,
+RAD51B, RAD51C, RAD54B}). Additionally, protein-related processes,
+including ribosome biogenesis, rRNA processing, ribosome assembly,
+protein folding, translational initiation, protein maturation, ribosome
+and ribonucleoprotein complex formation, translation pre-initiation
+complex formation, and cytoplasmic translation were significantly
+downregulated. Notable genes identified include eukaryotic translation
+initiation factors (\emph{EIF1, EIF1AX, EIF3E and EIF3F, EIF3H, EIF3I,
+EIF3L and EIF3M}), biogenesis of ribosomes BRX1 (\emph{BRIX1}), MCTS1
+re-initiation and release factor (\emph{MCTS1}), and ribosomal protein
+subunits (\emph{RPL8, RPL10a, RPL11, RP12, RP13, RP14, RP15, RP18a,
+RP19}). We speculate that these may all contribute to cell death via
+apoptosis; hence, THEV-induce IMS.
+
+\textbf{Endoplasmic Reticulum (ER)-related Protein Degradation Response
+during THEV infection}\\
+The KEGG pathway analysis (\textbf{Table 4A}) show that protein
+processing in the ER and ubiquitin-mediated proteolysis are
+significantly upregulated. The GO results (\textbf{Table 3A}) shows that
+specifically, the ER‐associated protein degradation (ERAD) pathway was
+upregulated during THEV infection. The ER is the major site for protein
+synthesis, folding and quality control, and sorting. It is also harbors
+proteins and protein complexes necessary for other cellular functions
+including innate immune signaling, and serves as the site for lipid
+biosynthesis (32). The ERAD pathway, a ubiquitin‐proteasome‐dependent
+pathway, is a protein quality control system primarily activated for
+degradation of unwanted byproducts of protein biogenesis, such as
+misfolded and unassembled/orphaned proteins (32). In our results, the
+THEV-infected samples showed significant increase in ERAD pathway
+effector proteins, such as valosin containing protein (\emph{VCP}),
+ubiquitin recognition factor in ER associated degradation 1
+(\emph{UFD1}), ER degradation enhancing alpha-mannosidase like proteins
+1 and 3 (\emph{EDEM1, EDEM3}), cullin 1 (\emph{CUL1}), and ubiquilin 1
+(\emph{UBQLN1}). Our KEGG pathway (\textbf{Table 4B}) and GO
+(\textbf{Figure 4B}) results indicate a significant upregulation of
+ubiquitin mediated proteolysis with other ubiquitination pathway
+proteins such as: ubiquitin conjugating enzymes (\emph{UBE2J2, UBE2E3,
+UBE2Z}), ubiquitin protein ligases (\emph{UBE3A, UBE3B}), NPL4 homolog
+ubiquitin recognition factor (\emph{NPLOC4}), and ubiquitin like
+modifier activating enzyme 6 (\emph{UBA6}) showing significant
+upregulation. Additionally, the heat shock family of chaperone proteins
+such as: DnaJ heat shock protein family (\emph{HSP40}) members
+(\emph{DNAJB11, DNAJB12, DNAJB2, DNAJC10}), heat shock protein family A
+(\emph{HSP70}) members (\emph{HSPA4L, HSPA5, HSPA8}), and heat shock
+protein 90 alpha family class A member 1 (\emph{HSP90AA1}) were
+upregulated. Moreover, the KEGG pathway analysis (\textbf{Table 4A})
+shows a significant upregulation in lysosomal degradation, likely an
+indication of ER-to-lysosome-associated degradation. Taken together,
+these results suggest that THEV infection triggers significant
+ER-associated protein degradation, which may contribute to cell death
+and IMS.
 
 \textbf{Cellular Metabolism Changes During THEV Infection}\\
 Many viruses, such as hepatitis C virus (HCV), human cytomegalovirus,
 influenza virus, and rhinovirus, have been documented to manipulate
-cellular metabolism processes to their advantage (16, 32). A common
+cellular metabolism processes to their advantage (16, 33). A common
 consequence of infection by many viruses is to induce high glucose
 metabolism in host cells to provide energy for viral gene expression and
 replication. Adenoviruses typically upregulate energy metabolic pathways
-such as glycolysis in host cells (33). However, our GO results indicate
+such as glycolysis in host cells (34). However, our GO results indicate
 a downregulation in glycolysis, tricarboxylic acid cycle, oxidative
 phosphorylation, and ATP synthesis (\textbf{Table 2B}). These results
-suggest that THEV infection may modulate cellular energy metabolism
+may suggest that THEV infection may modulate cellular energy metabolism
 processes differently than other adenoviruses. Interestingly, some
 viruses such as HCV cause opposite metabolic effects at different times
-after infection (32); therefore it is possible that THEV may have
+after infection (33); therefore, it is possible that THEV may have
 similar characteristics. Also, the host interferon (IFN) antiviral
 response potently reverses the metabolic reprogramming (such as
 increased energy metabolism) imposed by the virus as a mechanism of
-inhibiting viral replication (32); hence, the downregulation of energy
+inhibiting viral replication (33); hence, the downregulation of energy
 metabolic processes may be a host response to THEV. \st{Further studies
 done with primary host cells would be required to confirm this finding}.
 
@@ -525,6 +554,9 @@ statistically significant. \newpage
 
 \subsection{DISCUSSION}\label{discussion}
 
+Protein degradation was more pronounced at the later stage of infection
+(24 hpi) Why use avirulent THEV?
+
 We may not have seen a measurable immune response/pathway enrichment in
 the infected host cells because the these B-cells may likely require
 other immune cells such as macrophages and T-cells for activation/mount
@@ -536,7 +568,12 @@ suggesting that the mechanism of IMS and intestinal disease are
 distinct. Secondly, the curated data in the GO, and KEGG databases are
 most complete for human and other model organisms; hence, there may not
 be enough information curated for turkeys to highlight the anything that
-is not very strong immune response. \newpage
+is not very strong immune response. However, several immune genes such
+as: \ldots. were significantly differentially expressed.
+
+Regulation of genes involved in the cell cycle during THEV infection
+seemed complicated at 12 hpi, since both positive and negative
+regulators were both up- or down-regulated. \newpage
 
 \subsection{CONCLUSIONS}\label{conclusions}
 
@@ -558,7 +595,7 @@ were maintained in 1:1 serum-reduced Leibovitz's L15/McCoy's 5A media
 A commercially available THEV vaccine was purchased from Hygieia
 Biological Labs (VAS strain). The stock virus was titrated using an
 in-house qPCR assay with titer expressed as genome copy number (GCN)/mL,
-similar to Mahshoub \emph{et al} (34). Cells were THEV-infected or
+similar to Mahshoub \emph{et al} (35). Cells were THEV-infected or
 mock-infected in triplicates or duplicates, respectively at a
 multiplicity of infection (MOI) of 100 GCN/cell, incubated at
 41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
@@ -586,30 +623,32 @@ sequencing system. The paired-end 150bp sequences obtained during this
 study and all expression data have been submitted to the Gene Expression
 Omnibus database, under accession no \#\#\#\#\#\#\#
 
-\#\#\# Quality Control and Mapping Process
+\subsubsection{Quality Control and Mapping
+Process}\label{quality-control-and-mapping-process}
 
 Sequencing reads were processed following a well-established protocol
 described by Pertea \emph{et al} (19), using Snakemake - version 7.32.4
-(35), a popular workflow management system to drive the pipeline.
+(36), a popular workflow management system to drive the pipeline.
 Briefly, raw sequencing reads were trimmed with Cutadapt - version 1.10
-(36) and the quality of trimmed reads evaluated using the FastQC
+(37) and the quality of trimmed reads evaluated using the FastQC
 software, version 0.12.1 (Bioinformatics Group at the Babraham
 Institute, Cambridge, United Kingdom;
 www.bioinformatics.babraham.ac.uk), achieving an overall Mean Sequence
 Quality (PHRED Score) of 36. Trimmed reads were mapped the reference
-\emph{Meleagris gallopavo} genome
-(\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.fna.gz})
+\emph{Meleagris gallopavo} genome file
+GCF\_000146605.3\_Turkey\_5.1\_genomic.fna.gz from NCBI
+(\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/})
 with Hisat2 - version 2.2.1 (19) using the accompanying gene transfer
 format (GTF) annotation file
-(\url{https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/605/GCF_000146605.3_Turkey_5.1/GCF_000146605.3_Turkey_5.1_genomic.gtf.gz})
-to build a genomic index. Samtools - version 1.19.2 was used to convert
-the output Sequence Alignment Map (SAM) file to the more manageable
-Binary Alignment Map (BAM) format. The StringTie (v2.2.1) software (19),
-set to expression estimation mode was used to generate normalized gene
-expression estimates from the BAM files for genes in the reference GTF
-file after which the prepDE.py3 script was used to extract read count
-information from the StringTie gene expression files, providing an
-expression-count matrix for downstream DEG analysis.
+(GCF\_000146605.3\_Turkey\_5.1\_genomic.gtf.gz) to build a genomic
+index. Samtools - version 1.19.2 was used to convert the output Sequence
+Alignment Map (SAM) file to the more manageable Binary Alignment Map
+(BAM) format. The StringTie (v2.2.1) software (19), set to expression
+estimation mode was used to generate normalized gene expression
+estimates from the BAM files for genes in the reference GTF file after
+which the prepDE.py3 script was used to extract read count information
+from the StringTie gene expression files, providing an expression-count
+matrix for downstream DEG analysis.
 
 \subsubsection{DEG Analysis and Functional Enrichment
 Analysis}\label{deg-analysis-and-functional-enrichment-analysis}
@@ -618,14 +657,14 @@ DEG analysis between mock- and THEV-infected samples was performed using
 the very popular DESeq2 (20), which employs a Negative Binomial
 distribution model for read count comparisons. Genes with
 P\textsubscript{adjusted}-value \(\leq\) 0.05 were considered as
-differentially expressed. The read count data are deposited at Gene
-Expression Omnibus (GEO) under accession number \#\#\#. The functional
-profiling of DEGs (GO and KEGG analyses) were performed based on GO
-databases and KEGG databases using DAVID and the R package gprofiler2
-(22) with \emph{Meleagris gallopavo} as the reference organism. Results
-with P\textsubscript{adjusted}-value \(\leq\) 0.05 were included as
-functionally enriched. All visualization plots were made using ggplot2,
-pheatmap, and ggvenn R packages (37--39).
+differentially expressed. The sequencing data (FASTQ files) and read
+count data are deposited at NCBI Gene Expression Omnibus under accession
+number \#\#\#. The functional profiling of DEGs (GO and KEGG analyses)
+were performed based on GO databases and KEGG databases using DAVID and
+the R package gprofiler2 (22) with \emph{Meleagris gallopavo} as the
+reference organism. Results with P\textsubscript{adjusted}-value
+\(\leq\) 0.05 were included as functionally enriched. All visualization
+plots were made using ggplot2, pheatmap, and ggvenn R packages (38--40).
 
 \subsubsection{Validation of DEGs by Reverse Transcriptase Quantitative
 PCR
@@ -648,7 +687,7 @@ software. The primers were checked for specificity using NCBI Nucleotide
 BLAST (\url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn})
 before use. All primers used in this study are listed in
 \textbf{Supplementary Table S3}. Relative mRNA levels were calculated by
-2\textsuperscript{-\(\Delta\)\(\Delta\)CT} method (40).
+2\textsuperscript{-\(\Delta\)\(\Delta\)CT} method (41).
 
 \subsubsection{Statistical Analysis}\label{statistical-analysis}
 
@@ -880,35 +919,42 @@ adenovirus type 12}. Journal of Virology 40:20--27.}
 the splice map of turkey hemorrhagic enteritis virus}. Virology Journal
 21.}
 
-\bibitem[\citeproctext]{ref-Roos2006}
+\bibitem[\citeproctext]{ref-Guimet2016}
 \CSLLeftMargin{29. }%
+\CSLRightInline{Guimet D, Hearing P. 2016.
+\href{https://doi.org/10.1016/b978-0-12-800276-6.00003-6}{Adenovirus
+replication}, p. 59--84. \emph{In} Adenoviral vectors for gene therapy.
+Elsevier.}
+
+\bibitem[\citeproctext]{ref-Roos2006}
+\CSLLeftMargin{30. }%
 \CSLRightInline{Roos WP, Kaina B. 2006.
 \href{https://doi.org/10.1016/j.molmed.2006.07.007}{DNA damage-induced
 cell death by apoptosis}. Trends in Molecular Medicine 12:440--450.}
 
 \bibitem[\citeproctext]{ref-Martin1993}
-\CSLLeftMargin{30. }%
+\CSLLeftMargin{31. }%
 \CSLRightInline{Martin SJ. 1993.
 \href{https://doi.org/10.1016/0165-2478(93)90080-l}{Protein or RNA
 synthesis inhibition induces apoptosis of mature human CD4+ t cell
 blasts}. Immunology Letters 35:125--134.}
 
 \bibitem[\citeproctext]{ref-Christianson2022}
-\CSLLeftMargin{31. }%
+\CSLLeftMargin{32. }%
 \CSLRightInline{Christianson JC, Carvalho P. 2022.
 \href{https://doi.org/10.15252/embj.2021109845}{Order through
 destruction: How ER‐associated protein degradation contributes to
 organelle homeostasis}. The EMBO Journal 41.}
 
 \bibitem[\citeproctext]{ref-Sumbria2021}
-\CSLLeftMargin{32. }%
+\CSLLeftMargin{33. }%
 \CSLRightInline{Sumbria D, Berber E, Mathayan M, Rouse BT. 2021.
 \href{https://doi.org/10.3389/fimmu.2020.594963}{Virus infections and
 host metabolism---can we manage the interactions?} Frontiers in
 Immunology 11.}
 
 \bibitem[\citeproctext]{ref-Thai2014}
-\CSLLeftMargin{33. }%
+\CSLLeftMargin{34. }%
 \CSLRightInline{Thai M, Graham NA, Braas D, Nehil M, Komisopoulou E,
 Kurdistani SK, McCormick F, Graeber TG, Christofk HR. 2014.
 \href{https://doi.org/10.1016/j.cmet.2014.03.009}{Adenovirus
@@ -916,7 +962,7 @@ E4ORF1-induced MYC activation promotes host cell anabolic glucose
 metabolism and virus replication}. Cell Metabolism 19:694--701.}
 
 \bibitem[\citeproctext]{ref-Mahsoub2017}
-\CSLLeftMargin{34. }%
+\CSLLeftMargin{35. }%
 \CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
 Pierson FW. 2017.
 \href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
@@ -925,7 +971,7 @@ enteritis virus, an adenovirus, in live vaccines}. Journal of
 Virological Methods 239:42--49.}
 
 \bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{35. }%
+\CSLLeftMargin{36. }%
 \CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
 Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
 Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
@@ -933,29 +979,29 @@ Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
 analysis with snakemake}. F1000Research 10:33.}
 
 \bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{36. }%
+\CSLLeftMargin{37. }%
 \CSLRightInline{Martin M. 2011.
 \href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
 sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
 
 \bibitem[\citeproctext]{ref-ggplot2}
-\CSLLeftMargin{37. }%
+\CSLLeftMargin{38. }%
 \CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
 analysis. Springer-Verlag New York.
 \url{https://ggplot2.tidyverse.org}.}
 
 \bibitem[\citeproctext]{ref-pheatmap}
-\CSLLeftMargin{38. }%
+\CSLLeftMargin{39. }%
 \CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
 \url{https://CRAN.R-project.org/package=pheatmap}.}
 
 \bibitem[\citeproctext]{ref-ggvenn}
-\CSLLeftMargin{39. }%
+\CSLLeftMargin{40. }%
 \CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
 \url{https://CRAN.R-project.org/package=ggvenn}.}
 
 \bibitem[\citeproctext]{ref-Livak2001}
-\CSLLeftMargin{40. }%
+\CSLLeftMargin{41. }%
 \CSLRightInline{\href{https://doi.org/10.1006/meth.2001.1262}{Livak KJ,
 Schmittgen TD. 2001.. Methods 25:402--408}.}
 
