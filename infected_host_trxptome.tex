@@ -440,17 +440,16 @@ infection. Interaction of the viral E1A early proteins with the host pRb
 (retinoblastoma) protein releases the host transcription factor E2F,
 which activates genes required for S phase cell cycle induction. Viral
 E1A also binds the host transcriptional co-activator p300/CBP (29). Our
-KEGG pathway results (\textbf{Table 4A}) showed that at 12 hpi, several
-key genes involved with cell cycle transition were upregulated. Notably,
-E1A binding protein p300 (\emph{EP300}), cyclin genes (\emph{CCND3,
-CCNG1, CCNG2, CDK6}), anaphase promoting complex subunit 1
-(\emph{ANAPC1}), and cell division cycle 27 (\emph{CDC27}) were
-upregulated. However, unlike observed in Mastadenoviruses, the cell
-cycle regulation at 12 hpi seems complicated as some key cell cycle
-related genes as well as DNA and RNA synthesis, repair, metabolism,
-processing, and replication were concurrently downregulated. At 24 hpi,
-our KEGG pathway and GO analysis show that cell cycle was unanimously
-downregulated.
+GO and KEGG pathway results showed that at 12 hpi, several key genes
+involved with cell cycle transition were upregulated. Notably, E1A
+binding protein p300 (\emph{EP300}), cyclin genes (\emph{CCND3, CCNG1,
+CCNG2, CDK6}), anaphase promoting complex subunit 1 (\emph{ANAPC1}), and
+cell division cycle 27 (\emph{CDC27}) were upregulated. However, unlike
+observed in Mastadenoviruses, the cell cycle regulation at 12 hpi seems
+complicated as some key cell cycle related genes as well as DNA and RNA
+synthesis, repair, metabolism, processing, and replication were
+concurrently downregulated. At 24 hpi, our KEGG pathway and GO analysis
+show that cell cycle was unanimously downregulated.
 
 We found that several essential cell maintenance processes whose
 suppression can trigger apoptosis, were downregulated. Severe DNA damage
@@ -512,11 +511,35 @@ such as: DnaJ heat shock protein family (\emph{HSP40}) members
 (\emph{HSP70}) members (\emph{HSPA4L, HSPA5, HSPA8}), and heat shock
 protein 90 alpha family class A member 1 (\emph{HSP90AA1}) were
 upregulated. Moreover, the KEGG pathway analysis (\textbf{Table 4A})
-shows a significant upregulation in lysosomal degradation, likely an
-indication of ER-to-lysosome-associated degradation. Taken together,
-these results suggest that THEV infection triggers significant
-ER-associated protein degradation, which may contribute to cell death
-and IMS.
+shows a significant upregulation in lysosome formation, lumen
+acidification, and lysosomal degradation, likely an indication of
+ER-to-lysosome-associated degradation. Taken together, these results
+suggest that THEV infection triggers significant ER-associated protein
+degradation, which may contribute to cell death and IMS.
+
+\textbf{Differentially Expressed of Cytokine and Cytokine
+Receptor-encoding genes}\\
+Our KEGG pathway results showed that a pathway similar to immune
+response to influenza A infection was upregulated at 12 hpi. Our GO
+analysis also identified terms such as regulation of lymphocyte
+activation and regulation of cytokine production as upregulated at both
+12 and 24 hpi. Genes involved include IL18, IL2RB, IL4R, IL5RA, TNF
+receptor associated factors (\emph{TRAF2, TRAF3, TRAF6, TRAF7, TRAFD1}),
+TNF receptor superfamily members (\emph{TNFRSF1B, TNFRSF8, TNFSF4}),
+interferon-induced with helicase C domain 1 (\emph{IFIH1}),
+interferon-induced double-stranded RNA-activated protein kinase
+(\emph{PKR}), and \emph{CD80}. In contrast, cytokine inhibitors such as
+suppressor of cytokine signaling (\emph{SOCS3} and \emph{SOCS5}) were
+also upregulated at both 12 and 24 hpi and immunoglobulin production and
+isotype switching GO terms were downregulated at 12 hpi. This
+inconsistency is likely and indicator of the struggle between the virus
+and its host. While several cytokines were regulated by THEV like in the
+proposed model of THEV immunopathogenesis (\textbf{Figure 1}), the
+expected cytokines (IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\) TNF,
+IL-6, and NO) were not significantly differentially expressed in our
+data. However, many of the identified differentially expressed cytokines
+() are positve regulators of apoptosis; therefore, they may play a role
+in THEV-induced IMS.
 
 \textbf{Cellular Metabolism Changes During THEV Infection}\\
 Many viruses, such as hepatitis C virus (HCV), human cytomegalovirus,
@@ -525,10 +548,11 @@ cellular metabolism processes to their advantage (16, 33). A common
 consequence of infection by many viruses is to induce high glucose
 metabolism in host cells to provide energy for viral gene expression and
 replication. Adenoviruses typically upregulate energy metabolic pathways
-such as glycolysis in host cells (34). However, our GO results indicate
+such as glycolysis in host cells (34). However, our GO results indicated
 a downregulation in glycolysis, tricarboxylic acid cycle, oxidative
-phosphorylation, and ATP synthesis (\textbf{Table 2B}). These results
-may suggest that THEV infection may modulate cellular energy metabolism
+phosphorylation, and ATP synthesis (\textbf{Table 2B}). Conversely,
+protein metabolism was significantly upregulated. These results may
+suggest that THEV infection may modulate cellular energy metabolism
 processes differently than other adenoviruses. Interestingly, some
 viruses such as HCV cause opposite metabolic effects at different times
 after infection (33); therefore, it is possible that THEV may have
@@ -554,8 +578,39 @@ statistically significant. \newpage
 
 \subsection{DISCUSSION}\label{discussion}
 
+CCHFV is a BSL-4 pathogen threatening public health in about 50
+countries of Asia, Africa, southern Europe, and the Middle East
+(Nasirian, 2020). Elucidation of virus-host interactions is urgently
+needed for not only the understanding of the viral infection and
+pathogenesis but also the design of antiviral therapies. However, as one
+of the most dangerous human pathogens, experimental handling of live
+CCHFV is strictly restricted in high-containment laboratories, slowing
+down the virological studies including animal and cell infection model
+development and optimization (Hawman and Feldmann, 2018). HEK293 is a
+well-recognized human cell model derived from kidney and permissive to
+CCHFV infection (Foldes et al., 2020; Dai S. et al., 2021a). Moreover,
+clinical observations have shown that CCHFV has tropism to kidney tis-
+sue (Ardalan et al., 2006; Deveci et al., 2013; Khazaei et al., 2018;
+Foldes et al., 2020). Additionally, HEK293 is a most often chosen model
+for omics study because of its availability of annotated human omics
+data- bases to conduct gene identi cation and function assignment and
+ready validation of the omics results by further experimental analysis
+with it. Thus, we here establish a cellular transcriptome pro le of
+CCHFV
+
 Protein degradation was more pronounced at the later stage of infection
 (24 hpi) Why use avirulent THEV?
+
+In the proposed model of THEV immunopathogenesis (\textbf{Figure 1}),
+cytokines are key players. However, the primary cytokines
+(IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\) TNF, IL-6, and NO) were
+not significantly differentially expressed in our data. This may be due
+to: 1. B-cell culture does cannot simulate cell interactions which are
+key in the model -\textgreater{} Full onset of cytokine release require
+communication 2. Cytokines may not play a dominant role in THEV-induced
+IMS since TNF-blocking drug (thalidomide) only prevented intestinal
+disease not immunosuppression. 3. This RNA-seq shows apoptosis but not
+the key cytokines in the model. Non-cytokine mediate cell death?
 
 We may not have seen a measurable immune response/pathway enrichment in
 the infected host cells because the these B-cells may likely require
@@ -698,15 +753,22 @@ was considered statistically significant. \newpage
 
 \subsection{DATA AVAILABILITY}\label{data-availability}
 
-\newpage
+The raw sequencing read data (FastQ), transcript expression counts, and
+total DEGs identified at 12 and 24 hpi have been deposited at the NCBI
+Gene Expression Omnibus (\url{http://www.ncbi.nlm.nih.gov/geo}) under
+accession number \#\#\#\#\#\#. \newpage
 
 \subsection{CODE AVAILABILITY}\label{code-availability}
 
-\newpage
+All the code/scripts in the entire analysis pipeline are available on
+github (\url{https://github.com/Abraham-Quaye/host_rna_seq}) \newpage
 
 \subsection{ACKNOWLEDGMENTS}\label{acknowledgments}
 
-\newpage
+We thank the Office of Research Computing at Brigham Young University
+for granting us access to the high-performance computing systems to
+perform the memory-intensive steps in the analysis pipeline of this
+work. \newpage
 
 \subsection{REFERENCES}\label{references}
 
