@@ -177,14 +177,15 @@ vaccine, it still retains immunosuppressive properties, thus, still
 causing substantial economic. To elucidate the mechanisms mediating
 THEV-induced IMS, we performed the first transcriptomic analysis of a
 THEV infection using RNA-seq, uncovering key insights into host cell
-response. \textbf{Methods:} After infecting a turkey B-cell line with
-the vaccine strain, samples in triplicates were collected at 4, 12, 24,
-and 72 hours post-infection (hpi). Total RNA was extracted, and
-poly-A-tailed mRNA sequenced. Reads were mapped to the turkey genome
-after trimming and gene expression was counted with StringTie.
-Differential gene expression was performed with DESeq2 followed by
-functional enrichment analysis with gprofiler2 and DAVID from NCBI. We
-performed RT-qPCR of select genes to validate the RNA-seq data.
+response.\\
+\textbf{Methods:} After infecting a turkey B-cell line with the vaccine
+strain, samples in triplicates were collected at 4, 12, 24, and 72 hours
+post-infection (hpi). Total RNA was extracted, and poly-A-tailed mRNA
+sequenced. Reads were mapped to the turkey genome after trimming and
+gene expression was counted with StringTie. Differential gene expression
+was performed with DESeq2 followed by functional enrichment analysis
+with gprofiler2 and DAVID from NCBI. We performed RT-qPCR of select
+genes to validate the RNA-seq data.\\
 \textbf{Results:} We obtained usable data from only 12 and 24 hpi
 samples. In total 2,343 and 3,295 Differentially expressed genes (DEGs)
 were identified at 12 hpi and 24 hpi, respectively. At 12 hpi, 1,079
@@ -199,13 +200,13 @@ adenoviruses, THEV is not adept at thwarting the host apoptotic program.
 However, some anti-apoptotic genes were also stimulated. Genes such as
 \emph{VCP, UFD1, EDEM1, EDEM3, and ATF4} were also upregulated, strongly
 suggesting an activate ER stress-induced unfolded protein response,
-which may also contribute to apoptosis. \textbf{Conclusions:} Apoptosis
-has long been suggested as the mechanism for THEV-induced IMS because
-THEV primarily infects B-cells. Our results are in agreement with but we
-did not see strong support for cytokine-mediated apoptosis. Our data
-suggest that a non-cytokine-dependent process or a synergistic
-cross-talk of multiple processes is more likely to mediate direct cell
-death of infected cells.
+which may also contribute to apoptosis.\\
+\textbf{Conclusions:} Apoptosis has long been suggested as the mechanism
+for THEV-induced IMS because THEV primarily infects B-cells. Our results
+are in agreement with but we did not see strong support for
+cytokine-mediated apoptosis. Our data suggest that a
+non-cytokine-dependent process or a synergistic cross-talk of multiple
+processes is more likely to mediate direct cell death of infected cells.
 
 \subsection{KEY WORDS}\label{key-words}
 
@@ -469,8 +470,7 @@ genes associated with autophagy such as: TNF receptor associated factor
 autophagy activating kinase 2 (\emph{ULK2}), and autophagy related 4B
 cysteine peptidase (\emph{ATG4B}) were upregulated.
 
-\textbf{Cell Cycle and Cell Maintenance Pathway Regulation Impacting
-Apoptosis}\\
+\textbf{Downregulation of Cell Maintenance Pathways}\\
 Forcibly transitioning host cell cycle to the S phase during the early
 phase of infection is a prerequisite for a productive adenovirus
 infection (29). Interaction of the viral E1A early proteins with the
@@ -503,18 +503,18 @@ dependent kinase 1 and 2 (\emph{CDK1, CDK2}), checkpoint kinase 1
 (\emph{CHEK1}), 8-oxoguanine DNA glycosylase (\emph{OGG1}), BLM
 RecQ-like-helicase (\emph{BLM}), BRCA1 DNA repair associated
 (\emph{BRCA1}), and several RAD family proteins (\emph{RAD21, RAD51,
-RAD51B, RAD51C, RAD54B}). Additionally, protein-related processes,
-including ribosome biogenesis, rRNA processing, ribosome assembly,
-protein folding, translational initiation, protein maturation, ribosome
-and ribonucleoprotein complex formation, translation pre-initiation
-complex formation, and cytoplasmic translation were significantly
-downregulated. Notable genes identified include eukaryotic translation
-initiation factors (\emph{EIF1, EIF1AX, EIF3E and EIF3F, EIF3H, EIF3I,
-EIF3L and EIF3M}), biogenesis of ribosomes BRX1 (\emph{BRIX1}), MCTS1
-re-initiation and release factor (\emph{MCTS1}), and ribosomal protein
-subunits (\emph{RPL8, RPL10a, RPL11, RP12, RP13, RP14, RP15, RP18a,
-RP19}). We speculate that these may all contribute to cell death via
-apoptosis; hence, THEV-induce IMS.
+RAD51B, RAD51C, RAD54B}). Additionally, protein synthesis-related
+processes, including ribosome biogenesis, rRNA processing, ribosome
+assembly, protein folding, translational initiation, protein maturation,
+ribosome and ribonucleoprotein complex formation, translation
+pre-initiation complex formation, and cytoplasmic translation were
+significantly downregulated. Notable genes identified include eukaryotic
+translation initiation factors (\emph{EIF1, EIF1AX, EIF3E and EIF3F,
+EIF3H, EIF3I, EIF3L and EIF3M}), biogenesis of ribosomes BRX1
+(\emph{BRIX1}), MCTS1 re-initiation and release factor (\emph{MCTS1}),
+and ribosomal protein subunits (\emph{RPL8, RPL10a, RPL11, RP12, RP13,
+RP14, RP15, RP18a, RP19}). We speculate that these may all contribute to
+cell death via apoptosis; hence, THEV-induce IMS.
 
 \textbf{Endoplasmic Reticulum (ER) Stress Response during THEV
 infection}\\
@@ -749,29 +749,56 @@ is cytokine-mediated as suggested by Rautenschlein \emph{et al} are
 important questions that can be addressed with future transcriptomic
 studies in splenocytes.
 
-Regulation of genes involved in the cell cycle during THEV infection
-seemed complicated at 12 hpi, since both positive and negative
-regulators were both up- or down-regulated. \newpage
+By convention, the Mastadenovirus replication cycle is divided into two
+phases, an early and a late phase, based on the onset of viral DNA
+replication (29, 30). Based on DNA microarray analysis, adenovirus type
+2 (Ad2) infection has been divided into four stages. The first period is
+from 0 to 12 hpi during which, changes in cellular gene expression are
+likely to be triggered by the virus entry process. Most of the
+deregulated genes have functions linked to inhibition of cell growth.
+Therefore, growth suppression is most likely the first response of the
+host cell to the incoming virus (29). The second period covers the time
+from 12 to 24 hpi and follows activation of the immediate early E1A
+gene, which forcibly transition cell cycle to S phase (29). While the
+temporal changes of host gene expression for a THEV a infection has no
+prior study, our data showed that during the first 24 hpi, cell growth
+was suppressed. Cell maintenance processes involving nucleic acid and
+proteins were downregulated according our data. Protein
+synthesis-related processes including ribosome biogenesis, rRNA
+processing, ribosome assembly, protein folding, translational
+initiation, protein maturation, etc were heavily affected. Additionally,
+DNA and RNA synthesis, maintenance, and repair such as nucleotide
+biosynthesis and metabolism, double strand break repair, and DNA
+excision repair were also repressed. As severe DNA damage leads to DNA
+damage-dependent apoptosis (31) and repression of RNA and protein
+synthesis is also strongly associated with apoptosis (32), these
+inhibitions may also play a role in THEV-induce IMS. Moreover, we
+speculate that the ER UPR may contribute partly to the severe repression
+of protein synthesis as discussed above. An in-depth study of temporal
+changes of host gene expression during THEV infection would be
+invaluable in establishing if THEV follows the same pattern as Ad2.
+\newpage
 
 \subsection{CONCLUSIONS}\label{conclusions}
 
-CCHFV is a high-virulent BSL-4 pathogen posing a severe threat to
-worldwide public health. In the current study, we establish the cellular
-transcriptome pro le of CCHFV infection in human kidney HEK293 cells by
-RNA-seq and identify 496 DEGs, including 361 up-regulated and 135
-down-regulated genes. The data suggest that multiple biological pro-
-cesses including defense response to virus, response to stress,
-regulation of viral process, immune response, metabolism, stimulus,
-apoptosis and protein catabolic process are likely implicated in the
-cellular responses upon CCHFV infection. Among them, type III IFN
-pathways as well as ER stress responses are particularly regulated and
-highlighted by qPCR an- alyses, indicating their potential roles in
-CCHFV-cell interplays. Furthermore, antiviral assays demonstrate that
-not only type I but also type III IFNs exhibit notable anti-CCHFV
-activities. These ndings pro- vide new insights into CCHFV-host
-interactions and may help advance the understanding of viral infection
-and pathogenesis, which perhaps will eventually inform the developm
-\newpage
+THEV-induced IMS is a pressing concern for turkey farmers worldwide,
+causing substantial economic losses annually. In this study, we
+establish the cellular transcriptomic profile of THEV infection in
+turkey RP19 B-cells using paired-end RNA-seq, identifying \textbf{1,079}
+upregulated genes and \textbf{1,264} downregulated genes at 12 hpi and
+\textbf{1,512} upregulated genes and \textbf{1,783}downregulated genes
+at 24 hpi. Our data suggest that several biological processes and
+pathways including apoptosis, immune response, ER response to stress,
+ubiquitin-dependent protein catabolic process, and repression essential
+cellular maintenance are significant aspects of host cell response to
+THEV infection. All these processes are established apoptosis inducing
+mechanisms, therefore, we believe that either one or synergistic
+interplay between multiple ones may mediate cell death of infected
+B-cells, leading to IMS. These findings provide the first insights into
+THEV-host interactions and may help advance the understanding of
+non-human adenoviral infection and pathogenesis, which may eventually
+inform the development of medical countermeasures for disease prevention
+and treatment. \newpage
 
 \subsection{MATERIALS AND METHODS}\label{materials-and-methods}
 
@@ -9227,8 +9254,7 @@ expressed based on Student's t-test and Mann-Whitney U test.}
 
 \renewcommand*{\arraystretch}{1}
 
-\subsection{SUPPLEMENTARY
-INFORMATION/MATERIALS}\label{supplementary-informationmaterials}
+\subsection{SUPPLEMENTARY MATERIALS}\label{supplementary-materials}
 
 \begin{figure}
 \centering
@@ -9239,7 +9265,9 @@ agarose gel to confirm primer specificity. The 13 primer pairs all show
 excellent target specificity, each amplifying one amplicon of the
 expected size (see Table S1 for expected amplicon sizes of each primer
 pair). This was also confirmed in the RT-qPCR melt curves (not shown).
-We used the Thermo Scientific™ generuler 1 kb plus DNA ladder.}
+Thermo Scientific™ generuler 1 kb plus DNA ladder was used.
+Mock-infected samples are shown in the top row prefixed with ``mock''
+and infected samples are shown in the bottom row prefixed with ``inf''}
 \end{figure}
 
 \FloatBarrier
