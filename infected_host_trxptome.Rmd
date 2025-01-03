@@ -513,6 +513,7 @@ tibble(gene_id = c("100303685", "100303677", "100543138", "100549497",
 
 ## Run gel after qPCR reaction showing single bands to prove specificity of primers
 ```
+Gene symbols: glyceraldehyde-3-phosphate dehydrogenase (*GAPDH*); apoptotic peptidase activating factor 1 (*APAF1*); Bcl2 modifying factor (*BMF*); FAS-associated protein with death domain (*FADD*); programmed cell death 4 (*PDCD4*); MAP kinase activating death domain (*MADD*); valosin containing protein (*VCP/p97*); Ubiquitin Recognition Factor in ER Associated Degradation 1 (*UFD1*);  ER degradation enhancing alpha-mannosidase like protein 1 (*EDEM1*); eukaryotic translation initiation factor 3 subunit D (*EIF3D*); eukaryotic translation initiation factor 3 subunit M (*EIF3M*); ribosomal protein L8 (*RPL8*); ribosomal protein L10a (*RPL10A*)
 \FloatBarrier
 \newpage
 
