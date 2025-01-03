@@ -74,18 +74,18 @@ prep_GO_table <- function(go_res){
   GOcc_row_num <- go_res %>% filter(source == "GO:CC") %>% nrow(.) + GObp_row_num
   
   # GOTerm labels to insert into table
-  bp <- "Biological Process"
-  cc <- "Cellular Component"
-  mf <- "Molecular Function"
+  bp <- " Biological Process"
+  cc <- " Cellular Component"
+  mf <- " Molecular Function"
   
   # Insert GOTerm labels into table and return results
   res_table <- go_res %>%
-    add_row(timepoint = bp, pval = 0, num_degs = 0, recall = 0,
-            source = bp, term = bp, .before = 1) %>%
-    add_row(timepoint = cc, pval = 0, num_degs = 0, recall = 0,
-            source = cc, term = cc, .after = GObp_row_num + 1) %>% 
-    add_row(timepoint = mf, pval = 0, num_degs = 0, recall = 0,
-            source = mf, term = mf, .after = GOcc_row_num + 2) %>%
+    add_row(timepoint = bp, pval = NA, num_degs = 0, recall = 0,
+            source = "GO:BP", term = bp, .before = 1) %>%
+    add_row(timepoint = cc, pval = NA, num_degs = 0, recall = 0,
+            source = "GO:CC", term = cc, .after = GObp_row_num + 1) %>% 
+    add_row(timepoint = mf, pval = NA, num_degs = 0, recall = 0,
+            source = "GO:MF", term = mf, .after = GOcc_row_num + 2) %>%
     select(source, term, fold_enrich, num_degs, qval) %>%
     mutate(qval = base::format(qval, scientific = T, digits = 3))
   
