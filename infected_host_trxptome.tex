@@ -171,13 +171,12 @@ Hemorrhagic Enteritis Virus (THEV)}, is a disease affecting turkey
 poults characterized by immunosuppression (IMS) and bloody droppings.
 The clinical disease usually lasts only a few days but secondary
 opportunistic infections due to THEV-induced IMS extend the duration of
-illness and mortality, exacerbating the economic losses. Albeit an
+illness and mortality, exacerbating the economic losses. Although an
 avirulent THEV strain with only subclinical disease is available as a
-vaccine, it still retains immunosuppressive properties, thus, still
-causing substantial economic. To elucidate the mechanisms mediating
-THEV-induced IMS, we performed the first transcriptomic analysis of a
-THEV infection using RNA-seq, uncovering key insights into host cell
-response.\\
+vaccine, some immunosuppressive properties remain leading to substantial
+logistical problems and economic loss. To elucidate the mechanisms
+mediating THEV-induced IMS, we performed the first transcriptomic
+analysis of a THEV infection using RNA-seq.\\
 \textbf{Methods:} After infecting a turkey B-cell line with the vaccine
 strain, samples in triplicates were collected at 4, 12, 24, and 72 hours
 post-infection (hpi). Total RNA was extracted, and poly-A-tailed mRNA
@@ -186,27 +185,28 @@ gene expression was counted with StringTie. Differential gene expression
 was performed with DESeq2 followed by functional enrichment analysis
 with gprofiler2 and DAVID from NCBI. We performed RT-qPCR of select
 genes to validate the RNA-seq data.\\
-\textbf{Results:} We obtained usable data from only 12 and 24 hpi
-samples. In total 2,343 and 3,295 Differentially expressed genes (DEGs)
-were identified at 12 hpi and 24 hpi, respectively. At 12 hpi, 1,079
-genes were upregulated and 1,264 genes downregulated, whereas 1,512
-genes were upregulated and 1,783 genes downregulated at 24 hpi. The DEGs
-were related to multiple biological processes all potentially playing a
-role in THEV infection but the most relevant to our study are apoptosis,
-ER unfolded protein response, and suppressed cell maintenance processes.
+\textbf{Results:} A total of 2,343 and 3,295 differentially expressed
+genes (DEGs) were identified at 12 hpi and 24 hpi, respectively. At 12
+hpi, 1,079 genes were upregulated and 1,264 genes downregulated, whereas
+1,512 genes were upregulated and 1,783 genes downregulated at 24 hpi.
+The DEGs were related to multiple biological processes; all potentially
+playing a role in THEV infection but the most relevant to our study were
+apoptosis, ER unfolded protein response, and cell maintenance processes.
 Multiple pro-apoptotic genes, including \emph{APAF1, BNIP3L, BMF, BAK1,
 RIPK1, and FAS} were upregulated, indicating that, unlike most
-adenoviruses, THEV is not adept at thwarting the host apoptotic program.
-However, some anti-apoptotic genes were also stimulated. Genes such as
-\emph{VCP, UFD1, EDEM1, EDEM3, and ATF4} were also upregulated, strongly
-suggesting an activate ER stress-induced unfolded protein response,
+adenoviruses, THEV may not be adept at thwarting the host apoptotic
+program. However, some anti-apoptotic genes were also stimulated. Genes
+such as \emph{VCP, UFD1, EDEM1, EDEM3, and ATF4} were also upregulated,
+strongly suggesting an ER stress-induced unfolded protein response,
 which may also contribute to apoptosis.\\
-\textbf{Conclusions:} Apoptosis has long been suggested as the mechanism
-for THEV-induced IMS because THEV primarily infects B-cells. Our results
-are in agreement with but we did not see strong support for
-cytokine-mediated apoptosis. Our data suggest that a
-non-cytokine-dependent process or a synergistic cross-talk of multiple
-processes is more likely to mediate direct cell death of infected cells.
+\textbf{Conclusions:} Our data suggest that several biological processes
+and pathways including apoptosis, immune response, ER response to
+stress, ubiquitin-dependent protein catabolic process, and repression of
+essential cellular maintenance are significant aspects of host cell
+response to THEV infection. All these processes are established
+apoptosis inducing mechanisms, therefore, we believe that either one or
+synergistic interplay between multiple ones may mediate cell death of
+infected B-cells, leading to IMS.
 
 \subsection{KEY WORDS}\label{key-words}
 
@@ -238,7 +238,7 @@ death than unvaccinated cohorts leading to significant economic losses
 It is well-established that THEV primarily infects and replicates in
 turkey B-cells of the bursa and spleen and somewhat in macrophages,
 inducing apoptosis and necrosis. Consequently, a significant drop in
-number of B-cells (specifically, IgM+ B-cells) and macrophages ensue
+number of B-cells (specifically, IgM+ B-cells) and macrophages ensues
 along with increased T-cell counts with abnormal T-cell subpopulation
 (CD4+ and CD8+) ratios. The cell death seen in the infected B-cells and
 macrophages is generally proposed as the major cause of THEV-induced IMS
@@ -308,13 +308,13 @@ were sequenced on the Illumina platform, yielding a total of
 (see \textbf{Table 1} for sequencing statistics). After trimming
 low-quality reads, the remaining \textbf{742.8} million total paired-end
 trimmed reads (approximately, \textbf{34.7}-\textbf{47.9} million reads
-per sample) were mapped to the genome of \emph{Meleagris gallopavo}
-obtained from the National Center for Biotechnology Information (NCBI).
-The percentage of reads mapping to the host genome across all samples
-ranged from \textbf{32.4} to \textbf{89.2}\%. The fraction of reads
-mapping to the host genome decreased while those mapping to the virus
-genome increased over course of the infection as the virus infectious
-cycle progressed. Despite excellent quality scores at all time points
+per sample) were mapped to the genome of \emph{M. gallopavo} obtained
+from the National Center for Biotechnology Information (NCBI). The
+percentage of reads mapping to the host genome across all samples ranged
+from \textbf{32.4} to \textbf{89.2}\%. The fraction of reads mapping to
+the host genome decreased while those mapping to the virus genome
+increased over the course of the infection as the viral infectious cycle
+progressed. Despite excellent quality scores at all time points
 (\textbf{Table 1}), DEGs identified at 4 and 72 hpi did not yield any
 results in the downstream functional enrichment analyses (GO term and
 KEGG pathway analysis) and they were excluded from all subsequent
@@ -339,7 +339,7 @@ file\_name24hpi\textasciitilde, respectively. At 12-hpi, \textbf{1,079}
 genes were upregulated and \textbf{1,264} genes downregulated, whereas
 \textbf{1,512} genes were upregulated and \textbf{1,783} genes
 downregulated at 24-hpi (\textbf{Figure 2C}, and \textbf{Figure 3A-C}).
-The log\textsubscript{2}fold-change(FC) values at 12-hpi ranged between
+The log\textsubscript{2}fold-change (FC) values at 12-hpi ranged between
 \textbf{-1.4} and +\textbf{1.7} for \textbf{TMEM156} (Transmembrane
 Protein 156) and \textbf{LIPG} (Lipase G), respectively. At 24-hpi, the
 log\textsubscript{2}FC values ranged between \textbf{-2.0} and
@@ -382,7 +382,7 @@ nucleic acids), and ATP hydrolysis activity (\textbf{Table 2B}).
 At 24-hpi, the GO terms in the BP category for upregulated DEGs were
 connected with apoptosis and autophagy, lipid and sterol biosynthesis,
 catabolic process, protein ubiquitination and proteolysis, cell
-signalling, and cell metabolism. Additionally, host defense response and
+signaling, and cell metabolism. Additionally, host defense response and
 genes that negatively regulate cytokine production were upregulated
 (\textbf{Figure 4B} and \textbf{Table 3A}). In the CC category, GO terms
 were related to cytoplasmic vacuolation and the lysosome, similar to
@@ -405,10 +405,10 @@ KEGG pathway analysis on the DEGs was also performed using both the
 gprofiler2 R package (22) and the DAVID online resource. Both resources
 gave similar results, but the results from DAVID (\textbf{Table 4A})
 included more information than the gprofiler2 results (\textbf{Table
-S2}). KEGG pathway analysis was congruent with the GO results, revealing
-that generally, cell maintenance and upkeep pathways were downregulated
-while cell death and breakdown pathways were upregulated. Cell
-maintenance pathways such as DNA replication and repair, ribosome
+S2}). KEGG pathway analysis was consistent with the GO results,
+revealing that generally, cell maintenance and upkeep pathways were
+downregulated while cell death and breakdown pathways were upregulated.
+Cell maintenance pathways such as DNA replication and repair, ribosome
 biogenesis, spliceosome, and oxidative phosphorylation were
 downregulated at both 12- and 24-hpi. Pathways such as: autophagy,
 response to virus (Influenza A), and steroid biosynthesis were
@@ -486,10 +486,10 @@ observed in Mastadenoviruses, the cell cycle regulation at 12 hpi seems
 complicated as some key cell cycle related genes as well as DNA and RNA
 synthesis, repair, metabolism, processing, and replication were
 concurrently downregulated. At 24 hpi, our KEGG pathway and GO analysis
-show that cell cycle was unanimously downregulated.
+show that cell cycle was downregulated.
 
 We found that several essential cell maintenance processes whose
-suppression can trigger apoptosis, were downregulated. Severe DNA damage
+suppression can trigger apoptosis were downregulated. Severe DNA damage
 is a known mechanism of apoptosis induction, called DNA damage-dependent
 apoptosis (31). Repression of RNA and protein synthesis is also strongly
 associated with apoptosis (32). Several processes related to DNA and RNA
@@ -503,18 +503,18 @@ dependent kinase 1 and 2 (\emph{CDK1, CDK2}), checkpoint kinase 1
 (\emph{CHEK1}), 8-oxoguanine DNA glycosylase (\emph{OGG1}), BLM
 RecQ-like-helicase (\emph{BLM}), BRCA1 DNA repair associated
 (\emph{BRCA1}), and several RAD family proteins (\emph{RAD21, RAD51,
-RAD51B, RAD51C, RAD54B}). Additionally, protein synthesis-related
-processes, including ribosome biogenesis, rRNA processing, ribosome
-assembly, protein folding, translational initiation, protein maturation,
-ribosome and ribonucleoprotein complex formation, translation
-pre-initiation complex formation, and cytoplasmic translation were
-significantly downregulated. Notable genes identified include eukaryotic
-translation initiation factors (\emph{EIF1, EIF1AX, EIF3E and EIF3F,
-EIF3H, EIF3I, EIF3L and EIF3M}), biogenesis of ribosomes BRX1
-(\emph{BRIX1}), MCTS1 re-initiation and release factor (\emph{MCTS1}),
-and ribosomal protein subunits (\emph{RPL8, RPL10a, RPL11, RP12, RP13,
-RP14, RP15, RP18a, RP19}). We speculate that these may all contribute to
-cell death via apoptosis; hence, THEV-induce IMS.
+RAD51B, RAD51C, RAD54B}).
+
+Protein synthesis-related processes, including ribosome biogenesis, rRNA
+processing, ribosome assembly, protein folding, translational
+initiation, protein maturation, ribosome and ribonucleoprotein complex
+formation, translation pre-initiation complex formation, and cytoplasmic
+translation were significantly downregulated. Notable genes identified
+include eukaryotic translation initiation factors (\emph{EIF1, EIF1AX,
+EIF3E and EIF3F, EIF3H, EIF3I, EIF3L and EIF3M}), biogenesis of
+ribosomes BRX1 (\emph{BRIX1}), MCTS1 re-initiation and release factor
+(\emph{MCTS1}), and ribosomal protein subunits (\emph{RPL8, RPL10a,
+RPL11, RP12, RP13, RP14, RP15, RP18a, RP19}).
 
 \textbf{Endoplasmic Reticulum (ER) Stress Response during THEV
 infection}\\
@@ -571,15 +571,15 @@ interferon-induced double-stranded RNA-activated protein kinase
 suppressor of cytokine signaling (\emph{SOCS3} and \emph{SOCS5}) were
 also upregulated at both 12 and 24 hpi and immunoglobulin production and
 isotype switching GO terms were downregulated at 12 hpi. This
-inconsistency is likely and indicator of the struggle between the virus
+inconsistency is likely an indicator of the struggle between the virus
 and its host. While several cytokines were regulated by THEV as in the
 proposed model of THEV immunopathogenesis (\textbf{Figure 1}), the
 cytokines in the model (IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\)
 TNF, IL-6, and NO) were not significantly differentially expressed in
-our data. However, some of the identified differentially expressed
-cytokines and cytokine receptors (\emph{TNFRSF8, TRAF7}) are positive
-regulators of apoptosis; therefore, they may play a role in THEV-induced
-IMS.
+our data. However, some of the differentially expressed cytokines and
+cytokine receptors (\emph{TNFRSF8, TRAF7}) identified in this study are
+positive regulators of apoptosis; therefore, they may play a role in
+THEV-induced IMS.
 
 \textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
 (RT-qPCR)}\\
@@ -591,9 +591,9 @@ ubiquitination (\emph{VCP, UFD1, EDEM1}), and ribosome biosynthetic
 6}, the RT-qPCR results corroborate the RNA-seq results, further
 reinforcing the validity of the RNA-seq transcriptomic profile results.
 Our RT-qPCR primers showed excellent target specificity; only one
-amplicon of the expected size was amplified in the melt curves (data not
-shown) and gel electrophoresis (\textbf{Figure S1}). According to our
-Student's T-test and Mann-Whitney U test, the difference in gene
+amplicon of the expected size was amplified as shown by the melt curves
+(data not shown) and gel electrophoresis (\textbf{Figure S1}). According
+to our Student's T-test and Mann-Whitney U test, the difference in gene
 expression levels in all the selected genes were statistically
 significant. \newpage
 
@@ -605,8 +605,8 @@ secondary opportunistic infections to devastate turkey populations (4,
 6). HE in turkeys causes more economic losses than any disease caused in
 other birds like chicken and pheasants (4). While the current vaccine
 strain (VAS) has proven effective at preventing clinical HE in turkey
-poults, the retention of its immunosuppressive properties leaves the
-economic losses problem unresolved. Elucidating the virus-host
+poults, the retention of its immunosuppressive properties leaves some of
+the economic losses problem unresolved. Elucidating the virus-host
 interactions leading to IMS is most pressing for not only the
 understanding of the viral infection and pathogenesis but also future
 antiviral therapy targets. Since both virulent and avirulent THEV cause
@@ -625,57 +625,57 @@ and 24-hpi, respectively. At 12-hpi, \textbf{1,079} genes were
 upregulated and \textbf{1,264} genes downregulated, whereas
 \textbf{1,512} genes were upregulated and \textbf{1,783} genes
 downregulated at 24-hpi. Being a non-model organism, a significant
-proportion of the host (\emph{Meleagris gallopavo}) genes are not
-annotated and not recognized by the databases used for functional
-enrichment analysis. Thus, the obtained results are likely sub-optimal
-in amount of detail relative to results from well annotated and curated
-genomes of model organisms. The DEGs were related to multiple biological
-processes all potentially playing a role in THEV infection but the most
-relevant to our study are apoptosis, ER stress-induced unfolded protein
-response, suppressed cell maintenance processes, and cytokine
-deregulation. Furthermore, the RT-qPCR results validated the RNA-seq
-results. Collectively, this study may shed light on some significant
-aspects of THEV-host interactions, which may benefit further mechanistic
+proportion of the host (\emph{M. gallopavo}) genes are not annotated and
+not recognized by the databases used for functional enrichment analysis.
+Thus, the obtained results are likely sub-optimal in amount of detail
+relative to results from well annotated and curated genomes of model
+organisms. The DEGs were related to multiple biological processes all
+potentially playing a role in THEV infection but the most relevant to
+our study are apoptosis, ER stress-induced unfolded protein response,
+suppressed cell maintenance processes, and cytokine deregulation.
+Furthermore, the RT-qPCR results validated the RNA-seq results.
+Collectively, this study may shed light on some significant aspects of
+THEV-host interactions, which may benefit further mechanistic
 delineation of the viral infection and induction of IMS and inform
 future development of anti-THEV strategies. The biological processes
 most relevant to THEV-induced IMS highlighted by this study are further
 discussed below.
 
-Apoptosis is key defense mechanism activated by cells in response to
+Apoptosis is a key defense mechanism activated by cells in response to
 irreversible injury and virus infection to abrogate virus propagation.
 It is a formidable cellular defense network, non-specific to any virus
-family and therefore, an important problem for any infecting virus to
+family and therefore an important problem for any infecting virus to
 tackle (24--26). The adenovirus E1A proteins are strong inducers of
-apoptosis. They bind host pRb and p300/CBP protein, inducing p53-mediate
-apoptosis and can also sensitize infected cells to TNF\(\alpha\) and
-TRAIL-induced apoptosis (29, 30). However, adenoviruses have developed
-multiple distinct anti-apoptotic mechanisms to counter almost all
-cellular pro-apoptotic programs. For example E1A blocks its own
-induction of p53-dependent apoptosis and E1B proteins (E1B-19K and
-E1B-55K) counteract several types of apoptosis including TNF-induced
-apoptosis (29, 30). Despite, the rich arsenal of countermeasures,
-transcriptomic studies of human adenovirus infections suggest a complex
-set of virus-host interactions where both pro- and anti-apoptotic genes
-are turned on contemporaneously. For example in human adenovirus 2
-infection, both pro- and anti-apoptotic BCL2 family genes were
-stimulated (29). Siadenoviruses including THEV are the smallest
-adenoviruses and therefore encode the fewest genes (10, 28). THEV
-encodes a mere 34 ORFs with no anti-apoptotic genes characterized (28).
-Thus, in our results a strong signal indicative of apoptosis was
-observed. However, like mastadenovirus infections, a complex
-relationship between pro and anti-apoptotic genes were observed.
-Pro-apoptotic genes such as \emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, FAS,
-FADD} and \emph{ATF} were upregulated in concert with the anti-apoptotic
-genes: \emph{BCL2, BNIP2, BCL2A1} and \emph{API5}. We speculate that
-this complex regulation is predictive of THEV possessing some
-anti-apoptotic genes but not sufficiently potent to thwart the cellular
-apoptotic response. Interestingly, both intrinsic and extrinsic pathway
-pro-apoptotic genes were upregulated, possibly due to a concurrent
-stimulation of multiple apoptotic pathways or a positive feedback
-mechanism of one system activating the other. The specific mechanism of
-apoptosis induction remains elusive. Further studies designed to
-elucidate these fine details are warranted and would benefit future THEV
-therapeutics tremendously.
+apoptosis. They bind host pRb and p300/CBP protein, inducing
+p53-mediated apoptosis, and can also sensitize infected cells to
+TNF\(\alpha\) and TRAIL-induced apoptosis (29, 30). However,
+adenoviruses have developed multiple distinct anti-apoptotic mechanisms
+to counter almost all cellular pro-apoptotic programs. For example, E1A
+blocks its own induction of p53-dependent apoptosis and E1B proteins
+(E1B-19K and E1B-55K) counteract several types of apoptosis including
+TNF-induced apoptosis (29, 30). Despite the rich arsenal of
+countermeasures, transcriptomic studies of human adenovirus infections
+suggest a complex set of virus-host interactions where both pro- and
+anti-apoptotic genes are turned on contemporaneously. For example, in
+human adenovirus 2 infection, both pro- and anti-apoptotic BCL2 family
+genes were stimulated (29). Siadenoviruses including THEV are the
+smallest adenoviruses and therefore encode the fewest genes (10, 28).
+THEV encodes a mere 34 ORFs with no anti-apoptotic genes characterized
+(28). In agreement with these findings, in our results a strong signal
+indicative of apoptosis was observed. However, like mastadenovirus
+infections, a complex relationship between pro and anti-apoptotic genes
+were observed. Pro-apoptotic genes such as \emph{APAF1, BNIP3L, BMF,
+BAK1, RIPK1, FAS, FADD} and \emph{ATF} were upregulated in concert with
+the anti-apoptotic genes: \emph{BCL2, BNIP2, BCL2A1} and \emph{API5}. We
+speculate that this complex regulation is predictive of THEV possessing
+some anti-apoptotic genes but not sufficiently potent to thwart the
+cellular apoptotic response. Interestingly, both intrinsic and extrinsic
+pathway pro-apoptotic genes were upregulated, possibly due to a
+concurrent stimulation of multiple apoptotic pathways or a positive
+feedback mechanism of one system activating the other. The specific
+mechanism of apoptosis induction remains elusive. Further studies
+designed to elucidate these fine details are warranted and would benefit
+future THEV therapeutics tremendously.
 
 The ER serves many specialized functions including biosynthesis and
 assembly of membrane and secretory proteins, calcium storage, and
@@ -740,7 +740,7 @@ intestinal disease, not IMS (8). While some of the upregulated cytokines
 and receptors in our results are positive apoptosis regulators
 (\emph{TNFRSF8, TRAF7}), most of the cytokines are either anti-apoptotic
 (\emph{TNFRSF1B, TRAF2}), boost host antiviral defense (\emph{IL18,
-TNFSF4, PKR, TRAFD1, IFIH1}), or suppress cytokine signalling
+TNFSF4, PKR, TRAFD1, IFIH1}), or suppress cytokine signaling
 (\emph{SOCS3, SOCS5}). Therefore, we speculate that a
 non-cytokine-mediated apoptotic process such as ER stress-associated
 programmed cell death is more likely to mediate direct killing of
@@ -760,10 +760,10 @@ Therefore, growth suppression is most likely the first response of the
 host cell to the incoming virus (29). The second period covers the time
 from 12 to 24 hpi and follows activation of the immediate early E1A
 gene, which forcibly transition cell cycle to S phase (29). While the
-temporal changes of host gene expression for a THEV a infection has no
+temporal changes of host gene expression for a THEV infection has no
 prior study, our data showed that during the first 24 hpi, cell growth
 was suppressed. Cell maintenance processes involving nucleic acid and
-proteins were downregulated according our data. Protein
+proteins were downregulated according to our data. Protein
 synthesis-related processes including ribosome biogenesis, rRNA
 processing, ribosome assembly, protein folding, translational
 initiation, protein maturation, etc were heavily affected. Additionally,
@@ -772,7 +772,7 @@ biosynthesis and metabolism, double strand break repair, and DNA
 excision repair were also repressed. As severe DNA damage leads to DNA
 damage-dependent apoptosis (31) and repression of RNA and protein
 synthesis is also strongly associated with apoptosis (32), these
-inhibitions may also play a role in THEV-induce IMS. Moreover, we
+inhibitions may also play a role in THEV-induced IMS. Moreover, we
 speculate that the ER UPR may contribute partly to the severe repression
 of protein synthesis as discussed above. An in-depth study of temporal
 changes of host gene expression during THEV infection would be
@@ -789,16 +789,16 @@ upregulated genes and \textbf{1,264} downregulated genes at 12 hpi and
 \textbf{1,512} upregulated genes and \textbf{1,783}downregulated genes
 at 24 hpi. Our data suggest that several biological processes and
 pathways including apoptosis, immune response, ER response to stress,
-ubiquitin-dependent protein catabolic process, and repression essential
-cellular maintenance are significant aspects of host cell response to
-THEV infection. All these processes are established apoptosis inducing
-mechanisms, therefore, we believe that either one or synergistic
-interplay between multiple ones may mediate cell death of infected
-B-cells, leading to IMS. These findings provide the first insights into
-THEV-host interactions and may help advance the understanding of
-non-human adenoviral infection and pathogenesis, which may eventually
-inform the development of medical countermeasures for disease prevention
-and treatment. \newpage
+ubiquitin-dependent protein catabolic process, and repression of
+essential cellular maintenance are significant aspects of host cell
+response to THEV infection. All these processes are established
+apoptosis inducing mechanisms; therefore, we believe that either one or
+synergistic interplay between multiple ones may mediate cell death of
+infected B-cells, leading to IMS. These findings provide the first
+insights into THEV-host interactions and may help advance the
+understanding of non-human adenoviral infection and pathogenesis, which
+may eventually inform the development of medical countermeasures for
+disease prevention and treatment. \newpage
 
 \subsection{MATERIALS AND METHODS}\label{materials-and-methods}
 
@@ -882,10 +882,10 @@ differentially expressed. The sequencing data (FASTQ files) and read
 count data are deposited at NCBI Gene Expression Omnibus under accession
 number \#\#\#. The functional profiling of DEGs (GO and KEGG analyses)
 were performed based on GO databases and KEGG databases using DAVID and
-the R package gprofiler2 (22) with \emph{Meleagris gallopavo} as the
-reference organism. Results with P\textsubscript{adjusted}-value
-\(\leq\) 0.05 were included as functionally enriched. All visualization
-plots were made using ggplot2, pheatmap, and ggvenn R packages (41--43).
+the R package gprofiler2 (22) with \emph{M. gallopavo} as the reference
+organism. Results with P\textsubscript{adjusted}-value \(\leq\) 0.05
+were included as functionally enriched. All visualization plots were
+made using ggplot2, pheatmap, and ggvenn R packages (41--43).
 
 \subsubsection{Validation of DEGs by Reverse Transcriptase Quantitative
 PCR
