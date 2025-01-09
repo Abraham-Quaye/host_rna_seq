@@ -126,11 +126,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Turkey B-cell Transcriptome Profile During Turkey Hemorrhagic Enteritis Virus (THEV) Infection Highlights Upregulated Apoptosis and Breakdown Pathways That May Mediate Immunosuppression},
+  pdftitle={Turkey B cell Transcriptome Profile During Turkey Hemorrhagic Enteritis Virus (THEV) Infection Highlights Upregulated Apoptosis and Breakdown Pathways That May Mediate Immunosuppression},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Turkey B-cell Transcriptome Profile During Turkey Hemorrhagic
+\title{Turkey B cell Transcriptome Profile During Turkey Hemorrhagic
 Enteritis Virus (THEV) Infection Highlights Upregulated Apoptosis and
 Breakdown Pathways That May Mediate Immunosuppression}
 \author{}
@@ -141,16 +141,13 @@ Breakdown Pathways That May Mediate Immunosuppression}
 
 \vspace{5mm}
 
-Abraham Quaye\({^\dagger}\)\textsuperscript{,a}, Brett E.
-Pickett\textsuperscript{a}, Joel S. Griffitts\textsuperscript{a},
-Bradford K. Berges\textsuperscript{a}, Brian D.
-Poole\textsuperscript{a,*}
+Abraham Quaye, Brett E. Pickett, Joel S. Griffitts, Bradford K. Berges,
+Brian D. Poole\textsuperscript{*}
 
 \vspace{5mm}
 
-\textsuperscript{a}Department of Microbiology and Molecular Biology,
-Brigham Young University\\
-\({^\dagger}\)Primary Author\\
+Department of Microbiology and Molecular Biology, Brigham Young
+University\\
 \textsuperscript{*}Corresponding Author
 
 \vspace{5mm}
@@ -166,38 +163,36 @@ Provo, Utah\\
 
 \subsection{ABSTRACT}\label{abstract}
 
-Infection with \emph{Turkey Hemorrhagic Enteritis Virus (THEV)} can
-cause hemorrhagic enteritis, which affects turkey poults. This disease
-is characterized by immunosuppression (IMS) and bloody droppings.
-Secondary opportunistic infections due to THEV-induced IMS exacerbates
-economic losses. To elucidate the mechanisms mediating THEV-induced IMS,
-we performed the first transcriptomic analysis of a THEV infection using
-bulk RNA-sequencing. After infecting a turkey B-cell line, samples in
-triplicates were collected at 4-, 12-, 24-, and 72-hours post-infection
-(hpi) and mRNAs were sequenced. Trimmed reads were mapped to the host
-turkey genome and gene expression was quantified with StringTie. After
-differential gene expression analysis, functional enrichment analysis
-was performed with gprofiler2 and DAVID from NCBI. RT-qPCR of select
-genes was performed to validate the RNA-seq data. A total of 2,343 and
-3,295 differentially expressed genes (DEGs) were identified at 12-hpi
-and 24-hpi, respectively. The DEGs contributed to multiple biological
-processes including apoptosis, ER unfolded protein response, and cell
-maintenance. Multiple pro-apoptotic genes, including \emph{APAF1,
-BNIP3L, BMF, BAK1, RIPK1, and FAS} were upregulated. Genes that play a
-role in ER stress-induced unfolded protein response including \emph{VCP,
-UFD1, EDEM1, EDEM3, and ATF4} were also upregulated and may contribute
-to apoptosis. Our data suggest that several biological processes and
-pathways including apoptosis, immune response, ER response to stress,
-ubiquitin-dependent protein catabolic process, and repression of
-essential cellular maintenance functions are important aspects of the
-host cell response to THEV infection. It is possible that interplay
-between multiple processes may mediate apoptosis of infected B-cells,
-leading to IMS.
+Infection with Turkey Hemorrhagic Enteritis Virus (THEV) can cause
+hemorrhagic enteritis, which affects turkey poults. This disease is
+characterized by bloody diarrhea and immunosuppression (IMS), which is
+attributed to apoptosis of infected B cells. Secondary opportunistic
+infections due to IMS exacerbates economic losses. To elucidate the
+mechanisms mediating THEV-induced IMS, we performed the first
+transcriptomic analysis of a THEV infection using bulk RNA-sequencing.
+After infecting and sequencing mRNAs of a turkey B-cell line, trimmed
+reads were mapped to the host turkey genome and gene expression was
+quantified with StringTie. Differential gene expression analysis was
+followed by functional enrichment analyses using gprofiler2 and DAVID
+from NCBI. RT-qPCR of select genes was performed to validate the RNA-seq
+data. A total of 2,343 and 3,295 differentially expressed genes (DEGs)
+were identified at 12-hpi and 24-hpi, respectively. The DEGs contributed
+to multiple biological processes including apoptosis, ER unfolded
+protein response, and cell maintenance. Multiple pro-apoptotic genes,
+including \emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, and FAS} were
+upregulated. Genes that play a role in ER stress-induced unfolded
+protein response including \emph{VCP, UFD1, EDEM1, EDEM3, and ATF4} were
+also upregulated and may contribute to apoptosis. Our data suggest that
+several biological processes and pathways including apoptosis, ER
+response to stress, and repression of essential cellular maintenance
+functions are important aspects of the host cell response to THEV
+infection. It is possible that interplay between multiple processes may
+mediate apoptosis of infected B-cells, leading to IMS.
 
 \subsection{KEY WORDS}\label{key-words}
 
 Turkey hemorrhagic enteritis virus (THEV), Adenovirus, RNA sequencing,
-Apoptosis, Immunosuppression, ER stress, cytokine \newpage
+Apoptosis, Immunosuppression, ER stress, B cell \newpage
 
 \subsection{INTRODUCTION}\label{introduction}
 
@@ -206,52 +201,50 @@ Turkey hemorrhagic enteritis virus (THEV) belongs to genus
 chickens, and pheasants (1, 2). THEV is transmitted via the fecal-oral
 route and causes hemorrhagic enteritis (HE) in turkeys, a debilitating
 disease affecting predominantly 6-12-week-old turkey poults
-characterized by immunosuppression (IMS), depression, splenomegaly,
-intestinal lesions leading to bloody droppings, and up to 80\% mortality
-(3--6). The clinical disease usually persists in affected flocks for
-7-10 days. However, secondary bacterial infections may extend the
-duration of illness and increase mortality for an additional 2-3 weeks
-due to the immunosuppressive nature of the virus, exacerbating the
-economic losses (5, 7). Naturally-occurring low pathogenic (avirulent)
-strains of THEV have been isolated; these strains cause subclinical
-infections but retain the immunosuppressive effects. Since its isolation
-from a pheasant spleen, the Virginia Avirulent Strain (VAS) has been
+characterized by immunosuppression (IMS), lack of vitality,
+splenomegaly, intestinal lesions leading to bloody diarrhea, and up to
+80\% mortality (3--6). The clinical disease usually persists in affected
+flocks for 7-10 days, causing death and economic losses. However,
+secondary bacterial infections may extend the duration of illness and
+increase mortality for an additional 2-3 weeks due to the
+immunosuppressive nature of the virus, exacerbating the economic losses
+(5, 7). Naturally occurring low pathogenic (avirulent) strains of THEV
+have been isolated; these strains cause subclinical infections but
+retain the immunosuppressive effects. Since its isolation from a
+pheasant spleen, the Virginia Avirulent Strain (VAS) has been
 effectively used as a live vaccine despite the immunosuppressive
 side-effects. However, the vaccinated birds are rendered more
 susceptible to opportunistic infections and death than unvaccinated
-cohorts leading to additional losses (4, 5, 8--10).
+cohorts (4, 5, 8--10).
 
 It is well-established that THEV primarily infects and replicates in
 turkey B-cells of the bursa and spleen and to a lesser extent in
-macrophages, inducing apoptosis and necrosis. Consequently, a
+macrophages, inducing apoptosis and necrosis (6, 8) . Consequently, a
 significant drop in the number of B-cells (specifically, IgM+ B-cells)
 and macrophages ensues along with increased T-cell counts with abnormal
-ratios of T-cell subpopulations (CD4+ and CD8+). The cell death seen in
-the infected B-cells and macrophages is generally proposed as the major
-cause of THEV-induced IMS as both humoral and cell-mediated immunity are
-impaired (5, 6, 8, 11). Immunopathogenesis via cytokines from T-cells
-and macrophages has also been suggested as a mechanism of apoptosis
-leading to IMS. It is thought that virus replication in the spleen
-attracts T-cells and peripheral blood macrophages, which results in
-T-cell activation by cytokines from activated macrophages and vice
+ratios of T-cell subpopulations (CD4+ and CD8+) (6, 8, 11). The cell
+death seen in the infected B-cells and macrophages is generally proposed
+as the major cause of THEV-induced IMS as both humoral and cell-mediated
+immunity are impaired (5, 8). Immunopathogenesis via cytokines from
+T-cells and macrophages has also been suggested as a mechanism of
+apoptosis leading to IMS. It is thought that virus replication in the
+spleen attracts T-cells and peripheral blood macrophages, which results
+in T-cell activation by cytokines from activated macrophages and vice
 versa. The activated T-cells undergo clonal expansion and secrete type I
 (IFN-\(\alpha\) and IFN-\(\beta\)) and type II (IFN-\(\gamma\))
 interferons as well as tumor necrosis factor (TNF), while activated
-macrophages secrete interleukin 6 (IL-6), TNF, and nitric oxide (NO), an
-antiviral agent with immunosuppressive properties. These cytokines may
-further contribute to apoptosis and necrosis in bystander splenocytes,
-culminating in IMS (8, 11) (\textbf{Figure 1}). However, the precise
-molecular mechanisms of THEV-induced IMS or the relevant intracellular
-signaling pathways are poorly understood (6). Elucidating the specific
-mechanisms and pathways of THEV-induced IMS is a crucial step in THEV
-research as it will present a means of mitigating IMS.
+macrophages secrete interleukin 6 (IL-6), TNF, and nitric oxide (NO).
+These cytokines may further contribute to apoptosis and necrosis in
+bystander splenocytes, culminating in IMS (8, 11) (\textbf{Figure 1}).
+However, the precise molecular mechanisms of THEV-induced IMS or the
+relevant intracellular signaling pathways are poorly understood (6).
+Elucidating the specific mechanisms and pathways of THEV-induced IMS is
+a crucial step in THEV research as it could present a means of
+mitigating IMS.
 
-Next generation sequencing (NGS) is a groundbreaking technology that has
-significantly enhanced our understanding of DNA and RNA structure and
-function and facilitated exceptional advancements in all domains of
-biological sciences (12). Bulk mRNA sequencing (RNA-seq), an NGS
-approach to transcriptomic studies, is a versatile, high throughput, and
-cost-effective technology that allows a broad scan of the entire
+Bulk mRNA sequencing (RNA-seq), a next generation sequencing approach to
+transcriptomic studies, is a versatile, high throughput, and
+cost-effective technology that allows a broad survey of the entire
 transcriptome of a cell population, thereby uncovering the active genes
 and molecular pathways and processes. This technology has been leveraged
 in an ever-increasing number of studies to elucidate active cellular
@@ -265,14 +258,13 @@ Encyclopedia of Genes and Genomes (KEGG) pathways which connect genes to
 specific biological processes, functions, and pathways, shedding light
 on the biological question under study (17, 18).
 
-To the best of our knowledge, no study has leveraged the wealth of
-information offered by RNA-seq to elucidate the molecular mechanisms and
-pathways leading to THEV-induced IMS. To effectively counteract the
-immunosuppressive effect of the vaccine, it is essential to unravel the
-host cell processes/pathways influenced by the virus to bring about IMS.
-In this study, we present the first transcriptomic profile of
-THEV-infected cells using paired-end bulk RNA-seq in a turkey B-cell
-line (MDTC-RP19), highlighting key host genes, cellular/molecular
+To our knowledge, no study has used RNA-seq to elucidate the molecular
+mechanisms and pathways leading to THEV-induced IMS. To effectively
+counteract the immunosuppressive effect of the vaccine, it is essential
+to unravel the host cell processes/pathways influenced by the virus to
+bring about IMS. In this study, we present the first transcriptomic
+profile of THEV-infected cells using paired-end bulk RNA-seq in a turkey
+B-cell line (MDTC-RP19), highlighting key host genes, cellular/molecular
 processes and pathways affected during a THEV time course infection. We
 specifically focus on cellular processes related to cell survivability
 that can elucidate THEV-induced IMS. \newpage
@@ -297,7 +289,7 @@ similar to Mahshoub \emph{et al} (19). Cells were THEV-infected or
 mock-infected in triplicates or duplicates, respectively at a
 multiplicity of infection (MOI) of 100 GCN/cell, incubated at
 41\textsuperscript{o}C for 1 hour, and washed three times with phosphate
-buffered saline (PBS) to get rid of free virus particles. At each time
+buffered saline (PBS) to remove unattached virus particles. At each time
 point (4-, 12-, 24-, and 72-hpi), triplicate (THEV-infected) and
 duplicate (mock-infected) samples were harvested for total RNA
 extraction.
@@ -307,19 +299,21 @@ Sequencing}\label{rna-extraction-and-sequencing}
 
 Total RNA was extracted from infected cells using the Thermofisher
 RNAqueous™-4PCR Total RNA Isolation Kit (which includes a DNase I
-digestion step) per manufacturer's instructions. An agarose gel
-electrophoresis was performed to check RNA integrity. The RNA quantity
-and purity was initially assessed using nanodrop, and RNA was used only
-if the A260/A280 ratio was 2.0 ± 0.05 and the A260/A230 ratio was
-\textgreater2 and \textless2.2. Extracted total RNA samples were sent to
-LC Sciences, Houston TX for poly-A-tailed mRNA sequencing. RNA integrity
-was checked with Agilent Technologies 2100 Bioanalyzer High Sensitivity
-DNA Chip and poly(A) RNA-seq library was prepared following Illumina's
-TruSeq-stranded-mRNA sample preparation protocol. Paired-end sequencing,
-generating 150-bp reads was performed on the Illumina NovaSeq 6000
-sequencing system. The paired-end 150bp sequences obtained during this
-study and all expression data have been submitted to the Gene Expression
-Omnibus database, under accession no GSE286211
+digestion step) per manufacturer's instructions. Agarose gel
+electrophoresis was performed to check RNA integrity (data not shown).
+The RNA quantity and purity was initially assessed using Nanodrop, and
+RNA was used only if the A260/A280 ratio was 2.0 ± 0.05 and the
+A260/A230 ratio was \textgreater2 and \textless2.2. Extracted total RNA
+samples were sent to LC Sciences, Houston TX for poly-A-tailed mRNA
+sequencing. RNA integrity was checked with Agilent Technologies 2100
+Bioanalyzer High Sensitivity DNA Chip and samples with an RNA integrity
+number (RIN) \textless{} 7 were excluded. Poly(A) RNA-seq library was
+prepared following Illumina's TruSeq-stranded-mRNA sample preparation
+protocol. Paired-end sequencing, generating 149 bp reads was performed
+on the Illumina NovaSeq 6000 sequencing system. The paired-end 149 bp
+sequences obtained during this study and all expression data have been
+submitted to the Gene Expression Omnibus database, under accession no
+GSE286211
 
 \subsubsection{Quality Control and Mapping
 Process}\label{quality-control-and-mapping-process}
@@ -380,7 +374,7 @@ with three biological replicates at 12- and 24-hpi each for both
 THEV-infected or mock-infected samples. First-strand cDNA synthesis of
 total RNA was performed with an oligo-dT primer to amplify poly-A-tailed
 mRNA using SuperScript™ IV First-Strand Synthesis System. The parent RNA
-were digested using RNase H after cDNA synthesis was complete to ensured
+was digested using RNase H after cDNA synthesis was complete to ensured
 that only cDNA remained as the template for the RT-qPCR quantification.
 The RT-qPCR was performed with the PowerUp™ SYBR™ Green master mix from
 Applied Biosystems with primers designed manually in the SnapGene
@@ -400,12 +394,12 @@ statistically significant. \newpage
 \subsection{RESULTS}\label{results}
 
 \textbf{Sequencing Results}\\
-To identify the host transcriptome profile during THEV infection, we
+To identify the host transcriptomic profile during THEV infection, we
 infected MDTC-RP19 cells with THEV or no virus (mock) in triplicates or
 duplicates, respectively, and harvested at total RNA at 4-, 12-, 24-,
 and 72-hours post infection (hpi). mRNAs extracted from mock- or
 THEV-infected cells were sequenced on the Illumina platform, yielding a
-total of \textbf{776.1} million raw reads (149-bp in length) across all
+total of \textbf{776.1} million raw reads (149 bp in length) across all
 samples (see \textbf{Table 1} for sequencing statistics). After trimming
 low-quality reads, the remaining \textbf{742.8} million total paired-end
 trimmed reads (approximately, \textbf{34.7}-\textbf{47.9} million reads
@@ -541,7 +535,7 @@ THEV-induced IMS.
 \textbf{Cell Death and Breakdown Pathways Upregulated by THEV}\\
 Many virus families, including adenoviruses, herpesviruses, poxviruses,
 baculoviruses, parvoviruses, retroviruses, rhabdoviruses,
-pararmyxoviruses, orthomyxoviruses, togaviruses, and picornaviruses are
+paramyxoviruses, orthomyxoviruses, togaviruses, and picornaviruses are
 known to trigger apoptosis in infected host cells either through direct
 viral protein action or the host antiviral response (31--33). Our data
 show that apoptotic and autophagic pathways are upregulated during THEV
@@ -681,8 +675,8 @@ inconsistency is likely an indicator of the struggle between the virus
 and its host. While several cytokines were regulated by THEV as in the
 proposed model of THEV immunopathogenesis (\textbf{Figure 1}), the
 cytokines in the model (IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\)
-TNF, IL-6, and NO) were not significantly differentially expressed in
-our data. However, some of the differentially expressed cytokines and
+TNF, and IL-6) were not significantly differentially expressed in our
+data. However, some of the differentially expressed cytokines and
 cytokine receptors (\emph{TNFRSF8, TRAF7}) identified in this study are
 positive regulators of apoptosis; therefore, they may play a role in
 THEV-induced IMS.
@@ -696,6 +690,9 @@ ubiquitination (\emph{VCP, UFD1, EDEM1}), and ribosome biosynthetic
 (\emph{EIF3D, EIF3M, RPL8, RPL10A}) pathways. As shown in \textbf{Figure
 6}, the RT-qPCR results corroborate the RNA-seq results, further
 reinforcing the validity of the RNA-seq transcriptomic profile results.
+Although there was no inconsistency between the RNA-seq and RT-qPCR
+results in terms of gene regulations, the fold changes in the RT-qPCR
+results were consistently higher than observed in the RNA-seq results.
 Our RT-qPCR primers showed excellent target specificity; only one
 amplicon of the expected size was amplified as shown by the melt curves
 (data not shown) and gel electrophoresis (\textbf{Figure S1}). According
@@ -709,7 +706,7 @@ THEV has a worldwide distribution, wreaking economic havoc on affected
 poultry farms, particularly due to its immunosuppressive trait allowing
 secondary opportunistic infections to devastate turkey populations (4,
 6). HE in turkeys causes more economic losses than any disease caused in
-other birds like chicken and pheasants (4). While the current vaccine
+other birds like chicken or pheasants (4). While the current vaccine
 strain (VAS) has proven effective at preventing clinical HE in turkey
 poults, the retention of its immunosuppressive properties leaves some of
 the issues associated with economic losses unresolved. Elucidating the
@@ -719,40 +716,39 @@ antiviral therapy targets. Since both virulent and avirulent THEV cause
 IMS but the avirulent are used as vaccine, we believe that studying VAS
 would be more expedient for understanding THEV vaccine-induced IMS.
 
-Only one cell line (MDTC-RP19 or RP19) has ever been found to be capable
-of supporting THEV infection and replication (39). Thus, in this work,
-we establish the first transcriptome profile of THEV infection in RP19
-cells using paired-end RNA-seq. We attempted a multi-time point
-experimental design but this being the first transcriptomic study of
-THEV infection, we faced some difficulties, including selecting our
-sampling time points based on the only study of THEV gene expression
-kinetics (40), leading to only 12- and 24-hpi providing useful data. In
-total \textbf{2,343} and \textbf{3,295} DEGs were identified at 12-hpi
-and 24-hpi, respectively. At 12-hpi, \textbf{1,079} genes were
-upregulated and \textbf{1,264} genes downregulated, whereas
-\textbf{1,512} genes were upregulated and \textbf{1,783} genes
-downregulated at 24-hpi. Being a non-model organism, a significant
-proportion of the host (\emph{M. gallopavo}) genes are not annotated and
-not recognized by the databases used for functional enrichment analysis.
-Thus, the obtained results are likely sub-optimal in amount of detail
-relative to results from well annotated and curated genomes of model
-organisms. The DEGs were related to multiple biological processes all
-potentially playing a role in THEV infection but the most relevant to
-our study are apoptosis, ER stress-induced unfolded protein response,
-suppressed cell maintenance processes, and cytokine deregulation.
-Furthermore, the RT-qPCR results validated the RNA-seq results.
-Collectively, this study may shed light on some significant aspects of
-THEV-host interactions, which may benefit further mechanistic
-delineation of the viral infection and induction of IMS and inform
-future development of anti-THEV strategies. The biological processes
-most relevant to THEV-induced IMS highlighted by this study are further
-discussed below.
+Only one cell line (MDTC-RP19 or RP19) has been found to be capable of
+supporting THEV replication (39). Thus, in this work, we establish the
+first transcriptomic profile of THEV infection in RP19 cells using
+paired-end RNA-seq. We attempted a multi-time point experimental design
+but this being the first transcriptomic study of THEV infection, we
+faced some difficulties, including selecting our sampling time points
+based on the only study of THEV gene expression kinetics (40), leading
+to only 12- and 24-hpi providing useful data. In total \textbf{2,343}
+and \textbf{3,295} DEGs were identified at 12-hpi and 24-hpi,
+respectively. At 12-hpi, \textbf{1,079} genes were upregulated and
+\textbf{1,264} genes downregulated, whereas \textbf{1,512} genes were
+upregulated and \textbf{1,783} genes downregulated at 24-hpi. Being a
+non-model organism, a significant proportion of the host (\emph{M.
+gallopavo}) genes are not annotated and not recognized by the databases
+used for functional enrichment analysis. Thus, the obtained results are
+likely sub-optimal in amount of detail relative to results from well
+annotated and curated genomes of model organisms. The DEGs were related
+to multiple biological processes all potentially playing a role in THEV
+infection but the most relevant to our study are apoptosis, ER
+stress-induced unfolded protein response, suppressed cell maintenance
+processes, and cytokine deregulation. Furthermore, the RT-qPCR results
+validated the RNA-seq results. Collectively, this study may shed light
+on some significant aspects of THEV-host interactions, which may benefit
+further mechanistic delineation of the viral infection and induction of
+IMS and inform future development of anti-THEV strategies. The
+biological processes most relevant to THEV-induced IMS highlighted by
+this study are further discussed below.
 
 Apoptosis is a key defense mechanism activated by cells in response to
 irreversible injury and virus infection to abrogate virus propagation.
 It is a formidable cellular defense network, non-specific to any virus
 family and therefore an important problem for any infecting virus to
-tackle (31--33). The adenovirus E1A proteins are strong inducers of
+overcome (31--33). The adenovirus E1A proteins are strong inducers of
 apoptosis. They bind host pRb and p300/CBP protein, inducing
 p53-mediated apoptosis, and can also sensitize infected cells to
 TNF\(\alpha\) and TRAIL-induced apoptosis (34, 35). However,
@@ -769,58 +765,57 @@ genes were stimulated (34). Siadenoviruses including THEV are the
 smallest adenoviruses and therefore encode the fewest genes (10, 41).
 THEV encodes a mere 34 ORFs with no anti-apoptotic genes characterized
 (41). In agreement with these findings, in our results a strong signal
-indicative of apoptosis was observed. However, like mastadenovirus
-infections, a complex relationship between pro and anti-apoptotic genes
-were observed. Pro-apoptotic genes such as \emph{APAF1, BNIP3L, BMF,
-BAK1, RIPK1, FAS, FADD} and \emph{ATF} were upregulated in concert with
-the anti-apoptotic genes: \emph{BCL2, BNIP2, BCL2A1} and \emph{API5}. We
-speculate that this complex regulation is predictive of THEV possessing
-some anti-apoptotic genes but not sufficiently potent to thwart the
-cellular apoptotic response. Interestingly, both intrinsic and extrinsic
-pathway pro-apoptotic genes were upregulated, possibly due to a
-concurrent stimulation of multiple apoptotic pathways or a positive
-feedback mechanism of one system activating the other. The specific
-mechanism of apoptosis induction remains elusive. Further studies
-designed to elucidate these fine details are warranted and would benefit
-future THEV therapeutics tremendously.
+indicative of apoptotic induction was observed. However, like
+mastadenovirus infections, a complex relationship between pro and
+anti-apoptotic genes were observed. Pro-apoptotic genes such as
+\emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, FAS, FADD} and \emph{ATF} were
+upregulated in concert with the anti-apoptotic genes \emph{BCL2, BNIP2,
+BCL2A1} and \emph{API5}. We speculate that this complex regulation is
+predictive of THEV possessing some anti-apoptotic genes but not
+sufficiently potent to thwart the cellular apoptotic response.
+Interestingly, pro-apoptotic genes in both intrinsic and extrinsic
+pathways were upregulated, possibly due to a concurrent stimulation of
+multiple apoptotic pathways or a positive feedback mechanism of one
+system activating the other. The specific mechanism of apoptosis
+induction remains elusive. Further studies designed to elucidate these
+fine details are warranted and would benefit future THEV therapeutics.
 
 The ER serves many specialized functions including biosynthesis and
 assembly of membrane and secretory proteins, calcium storage, and
 biosynthesis of lipids and sterols. It is also the site of protein
 folding and post-translational modifications and maintains stringent
-quality control systems, ensuring correctly folded exported proteins and
-degradation of unfolded or misfolded proteins (16, 38, 42). Disruption
-of ER homeostasis or ER stress leads to accumulation of incorrect
-proteins in the ER lumen, triggering the UPR. The UPR restores ER
-normality by transiently attenuating general protein synthesis,
+quality control systems, ensuring exported proteins are correctly folded
+and degradation of unfolded or misfolded proteins (16, 38, 42).
+Disruption of ER homeostasis or ER stress leads to accumulation of
+incorrect proteins in the ER lumen, triggering the UPR. The UPR restores
+ER normality by transiently attenuating general protein synthesis,
 increasing the lumenal folding capacity, and the degradation of
 misfolded proteins through the ERAD pathway or autophagy (16, 38, 42,
 43). However, if incorrect lumenal protein overload persists, the
 prolonged UPR will induce apoptosis known as ER stress-associated
-programmed cell death (42, 43). Many viruses, including DNA and RNA
-viruses are reported to induce ER stress and UPR pathways during
-infection (16). In our results, \emph{ATF4} and PKR-like ER protein
-kinase (\emph{PERK}), key proteins in the \emph{PERK} branch of the UPR
-pathway were upregulated. A myriad ERAD pathway proteins (e.g.,
-\emph{VCP, UFD1, EDEM1, EDEM3, CUL1, UBQLN1}), ubiquitination system
-proteins (e.g., \emph{UBE2J2, UBE2E3, UBE2Z, UBE3A, UBE3B}), and heat
-shock family of chaperone proteins (e.g., \emph{HSPA5, HSP4L, HSPA8,
-HSP90AA1}) all showed increased expression according to our RNA-seq data
-with some validated with RT-qPCR. These data strongly suggest that THEV
-infection triggers the ER UPR pathways leading to a massive decrease of
-protein synthesis and deregulation of sterol biosynthesis, and
-ubiquitin-mediated proteolysis, all seen in our results. As noted above,
-a prolonged UPR activation leads to ER stress-associated programmed cell
-death via genes such \emph{ATF4} (42, 43). Thus, we suggest that ER
-stress response likely plays a crucial role in the THEV-induced IMS.
-Nonetheless, the mechanisms underlying the regulation of the UPR
-pathways by THEV remain to be clearly unraveled. Also, whether and how
-ER stress response affects THEV infection and pathogenicity are also
-merited to be determined in a future study. Unsurprisingly, protein
-degradation was more pronounced at the 24-hpi than at 12-hpi, reflecting
-the suggested two phases of UPR -- phase one allows the unfolded
-proteins time to refold without degradation and phase two degrades any
-proteins which have failed to fold (43).
+programmed cell death (42, 43). Many DNA and RNA viruses are reported to
+induce ER stress and UPR pathways during infection (16). In our results,
+\emph{ATF4} and PKR-like ER protein kinase (\emph{PERK}), key proteins
+in the \emph{PERK} branch of the UPR pathway were upregulated. A myriad
+of ERAD pathway proteins (e.g., \emph{VCP, UFD1, EDEM1, EDEM3, CUL1,
+UBQLN1}), ubiquitination system proteins (e.g., \emph{UBE2J2, UBE2E3,
+UBE2Z, UBE3A, UBE3B}), and heat shock family of chaperone proteins
+(e.g., \emph{HSPA5, HSP4L, HSPA8, HSP90AA1}) all showed increased
+expression according to our RNA-seq data with some validated with
+RT-qPCR. These data strongly suggest that THEV infection triggers the ER
+UPR pathways leading to a massive decrease of protein synthesis and
+deregulation of sterol biosynthesis, and ubiquitin-mediated proteolysis,
+all supported by our results. As noted above, a prolonged UPR activation
+leads to ER stress-associated programmed cell death via genes such
+\emph{ATF4} (42, 43). Thus, we suggest that the ER stress response
+likely plays a crucial role in THEV-induced IMS. Nonetheless, the
+mechanisms underlying the regulation of the UPR pathways by THEV remain
+to be clearly unraveled. Also, whether and how the ER stress response
+affects THEV infection and pathogenicity should be studied.
+Unsurprisingly, protein degradation was more pronounced at the 24-hpi
+than at 12-hpi, reflecting the suggested two phases of UPR -- phase one
+allows the unfolded proteins time to refold without degradation and
+phase two degrades any proteins which have failed to fold (43).
 
 In the proposed model of THEV immunopathogenesis by Rautenschlein
 \emph{et al} (\textbf{Figure 1}), while THEV directly induced cell death
@@ -831,11 +826,11 @@ highlighted in the model were not significantly differentially expressed
 in our data. This may be explained by the fact that the model was
 proposed based on data from splenocytes of THEV-infected turkeys, which
 have the full complement of immune cells (T-cells, B-cells, macrophages)
-shown in the model and not from B-cell culture data as in this study.
-From the model, T-cells and macrophages are the principal producers of
-the effector cytokines; thus, there is agreement with our data that
-B-cells alone would poorly simulate the cytokine communication network.
-This may also explain the very few immune-associated biological
+shown in the model and not solely from B-cell culture data as in this
+study. From the model, T-cells and macrophages are the principal
+producers of the effector cytokines; thus, there is agreement with our
+data that B-cells alone would poorly simulate the cytokine communication
+network. This may also explain the very few immune-associated biological
 processes in our data as the B-cells may require cytokines from other
 immune cells such as macrophages and T-cells for optimal activation.
 Further transcriptomic studies with splenocytes would offer a wealth of
@@ -857,11 +852,11 @@ important questions that can be addressed with future transcriptomic
 studies in splenocytes.
 
 By convention, the Mastadenovirus replication cycle is divided into two
-phases, an early and a late phase, based on the onset of viral DNA
+phases, an early and a late phase, separated by the onset of viral DNA
 replication (34, 35). Based on DNA microarray analysis, adenovirus type
 2 (Ad2) infection has been divided into four stages. The first period is
-from 0 to 12-hpi during which, changes in cellular gene expression are
-likely to be triggered by the virus entry process. Most of the
+from 0 to 12-hpi during which changes in cellular gene expression are
+likely to be triggered by the viral entry process. Most of the
 deregulated genes have functions linked to inhibition of cell growth.
 Therefore, growth suppression is most likely the first response of the
 host cell to the incoming virus (34). The second period covers the time
@@ -996,12 +991,6 @@ The following are abbreviations used in this manuscript:
 
 
 \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{KEGG}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Kyoto\ Encyclopedia\ of\ Genes\ and\ Genomes}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{NGS}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Next\ Generation\ Sequencing}}} \\
 
 \ascline{0.75pt}{666666}{1-2}
 
@@ -1169,34 +1158,34 @@ Avian Diseases 53:370--375.}
 type II induces apoptosis in turkey spleen cells}. Archives of Virology
 145:1671--1683.}
 
-\bibitem[\citeproctext]{ref-Satam2023}
-\CSLLeftMargin{12. }%
-\CSLRightInline{Satam H, Joshi K, Mangrolia U, Waghoo S, Zaidi G, Rawool
-S, Thakare RP, Banday S, Mishra AK, Das G, Malonia SK. 2023.
-\href{https://doi.org/10.3390/biology12070997}{Next-generation
-sequencing technology: Current trends and advancements}. Biology
-12:997.}
-
 \bibitem[\citeproctext]{ref-Pandey2023}
-\CSLLeftMargin{13. }%
+\CSLLeftMargin{12. }%
 \CSLRightInline{Pandey D, Onkara Perumal P. 2023.
 \href{https://doi.org/10.1007/s10142-023-01064-6}{A scoping review on
 deep learning for next-generation RNA-seq. Data analysis}. Functional
 \&amp; Integrative Genomics 23.}
 
 \bibitem[\citeproctext]{ref-Wang2019}
-\CSLLeftMargin{14. }%
+\CSLLeftMargin{13. }%
 \CSLRightInline{Wang B, Kumar V, Olson A, Ware D. 2019.
 \href{https://doi.org/10.3389/fgene.2019.00384}{Reviving the
 transcriptome studies: An insight into the emergence of single-molecule
 transcriptome sequencing}. Frontiers in Genetics 10.}
 
 \bibitem[\citeproctext]{ref-Choi2016}
-\CSLLeftMargin{15. }%
+\CSLLeftMargin{14. }%
 \CSLRightInline{Choi SC. 2016.
 \href{https://doi.org/10.1007/s12275-016-6233-2}{On the study of
 microbial transcriptomes using second- and third-generation sequencing
 technologies}. Journal of Microbiology 54:527--536.}
+
+\bibitem[\citeproctext]{ref-Satam2023}
+\CSLLeftMargin{15. }%
+\CSLRightInline{Satam H, Joshi K, Mangrolia U, Waghoo S, Zaidi G, Rawool
+S, Thakare RP, Banday S, Mishra AK, Das G, Malonia SK. 2023.
+\href{https://doi.org/10.3390/biology12070997}{Next-generation
+sequencing technology: Current trends and advancements}. Biology
+12:997.}
 
 \bibitem[\citeproctext]{ref-Mo2023}
 \CSLLeftMargin{16. }%
@@ -1403,9 +1392,10 @@ response: An overview}. Biology 10:384.}
 \caption{\textbf{Figure 1: Model of THEV-induced immunosuppression in
 turkeys}. THEV infection of target cells is indicated with black dotted
 arrows. Black unbroken arrows indicate cell activation. Red arrows
-indicated signals leading to apoptosis. Blue arrows indicate all
-cytokines released by the cell. Blue arrows with square heads indicated
-an event leading to IMS. Adapted from Rautenschlein \emph{et al.} (8).}
+indicated signals leading to cell death (apoptosis/necrosis). Blue
+arrows indicate all cytokines released by the cell. Blue arrows with
+square heads indicated an event leading to IMS. Adapted from
+Rautenschlein \emph{et al.} (8).}
 \end{figure}
 
 \begin{figure}
@@ -1470,9 +1460,10 @@ the red star. Notably, \emph{ATF4, PERK, VCP (p97), TRAF2, UFD1} and
 several BCL2 and heat shock proteins are upregulated. We see that the
 PERK branch of the UPR pathway linked to apoptosis is upregulated.
 Another pathway linked to apoptosis via \emph{BAX} is shown as well as
-the ERAD protein degradation pathway. Note that due limited annotation
-of the host genome, a significant proportion of the DEGs were not
-recognized by the database; hence not shown here.}
+the ERAD protein degradation pathway. Note that due to limited
+annotation of the host genome, a significant proportion of the DEGs were
+not recognized by the database; hence not shown here. \emph{Figure
+generated from KEGG pathway analysis in DAVID}.}
 \end{figure}
 
 \begin{figure}
@@ -1480,7 +1471,7 @@ recognized by the database; hence not shown here.}
 \pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/qpcr_validation.png}}
 \caption{\textbf{Figure 6: Validation of representative DEGs involved in
 Apoptosis, Protein synthesis, and ER-stress responses by RT-qPCR}.
-MDTC-RP19 cells infected with THEV or mock infected were subjected to
+MDTC-RP19 cells infected with THEV- or mock-infected were subjected to
 RT-qPCR analysis for the relative expression of the indicated DEGs at
 24-hpi. \emph{GAPDH} was used as the internal control. Data are
 expressed as the mean \(\pm\) SD. All genes (THEV-infected) are
@@ -9254,7 +9245,7 @@ expected size (see Table S1 for expected amplicon sizes of each primer
 pair). This was also confirmed in the RT-qPCR melt curves (not shown).
 Thermo Scientific™ generuler 1 kb plus DNA ladder was used.
 Mock-infected samples are shown in the top row prefixed with ``mock''
-and infected samples are shown in the bottom row prefixed with ``inf''}
+and infected samples are shown in the bottom row prefixed with ``inf''.}
 \end{figure}
 
 \FloatBarrier

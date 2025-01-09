@@ -17,7 +17,7 @@ deg_bar_plt <- p_data %>%
             vjust = -0.5, fontface = "bold", size = 8) +
   scale_fill_manual(values = c("#0000ff", "#ff0000"),
                     breaks = c("down", "up"),
-                    labels = c("Down Regulated", "Up Regulated")) +
+                    labels = c("Downregulated", "Upregulated")) +
   scale_y_continuous(limits = c(0, 2000),
                      expand = c(0, 0)) +
   scale_x_discrete(expand = c(0.16, 0.16),
