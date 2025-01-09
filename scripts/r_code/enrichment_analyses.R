@@ -108,8 +108,10 @@ map2(plts$plts, plts$plot_name,
 
 # save composite plots as one fig
 total_plts <- ((plts$plts[[1]] | plts$plts[[4]]) / (plts$plts[[7]] | plts$plts[[10]])) +
-  plot_annotation(tag_levels = "A") &
-  theme(plot.tag = element_text(size = 22, face = "bold"))
+  plot_annotation(tag_levels = "A",
+                  caption = "Results from gprofiler2 R package") &
+  theme(plot.tag = element_text(size = 22, face = "bold"),
+        plot.caption = element_text(hjust = 0, size = 15, color = "grey50"))
 
 ggsave(plot = total_plts, filename = "results/r/figures/patch_GO_enrich.png",
        width = 30, height = 25, dpi = 350)
