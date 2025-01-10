@@ -172,7 +172,7 @@ For upregulated DEGs at 12-hpi, we observed that the GO terms annotated under th
 
 At 24-hpi, we found that the GO terms in the BP category for upregulated DEGs were associated with apoptosis and autophagy, lipid and sterol biosynthesis, catabolic process, protein ubiquitination and proteolysis, cell signaling, and cell metabolism. Additionally, host defense response and genes that negatively regulate cytokine production were upregulated (**Figure 4B** and **Table 3A**). In the CC category, the GO terms were related to cytoplasmic vacuolation and the lysosome, similar to those identified at 12-hpi. In the MF category, the GO terms grouped into protein ubiquitination activity, kinase and acyltransferase activity, and macromolecule binding activity (**Table 3A**). GO terms for the downregulated DEGs were markedly similar to those at 12-hpi in all three GO categories. In the BP category, the GO terms broadly group into translation, peptide biosynthesis and folding, ribosome biogenesis, aerobic respiration and ATP synthesis, and cell cycle process and nucleic acid replication and processing (**Figure 4D** and **Table 3B**). The GO terms in the CC category group under ribosome, mitochondrion, nucleus and chromosomes, while the MF category, the GO terms grouped into structural components of ribosome and translation regulator activity, catalytic activity acting on a nucleic acid and nucleic acid binding, aminoacyl-tRNA ligase activity, and NAD binding (**Table 3B**).
 
-KEGG pathway analysis on the DEGs was also performed using both the gprofiler2 R package [@Gprofiler2] and the DAVID online resource. Both resources gave similar results, but the results from DAVID (**Table 4A**) included more information than the gprofiler2 results (**Table S2**). The results from the KEGG pathway analysis were consistent with the GO results, revealing that generally, cell maintenance and upkeep pathways were downregulated while cell death and breakdown pathways were upregulated. We observed that cell maintenance pathways such as DNA replication and repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation were downregulated at both 12- and 24-hpi. Pathways such as: autophagy, response to virus (Influenza A), and steroid biosynthesis were upregulated at 12-hpi, which is similar to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated proteolysis, lysosome, protein processing in endoplasmic reticulum, and steroid biosynthesis were upregulated.
+KEGG pathway analysis on the DEGs was also performed using both the gprofiler2 R package [@Gprofiler2] and the DAVID online resource. Both resources gave similar results, but the results from DAVID (**Table 4**) included more information than the gprofiler2 results (**Table S2**). The results from the KEGG pathway analysis were consistent with the GO results, revealing that generally, cell maintenance and upkeep pathways were downregulated while cell death and breakdown pathways were upregulated. We observed that cell maintenance pathways such as DNA replication and repair, ribosome biogenesis, spliceosome, and oxidative phosphorylation were downregulated at both 12- and 24-hpi. Pathways such as: autophagy, response to virus (Influenza A), and steroid biosynthesis were upregulated at 12-hpi, which is similar to 24-hpi, where pathways such as: autophagy, ubiquitin-mediated proteolysis, lysosome, protein processing in endoplasmic reticulum, and steroid biosynthesis were upregulated.
 
 It is well-established that THEV induces cell death (apoptosis and necrosis) in infected B-cells, which is linked to THEV-induced IMS [@Rautenschlein2000b; @Rautenschlein2000; @Saunders1993]. Hence, we were particularly interested in cellular processes and pathways associated with cell death and pathways that may affect the survival of the host B-cells, thereby accounting for THEV-induced IMS. We highlight the upregulated cell death (apoptosis and autophagy), ubiquitin-dependent endoplasmic reticulum [ER]-mediated protein degradation, and suppressed cell maintenance pathways as well as cytokine deregulation identified by our GO and KEGG analyses as the likely key aspects of THEV-host cell interaction relevant to THEV-induced IMS. 
 
@@ -187,7 +187,7 @@ We found that several essential cell maintenance processes whose suppression can
 Protein synthesis-related  processes, including ribosome biogenesis, rRNA processing, ribosome assembly, protein folding, translational initiation, protein maturation, ribosome and ribonucleoprotein complex formation, translation pre-initiation complex formation, and cytoplasmic translation were significantly downregulated at both 12- and 24-hpi. Notable genes identified include eukaryotic translation initiation factors (*EIF1, EIF1AX, EIF3E and EIF3F, EIF3H, EIF3I, EIF3L and EIF3M*), biogenesis of ribosomes BRX1 (*BRIX1*), MCTS1 re-initiation and release factor (*MCTS1*), and ribosomal protein subunits (*RPL8, RPL10a, RPL11, RP12, RP13, RP14, RP15, RP18a, RP19*).
 
 **Endoplasmic Reticulum (ER) Stress Response during THEV infection**   
-Our KEGG pathway analysis (**Table 4A**) showed that protein processing in the ER, and ubiquitin-mediated proteolysis are significantly upregulated (**Figure 5**). The GO results (**Table 3A**) showed that specifically, ER stress and the ER‐associated protein degradation (ERAD) pathway, a branch of the unfolded protein response (UPR) were upregulated during THEV infection, especially at 24-hpi. The ER is the major site for protein synthesis, folding and quality control, and sorting [@Christianson2022]. Upon ER stress or continued accumulation of unfolded proteins in the ER lumen, the UPR pathways are activated to restore ER homeostasis. The ERAD pathway, a ubiquitin‐proteasome‐dependent pathway, is a protein quality control system activated for degradation of misfolded and unassembled proteins [@Christianson2022]. In our results, the THEV-infected samples showed significant increase in ERAD pathway effector proteins, such as valosin containing protein (*VCP*), ubiquitin recognition factor in ER associated degradation 1 (*UFD1*), ER degradation enhancing alpha-mannosidase like proteins 1 and 3 (*EDEM1, EDEM3*), cullin 1 (*CUL1*), and ubiquilin 1 (*UBQLN1*). Other genes related to other UPR pathways such as *HSPA5* and *ATF4* were also upregulated. Our KEGG pathway (**Table S2**) and GO (**Figure 4B**) results indicated a significant upregulation of ubiquitin mediated proteolysis with other ubiquitination pathway proteins such as ubiquitin conjugating enzymes (*UBE2J2, UBE2E3, UBE2Z*), ubiquitin protein ligases (*UBE3A, UBE3B*), NPL4 homolog ubiquitin recognition factor (*NPLOC4*), and ubiquitin like modifier activating enzyme 6 (*UBA6*) showing significant upregulation. Additionally, the heat shock family of chaperone proteins such as the DnaJ heat shock protein family (*HSP40*) members (*DNAJB11, DNAJB12, DNAJB2, DNAJC10*),  heat shock protein family A (*HSP70*) members (*HSPA4L, HSPA5, HSPA8*), and heat shock protein 90 alpha family class A member 1 (*HSP90AA1*) were upregulated at 24-hpi. Moreover, the KEGG pathway analysis (**Table 4A**) shows a significant upregulation in lysosome formation, lumen acidification, and lysosomal degradation, likely an indication of ER-to-lysosome-associated degradation. Taken together, these results suggest that THEV infection triggers significant ER-associated protein degradation, which may contribute to cell death and IMS.
+Our KEGG pathway analysis (**Table 4**) showed that protein processing in the ER, and ubiquitin-mediated proteolysis are significantly upregulated (**Figure 5**). The GO results (**Table 3A**) showed that specifically, ER stress and the ER‐associated protein degradation (ERAD) pathway, a branch of the unfolded protein response (UPR) were upregulated during THEV infection, especially at 24-hpi. The ER is the major site for protein synthesis, folding and quality control, and sorting [@Christianson2022]. Upon ER stress or continued accumulation of unfolded proteins in the ER lumen, the UPR pathways are activated to restore ER homeostasis. The ERAD pathway, a ubiquitin‐proteasome‐dependent pathway, is a protein quality control system activated for degradation of misfolded and unassembled proteins [@Christianson2022]. In our results, the THEV-infected samples showed significant increase in ERAD pathway effector proteins, such as valosin containing protein (*VCP*), ubiquitin recognition factor in ER associated degradation 1 (*UFD1*), ER degradation enhancing alpha-mannosidase like proteins 1 and 3 (*EDEM1, EDEM3*), cullin 1 (*CUL1*), and ubiquilin 1 (*UBQLN1*). Other genes related to other UPR pathways such as *HSPA5* and *ATF4* were also upregulated. Our KEGG pathway (**Table S2**) and GO (**Figure 4B**) results indicated a significant upregulation of ubiquitin mediated proteolysis with other ubiquitination pathway proteins such as ubiquitin conjugating enzymes (*UBE2J2, UBE2E3, UBE2Z*), ubiquitin protein ligases (*UBE3A, UBE3B*), NPL4 homolog ubiquitin recognition factor (*NPLOC4*), and ubiquitin like modifier activating enzyme 6 (*UBA6*) showing significant upregulation. Additionally, the heat shock family of chaperone proteins such as the DnaJ heat shock protein family (*HSP40*) members (*DNAJB11, DNAJB12, DNAJB2, DNAJC10*),  heat shock protein family A (*HSP70*) members (*HSPA4L, HSPA5, HSPA8*), and heat shock protein 90 alpha family class A member 1 (*HSP90AA1*) were upregulated at 24-hpi. Moreover, the KEGG pathway analysis (**Table 4**) shows a significant upregulation in lysosome formation, lumen acidification, and lysosomal degradation, likely an indication of ER-to-lysosome-associated degradation. Taken together, these results suggest that THEV infection triggers significant ER-associated protein degradation, which may contribute to cell death and IMS.
 
 **Differential Expression of Cytokine and Cytokine Receptor-encoding Genes**   
 Our KEGG pathway results showed that a pathway similar to immune response to influenza A infection was upregulated at 12-hpi. Our GO analysis also identified terms such as regulation of lymphocyte activation and regulation of cytokine production as upregulated at both 12- and 24-hpi. Genes involved include *IL18, IL2RB, IL4R, IL5RA*, TNF receptor associated factors (*TRAF2, TRAF3, TRAF6, TRAF7, TRAFD1*), TNF receptor superfamily members (*TNFRSF1B, TNFRSF8, TNFSF4*), interferon-induced with helicase C domain 1 (*IFIH1*), interferon-induced double-stranded RNA-activated protein kinase (*PKR*), and	*CD80*. In contrast, cytokine inhibitors such as suppressor of cytokine signaling (*SOCS3* and *SOCS5*) were also upregulated at both 12 and 24-hpi and immunoglobulin production and isotype switching GO terms were downregulated at 12-hpi. This inconsistency is likely an indicator of the struggle between the virus and its host. While several cytokines were regulated by THEV as in the proposed model of THEV immunopathogenesis (**Figure 1**), the cytokines in the model (IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\) TNF, and IL-6) were not significantly differentially expressed in our data. However, some of the differentially expressed cytokines and cytokine receptors (*TNFRSF8, TRAF7*) identified in this study are positive regulators of apoptosis; therefore, they may play a role in THEV-induced IMS.
@@ -291,7 +291,7 @@ All the code/scripts in the entire analysis pipeline are available on GitHub (<h
 \newpage
 \FloatBarrier
 ```{r, mapping_stats_table}
-set_flextable_defaults(font.size = 6, table.layout = "fixed", float = "none")
+set_flextable_defaults(font.size = 8, table.layout = "fixed", float = "none")
 mapStats %>%
   flextable(., cheight = 0.1) %>%
   theme_box() %>%
@@ -351,22 +351,15 @@ make_GO_table <- function(goTerms_res){
     merge_at(., i = bp_row_num, j = 1:5, part = "body") %>%
     merge_at(., i = cc_row_num, j = 1:5, part = "body") %>%
     flextable::bold(part = "body", i = c(1, bp_row_num, cc_row_num)) %>%
-    flextable::fontsize(part = "body", size = 6) %>%
-    flextable::fontsize(part = "head", size = 6) %>%
-    flextable::fontsize(part = "body", i = c(1, bp_row_num, cc_row_num), size = 6) %>%
-    flextable::width(., j = 2, width = 3.5) #%>%
-    # flextable::height(., height = 0.6) %>%
-    # flextable::hrule(., rule = "exact", part = "all") %>%
-    # flextable::height(., height = 0.1, i = c(1, bp_row_num, cc_row_num)) %>%
-    # flextable::height(part = "header", height = 0.2)
+    flextable::fontsize(part = "body", size = 8) %>%
+    flextable::fontsize(part = "head", size = 8) %>%
+    flextable::fontsize(part = "body", i = c(1, bp_row_num, cc_row_num), size = 8) %>%
+    flextable::width(., j = 2, width = 3.5)
   
   return(table)
 }
 
 go_res_table12up <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_up) %>% unnest(.)
-
-# write_tsv(go_res_table12up, "results/r/tables/submission/table2a.tsv",
-#           col_names = T)
 
 make_GO_table(go_res_table12up) %>%
     set_caption("Table 2A: Gene ontology analysis of Significantly Upregulated DEGs identified at 12-hpi")
@@ -393,9 +386,6 @@ make_GO_table(go_res_table12dw) %>%
 # Table 3A
 go_res_table24up <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_up) %>% unnest(.)
 
-# write_tsv(go_res_table24up, "results/r/tables/submission/table3a.tsv",
-#           col_names = T)
-
 make_GO_table(go_res_table24up) %>%
     set_caption("Table 3A: Gene ontology analysis of Significantly Upregulated DEGs identified at 24-hpi")
 
@@ -406,9 +396,6 @@ make_GO_table(go_res_table24up) %>%
 ```{r GOTerm_Enrich_DOWN_24hpi}
 # Table 3B
 go_res_table24dw <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_down) %>% unnest(.)
-
-# write_tsv(go_res_table24dw, "results/r/tables/submission/table3b.tsv",
-#           col_names = T)
 
 make_GO_table(go_res_table24dw) %>%
     set_caption("Table 3B: Gene ontology analysis of Significantly Downregulated DEGs identified at 24-hpi")
@@ -436,7 +423,8 @@ david_kegg %>% flextable(.) %>%
                     term = "KEGG Term", num_degs = "DEG Count",
                     fold_enrich = "Fold Enrichment", qval = "P-value\n(Adjusted)") %>%
   flextable::align(align = "center", part = "all") %>%
-  set_caption("Table 4A: Significantly Enriched KEGG Pathways from DEGs identified at 12- and 24-hpi (Results from the DAVID online resource)")
+  flextable::fontsize(part = "all", size = 8) %>%
+  set_caption("Table 4: Significantly Enriched KEGG Pathways from DEGs identified at 12- and 24-hpi (Results from the DAVID online resource)")
 
 ```
 
@@ -486,7 +474,7 @@ tibble(gene_id = c("100303685", "100303677", "100543138", "100549497",
                     reverseP = "Reverse Primer", amplicon = "Amplicon Size",
                     gene_id = "Entrez ID") %>%
   flextable::align(align = "center", part = "all") %>%
-  flextable::fontsize(., size = 7, part = "all") %>%
+  flextable::fontsize(., size = 8, part = "all") %>%
   italic(., j = "target") %>%
   flextable::width(width = 0.6) %>%
   flextable::width(j = c("forwardP", "reverseP"), width = 2.2) %>%
@@ -524,5 +512,6 @@ gprofiler_kegg %>% flextable(.) %>%
                     term_name = "KEGG Term", deg_count = "DEG Count",
                       p_value = "P-value (Adjusted)") %>%
   flextable::align(align = "center", part = "all") %>%
+  flextable::fontsize(part = "all", size = 8) %>%
   set_caption("Table S2: Significantly Enriched KEGG Pathways from DEGs identified at 12- and 24-hpi (Results from the gprofiler2 R package)")
 ```
