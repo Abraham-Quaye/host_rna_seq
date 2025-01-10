@@ -161,40 +161,38 @@ Provo, Utah\\
 
 \newpage
 
-\subsection{ABSTRACT}\label{abstract}
+\subsection{Abstract}\label{abstract}
 
 Infection with Turkey Hemorrhagic Enteritis Virus (THEV) can cause
 hemorrhagic enteritis, which affects turkey poults. This disease is
 characterized by bloody diarrhea and immunosuppression (IMS), which is
-attributed to apoptosis of infected B cells. Secondary opportunistic
-infections due to IMS exacerbates economic losses. To elucidate the
-mechanisms mediating THEV-induced IMS, we performed the first
-transcriptomic analysis of a THEV infection using bulk RNA-sequencing.
-After infecting and sequencing mRNAs of a turkey B-cell line, trimmed
-reads were mapped to the host turkey genome and gene expression was
-quantified with StringTie. Differential gene expression analysis was
-followed by functional enrichment analyses using gprofiler2 and DAVID
-from NCBI. RT-qPCR of select genes was performed to validate the RNA-seq
-data. A total of 2,343 and 3,295 differentially expressed genes (DEGs)
-were identified at 12-hpi and 24-hpi, respectively. The DEGs contributed
-to multiple biological processes including apoptosis, ER unfolded
-protein response, and cell maintenance. Multiple pro-apoptotic genes,
-including \emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, and FAS} were
-upregulated. Genes that play a role in ER stress-induced unfolded
-protein response including \emph{VCP, UFD1, EDEM1, EDEM3, and ATF4} were
-also upregulated and may contribute to apoptosis. Our data suggest that
-several biological processes and pathways including apoptosis, ER
-response to stress, and repression of essential cellular maintenance
-functions are important aspects of the host cell response to THEV
-infection. It is possible that interplay between multiple processes may
-mediate apoptosis of infected B-cells, leading to IMS.
+attributed to apoptosis of infected B cells. Secondary infections due to
+IMS exacerbates economic losses. We performed the first transcriptomic
+analysis of a THEV infection to elucidate the mechanisms mediating
+THEV-induced IMS. After infecting and sequencing mRNAs of a turkey
+B-cell line, trimmed reads were mapped to the host turkey genome and
+gene expression was quantified with StringTie. Differential gene
+expression analysis was followed by functional enrichment analyses using
+gprofiler2 and DAVID from NCBI. RT-qPCR of select genes was performed to
+validate the RNA-seq data. A total of 2,343 and 3,295 differentially
+expressed genes (DEGs) were identified at 12-hpi and 24-hpi,
+respectively. The DEGs contributed to multiple biological processes
+including apoptosis, ER unfolded protein response, and cell maintenance.
+Multiple pro-apoptotic genes, including \emph{APAF1, BMF, BAK1, and FAS}
+were upregulated. Genes that play a role in ER stress-induced unfolded
+protein response including \emph{VCP, UFD1, EDEM1, and ATF4} were also
+upregulated and may contribute to apoptosis. Our data suggest that
+several biological processes and pathways including apoptosis and ER
+response to stress are important aspects of the host cell response to
+THEV infection. It is possible that interplay between multiple processes
+may mediate apoptosis of infected B-cells, leading to IMS.
 
-\subsection{KEY WORDS}\label{key-words}
+\subsection{Keywords}\label{keywords}
 
 Turkey hemorrhagic enteritis virus (THEV), Adenovirus, RNA sequencing,
-Apoptosis, Immunosuppression, ER stress, B cell \newpage
+Apoptosis, Immunosuppression, ER stress, B cell. \newpage
 
-\subsection{INTRODUCTION}\label{introduction}
+\subsection{1. Introduction}\label{introduction}
 
 Turkey hemorrhagic enteritis virus (THEV) belongs to genus
 \emph{Siadenovirus}, family \emph{Adenoviridae}, and infects turkeys,
@@ -269,7 +267,7 @@ processes and pathways affected during a THEV time course infection. We
 specifically focus on cellular processes related to cell survivability
 that can elucidate THEV-induced IMS. \newpage
 
-\subsection{MATERIALS AND METHODS}\label{materials-and-methods}
+\subsection{2. Materials and Methods}\label{materials-and-methods}
 
 \subsubsection{Cell culture and THEV
 Infection}\label{cell-culture-and-thev-infection}
@@ -391,9 +389,9 @@ Statistical analyses of the RT-qPCR results were performed using R
 comparison between two groups. A p-value \(\leq\) 0.05 was considered
 statistically significant. \newpage
 
-\subsection{RESULTS}\label{results}
+\subsection{3. Results}\label{results}
 
-\textbf{Sequencing Results}\\
+\textbf{3.1.1 Sequencing Results}\\
 To identify the host transcriptomic profile during THEV infection, we
 infected MDTC-RP19 cells with THEV or no virus (mock) in triplicates or
 duplicates, respectively, and harvested at total RNA at 4-, 12-, 24-,
@@ -417,7 +415,7 @@ excluded from all subsequent analyses. In the remaining 12- and 24-hpi
 samples, a high consistency was observed between biological replicates
 (\textbf{Figure 2A} and \textbf{B}).
 
-\textbf{DEGs of THEV-infected Versus Mock-infected Cells}
+\textbf{3.1.2 DEGs of THEV-infected Versus Mock-infected Cells}
 
 We quantified gene expression levels with the StringTie software (20) in
 Fragments per kilobase of transcript per million (FPKM) units. The
@@ -447,7 +445,8 @@ log\textsubscript{2}FC values ranged between \textbf{-2.0} and
 \textbf{KCNG1} (Potassium Voltage-Gated Channel Modifier Subfamily G
 Member 1), respectively.
 
-\textbf{Functional Enrichment Analyses (GO and KEGG pathway Analyses)}\\
+\textbf{3.1.3 Functional Enrichment Analyses (GO and KEGG pathway
+Analyses)}\\
 Gene ontology (GO) enrichment analysis was performed for the DEGs
 determined at the 12- and 24-hpi timepoints with the DAVID (Database for
 Annotation, Visualization and Integrated Discovery; version 2021) online
@@ -532,7 +531,7 @@ cytokine deregulation identified by our GO and KEGG analyses as the
 likely key aspects of THEV-host cell interaction relevant to
 THEV-induced IMS.
 
-\textbf{Cell Death and Breakdown Pathways Upregulated by THEV}\\
+\textbf{3.1.4 Cell Death and Breakdown Pathways Upregulated by THEV}\\
 Many virus families, including adenoviruses, herpesviruses, poxviruses,
 baculoviruses, parvoviruses, retroviruses, rhabdoviruses,
 paramyxoviruses, orthomyxoviruses, togaviruses, and picornaviruses are
@@ -569,7 +568,7 @@ TNF receptor associated factor 6 (\emph{TRAF6}), autophagy related 9A
 and autophagy related 4B cysteine peptidase (\emph{ATG4B}) were
 upregulated.
 
-\textbf{Downregulation of Cell Maintenance Pathways}\\
+\textbf{3.1.5 Downregulation of Cell Maintenance Pathways}\\
 Forcibly transitioning the host cell cycle to the S phase during the
 early phase of infection is a prerequisite for a productive adenovirus
 infection (34). Interaction of the viral E1A early proteins with the
@@ -616,7 +615,7 @@ re-initiation and release factor (\emph{MCTS1}), and ribosomal protein
 subunits (\emph{RPL8, RPL10a, RPL11, RP12, RP13, RP14, RP15, RP18a,
 RP19}).
 
-\textbf{Endoplasmic Reticulum (ER) Stress Response during THEV
+\textbf{3.1.6 Endoplasmic Reticulum (ER) Stress Response during THEV
 infection}\\
 Our KEGG pathway analysis (\textbf{Table 4}) showed that protein
 processing in the ER, and ubiquitin-mediated proteolysis are
@@ -656,7 +655,7 @@ degradation. Taken together, these results suggest that THEV infection
 triggers significant ER-associated protein degradation, which may
 contribute to cell death and IMS.
 
-\textbf{Differential Expression of Cytokine and Cytokine
+\textbf{3.1.7 Differential Expression of Cytokine and Cytokine
 Receptor-encoding Genes}\\
 Our KEGG pathway results showed that a pathway similar to immune
 response to influenza A infection was upregulated at 12-hpi. Our GO
@@ -681,8 +680,8 @@ cytokine receptors (\emph{TNFRSF8, TRAF7}) identified in this study are
 positive regulators of apoptosis; therefore, they may play a role in
 THEV-induced IMS.
 
-\textbf{Validation of DEGs by Reverse Transcriptase Quantitative PCR
-(RT-qPCR)}\\
+\textbf{3.1.8 Validation of DEGs by Reverse Transcriptase Quantitative
+PCR (RT-qPCR)}\\
 To validate the RNA-seq results, 12 DEGs (8 upregulated and 4
 downregulated) were selected for RT-qPCR. The DEGs were representative
 of apoptosis (\emph{APAF1, BMF, FADD, MADD, and PDCD4}), ERAD and
@@ -700,697 +699,13 @@ to our Student's T-test and Mann-Whitney U test, the difference in gene
 expression levels in all the selected genes were statistically
 significant. \newpage
 
-\subsection{DISCUSSION}\label{discussion}
-
-THEV has a worldwide distribution, wreaking economic havoc on affected
-poultry farms, particularly due to its immunosuppressive trait allowing
-secondary opportunistic infections to devastate turkey populations (4,
-6). HE in turkeys causes more economic losses than any disease caused in
-other birds like chicken or pheasants (4). While the current vaccine
-strain (VAS) has proven effective at preventing clinical HE in turkey
-poults, the retention of its immunosuppressive properties leaves some of
-the issues associated with economic losses unresolved. Elucidating the
-virus-host interactions leading to IMS is most pressing for not only the
-understanding of the viral infection and pathogenesis but also future
-antiviral therapy targets. Since both virulent and avirulent THEV cause
-IMS but the avirulent are used as vaccine, we believe that studying VAS
-would be more expedient for understanding THEV vaccine-induced IMS.
-
-Only one cell line (MDTC-RP19 or RP19) has been found to be capable of
-supporting THEV replication (39). Thus, in this work, we establish the
-first transcriptomic profile of THEV infection in RP19 cells using
-paired-end RNA-seq. We attempted a multi-time point experimental design
-but this being the first transcriptomic study of THEV infection, we
-faced some difficulties, including selecting our sampling time points
-based on the only study of THEV gene expression kinetics (40), leading
-to only 12- and 24-hpi providing useful data. In total \textbf{2,343}
-and \textbf{3,295} DEGs were identified at 12-hpi and 24-hpi,
-respectively. At 12-hpi, \textbf{1,079} genes were upregulated and
-\textbf{1,264} genes downregulated, whereas \textbf{1,512} genes were
-upregulated and \textbf{1,783} genes downregulated at 24-hpi. Being a
-non-model organism, a significant proportion of the host (\emph{M.
-gallopavo}) genes are not annotated and not recognized by the databases
-used for functional enrichment analysis. Thus, the obtained results are
-likely sub-optimal in amount of detail relative to results from well
-annotated and curated genomes of model organisms. The DEGs were related
-to multiple biological processes all potentially playing a role in THEV
-infection but the most relevant to our study are apoptosis, ER
-stress-induced unfolded protein response, suppressed cell maintenance
-processes, and cytokine deregulation. Furthermore, the RT-qPCR results
-validated the RNA-seq results. Collectively, this study may shed light
-on some significant aspects of THEV-host interactions, which may benefit
-further mechanistic delineation of the viral infection and induction of
-IMS and inform future development of anti-THEV strategies. The
-biological processes most relevant to THEV-induced IMS highlighted by
-this study are further discussed below.
-
-Apoptosis is a key defense mechanism activated by cells in response to
-irreversible injury and virus infection to abrogate virus propagation.
-It is a formidable cellular defense network, non-specific to any virus
-family and therefore an important problem for any infecting virus to
-overcome (31--33). The adenovirus E1A proteins are strong inducers of
-apoptosis. They bind host pRb and p300/CBP protein, inducing
-p53-mediated apoptosis, and can also sensitize infected cells to
-TNF\(\alpha\) and TRAIL-induced apoptosis (34, 35). However,
-adenoviruses have developed multiple distinct anti-apoptotic mechanisms
-to counter almost all cellular pro-apoptotic programs. For example, E1A
-blocks its own induction of p53-dependent apoptosis and E1B proteins
-(E1B-19K and E1B-55K) counteract several types of apoptosis including
-TNF-induced apoptosis (34, 35). Despite the rich arsenal of
-countermeasures, transcriptomic studies of human adenovirus infections
-suggest a complex set of virus-host interactions where both pro- and
-anti-apoptotic genes are turned on contemporaneously. For example, in
-human adenovirus 2 infection, both pro- and anti-apoptotic BCL2 family
-genes were stimulated (34). Siadenoviruses including THEV are the
-smallest adenoviruses and therefore encode the fewest genes (10, 41).
-THEV encodes a mere 34 ORFs with no anti-apoptotic genes characterized
-(41). In agreement with these findings, in our results a strong signal
-indicative of apoptotic induction was observed. However, like
-mastadenovirus infections, a complex relationship between pro and
-anti-apoptotic genes were observed. Pro-apoptotic genes such as
-\emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, FAS, FADD} and \emph{ATF} were
-upregulated in concert with the anti-apoptotic genes \emph{BCL2, BNIP2,
-BCL2A1} and \emph{API5}. We speculate that this complex regulation is
-predictive of THEV possessing some anti-apoptotic genes but not
-sufficiently potent to thwart the cellular apoptotic response.
-Interestingly, pro-apoptotic genes in both intrinsic and extrinsic
-pathways were upregulated, possibly due to a concurrent stimulation of
-multiple apoptotic pathways or a positive feedback mechanism of one
-system activating the other. The specific mechanism of apoptosis
-induction remains elusive. Further studies designed to elucidate these
-fine details are warranted and would benefit future THEV therapeutics.
-
-The ER serves many specialized functions including biosynthesis and
-assembly of membrane and secretory proteins, calcium storage, and
-biosynthesis of lipids and sterols. It is also the site of protein
-folding and post-translational modifications and maintains stringent
-quality control systems, ensuring exported proteins are correctly folded
-and degradation of unfolded or misfolded proteins (16, 38, 42).
-Disruption of ER homeostasis or ER stress leads to accumulation of
-incorrect proteins in the ER lumen, triggering the UPR. The UPR restores
-ER normality by transiently attenuating general protein synthesis,
-increasing the lumenal folding capacity, and the degradation of
-misfolded proteins through the ERAD pathway or autophagy (16, 38, 42,
-43). However, if incorrect lumenal protein overload persists, the
-prolonged UPR will induce apoptosis known as ER stress-associated
-programmed cell death (42, 43). Many DNA and RNA viruses are reported to
-induce ER stress and UPR pathways during infection (16). In our results,
-\emph{ATF4} and PKR-like ER protein kinase (\emph{PERK}), key proteins
-in the \emph{PERK} branch of the UPR pathway were upregulated. A myriad
-of ERAD pathway proteins (e.g., \emph{VCP, UFD1, EDEM1, EDEM3, CUL1,
-UBQLN1}), ubiquitination system proteins (e.g., \emph{UBE2J2, UBE2E3,
-UBE2Z, UBE3A, UBE3B}), and heat shock family of chaperone proteins
-(e.g., \emph{HSPA5, HSP4L, HSPA8, HSP90AA1}) all showed increased
-expression according to our RNA-seq data with some validated with
-RT-qPCR. These data strongly suggest that THEV infection triggers the ER
-UPR pathways leading to a massive decrease of protein synthesis and
-deregulation of sterol biosynthesis, and ubiquitin-mediated proteolysis,
-all supported by our results. As noted above, a prolonged UPR activation
-leads to ER stress-associated programmed cell death via genes such
-\emph{ATF4} (42, 43). Thus, we suggest that the ER stress response
-likely plays a crucial role in THEV-induced IMS. Nonetheless, the
-mechanisms underlying the regulation of the UPR pathways by THEV remain
-to be clearly unraveled. Also, whether and how the ER stress response
-affects THEV infection and pathogenicity should be studied.
-Unsurprisingly, protein degradation was more pronounced at the 24-hpi
-than at 12-hpi, reflecting the suggested two phases of UPR -- phase one
-allows the unfolded proteins time to refold without degradation and
-phase two degrades any proteins which have failed to fold (43).
-
-In the proposed model of THEV immunopathogenesis by Rautenschlein
-\emph{et al} (\textbf{Figure 1}), while THEV directly induced cell death
-in infected cells, cytokines are responsible for extending cell death to
-bystander splenocytes (8). However, the primary cytokines
-(IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\) TNF, IL-6, and NO)
-highlighted in the model were not significantly differentially expressed
-in our data. This may be explained by the fact that the model was
-proposed based on data from splenocytes of THEV-infected turkeys, which
-have the full complement of immune cells (T-cells, B-cells, macrophages)
-shown in the model and not solely from B-cell culture data as in this
-study. From the model, T-cells and macrophages are the principal
-producers of the effector cytokines; thus, there is agreement with our
-data that B-cells alone would poorly simulate the cytokine communication
-network. This may also explain the very few immune-associated biological
-processes in our data as the B-cells may require cytokines from other
-immune cells such as macrophages and T-cells for optimal activation.
-Further transcriptomic studies with splenocytes would offer a wealth of
-insights regarding these ideas. It also likely that cytokines may only
-play a dominant role in some aspects of THEV-infection such as the
-clinical hemorrhage of the intestines but not the associated IMS since a
-study using the TNF-blocking drug (thalidomide) only prevented
-intestinal disease, not IMS (8). While some of the upregulated cytokines
-and receptors in our results are positive apoptosis regulators
-(\emph{TNFRSF8, TRAF7}), most of the cytokines are either anti-apoptotic
-(\emph{TNFRSF1B, TRAF2}), boost host antiviral defense (\emph{IL18,
-TNFSF4, PKR, TRAFD1, IFIH1}), or suppress cytokine signaling
-(\emph{SOCS3, SOCS5}). Therefore, we speculate that a
-non-cytokine-mediated apoptotic process such as ER stress-associated
-programmed cell death is more likely to mediate direct killing of
-infected cells. However, whether bystander cell death occurs and if it
-is cytokine-mediated as suggested by Rautenschlein \emph{et al} are
-important questions that can be addressed with future transcriptomic
-studies in splenocytes.
-
-By convention, the Mastadenovirus replication cycle is divided into two
-phases, an early and a late phase, separated by the onset of viral DNA
-replication (34, 35). Based on DNA microarray analysis, adenovirus type
-2 (Ad2) infection has been divided into four stages. The first period is
-from 0 to 12-hpi during which changes in cellular gene expression are
-likely to be triggered by the viral entry process. Most of the
-deregulated genes have functions linked to inhibition of cell growth.
-Therefore, growth suppression is most likely the first response of the
-host cell to the incoming virus (34). The second period covers the time
-from 12 to 24-hpi and follows activation of the immediate early E1A
-gene, which forcibly transition cell cycle to S phase (34). While the
-temporal changes of host gene expression for a THEV infection have not
-been characterized in prior studies, our data showed that during the
-first 24-hpi, cell growth was suppressed. Cell maintenance processes
-involving nucleic acid and proteins were downregulated according to our
-data. Protein synthesis-related processes including ribosome biogenesis,
-rRNA processing, ribosome assembly, protein folding, translational
-initiation, protein maturation, and others were heavily affected.
-Additionally, DNA and RNA synthesis, maintenance, and repair such as
-nucleotide biosynthesis and metabolism, double strand break repair, and
-DNA excision repair were also repressed. As severe DNA damage leads to
-DNA damage-dependent apoptosis (36) and repression of RNA and protein
-synthesis is also strongly associated with apoptosis (37), these
-inhibitions may also play a role in THEV-induced IMS. Moreover, we
-speculate that the ER UPR may contribute partly to the severe repression
-of protein synthesis as discussed above. An in-depth study of temporal
-changes of host gene expression during THEV infection would be
-invaluable in establishing if THEV follows the same pattern as Ad2.
-\newpage
-
-\subsection{CONCLUSIONS}\label{conclusions}
-
-THEV-induced IMS is a pressing concern for turkey farmers worldwide,
-causing substantial economic losses annually. In this study, we
-establish the cellular transcriptomic profile of THEV infection in
-turkey RP19 B-cells using paired-end RNA-seq, identifying \textbf{1,079}
-upregulated genes and \textbf{1,264} downregulated genes at 12-hpi and
-\textbf{1,512} upregulated genes and \textbf{1,783}downregulated genes
-at 24-hpi. Our data suggest that several biological processes and
-pathways including apoptosis, immune response, ER response to stress,
-ubiquitin-dependent protein catabolic process, and repression of
-essential cellular maintenance are significant aspects of host cell
-response to THEV infection. All these processes are established
-apoptosis inducing mechanisms; therefore, we believe that either one or
-synergistic interplay between multiple ones may mediate cell death of
-infected B-cells, leading to IMS. These findings provide the first
-insights into THEV-host interactions and may help advance the
-understanding of non-human adenoviral infection and pathogenesis, which
-may eventually inform the development of medical countermeasures for
-disease prevention and treatment. \newpage
-
-\subsection{ABBREVIATIONS}\label{abbreviations}
-
-The following are abbreviations used in this manuscript:
-
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{1.00in}|p{2.00in}}
-
-
-
-\ascline{0.75pt}{666666}{1-2}
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Abbreviation}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Definition}}}} \\
-
-\ascline{0.75pt}{666666}{1-2}\endfirsthead 
-
-\ascline{0.75pt}{666666}{1-2}
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Abbreviation}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Definition}}}} \\
-
-\ascline{0.75pt}{666666}{1-2}\endhead
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{DAVID}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Database\ for\ Annotation,\ Visualization\ and\ Integrated\ Discovery}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{DEG}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Differentially\ Expressed\ Gene}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ER}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Endoplasmic\ Reticulum}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ERAD}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Endoplasmic\ Reticulum-associated\ Degradation}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{FPKM}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Fragments\ Per\ Kilobase\ of\ transcript\ per\ Million\ mapped\ reads}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{GCN}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Genome\ Copy\ Number}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{GO}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Gene\ Ontology}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{HE}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Hemorrhagic\ Enteritis}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{IMS}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Immunosuppression}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{KEGG}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Kyoto\ Encyclopedia\ of\ Genes\ and\ Genomes}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ORF}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Open\ Reading\ Frame}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RNA-seq}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RNA\ sequencing}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RT-qPCR}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Reverse\ Transcriptase\ Quantitative\ Polymerase\ Chain\ Reaction}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{THEV}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Turkey\ Hemorrhagic\ Enteritis\ Virus}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{UPR}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Unfolded\ Protein\ Response}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{VAS}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Virginia\ Avirulent\ Strain}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{hpi}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Hours\ Post-infection}}} \\
-
-\ascline{0.75pt}{666666}{1-2}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
-
-\subsection{ACKNOWLEDGMENTS}\label{acknowledgments}
-
-We thank the Office of Research Computing at Brigham Young University
-for granting us access to the high-performance computing systems to
-perform the memory-intensive steps in the analysis pipeline of this
-work.
-
-\subsection{CONFLICT OF INTEREST}\label{conflict-of-interest}
-
-The authors declare that they have no conflict of interest.
-
-\subsection{DATA AVAILABILITY}\label{data-availability}
-
-The raw sequencing read data (FastQ), gene expression counts, and total
-DEGs identified at 12- and 24-hpi have been deposited at the NCBI Gene
-Expression Omnibus (\url{http://www.ncbi.nlm.nih.gov/geo}) under
-accession number GSE286211.
-
-All the code/scripts in the entire analysis pipeline are available on
-GitHub (\url{https://github.com/Abraham-Quaye/host_rna_seq}) \newpage
-
-\subsection{REFERENCES}\label{references}
-
-\setlength{\parindent}{-0.25in}
-\setlength{\leftskip}{0.25in}
-
-\noindent
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{0}{1}
-\bibitem[\citeproctext]{ref-Harrach2008}
-\CSLLeftMargin{1. }%
-\CSLRightInline{Harrach B. 2008.
-\href{https://doi.org/10.1016/B978-012374410-4.00680-4}{Adenoviruses:
-General features}, p. 1--9. \emph{In} Mahy, BWJ, Van Regenmortel, MHV
-(eds.), Encyclopedia of virology (third edition). Book Section. Academic
-Press, Oxford.}
-
-\bibitem[\citeproctext]{ref-Davison2003}
-\CSLLeftMargin{2. }%
-\CSLRightInline{Davison A, Benko M, Harrach B. 2003.
-\href{https://doi.org/10.1099/vir.0.19497-0}{Genetic content and
-evolution of adenoviruses}. The Journal of general virology
-84:2895--908.}
-
-\bibitem[\citeproctext]{ref-Gross1967}
-\CSLLeftMargin{3. }%
-\CSLRightInline{Gross WB, Moore WE. 1967. Hemorrhagic enteritis of
-turkeys. Avian Dis 11:296--307.}
-
-\bibitem[\citeproctext]{ref-Beach2006}
-\CSLLeftMargin{4. }%
-\CSLRightInline{Beach NM. 2006.
-\href{http://scholar.lib.vt.edu/theses/available/etd-08142006-145339/}{Characterization
-of avirulent turkey hemorrhagic enteritis virus: A study of the
-molecular basis for variation in virulence and the occurrence of
-persistent infection}. Thesis.}
-
-\bibitem[\citeproctext]{ref-Dhama2017}
-\CSLLeftMargin{5. }%
-\CSLRightInline{Dhama K, Gowthaman V, Karthik K, Tiwari R, Sachan S,
-Kumar MA, Palanivelu M, Malik YS, Singh RK, Munir M. 2017.
-\href{https://doi.org/10.1080/01652176.2016.1277281}{Haemorrhagic
-enteritis of turkeys -- current knowledge}. Veterinary Quarterly
-37:31--42.}
-
-\bibitem[\citeproctext]{ref-Tykaowski2019}
-\CSLLeftMargin{6. }%
-\CSLRightInline{Tykałowski B, Śmiałek M, Koncicki A, Ognik K, Zduńczyk
-Z, Jankowski J. 2019.
-\href{https://doi.org/10.1186/s12917-019-2138-8}{The immune response of
-young turkeys to haemorrhagic enteritis virus infection at different
-levels and sources of methionine in the diet}. BMC Veterinary Research
-15.}
-
-\bibitem[\citeproctext]{ref-Pierson2008}
-\CSLLeftMargin{7. }%
-\CSLRightInline{Pierson F, Fitzgerald S. 2008. Hemorrhagic enteritis and
-related infections. Diseases of Poultry 276--286.}
-
-\bibitem[\citeproctext]{ref-Rautenschlein2000}
-\CSLLeftMargin{8. }%
-\CSLRightInline{Rautenschlein S, Sharma JM. 2000.
-\href{https://doi.org/10.1016/s0145-305x(99)00075-0}{Immunopathogenesis
-of haemorrhagic enteritis virus (HEV) in turkeys}. Dev Comp Immunol
-24:237--46.}
-
-\bibitem[\citeproctext]{ref-Larsen1985}
-\CSLLeftMargin{9. }%
-\CSLRightInline{Larsen CT, Domermuth CH, Sponenberg DP, Gross WB. 1985.
-Colibacillosis of turkeys exacerbated by hemorrhagic enteritis virus.
-Laboratory studies. Avian Dis 29:729--32.}
-
-\bibitem[\citeproctext]{ref-Beach2009a}
-\CSLLeftMargin{10. }%
-\CSLRightInline{Beach NM, Duncan RB, Larsen CT, Meng XJ, Sriranganathan
-N, Pierson FW. 2009.
-\href{https://doi.org/10.1637/8575-010509-reg.1}{Persistent infection of
-turkeys with an avirulent strain of turkey hemorrhagic enteritis virus}.
-Avian Diseases 53:370--375.}
-
-\bibitem[\citeproctext]{ref-Rautenschlein2000b}
-\CSLLeftMargin{11. }%
-\CSLRightInline{Rautenschlein S, Suresh M, Sharma JM. 2000.
-\href{https://doi.org/10.1007/s007050070083}{Pathogenic avian adenovirus
-type II induces apoptosis in turkey spleen cells}. Archives of Virology
-145:1671--1683.}
-
-\bibitem[\citeproctext]{ref-Pandey2023}
-\CSLLeftMargin{12. }%
-\CSLRightInline{Pandey D, Onkara Perumal P. 2023.
-\href{https://doi.org/10.1007/s10142-023-01064-6}{A scoping review on
-deep learning for next-generation RNA-seq. Data analysis}. Functional
-\&amp; Integrative Genomics 23.}
-
-\bibitem[\citeproctext]{ref-Wang2019}
-\CSLLeftMargin{13. }%
-\CSLRightInline{Wang B, Kumar V, Olson A, Ware D. 2019.
-\href{https://doi.org/10.3389/fgene.2019.00384}{Reviving the
-transcriptome studies: An insight into the emergence of single-molecule
-transcriptome sequencing}. Frontiers in Genetics 10.}
-
-\bibitem[\citeproctext]{ref-Choi2016}
-\CSLLeftMargin{14. }%
-\CSLRightInline{Choi SC. 2016.
-\href{https://doi.org/10.1007/s12275-016-6233-2}{On the study of
-microbial transcriptomes using second- and third-generation sequencing
-technologies}. Journal of Microbiology 54:527--536.}
-
-\bibitem[\citeproctext]{ref-Satam2023}
-\CSLLeftMargin{15. }%
-\CSLRightInline{Satam H, Joshi K, Mangrolia U, Waghoo S, Zaidi G, Rawool
-S, Thakare RP, Banday S, Mishra AK, Das G, Malonia SK. 2023.
-\href{https://doi.org/10.3390/biology12070997}{Next-generation
-sequencing technology: Current trends and advancements}. Biology
-12:997.}
-
-\bibitem[\citeproctext]{ref-Mo2023}
-\CSLLeftMargin{16. }%
-\CSLRightInline{Mo Q, Feng K, Dai S, Wu Q, Zhang Z, Ali A, Deng F, Wang
-H, Ning Y-J. 2023.
-\href{https://doi.org/10.1016/j.virs.2022.09.002}{Transcriptome
-profiling highlights regulated biological processes and type III
-interferon antiviral responses upon crimean-congo hemorrhagic fever
-virus infection}. Virologica Sinica 38:34--46.}
-
-\bibitem[\citeproctext]{ref-Ashburner2000}
-\CSLLeftMargin{17. }%
-\CSLRightInline{Ashburner M, Ball CA, Blake JA, Botstein D, Butler H,
-Cherry JM, Davis AP, Dolinski K, Dwight SS, Eppig JT, Harris MA, Hill
-DP, Issel-Tarver L, Kasarskis A, Lewis S, Matese JC, Richardson JE,
-Ringwald M, Rubin GM, Sherlock G. 2000.
-\href{https://doi.org/10.1038/75556}{Gene ontology: Tool for the
-unification of biology}. Nature Genetics 25:25--29.}
-
-\bibitem[\citeproctext]{ref-Kanehisa2000}
-\CSLLeftMargin{18. }%
-\CSLRightInline{Kanehisa M. 2000.
-\href{https://doi.org/10.1093/nar/28.1.27}{KEGG: Kyoto encyclopedia of
-genes and genomes}. Nucleic Acids Research 28:27--30.}
-
-\bibitem[\citeproctext]{ref-Mahsoub2017}
-\CSLLeftMargin{19. }%
-\CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
-Pierson FW. 2017.
-\href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
-{PCR}-based infectivity assay for the titration of turkey hemorrhagic
-enteritis virus, an adenovirus, in live vaccines}. Journal of
-Virological Methods 239:42--49.}
-
-\bibitem[\citeproctext]{ref-Pertea2016}
-\CSLLeftMargin{20. }%
-\CSLRightInline{Pertea M, Kim D, Pertea GM, Leek JT, Salzberg SL. 2016.
-\href{https://doi.org/10.1038/nprot.2016.095}{Transcript-level
-expression analysis of RNA-seq experiments with HISAT, StringTie and
-ballgown}. Nature Protocols 11:1650--1667.}
-
-\bibitem[\citeproctext]{ref-Snakemake2021}
-\CSLLeftMargin{21. }%
-\CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
-Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
-Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
-\href{https://doi.org/10.12688/f1000research.29032.2}{Sustainable data
-analysis with snakemake}. F1000Research 10:33.}
-
-\bibitem[\citeproctext]{ref-Martin2011}
-\CSLLeftMargin{22. }%
-\CSLRightInline{Martin M. 2011.
-\href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
-sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
-
-\bibitem[\citeproctext]{ref-Deseq2}
-\CSLLeftMargin{23. }%
-\CSLRightInline{Love MI, Huber W, Anders S. 2014.
-\href{https://doi.org/10.1186/s13059-014-0550-8}{Moderated estimation of
-fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
-15:550.}
-
-\bibitem[\citeproctext]{ref-Gprofiler2}
-\CSLLeftMargin{24. }%
-\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
-2020. gprofiler2-- an r package for gene list functional enrichment
-analysis and namespace conversion toolset g:profiler. F1000Research 9
-(ELIXIR).}
-
-\bibitem[\citeproctext]{ref-ggplot2}
-\CSLLeftMargin{25. }%
-\CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
-analysis. Springer-Verlag New York.
-\url{https://ggplot2.tidyverse.org}.}
-
-\bibitem[\citeproctext]{ref-pheatmap}
-\CSLLeftMargin{26. }%
-\CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
-\url{https://CRAN.R-project.org/package=pheatmap}.}
-
-\bibitem[\citeproctext]{ref-ggvenn}
-\CSLLeftMargin{27. }%
-\CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
-\url{https://CRAN.R-project.org/package=ggvenn}.}
-
-\bibitem[\citeproctext]{ref-Livak2001}
-\CSLLeftMargin{28. }%
-\CSLRightInline{\href{https://doi.org/10.1006/meth.2001.1262}{Livak KJ,
-Schmittgen TD. 2001.. Methods 25:402--408}.}
-
-\bibitem[\citeproctext]{ref-Sherman2022}
-\CSLLeftMargin{29. }%
-\CSLRightInline{Sherman BT, Hao M, Qiu J, Jiao X, Baseler MW, Lane HC,
-Imamichi T, Chang W. 2022.
-\href{https://doi.org/10.1093/nar/gkac194}{DAVID: A web server for
-functional enrichment analysis and functional annotation of gene lists
-(2021 update)}. Nucleic Acids Research 50:W216--W221.}
-
-\bibitem[\citeproctext]{ref-Saunders1993}
-\CSLLeftMargin{30. }%
-\CSLRightInline{Saunders GK, Pierson FW, Hurk JV van den. 1993.
-\href{https://doi.org/10.1080/03079459308418899}{Haemorhagic enteritis
-virus infection in turkeys: A comparison of virulent and avirulent virus
-infections, and a proposed pathogenesis}. Avian Pathology 22:47--58.}
-
-\bibitem[\citeproctext]{ref-Barber2001}
-\CSLLeftMargin{31. }%
-\CSLRightInline{Barber GN. 2001.
-\href{https://doi.org/10.1038/sj.cdd.4400823}{Host defense, viruses and
-apoptosis}. Cell Death \&amp; Differentiation 8:113--126.}
-
-\bibitem[\citeproctext]{ref-Hardwick1997}
-\CSLLeftMargin{32. }%
-\CSLRightInline{Hardwick JM. 1997.
-\href{https://doi.org/10.1016/s1054-3589(08)61063-7}{Virus-induced
-apoptosis}, p. 295--336. \emph{In} Apoptosls - pharmacological
-implications and therapeutic opportunities. Elsevier.}
-
-\bibitem[\citeproctext]{ref-Verburg2022}
-\CSLLeftMargin{33. }%
-\CSLRightInline{Verburg SG, Lelievre RM, Westerveld MJ, Inkol JM, Sun
-YL, Workenhe ST. 2022.
-\href{https://doi.org/10.1371/journal.ppat.1010718}{Viral-mediated
-activation and inhibition of programmed cell death}. PLOS Pathogens
-18:e1010718.}
-
-\bibitem[\citeproctext]{ref-Zhao2012}
-\CSLLeftMargin{34. }%
-\CSLRightInline{Zhao H, Dahlö M, Isaksson A, Syvänen A-C, Pettersson U.
-2012. \href{https://doi.org/10.1016/j.virol.2011.12.006}{The
-transcriptome of the adenovirus infected cell}. Virology 424:115--128.}
-
-\bibitem[\citeproctext]{ref-Guimet2016}
-\CSLLeftMargin{35. }%
-\CSLRightInline{Guimet D, Hearing P. 2016.
-\href{https://doi.org/10.1016/b978-0-12-800276-6.00003-6}{Adenovirus
-replication}, p. 59--84. \emph{In} Adenoviral vectors for gene therapy.
-Elsevier.}
-
-\bibitem[\citeproctext]{ref-Roos2006}
-\CSLLeftMargin{36. }%
-\CSLRightInline{Roos WP, Kaina B. 2006.
-\href{https://doi.org/10.1016/j.molmed.2006.07.007}{DNA damage-induced
-cell death by apoptosis}. Trends in Molecular Medicine 12:440--450.}
-
-\bibitem[\citeproctext]{ref-Martin1993}
-\CSLLeftMargin{37. }%
-\CSLRightInline{Martin SJ. 1993.
-\href{https://doi.org/10.1016/0165-2478(93)90080-l}{Protein or RNA
-synthesis inhibition induces apoptosis of mature human CD4+ t cell
-blasts}. Immunology Letters 35:125--134.}
-
-\bibitem[\citeproctext]{ref-Christianson2022}
-\CSLLeftMargin{38. }%
-\CSLRightInline{Christianson JC, Carvalho P. 2022.
-\href{https://doi.org/10.15252/embj.2021109845}{Order through
-destruction: How ER‐associated protein degradation contributes to
-organelle homeostasis}. The EMBO Journal 41.}
-
-\bibitem[\citeproctext]{ref-vandenHurk1990}
-\CSLLeftMargin{39. }%
-\CSLRightInline{Hurk JV van den. 1990.
-\href{https://doi.org/10.2307/1591329}{Propagation of group II avian
-adenoviruses in turkey and chicken leukocytes}. Avian Diseases 34:12.}
-
-\bibitem[\citeproctext]{ref-Aboezz2019}
-\CSLLeftMargin{40. }%
-\CSLRightInline{Aboezz ZR, Mahsoub HM, El-Bagoury G, Pierson FW. 2019.
-\href{https://doi.org/10.1016/j.virusres.2019.01.005}{In vitro growth
-kinetics and gene expression analysis of the turkey adenovirus 3, a
-siadenovirus}. Virus Research 263:47--54.}
-
-\bibitem[\citeproctext]{ref-Quaye2024}
-\CSLLeftMargin{41. }%
-\CSLRightInline{Quaye A, Pickett BE, Griffitts JS, Berges BK, Poole BD.
-2024. \href{https://doi.org/10.1186/s12985-024-02449-0}{Characterizing
-the splice map of turkey hemorrhagic enteritis virus}. Virology Journal
-21.}
-
-\bibitem[\citeproctext]{ref-Fribley2009}
-\CSLLeftMargin{42. }%
-\CSLRightInline{Fribley A, Zhang K, Kaufman RJ. 2009.
-\href{https://doi.org/10.1007/978-1-60327-017-5_14}{Regulation of
-apoptosis by the unfolded protein response}, p. 191--204. \emph{In}
-Apoptosis. Humana Press.}
-
-\bibitem[\citeproctext]{ref-Read2021}
-\CSLLeftMargin{43. }%
-\CSLRightInline{Read A, Schröder M. 2021.
-\href{https://doi.org/10.3390/biology10050384}{The unfolded protein
-response: An overview}. Biology 10:384.}
-
-\end{CSLReferences}
-
-\setlength{\parindent}{0in}
-\setlength{\leftskip}{0in}
-\newpage
-
-\subsection{TABLES AND FIGURES}\label{tables-and-figures}
+\subsubsection{3.2 Tables and Figures}\label{tables-and-figures}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/imss_model.png}}
-\caption{\textbf{Figure 1: Model of THEV-induced immunosuppression in
-turkeys}. THEV infection of target cells is indicated with black dotted
+\caption{\textbf{Figure 1.} Model of THEV-induced immunosuppression in
+turkeys. THEV infection of target cells is indicated with black dotted
 arrows. Black unbroken arrows indicate cell activation. Red arrows
 indicated signals leading to cell death (apoptosis/necrosis). Blue
 arrows indicate all cytokines released by the cell. Blue arrows with
@@ -1401,48 +716,48 @@ Rautenschlein \emph{et al.} (8).}
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/sample_corr_figure.png}}
-\caption{\textbf{Figure 2. (A) Principal component analysis (PCA) of
-turkey B-cells during THEV infection.} At 12-hpi \textbf{(A1)}, the
+\caption{\textbf{Figure 2.} (A) Principal component analysis (PCA) of
+turkey B-cells during THEV infection. At 12-hpi (\textbf{A1}), the
 results indicate that the first (PC1) and second (PC2) principal
 components account for 96\% and 3\% of the variation in the samples,
 respectively. Whereas PC1 and PC2 account for 96\% and 2\% of the
-variation, respectively at 24-hpi \textbf{(A2)}. \textbf{(B) Poisson
+variation, respectively at 24-hpi (\textbf{A2}). (\textbf{B}) Poisson
 distance matrices illustrating the RNA-seq library integrity within
-treatment (infected versus mock) groups}. The color scale represents the
+treatment (infected versus mock) groups. The color scale represents the
 distances between biological replicates for both 12-hpi samples
-\textbf{(B1)} and 24-hpi samples \textbf{(B2)}. Dark colors represent
-high correlation (similarity) between the samples involved. \textbf{(C)
+(\textbf{B1}) and 24-hpi samples (\textbf{B2}). Dark colors represent
+high correlation (similarity) between the samples involved. (\textbf{C})
 Volcano plots of DEGs between THEV-infected versus mock-infected cells
-at 12- and 24-hpi}. Red, blue, and grey dots represent upregulated,
+at 12- and 24-hpi. Red, blue, and grey dots represent upregulated,
 downregulated, and non-significant genes, respectively for both 12-hpi
-samples \textbf{(C1)} and 24-hpi samples \textbf{(C2)}.}
+samples (\textbf{C1}) and 24-hpi samples (\textbf{C2}).}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/deg_patch_fig.png}}
-\caption{\textbf{Figure 3: DEGs of THEV-infected versus mock-infected
-samples at different time points. (A) Bar plot of number DEGs
-identified.} Red represents upregulated genes and blue represents
-downregulated genes. \textbf{(B) Heatmaps of scaled expression data
-(Z-scores) of DEGs.} DEGs identified at 12-hpi are shown in
-\textbf{(B1)} and DEGs at 24-hpi in \textbf{(B2).} \textbf{(C) Venn
-diagrams showing the number of DEGs identified at different time
-points.} For the upregulated genes \textbf{(C1)}, the red circle
-represents genes at 4-hpi, the blue circle, 12-hpi, and the grey circle,
-24-hpi. For the downregulated genes \textbf{(C2)}, the green circle
-represents genes at 72-hpi, while all the other time points retain the
-colors from \textbf{(C1)}.}
+\caption{\textbf{Figure 3.} DEGs of THEV-infected versus mock-infected
+samples at different time points. (\textbf{A}) Bar plot of number DEGs
+identified. Red represents upregulated genes and blue represents
+downregulated genes. (\textbf{B}) Heatmaps of scaled expression data
+(Z-scores) of DEGs. DEGs identified at 12-hpi are shown in (\textbf{B1})
+and DEGs at 24-hpi in (\textbf{B2}). (\textbf{C}) Venn diagrams showing
+the number of DEGs identified at different time points. For the
+upregulated genes (\textbf{C1}), the red circle represents genes at
+4-hpi, the blue circle, 12-hpi, and the grey circle, 24-hpi. For the
+downregulated genes (\textbf{C2}), the green circle represents genes at
+72-hpi, while all the other time points retain the colors from
+(\textbf{C1}).}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/patch_GO_enrich.png}}
-\caption{\textbf{Figure 4: Dotplot of Enriched Gene Ontology Biological
-Processes (BP)}. Significant BP GO terms identified for upregulated DEGs
-at 12-hpi and 24-hpi are shown in \textbf{(A)} and \textbf{(B)},
+\caption{\textbf{Figure 4.} Dotplot of Enriched Gene Ontology Biological
+Processes (BP). Significant BP GO terms identified for upregulated DEGs
+at 12-hpi and 24-hpi are shown in (\textbf{A}) and (\textbf{B}),
 respectively. Significant BP GO terms for downregulated DEGs at 12-hpi
-and 24-hpi are shown in \textbf{(C)} and \textbf{(D)}, respectively. The
+and 24-hpi are shown in (\textbf{C}) and (\textbf{D}), respectively. The
 y-axis indicates GO terms and the x-axis represents the rich factor,
 which indicates the ratio of the number of DEGs annotated to the term to
 the total number of genes annotated to the term. The diameter indicates
@@ -1453,24 +768,24 @@ indicates the enrichment P-value.}
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/upr_pathway.png}}
-\caption{\textbf{Figure 5: Upregulation of ER Unfolded Protein Response
-(UPR).} KEGG Pathway analysis shows multiple key genes involved in the
-ER UPR were upregulated. All genes from our DEG list are annotated with
-the red star. Notably, \emph{ATF4, PERK, VCP (p97), TRAF2, UFD1} and
-several BCL2 and heat shock proteins are upregulated. We see that the
-PERK branch of the UPR pathway linked to apoptosis is upregulated.
-Another pathway linked to apoptosis via \emph{BAX} is shown as well as
-the ERAD protein degradation pathway. Note that due to limited
-annotation of the host genome, a significant proportion of the DEGs were
-not recognized by the database; hence not shown here. \emph{Figure
-generated from KEGG pathway analysis in DAVID}.}
+\caption{\textbf{Figure 5.} Upregulation of ER Unfolded Protein Response
+(UPR). KEGG Pathway analysis shows multiple key genes involved in the ER
+UPR were upregulated. All genes from our DEG list are annotated with the
+red star. Notably, \emph{ATF4, PERK, VCP (p97), TRAF2, UFD1} and several
+BCL2 and heat shock proteins are upregulated. We see that the PERK
+branch of the UPR pathway linked to apoptosis is upregulated. Another
+pathway linked to apoptosis via \emph{BAX} is shown as well as the ERAD
+protein degradation pathway. Note that due to limited annotation of the
+host genome, a significant proportion of the DEGs were not recognized by
+the database; hence not shown here. \emph{Figure generated from KEGG
+pathway analysis in DAVID}.}
 \end{figure}
 
 \begin{figure}
 \centering
 \pandocbounded{\includegraphics[keepaspectratio]{results/r/figures/qpcr_validation.png}}
-\caption{\textbf{Figure 6: Validation of representative DEGs involved in
-Apoptosis, Protein synthesis, and ER-stress responses by RT-qPCR}.
+\caption{\textbf{Figure 6.} Validation of representative DEGs involved
+in Apoptosis, Protein synthesis, and ER-stress responses by RT-qPCR.
 MDTC-RP19 cells infected with THEV- or mock-infected were subjected to
 RT-qPCR analysis for the relative expression of the indicated DEGs at
 24-hpi. \emph{GAPDH} was used as the internal control. Data are
@@ -9232,11 +8547,216 @@ test.}
 
 \renewcommand*{\arraystretch}{1}
 
-\subsection{SUPPLEMENTARY MATERIALS}\label{supplementary-materials}
+\newpage
+
+\subsection{4. Discussion}\label{discussion}
+
+THEV has a worldwide distribution, wreaking economic havoc on affected
+poultry farms, particularly due to its immunosuppressive trait allowing
+secondary opportunistic infections to devastate turkey populations (4,
+6). HE in turkeys causes more economic losses than any disease caused in
+other birds like chicken or pheasants (4). While the current vaccine
+strain (VAS) has proven effective at preventing clinical HE in turkey
+poults, the retention of its immunosuppressive properties leaves some of
+the issues associated with economic losses unresolved. Elucidating the
+virus-host interactions leading to IMS is most pressing for not only the
+understanding of the viral infection and pathogenesis but also future
+antiviral therapy targets. Since both virulent and avirulent THEV cause
+IMS but the avirulent are used as vaccine, we believe that studying VAS
+would be more expedient for understanding THEV vaccine-induced IMS.
+
+Only one cell line (MDTC-RP19 or RP19) has been found to be capable of
+supporting THEV replication (39). Thus, in this work, we establish the
+first transcriptomic profile of THEV infection in RP19 cells using
+paired-end RNA-seq. We attempted a multi-time point experimental design
+but this being the first transcriptomic study of THEV infection, we
+faced some difficulties, including selecting our sampling time points
+based on the only study of THEV gene expression kinetics (40), leading
+to only 12- and 24-hpi providing useful data. In total \textbf{2,343}
+and \textbf{3,295} DEGs were identified at 12-hpi and 24-hpi,
+respectively. At 12-hpi, \textbf{1,079} genes were upregulated and
+\textbf{1,264} genes downregulated, whereas \textbf{1,512} genes were
+upregulated and \textbf{1,783} genes downregulated at 24-hpi. Being a
+non-model organism, a significant proportion of the host (\emph{M.
+gallopavo}) genes are not annotated and not recognized by the databases
+used for functional enrichment analysis. Thus, the obtained results are
+likely sub-optimal in amount of detail relative to results from well
+annotated and curated genomes of model organisms. The DEGs were related
+to multiple biological processes all potentially playing a role in THEV
+infection but the most relevant to our study are apoptosis, ER
+stress-induced unfolded protein response, suppressed cell maintenance
+processes, and cytokine deregulation. Furthermore, the RT-qPCR results
+validated the RNA-seq results. Collectively, this study may shed light
+on some significant aspects of THEV-host interactions, which may benefit
+further mechanistic delineation of the viral infection and induction of
+IMS and inform future development of anti-THEV strategies. The
+biological processes most relevant to THEV-induced IMS highlighted by
+this study are further discussed below.
+
+Apoptosis is a key defense mechanism activated by cells in response to
+irreversible injury and virus infection to abrogate virus propagation.
+It is a formidable cellular defense network, non-specific to any virus
+family and therefore an important problem for any infecting virus to
+overcome (31--33). The adenovirus E1A proteins are strong inducers of
+apoptosis. They bind host pRb and p300/CBP protein, inducing
+p53-mediated apoptosis, and can also sensitize infected cells to
+TNF\(\alpha\) and TRAIL-induced apoptosis (34, 35). However,
+adenoviruses have developed multiple distinct anti-apoptotic mechanisms
+to counter almost all cellular pro-apoptotic programs. For example, E1A
+blocks its own induction of p53-dependent apoptosis and E1B proteins
+(E1B-19K and E1B-55K) counteract several types of apoptosis including
+TNF-induced apoptosis (34, 35). Despite the rich arsenal of
+countermeasures, transcriptomic studies of human adenovirus infections
+suggest a complex set of virus-host interactions where both pro- and
+anti-apoptotic genes are turned on contemporaneously. For example, in
+human adenovirus 2 infection, both pro- and anti-apoptotic BCL2 family
+genes were stimulated (34). Siadenoviruses including THEV are the
+smallest adenoviruses and therefore encode the fewest genes (10, 41).
+THEV encodes a mere 34 ORFs with no anti-apoptotic genes characterized
+(41). In agreement with these findings, in our results a strong signal
+indicative of apoptotic induction was observed. However, like
+mastadenovirus infections, a complex relationship between pro and
+anti-apoptotic genes were observed. Pro-apoptotic genes such as
+\emph{APAF1, BNIP3L, BMF, BAK1, RIPK1, FAS, FADD} and \emph{ATF} were
+upregulated in concert with the anti-apoptotic genes \emph{BCL2, BNIP2,
+BCL2A1} and \emph{API5}. We speculate that this complex regulation is
+predictive of THEV possessing some anti-apoptotic genes but not
+sufficiently potent to thwart the cellular apoptotic response.
+Interestingly, pro-apoptotic genes in both intrinsic and extrinsic
+pathways were upregulated, possibly due to a concurrent stimulation of
+multiple apoptotic pathways or a positive feedback mechanism of one
+system activating the other. The specific mechanism of apoptosis
+induction remains elusive. Further studies designed to elucidate these
+fine details are warranted and would benefit future THEV therapeutics.
+
+The ER serves many specialized functions including biosynthesis and
+assembly of membrane and secretory proteins, calcium storage, and
+biosynthesis of lipids and sterols. It is also the site of protein
+folding and post-translational modifications and maintains stringent
+quality control systems, ensuring exported proteins are correctly folded
+and degradation of unfolded or misfolded proteins (16, 38, 42).
+Disruption of ER homeostasis or ER stress leads to accumulation of
+incorrect proteins in the ER lumen, triggering the UPR. The UPR restores
+ER normality by transiently attenuating general protein synthesis,
+increasing the lumenal folding capacity, and the degradation of
+misfolded proteins through the ERAD pathway or autophagy (16, 38, 42,
+43). However, if incorrect lumenal protein overload persists, the
+prolonged UPR will induce apoptosis known as ER stress-associated
+programmed cell death (42, 43). Many DNA and RNA viruses are reported to
+induce ER stress and UPR pathways during infection (16). In our results,
+\emph{ATF4} and PKR-like ER protein kinase (\emph{PERK}), key proteins
+in the \emph{PERK} branch of the UPR pathway were upregulated. A myriad
+of ERAD pathway proteins (e.g., \emph{VCP, UFD1, EDEM1, EDEM3, CUL1,
+UBQLN1}), ubiquitination system proteins (e.g., \emph{UBE2J2, UBE2E3,
+UBE2Z, UBE3A, UBE3B}), and heat shock family of chaperone proteins
+(e.g., \emph{HSPA5, HSP4L, HSPA8, HSP90AA1}) all showed increased
+expression according to our RNA-seq data with some validated with
+RT-qPCR. These data strongly suggest that THEV infection triggers the ER
+UPR pathways leading to a massive decrease of protein synthesis and
+deregulation of sterol biosynthesis, and ubiquitin-mediated proteolysis,
+all supported by our results. As noted above, a prolonged UPR activation
+leads to ER stress-associated programmed cell death via genes such
+\emph{ATF4} (42, 43). Thus, we suggest that the ER stress response
+likely plays a crucial role in THEV-induced IMS. Nonetheless, the
+mechanisms underlying the regulation of the UPR pathways by THEV remain
+to be clearly unraveled. Also, whether and how the ER stress response
+affects THEV infection and pathogenicity should be studied.
+Unsurprisingly, protein degradation was more pronounced at the 24-hpi
+than at 12-hpi, reflecting the suggested two phases of UPR -- phase one
+allows the unfolded proteins time to refold without degradation and
+phase two degrades any proteins which have failed to fold (43).
+
+In the proposed model of THEV immunopathogenesis by Rautenschlein
+\emph{et al} (\textbf{Figure 1}), while THEV directly induced cell death
+in infected cells, cytokines are responsible for extending cell death to
+bystander splenocytes (8). However, the primary cytokines
+(IFN-\(\alpha\), IFN-\(\beta\), IFN-\(\gamma\) TNF, IL-6, and NO)
+highlighted in the model were not significantly differentially expressed
+in our data. This may be explained by the fact that the model was
+proposed based on data from splenocytes of THEV-infected turkeys, which
+have the full complement of immune cells (T-cells, B-cells, macrophages)
+shown in the model and not solely from B-cell culture data as in this
+study. From the model, T-cells and macrophages are the principal
+producers of the effector cytokines; thus, there is agreement with our
+data that B-cells alone would poorly simulate the cytokine communication
+network. This may also explain the very few immune-associated biological
+processes in our data as the B-cells may require cytokines from other
+immune cells such as macrophages and T-cells for optimal activation.
+Further transcriptomic studies with splenocytes would offer a wealth of
+insights regarding these ideas. It also likely that cytokines may only
+play a dominant role in some aspects of THEV-infection such as the
+clinical hemorrhage of the intestines but not the associated IMS since a
+study using the TNF-blocking drug (thalidomide) only prevented
+intestinal disease, not IMS (8). While some of the upregulated cytokines
+and receptors in our results are positive apoptosis regulators
+(\emph{TNFRSF8, TRAF7}), most of the cytokines are either anti-apoptotic
+(\emph{TNFRSF1B, TRAF2}), boost host antiviral defense (\emph{IL18,
+TNFSF4, PKR, TRAFD1, IFIH1}), or suppress cytokine signaling
+(\emph{SOCS3, SOCS5}). Therefore, we speculate that a
+non-cytokine-mediated apoptotic process such as ER stress-associated
+programmed cell death is more likely to mediate direct killing of
+infected cells. However, whether bystander cell death occurs and if it
+is cytokine-mediated as suggested by Rautenschlein \emph{et al} are
+important questions that can be addressed with future transcriptomic
+studies in splenocytes.
+
+By convention, the Mastadenovirus replication cycle is divided into two
+phases, an early and a late phase, separated by the onset of viral DNA
+replication (34, 35). Based on DNA microarray analysis, adenovirus type
+2 (Ad2) infection has been divided into four stages. The first period is
+from 0 to 12-hpi during which changes in cellular gene expression are
+likely to be triggered by the viral entry process. Most of the
+deregulated genes have functions linked to inhibition of cell growth.
+Therefore, growth suppression is most likely the first response of the
+host cell to the incoming virus (34). The second period covers the time
+from 12 to 24-hpi and follows activation of the immediate early E1A
+gene, which forcibly transition cell cycle to S phase (34). While the
+temporal changes of host gene expression for a THEV infection have not
+been characterized in prior studies, our data showed that during the
+first 24-hpi, cell growth was suppressed. Cell maintenance processes
+involving nucleic acid and proteins were downregulated according to our
+data. Protein synthesis-related processes including ribosome biogenesis,
+rRNA processing, ribosome assembly, protein folding, translational
+initiation, protein maturation, and others were heavily affected.
+Additionally, DNA and RNA synthesis, maintenance, and repair such as
+nucleotide biosynthesis and metabolism, double strand break repair, and
+DNA excision repair were also repressed. As severe DNA damage leads to
+DNA damage-dependent apoptosis (36) and repression of RNA and protein
+synthesis is also strongly associated with apoptosis (37), these
+inhibitions may also play a role in THEV-induced IMS. Moreover, we
+speculate that the ER UPR may contribute partly to the severe repression
+of protein synthesis as discussed above. An in-depth study of temporal
+changes of host gene expression during THEV infection would be
+invaluable in establishing if THEV follows the same pattern as Ad2.
+
+\subsection{5. Conclusions}\label{conclusions}
+
+THEV-induced IMS is a pressing concern for turkey farmers worldwide,
+causing substantial economic losses annually. In this study, we
+establish the cellular transcriptomic profile of THEV infection in
+turkey RP19 B-cells using paired-end RNA-seq, identifying \textbf{1,079}
+upregulated genes and \textbf{1,264} downregulated genes at 12-hpi and
+\textbf{1,512} upregulated genes and \textbf{1,783} downregulated genes
+at 24-hpi. Our data suggest that several biological processes and
+pathways including apoptosis, immune response, ER response to stress,
+ubiquitin-dependent proteolysis, and repression of essential cellular
+maintenance are significant aspects of host cell response to THEV
+infection. All these processes are established apoptosis inducing
+mechanisms; therefore, we believe that either one or synergistic
+interplay between multiple ones may mediate cell death of infected
+B-cells, leading to IMS. These findings provide the first insights into
+THEV-host interactions and may help advance the understanding of
+non-human adenoviral infection and pathogenesis, which may eventually
+inform the development of medical countermeasures for disease prevention
+and treatment.
+
+\newpage
+
+\textbf{Supplementary Materials}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{qpcr_validation/qpcr_gel.png}}
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{qpcr_validation/qpcr_gel.png}
 \caption{\textbf{Figure S1: Gel Electrophoresis of RT-qPCR validation
 reactions.} We run a gel electrophoresis of the RT-qPCR reactions in 2\%
 agarose gel to confirm primer specificity. The 13 primer pairs all show
@@ -9377,17 +8897,16 @@ and infected samples are shown in the bottom row prefixed with ``inf''.}
 
 \renewcommand*{\arraystretch}{1}
 
-Gene symbols: glyceraldehyde-3-phosphate dehydrogenase (\emph{GAPDH});
-apoptotic peptidase activating factor 1 (\emph{APAF1}); Bcl2 modifying
-factor (\emph{BMF}); FAS-associated protein with death domain
-(\emph{FADD}); programmed cell death 4 (\emph{PDCD4}); MAP kinase
+\textbf{Gene symbols:} glyceraldehyde-3-phosphate dehydrogenase
+(\emph{GAPDH}); apoptotic peptidase activating factor 1 (\emph{APAF1});
+Bcl2 modifying factor (\emph{BMF}); FAS-associated protein with death
+domain (\emph{FADD}); programmed cell death 4 (\emph{PDCD4}); MAP kinase
 activating death domain (\emph{MADD}); valosin containing protein
 (\emph{VCP/p97}); Ubiquitin Recognition Factor in ER Associated
 Degradation 1 (\emph{UFD1}); ER degradation enhancing alpha-mannosidase
 like protein 1 (\emph{EDEM1}); eukaryotic translation initiation factor
-3 subunit D (\emph{EIF3D}); eukaryotic translation initiation factor 3
-subunit M (\emph{EIF3M}); ribosomal protein L8 (\emph{RPL8}); ribosomal
-protein L10a (\emph{RPL10A}) \FloatBarrier \newpage
+3 subunit D and M (\emph{EIF3D} and, \emph{EIF3M}); ribosomal protein L8
+and L10a (\emph{RPL8}, and \emph{RPL10A}).
 
 \global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
@@ -9532,5 +9051,509 @@ protein L10a (\emph{RPL10A}) \FloatBarrier \newpage
 \global\setlength{\tabcolsep}{\Oldtabcolsep}
 
 \renewcommand*{\arraystretch}{1}
+
+\newpage
+
+\subsubsection{Author Contributions}\label{author-contributions}
+
+Conceptualization, Abraham Quaye, Brian D. Poole, Brett E. Pickett,
+Bradford K. Berges, and Joel S. Griffitts; methodology, Abraham Quaye;
+software, Abraham Quaye; validation, Abraham Quaye; formal analysis,
+Abraham Quaye, Brett E. Pickett; investigation, Abraham Quaye;
+resources, Brian D. Poole; data curation, Abraham Quaye;
+writing---original draft preparation, Abraham Quaye; writing---review
+and editing, Brian D. Poole, Brett E. Pickett, Bradford K. Berges, and
+Joel S. Griffitts; visualization, Abraham Quaye; supervision, Brian D.
+Poole; project administration, Brian D. Poole; funding acquisition,
+Brian D. Poole. All authors have read and agreed to the published
+version of the manuscript.
+
+\subsubsection{Funding}\label{funding}
+
+This research received no external funding.
+
+\subsubsection{Data Availability}\label{data-availability}
+
+The raw sequencing read data (FastQ), gene expression counts, and total
+DEGs identified at 12- and 24-hpi have been deposited at the NCBI Gene
+Expression Omnibus (\url{http://www.ncbi.nlm.nih.gov/geo}) under
+accession number GSE286211.
+
+All the code/scripts in the entire analysis pipeline are available on
+GitHub (\url{https://github.com/Abraham-Quaye/host_rna_seq})
+
+\subsubsection{Acknowledgements}\label{acknowledgements}
+
+We thank the Office of Research Computing at Brigham Young University
+for granting us access to the high-performance computing systems to
+perform the memory-intensive steps in the analysis pipeline of this
+work.
+
+\subsubsection{Conflicts of Interest}\label{conflicts-of-interest}
+
+The authors declare no conflicts of interest. \newpage
+
+\subsubsection{Abbreviations}\label{abbreviations}
+
+The following are abbreviations used in this manuscript:
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.00in}|p{2.00in}}
+
+
+
+\ascline{0.75pt}{666666}{1-2}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Abbreviation}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Definition}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}\endfirsthead 
+
+\ascline{0.75pt}{666666}{1-2}
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Abbreviation}}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{\textbf{Definition}}}} \\
+
+\ascline{0.75pt}{666666}{1-2}\endhead
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{DAVID}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Database\ for\ Annotation,\ Visualization\ and\ Integrated\ Discovery}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{DEG}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Differentially\ Expressed\ Gene}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ER}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Endoplasmic\ Reticulum}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ERAD}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Endoplasmic\ Reticulum-associated\ Degradation}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{FPKM}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Fragments\ Per\ Kilobase\ of\ transcript\ per\ Million\ mapped\ reads}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{GCN}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Genome\ Copy\ Number}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{GO}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Gene\ Ontology}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{HE}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Hemorrhagic\ Enteritis}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{IMS}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Immunosuppression}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{KEGG}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Kyoto\ Encyclopedia\ of\ Genes\ and\ Genomes}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{ORF}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Open\ Reading\ Frame}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RNA-seq}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RNA\ sequencing}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{RT-qPCR}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Reverse\ Transcriptase\ Quantitative\ Polymerase\ Chain\ Reaction}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{THEV}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Turkey\ Hemorrhagic\ Enteritis\ Virus}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{UPR}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Unfolded\ Protein\ Response}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{VAS}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Virginia\ Avirulent\ Strain}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{hpi}}} & \multicolumn{1}{!{\color[HTML]{666666}\vrule width 0.75pt}>{\centering}m{\dimexpr 2in+0\tabcolsep}!{\color[HTML]{666666}\vrule width 0.75pt}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Hours\ Post-infection}}} \\
+
+\ascline{0.75pt}{666666}{1-2}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\newpage
+
+\subsection{REFERENCES}\label{references}
+
+\setlength{\parindent}{-0.25in}
+\setlength{\leftskip}{0.25in}
+
+\noindent
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\bibitem[\citeproctext]{ref-Harrach2008}
+\CSLLeftMargin{1. }%
+\CSLRightInline{Harrach B. 2008.
+\href{https://doi.org/10.1016/B978-012374410-4.00680-4}{Adenoviruses:
+General features}, p. 1--9. \emph{In} Mahy, BWJ, Van Regenmortel, MHV
+(eds.), Encyclopedia of virology (third edition). Book Section. Academic
+Press, Oxford.}
+
+\bibitem[\citeproctext]{ref-Davison2003}
+\CSLLeftMargin{2. }%
+\CSLRightInline{Davison A, Benko M, Harrach B. 2003.
+\href{https://doi.org/10.1099/vir.0.19497-0}{Genetic content and
+evolution of adenoviruses}. The Journal of general virology
+84:2895--908.}
+
+\bibitem[\citeproctext]{ref-Gross1967}
+\CSLLeftMargin{3. }%
+\CSLRightInline{Gross WB, Moore WE. 1967. Hemorrhagic enteritis of
+turkeys. Avian Dis 11:296--307.}
+
+\bibitem[\citeproctext]{ref-Beach2006}
+\CSLLeftMargin{4. }%
+\CSLRightInline{Beach NM. 2006.
+\href{http://scholar.lib.vt.edu/theses/available/etd-08142006-145339/}{Characterization
+of avirulent turkey hemorrhagic enteritis virus: A study of the
+molecular basis for variation in virulence and the occurrence of
+persistent infection}. Thesis.}
+
+\bibitem[\citeproctext]{ref-Dhama2017}
+\CSLLeftMargin{5. }%
+\CSLRightInline{Dhama K, Gowthaman V, Karthik K, Tiwari R, Sachan S,
+Kumar MA, Palanivelu M, Malik YS, Singh RK, Munir M. 2017.
+\href{https://doi.org/10.1080/01652176.2016.1277281}{Haemorrhagic
+enteritis of turkeys -- current knowledge}. Veterinary Quarterly
+37:31--42.}
+
+\bibitem[\citeproctext]{ref-Tykaowski2019}
+\CSLLeftMargin{6. }%
+\CSLRightInline{Tykałowski B, Śmiałek M, Koncicki A, Ognik K, Zduńczyk
+Z, Jankowski J. 2019.
+\href{https://doi.org/10.1186/s12917-019-2138-8}{The immune response of
+young turkeys to haemorrhagic enteritis virus infection at different
+levels and sources of methionine in the diet}. BMC Veterinary Research
+15.}
+
+\bibitem[\citeproctext]{ref-Pierson2008}
+\CSLLeftMargin{7. }%
+\CSLRightInline{Pierson F, Fitzgerald S. 2008. Hemorrhagic enteritis and
+related infections. Diseases of Poultry 276--286.}
+
+\bibitem[\citeproctext]{ref-Rautenschlein2000}
+\CSLLeftMargin{8. }%
+\CSLRightInline{Rautenschlein S, Sharma JM. 2000.
+\href{https://doi.org/10.1016/s0145-305x(99)00075-0}{Immunopathogenesis
+of haemorrhagic enteritis virus (HEV) in turkeys}. Dev Comp Immunol
+24:237--46.}
+
+\bibitem[\citeproctext]{ref-Larsen1985}
+\CSLLeftMargin{9. }%
+\CSLRightInline{Larsen CT, Domermuth CH, Sponenberg DP, Gross WB. 1985.
+Colibacillosis of turkeys exacerbated by hemorrhagic enteritis virus.
+Laboratory studies. Avian Dis 29:729--32.}
+
+\bibitem[\citeproctext]{ref-Beach2009a}
+\CSLLeftMargin{10. }%
+\CSLRightInline{Beach NM, Duncan RB, Larsen CT, Meng XJ, Sriranganathan
+N, Pierson FW. 2009.
+\href{https://doi.org/10.1637/8575-010509-reg.1}{Persistent infection of
+turkeys with an avirulent strain of turkey hemorrhagic enteritis virus}.
+Avian Diseases 53:370--375.}
+
+\bibitem[\citeproctext]{ref-Rautenschlein2000b}
+\CSLLeftMargin{11. }%
+\CSLRightInline{Rautenschlein S, Suresh M, Sharma JM. 2000.
+\href{https://doi.org/10.1007/s007050070083}{Pathogenic avian adenovirus
+type II induces apoptosis in turkey spleen cells}. Archives of Virology
+145:1671--1683.}
+
+\bibitem[\citeproctext]{ref-Pandey2023}
+\CSLLeftMargin{12. }%
+\CSLRightInline{Pandey D, Onkara Perumal P. 2023.
+\href{https://doi.org/10.1007/s10142-023-01064-6}{A scoping review on
+deep learning for next-generation RNA-seq. Data analysis}. Functional
+\&amp; Integrative Genomics 23.}
+
+\bibitem[\citeproctext]{ref-Wang2019}
+\CSLLeftMargin{13. }%
+\CSLRightInline{Wang B, Kumar V, Olson A, Ware D. 2019.
+\href{https://doi.org/10.3389/fgene.2019.00384}{Reviving the
+transcriptome studies: An insight into the emergence of single-molecule
+transcriptome sequencing}. Frontiers in Genetics 10.}
+
+\bibitem[\citeproctext]{ref-Choi2016}
+\CSLLeftMargin{14. }%
+\CSLRightInline{Choi SC. 2016.
+\href{https://doi.org/10.1007/s12275-016-6233-2}{On the study of
+microbial transcriptomes using second- and third-generation sequencing
+technologies}. Journal of Microbiology 54:527--536.}
+
+\bibitem[\citeproctext]{ref-Satam2023}
+\CSLLeftMargin{15. }%
+\CSLRightInline{Satam H, Joshi K, Mangrolia U, Waghoo S, Zaidi G, Rawool
+S, Thakare RP, Banday S, Mishra AK, Das G, Malonia SK. 2023.
+\href{https://doi.org/10.3390/biology12070997}{Next-generation
+sequencing technology: Current trends and advancements}. Biology
+12:997.}
+
+\bibitem[\citeproctext]{ref-Mo2023}
+\CSLLeftMargin{16. }%
+\CSLRightInline{Mo Q, Feng K, Dai S, Wu Q, Zhang Z, Ali A, Deng F, Wang
+H, Ning Y-J. 2023.
+\href{https://doi.org/10.1016/j.virs.2022.09.002}{Transcriptome
+profiling highlights regulated biological processes and type III
+interferon antiviral responses upon crimean-congo hemorrhagic fever
+virus infection}. Virologica Sinica 38:34--46.}
+
+\bibitem[\citeproctext]{ref-Ashburner2000}
+\CSLLeftMargin{17. }%
+\CSLRightInline{Ashburner M, Ball CA, Blake JA, Botstein D, Butler H,
+Cherry JM, Davis AP, Dolinski K, Dwight SS, Eppig JT, Harris MA, Hill
+DP, Issel-Tarver L, Kasarskis A, Lewis S, Matese JC, Richardson JE,
+Ringwald M, Rubin GM, Sherlock G. 2000.
+\href{https://doi.org/10.1038/75556}{Gene ontology: Tool for the
+unification of biology}. Nature Genetics 25:25--29.}
+
+\bibitem[\citeproctext]{ref-Kanehisa2000}
+\CSLLeftMargin{18. }%
+\CSLRightInline{Kanehisa M. 2000.
+\href{https://doi.org/10.1093/nar/28.1.27}{KEGG: Kyoto encyclopedia of
+genes and genomes}. Nucleic Acids Research 28:27--30.}
+
+\bibitem[\citeproctext]{ref-Mahsoub2017}
+\CSLLeftMargin{19. }%
+\CSLRightInline{Mahsoub HM, Evans NP, Beach NM, Yuan L, Zimmerman K,
+Pierson FW. 2017.
+\href{https://doi.org/10.1016/j.jviromet.2016.11.002}{Real-time
+{PCR}-based infectivity assay for the titration of turkey hemorrhagic
+enteritis virus, an adenovirus, in live vaccines}. Journal of
+Virological Methods 239:42--49.}
+
+\bibitem[\citeproctext]{ref-Pertea2016}
+\CSLLeftMargin{20. }%
+\CSLRightInline{Pertea M, Kim D, Pertea GM, Leek JT, Salzberg SL. 2016.
+\href{https://doi.org/10.1038/nprot.2016.095}{Transcript-level
+expression analysis of RNA-seq experiments with HISAT, StringTie and
+ballgown}. Nature Protocols 11:1650--1667.}
+
+\bibitem[\citeproctext]{ref-Snakemake2021}
+\CSLLeftMargin{21. }%
+\CSLRightInline{Mölder F, Jablonski KP, Letcher B, Hall MB,
+Tomkins-Tinch CH, Sochat V, Forster J, Lee S, Twardziok SO, Kanitz A,
+Wilm A, Holtgrewe M, Rahmann S, Nahnsen S, Köster J. 2021.
+\href{https://doi.org/10.12688/f1000research.29032.2}{Sustainable data
+analysis with snakemake}. F1000Research 10:33.}
+
+\bibitem[\citeproctext]{ref-Martin2011}
+\CSLLeftMargin{22. }%
+\CSLRightInline{Martin M. 2011.
+\href{https://doi.org/10.14806/ej.17.1.200}{Cutadapt removes adapter
+sequences from high-throughput sequencing reads}. EMBnetjournal 17:10.}
+
+\bibitem[\citeproctext]{ref-Deseq2}
+\CSLLeftMargin{23. }%
+\CSLRightInline{Love MI, Huber W, Anders S. 2014.
+\href{https://doi.org/10.1186/s13059-014-0550-8}{Moderated estimation of
+fold change and dispersion for RNA-seq data with DESeq2}. Genome Biology
+15:550.}
+
+\bibitem[\citeproctext]{ref-Gprofiler2}
+\CSLLeftMargin{24. }%
+\CSLRightInline{Kolberg L, Raudvere U, Kuzmin I, Vilo J, Peterson H.
+2020. gprofiler2-- an r package for gene list functional enrichment
+analysis and namespace conversion toolset g:profiler. F1000Research 9
+(ELIXIR).}
+
+\bibitem[\citeproctext]{ref-ggplot2}
+\CSLLeftMargin{25. }%
+\CSLRightInline{Wickham H. 2016. ggplot2: Elegant graphics for data
+analysis. Springer-Verlag New York.
+\url{https://ggplot2.tidyverse.org}.}
+
+\bibitem[\citeproctext]{ref-pheatmap}
+\CSLLeftMargin{26. }%
+\CSLRightInline{Kolde R. 2019. Pheatmap: Pretty heatmaps.
+\url{https://CRAN.R-project.org/package=pheatmap}.}
+
+\bibitem[\citeproctext]{ref-ggvenn}
+\CSLLeftMargin{27. }%
+\CSLRightInline{Yan L. 2023. Ggvenn: Draw venn diagram by 'ggplot2'.
+\url{https://CRAN.R-project.org/package=ggvenn}.}
+
+\bibitem[\citeproctext]{ref-Livak2001}
+\CSLLeftMargin{28. }%
+\CSLRightInline{\href{https://doi.org/10.1006/meth.2001.1262}{Livak KJ,
+Schmittgen TD. 2001.. Methods 25:402--408}.}
+
+\bibitem[\citeproctext]{ref-Sherman2022}
+\CSLLeftMargin{29. }%
+\CSLRightInline{Sherman BT, Hao M, Qiu J, Jiao X, Baseler MW, Lane HC,
+Imamichi T, Chang W. 2022.
+\href{https://doi.org/10.1093/nar/gkac194}{DAVID: A web server for
+functional enrichment analysis and functional annotation of gene lists
+(2021 update)}. Nucleic Acids Research 50:W216--W221.}
+
+\bibitem[\citeproctext]{ref-Saunders1993}
+\CSLLeftMargin{30. }%
+\CSLRightInline{Saunders GK, Pierson FW, Hurk JV van den. 1993.
+\href{https://doi.org/10.1080/03079459308418899}{Haemorhagic enteritis
+virus infection in turkeys: A comparison of virulent and avirulent virus
+infections, and a proposed pathogenesis}. Avian Pathology 22:47--58.}
+
+\bibitem[\citeproctext]{ref-Barber2001}
+\CSLLeftMargin{31. }%
+\CSLRightInline{Barber GN. 2001.
+\href{https://doi.org/10.1038/sj.cdd.4400823}{Host defense, viruses and
+apoptosis}. Cell Death \&amp; Differentiation 8:113--126.}
+
+\bibitem[\citeproctext]{ref-Hardwick1997}
+\CSLLeftMargin{32. }%
+\CSLRightInline{Hardwick JM. 1997.
+\href{https://doi.org/10.1016/s1054-3589(08)61063-7}{Virus-induced
+apoptosis}, p. 295--336. \emph{In} Apoptosls - pharmacological
+implications and therapeutic opportunities. Elsevier.}
+
+\bibitem[\citeproctext]{ref-Verburg2022}
+\CSLLeftMargin{33. }%
+\CSLRightInline{Verburg SG, Lelievre RM, Westerveld MJ, Inkol JM, Sun
+YL, Workenhe ST. 2022.
+\href{https://doi.org/10.1371/journal.ppat.1010718}{Viral-mediated
+activation and inhibition of programmed cell death}. PLOS Pathogens
+18:e1010718.}
+
+\bibitem[\citeproctext]{ref-Zhao2012}
+\CSLLeftMargin{34. }%
+\CSLRightInline{Zhao H, Dahlö M, Isaksson A, Syvänen A-C, Pettersson U.
+2012. \href{https://doi.org/10.1016/j.virol.2011.12.006}{The
+transcriptome of the adenovirus infected cell}. Virology 424:115--128.}
+
+\bibitem[\citeproctext]{ref-Guimet2016}
+\CSLLeftMargin{35. }%
+\CSLRightInline{Guimet D, Hearing P. 2016.
+\href{https://doi.org/10.1016/b978-0-12-800276-6.00003-6}{Adenovirus
+replication}, p. 59--84. \emph{In} Adenoviral vectors for gene therapy.
+Elsevier.}
+
+\bibitem[\citeproctext]{ref-Roos2006}
+\CSLLeftMargin{36. }%
+\CSLRightInline{Roos WP, Kaina B. 2006.
+\href{https://doi.org/10.1016/j.molmed.2006.07.007}{DNA damage-induced
+cell death by apoptosis}. Trends in Molecular Medicine 12:440--450.}
+
+\bibitem[\citeproctext]{ref-Martin1993}
+\CSLLeftMargin{37. }%
+\CSLRightInline{Martin SJ. 1993.
+\href{https://doi.org/10.1016/0165-2478(93)90080-l}{Protein or RNA
+synthesis inhibition induces apoptosis of mature human CD4+ t cell
+blasts}. Immunology Letters 35:125--134.}
+
+\bibitem[\citeproctext]{ref-Christianson2022}
+\CSLLeftMargin{38. }%
+\CSLRightInline{Christianson JC, Carvalho P. 2022.
+\href{https://doi.org/10.15252/embj.2021109845}{Order through
+destruction: How ER‐associated protein degradation contributes to
+organelle homeostasis}. The EMBO Journal 41.}
+
+\bibitem[\citeproctext]{ref-vandenHurk1990}
+\CSLLeftMargin{39. }%
+\CSLRightInline{Hurk JV van den. 1990.
+\href{https://doi.org/10.2307/1591329}{Propagation of group II avian
+adenoviruses in turkey and chicken leukocytes}. Avian Diseases 34:12.}
+
+\bibitem[\citeproctext]{ref-Aboezz2019}
+\CSLLeftMargin{40. }%
+\CSLRightInline{Aboezz ZR, Mahsoub HM, El-Bagoury G, Pierson FW. 2019.
+\href{https://doi.org/10.1016/j.virusres.2019.01.005}{In vitro growth
+kinetics and gene expression analysis of the turkey adenovirus 3, a
+siadenovirus}. Virus Research 263:47--54.}
+
+\bibitem[\citeproctext]{ref-Quaye2024}
+\CSLLeftMargin{41. }%
+\CSLRightInline{Quaye A, Pickett BE, Griffitts JS, Berges BK, Poole BD.
+2024. \href{https://doi.org/10.1186/s12985-024-02449-0}{Characterizing
+the splice map of turkey hemorrhagic enteritis virus}. Virology Journal
+21.}
+
+\bibitem[\citeproctext]{ref-Fribley2009}
+\CSLLeftMargin{42. }%
+\CSLRightInline{Fribley A, Zhang K, Kaufman RJ. 2009.
+\href{https://doi.org/10.1007/978-1-60327-017-5_14}{Regulation of
+apoptosis by the unfolded protein response}, p. 191--204. \emph{In}
+Apoptosis. Humana Press.}
+
+\bibitem[\citeproctext]{ref-Read2021}
+\CSLLeftMargin{43. }%
+\CSLRightInline{Read A, Schröder M. 2021.
+\href{https://doi.org/10.3390/biology10050384}{The unfolded protein
+response: An overview}. Biology 10:384.}
+
+\end{CSLReferences}
+
+\setlength{\parindent}{0in}
+\setlength{\leftskip}{0in}
+\newpage
 
 \end{document}

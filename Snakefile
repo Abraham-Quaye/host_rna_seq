@@ -314,7 +314,8 @@ rule write_manuscript:
         david_kegg_script = "scripts/r_code/process_DAVID_kegg.R",
         david_kegg_files = expand("results/r/tables/davidKEGG_{reg}{tp}hrs.tsv", \
         reg = ["up", "down"], tp = [12, 24]),
-        qpc_results = rules.plot_qpcr_validation.output
+        qpc_results = rules.plot_qpcr_validation.output,
+        gel_image = "qpcr_validation/qpcr_gel.png"
     output:
         "infected_host_trxptome.pdf",
         "infected_host_trxptome.tex",
