@@ -22,7 +22,7 @@ deg_bar_plt <- p_data %>%
                      expand = c(0, 0)) +
   scale_x_discrete(expand = c(0.16, 0.16),
                    breaks = c("t4", "t12", "t24", "t72"),
-                   labels = c("4h.p.i", "12h.p.i", "24h.p.i", "72h.p.i")) +
+                   labels = c("4-hpi", "12-hpi", "24-hpi", "72-hpi")) +
   labs(title = "Differentially Expressed Genes of<br> THEV-infected B-cells",
        y = "Number of Genes",
        x = element_blank(),
@@ -52,7 +52,8 @@ deg_bar_plt <- p_data %>%
         axis.ticks = element_blank(),
         legend.justification = c(0,1),
         legend.position = "inside",
-        legend.position.inside = c(0.1, 0.95),
+        legend.position.inside = c(0.05, 0.95),
+        legend.box.background = element_rect(color = "grey40"),
         legend.text = element_text(face = 'bold', 
                                    size = 18,
                                    family = 'Arial'),

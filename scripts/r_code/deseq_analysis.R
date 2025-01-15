@@ -28,11 +28,12 @@ exp_metadata <- data.frame(sample_path = smpl_names,
          sample_name = str_extract(sample_path, "abund_[IU]_\\d{1,2}hrs[SN]\\d")) %>%
   set_rownames(.$sample_name) %>%
   select(-sample_name) %>%
-  mutate(timepoint = factor(timepoint, levels = c("4hrs", "12hrs", "24hrs", "72hrs")),
-         infection = factor(infection, levels = c("mock", "infected")),
-         treatment = factor(treatment, levels = c(paste0("mock_", c(4, 12, 24, 72), "hrs"),
-                                                  paste0("infected_", c(4, 12, 24, 72), "hrs"))
-                            )
+  mutate(timepoint = factor(timepoint,
+                            levels = c("4hrs", "12hrs", "24hrs", "72hrs")),
+         infection = factor(infection,levels = c("mock", "infected")),
+         treatment = factor(treatment,
+                            levels = c(paste0("mock_", c(4, 12, 24, 72), "hrs"),
+                                       paste0("infected_", c(4, 12, 24, 72), "hrs")))
          )
 
 
@@ -75,6 +76,14 @@ make_PCA <- function(dds, tp_lab){
   pcaData <- plotPCA(rld, intgroup = "infection", returnData = T)
   pvar <- round(attr(pcaData, "percentVar") * 100)
   
+  if(tp_lab == "12hrs"){
+    time_lab <- "12-hpi"
+  }else if(tp_lab == "24hrs"){
+    time_lab <- "24-hpi"
+  }else{
+    time_lab <- tp_lab
+  }
+  
   plt <- pcaData %>% 
     ggplot(aes(PC1, PC2, colour = infection)) +
     geom_point(size = 5) +
@@ -82,7 +91,7 @@ make_PCA <- function(dds, tp_lab){
     scale_color_manual(values = c("#ff0000", "#0000ff"),
                        breaks = c("infected", "mock"),
                        labels = c("Infected", "Mock")) +
-    labs(title = paste0("THEV-infected VS Mock-infected PCA: ", tp_lab),
+    labs(title = paste0("THEV-infected VS Mock-infected PCA: ", time_lab),
          x = paste0("PC1: ", pvar[[1]], "% Variance"),
          y = paste0("PC2: ", pvar[[2]], "% Variance")) +
     theme_bw() +
@@ -115,9 +124,18 @@ make_volcanoPlot <- function(res_dds, lab_tp){
   if(lab_tp == "12hrs"){
     most_sig <- dff %>%
       filter(-log10(padj) >= 30)
+    
+    time_lab <- "12-hpi"
+  }else if(lab_tp == "24hrs"){
+    most_sig <- dff %>%
+      filter(-log10(padj) >= 100)
+    
+    time_lab <- "24-hpi"
   }else{
     most_sig <- dff %>%
       filter(-log10(padj) >= 100)
+    
+    time_lab <- lab_tp
   }
   
   xmin <- dff %>% drop_na(log2FoldChange, padj) %>%
@@ -141,7 +159,7 @@ make_volcanoPlot <- function(res_dds, lab_tp){
                        labels = seq(-10, 10, 1),
                        limits = c((xmin - 0.1), (xmax + 0.1))) +
     coord_cartesian(clip = "off") +
-    labs(title = paste0("THEV-infected VS Mock-infected: ", lab_tp),
+    labs(title = paste0("THEV-infected VS Mock-infected: ", time_lab),
          y = expression("-Log"[10]*"(P-adjusted Values)"),
          x = expression("Log"[2]*"(Fold Change)")) +
     scale_color_manual(values = c("blue", "grey", "red"),
@@ -270,7 +288,6 @@ left_plts[[3]] <- left_plts[[3]] + plot_layout(tag_level = "new")
 merge_plts <- (left_plts | patch_volcano) +
   plot_layout(widths = c(0.5, 1.5))
 
-# merge_plts[[1]][[4]] <- merge_plts[[1]][[4]] + plot_layout(tag_level = "new")
 merge_plts[[2]] <- merge_plts[[2]] + plot_layout(tag_level = "new")
 
 merge_plts <- merge_plts + plot_annotation(tag_levels = c("A", "1")) &

@@ -50,7 +50,7 @@ heatmap_data_list <- map(timpnts, prep_heatmap_data) %>%
 
 # function to plot heatmaps
 plot_heatmap <- function(tp){
-  tpp <- paste0(parse_number(tp), "h.p.i")
+  tpp <- paste0(parse_number(tp), "-hpi")
   
   ht <- pheatmap(heatmap_data_list[[tp]],
                  main = paste0("Top 60 Significant DEGs at " , tpp),
