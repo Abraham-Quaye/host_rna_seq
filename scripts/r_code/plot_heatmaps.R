@@ -98,3 +98,15 @@ total_plts <- total_plts +
 
 ggsave(plot = total_plts, filename = "results/r/figures/deg_patch_fig.png",
        width = 20, height = 20, dpi = 350)
+
+ggsave(plot = deg_bar_plt, filename = "results/r/figures/deg_barplot.png",
+       width = 8, height = 8, dpi = 400)
+
+ggsave(plot = fplot, filename = "results/r/figures/venn_diagrams.png",
+       width = 16, height = 10, dpi = 400)
+
+ggsave(plot = p12, filename = "results/r/figures/heatmap12hpi.png",
+       width = 7, height = 12, dpi = 400)
+
+ggsave(plot = p24, filename = "results/r/figures/heatmap24hpi.png",
+       width = 7, height = 12, dpi = 400)

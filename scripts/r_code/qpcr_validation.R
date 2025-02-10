@@ -83,18 +83,41 @@ expr_ddCT_ready <- inner_join(expr_dCT_ready, refSample_dCT, by = "gene") %>%
          min_rq = 2^(-(del_delta_ct + se_dCT)),
          max_rq = 2^(-(del_delta_ct - se_dCT)))
 
+#--------------------STATISTICS ---------------
+
+stats_test <- tibble(gene = c("apaf1", "bmf", "fadd", "pdcd4","madd", "vcp",
+                               "ufd1", "edem1", "eif3d", "eif3m", "rpl8", "rpl10a"),
+                     ct_data = map(gene, \(.x)expr_data %>% filter(gene == .x)),
+                     wilcox_test = map_dbl(ct_data, \(.x) wilcox.test(ct ~ treatment, exact = T,
+                                                                      data = .x) %>%
+                                             tidy(.) %>% pull(p.value)),
+                     t_test = map_dbl(ct_data, \(.x) t.test(ct ~ treatment, data = .x) %>%
+                                        tidy(.) %>% pull(p.value))
+                     ) %>%
+  select(-c(ct_data, wilcox_test))
 
 # Visualize
 
 plot_ready_data <- expr_ddCT_ready %>%
-  mutate(gene = toupper(gene),
-         gene = factor(gene, levels = toupper(c("apaf1", "bmf", "fadd", "madd", "pdcd4",
-                                        "edem1", "ufd1", "vcp", "eif3d",
-                                        "eif3m", "rpl8", "rpl10a", "gapdh"))),
-         regulation = case_when(rq > 1 ~ "up",
+  mutate(regulation = case_when(rq > 1 ~ "up",
                                 rq < 1  ~ "down",
                                 TRUE ~ NA_character_)) %>%
-  drop_na(regulation)
+  drop_na(regulation) %>%
+  inner_join(., stats_test, by = "gene") %>%
+  select(gene, rq, min_rq, max_rq, regulation, t_test) %>% 
+  mutate(gene = toupper(gene),
+         gene = factor(gene, levels = toupper(c("apaf1", "bmf", "fadd", "madd", "pdcd4",
+                                                "edem1", "ufd1", "vcp", "eif3d",
+                                                "eif3m", "rpl8", "rpl10a", "gapdh"))),
+         log_rq = log2(rq),
+         rq = ifelse(regulation == "up", rq, -1/rq),
+         rq = round(rq, 1),
+         max_rq = log2(max_rq),
+         min_rq = log2(min_rq),
+         pval_pos_y = ifelse(regulation == "up", max_rq, min_rq),
+         pval_nudge_y = ifelse(regulation == "up", 0.1, -0.1),
+         fc_pos = ifelse(regulation == "up", 0.5, -0.5),
+         t_test = formatC(t_test, format = "e", digits = 2))
 
 plt_accessory <- tibble(x = c(0.5, 0.5, 5.4, 5.5, 5.5, 8.4, 8.5, 8.5, 12.4),
        xend = c(5.4, 0.5, 5.4, 8.4, 5.5, 8.4, 12.4, 8.5, 12.4),
@@ -102,11 +125,22 @@ plt_accessory <- tibble(x = c(0.5, 0.5, 5.4, 5.5, 5.5, 8.4, 8.5, 8.5, 12.4),
        yend = c(-0.5, -0.55, -0.55, -0.5, -0.55, -0.55, 0.5, 0.55, 0.55))
 
 qpcr_plt <- plot_ready_data %>%
-  ggplot(aes(gene, log2(rq), fill = regulation)) +
+  ggplot(aes(gene, log_rq, fill = regulation)) +
   geom_col() +
-  geom_errorbar(aes(ymin = log2(min_rq), ymax = log2(max_rq)),
+  geom_errorbar(aes(ymin = min_rq, ymax = max_rq),
                 position = position_dodge(0.9), width = 0.4) +
   geom_hline(yintercept = 0, color = "#000000") +
+  # p-values
+  geom_label(aes(gene, pval_pos_y, label = paste0("p = ", t_test)),
+            nudge_y = plot_ready_data$pval_nudge_y, size = 3,
+            fontface = "bold", label.size = 0,
+            label.padding = unit(0, "pt"), fill = "#FFFFFF",
+            show.legend = F) +
+  # fold change values
+  geom_label(aes(gene, fc_pos, label = rq), size = 8,
+             fontface = "bold", color = "#FFFFFF",
+             label.size = 0, show.legend = F, fill = NA,
+             label.padding = unit(0, "pt")) +
   annotate(geom = "text", x = c(1:12), y = c(rep(-0.1, 8), rep(0.1, 4)),
            label = levels(plot_ready_data$gene)[-13], size = 6,
            fontface = "bold.italic") +
@@ -123,7 +157,7 @@ qpcr_plt <- plot_ready_data %>%
                     labels = c("Upregulated", "Downregulated")) +
   scale_y_continuous(expand = c(0, 0),
                      breaks = seq(-2.5, 3, 0.5)) +
-  coord_cartesian(clip = "off", ylim = c(-2.5, NA)) +
+  coord_cartesian(clip = "off", ylim = c(-2.6, NA)) +
   labs(x = element_blank(), 
        y = "Log<sub>2</sub>(Relative Quantities)",
        fill = element_blank(),
@@ -150,17 +184,3 @@ qpcr_plt <- plot_ready_data %>%
 
 ggsave(plot = qpcr_plt, filename = "results/r/figures/qpcr_validation.png",
        dpi = 350, width = 12, height = 10)
-
-# test for normal distribution
-shapiro.test(expr_data$ct)
-# not normally distributed -> use wilcoxon test
-
-stats_test <- tibble(genes = c("apaf1", "bmf", "fadd", "pdcd4","madd", "vcp",
-                               "ufd1", "edem1", "eif3d", "eif3m", "rpl8", "rpl10a"),
-       ct_data = map(genes, \(.x)expr_data %>% filter(gene == .x)),
-       wilcox_test = map(ct_data, \(.x) wilcox.test(ct ~ treatment, exact = T,
-                                                    data = .x) %>%
-                           tidy(.) %>% pull(p.value)),
-       t_test = map(ct_data, \(.x) t.test(ct ~ treatment, data = .x) %>%
-                      tidy(.) %>% pull(p.value))
-       )
