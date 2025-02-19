@@ -97,7 +97,7 @@ total_plts <- total_plts +
   theme(plot.tag = element_text(size = 22, face = "bold"))
 
 ggsave(plot = total_plts, filename = "results/r/figures/deg_patch_fig.png",
-       width = 20, height = 20, dpi = 350)
+       width = 20, height = 20, dpi = 500)
 
 ggsave(plot = deg_bar_plt, filename = "results/r/figures/deg_barplot.png",
        width = 8, height = 8, dpi = 400)

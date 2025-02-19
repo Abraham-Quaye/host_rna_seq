@@ -177,10 +177,10 @@ qpcr_plt <- plot_ready_data %>%
         legend.key.spacing.x = unit(1, "cm"),
         legend.key = element_rect(fill = NA),
         legend.position = "inside",
-        legend.position.inside = c(0.85, 0.90),
+        legend.position.inside = c(0.85, 0.885),
         legend.direction = "horizontal",
         legend.text.position = "top",
         legend.background = element_rect(colour = "gray70"))
 
 ggsave(plot = qpcr_plt, filename = "results/r/figures/qpcr_validation.png",
-       dpi = 350, width = 12, height = 10)
+       dpi = 500, width = 12, height = 10)
