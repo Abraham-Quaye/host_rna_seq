@@ -242,6 +242,7 @@ mapStats %>%
 \FloatBarrier
 \newpage
 ```{r GOTerm_Enrich_UP_12hpi}
+library(ftExtra)
 source("scripts/r_code/generate_GO_tables.R")
 # Table 2A
 make_GO_table <- function(goTerms_res){
@@ -257,8 +258,10 @@ make_GO_table <- function(goTerms_res){
                               is.na(fold_enrich) & source == "GO:CC" ~ "Cellular Component",
                               is.na(fold_enrich) & source == "GO:MF" ~ "Molecular Function",
                               TRUE ~ source)) %>%
+    mutate(qval = str_replace(qval, "(\\d\\.\\d+)e-0?(\\d+)", "\\1 x 10^-\\2^")) %>% 
     flextable() %>%
     theme_box() %>%
+    ftExtra::colformat_md(., j = qval) %>% 
     set_header_labels(source = "GO Category", term = "GO:Term",
                       qval = "P-value\n(Adjusted)",
                       num_degs = "Number of DEGs",
@@ -281,18 +284,18 @@ make_GO_table <- function(goTerms_res){
   return(table)
 }
 
-go_res_table12up <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_up) %>% unnest(.)
+go_res_table12up <- tab_res %>% filter(timepoint == "t12") %>%
+  select(go_tab_up) %>% unnest(go_tab_up)
 
 make_GO_table(go_res_table12up) %>%
     set_caption("Table 2A: Gene ontology analysis of Significantly Upregulated DEGs identified at 12-hpi")
-
 ```
 \FloatBarrier
 \newpage
 
 ```{r GOTerm_Enrich_DOWN_12hpi}
 # Table 2B
-go_res_table12dw <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_down) %>% unnest(.)
+go_res_table12dw <- tab_res %>% filter(timepoint == "t12") %>% select(go_tab_down) %>% unnest(go_tab_down)
 
 # write_tsv(go_res_table12dw, "results/r/tables/submission/table2b.tsv",
 #           col_names = T)
@@ -306,7 +309,7 @@ make_GO_table(go_res_table12dw) %>%
 
 ```{r GOTerm_Enrich_UP_24hpi}
 # Table 3A
-go_res_table24up <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_up) %>% unnest(.)
+go_res_table24up <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_up) %>% unnest(go_tab_up)
 
 make_GO_table(go_res_table24up) %>%
     set_caption("Table 3A: Gene ontology analysis of Significantly Upregulated DEGs identified at 24-hpi")
@@ -317,7 +320,7 @@ make_GO_table(go_res_table24up) %>%
 
 ```{r GOTerm_Enrich_DOWN_24hpi}
 # Table 3B
-go_res_table24dw <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_down) %>% unnest(.)
+go_res_table24dw <- tab_res %>% filter(timepoint == "t24") %>% select(go_tab_down) %>% unnest(go_tab_down)
 
 make_GO_table(go_res_table24dw) %>%
     set_caption("Table 3B: Gene ontology analysis of Significantly Downregulated DEGs identified at 24-hpi")
@@ -335,11 +338,13 @@ david_kegg <- kegg_result %>%
   select(-c(rich_factor, pval)) %>%
   mutate(regulation = str_replace(timepoint, "^((down|up))\\d{2}hrs$", "\\1"),
          timepoint = str_replace(timepoint, "^(down|up)(\\d{2})hrs$", "\\2-hpi")) %>%
-  select(timepoint, regulation, everything())
+  select(timepoint, regulation, everything()) %>%
+  mutate(qval = str_replace(qval, "(\\d\\.\\d+)e-0?(\\d+)", "\\1 x 10^-\\2^"))
   
 
 david_kegg %>% flextable(.) %>%
   theme_box() %>% 
+  ftExtra::colformat_md(., j = qval) %>% 
   width(., j = "term", width = 2.5) %>%
   set_header_labels(timepoint = "Time Point", regulation = "Regulation",
                     term = "KEGG Term", num_degs = "DEG Count",
@@ -439,11 +444,13 @@ gprofiler_kegg <- kegg_res_all %>%
   mutate(regulation = str_replace(query, "^(down|up)_degIDs_\\d{2}hrs$", "\\1"),
          timepoint = str_replace(query, "^(down|up)_degIDs_(\\d{2})hrs$", "\\2-hpi")) %>%
   select(timepoint, regulation, term_name, deg_count = intersection_size, p_value) %>%
-  mutate(p_value = format(p_value, digits = 3))
+  mutate(p_value = format(p_value, digits = 3)) %>%
+  mutate(p_value = str_replace(p_value, "(\\d\\.\\d+)e-0?(\\d+)", "\\1 x 10^-\\2^"))
   
 
 gprofiler_kegg %>% flextable(.) %>%
   theme_box() %>% 
+  ftExtra::colformat_md(., j = p_value) %>% 
   width(., j = "term_name", width = 3) %>%
   set_header_labels(timepoint = "Time Point", regulation = "Regulation",
                     term_name = "KEGG Term", deg_count = "DEG Count",

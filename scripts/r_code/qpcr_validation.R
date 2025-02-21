@@ -117,7 +117,8 @@ plot_ready_data <- expr_ddCT_ready %>%
          pval_pos_y = ifelse(regulation == "up", max_rq, min_rq),
          pval_nudge_y = ifelse(regulation == "up", 0.1, -0.1),
          fc_pos = ifelse(regulation == "up", 0.5, -0.5),
-         t_test = formatC(t_test, format = "e", digits = 2))
+         t_test = as.character(formatC(t_test, format = "e", digits = 2)),
+         t_test = str_replace(t_test, "(\\d\\.\\d+)e-0?(\\d+)", "<b>p = \\1 x 10<sup>-\\2</sup></b>"))
 
 plt_accessory <- tibble(x = c(0.5, 0.5, 5.4, 5.5, 5.5, 8.4, 8.5, 8.5, 12.4),
        xend = c(5.4, 0.5, 5.4, 8.4, 5.5, 8.4, 12.4, 8.5, 12.4),
@@ -131,9 +132,9 @@ qpcr_plt <- plot_ready_data %>%
                 position = position_dodge(0.9), width = 0.4) +
   geom_hline(yintercept = 0, color = "#000000") +
   # p-values
-  geom_label(aes(gene, pval_pos_y, label = paste0("p = ", t_test)),
+  geom_richtext(aes(gene, pval_pos_y, label = t_test),
             nudge_y = plot_ready_data$pval_nudge_y, size = 3,
-            fontface = "bold", label.size = 0,
+            label.size = 0, fontface = "bold",
             label.padding = unit(0, "pt"), fill = "#FFFFFF",
             show.legend = F) +
   # fold change values
@@ -163,7 +164,8 @@ qpcr_plt <- plot_ready_data %>%
        fill = element_blank(),
        title = "RT-qPCR Validation of Select DEGs") +
   theme_classic() +
-  theme(panel.grid.major.y = element_line(colour = "grey70", linetype = "dashed",
+  theme(text = element_text(face = "bold"),
+        panel.grid.major.y = element_line(colour = "grey70", linetype = "dashed",
                                           linewidth = 0.3),
         plot.title = element_markdown(size = 30, face = "bold", hjust = 0.5,
                                       colour = "#000000", margin = margin(t = 10, b = 10)),
